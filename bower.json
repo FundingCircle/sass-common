@@ -9,6 +9,7 @@
   "license": "Commercial",
   "private": true,
   "ignore": [
-    "src"
-  ]
+    "**/*",
+    "!dist/**/*"
+   ]
 }
