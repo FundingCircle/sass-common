@@ -1,0 +1,299 @@
+$ie: true;
+// $breakPoints--b: (first: 0 0);
+
+// @function extend($obj, $ext-obj) {
+//   @return map-merge($obj, $ext-obj);
+// }
+
+// @mixin breakPoints--b($min,$max) {
+  
+//  // store the breakPoints in an object 
+
+//  // $breakPoints--b: extend(
+//  //  $breakPoints--b, (
+//  //    #{$min}-#{$max} : 1
+//  //  )
+//  // );
+  
+//   // @if($min == false) {
+//   //   @media only screen and (max-width: $max - 1) {
+//   //     @content;
+//   //   }
+//   // } @else if ($max == false) {
+//   //   @media only screen and (min-width: $min) {
+//   //     @content;
+//   //   }
+//   // } @else {
+//   //   @media only screen and (min-width: $min) and (max-width: $max - 1) {
+//   //     @content;
+//   //   }
+//   // }
+// // @warn $breakPoints--b;
+// //   @each $i in $breakPoints--b {
+// //     @warn $i;
+// //     @if first($i) == $min and last($i) == $max {
+// //       // @warn wtf;
+// //     } @else {
+// //       // @warn test;
+      
+// //       // $breakPoints--b: append($breakPoints--b, (key-#{$min}-#{$max}: $min $max));
+// //       $breakPoints--b: extend($breakPoints--b, test:(test test));
+
+// //       @media only screen and (min-width: $min) and (max-width: $max) {
+// //         %media-#{$min}-#{$max} {};
+// //         @content;
+        
+// //       }
+// //       // create the media query and insert content in it
+// //     }
+// //   }
+
+// $iterator: 0;
+//  @each $key, $value in $breakPoints--b {
+
+//    @if first($value) == $min and last($value) == $max {
+//      // @extend %media-#{$min}-#{$max};
+//      // @content;
+
+//    } @else {
+//      @media only screen and (min-width: $min) and (max-width: $max) {
+        
+//        // %media-#{$min}-#{$max} {
+//        //  border: 1px solid pink;
+//        //  @content;
+//        // };
+//      }
+//      $breakPoints--b: extend($breakPoints--b, (key-#{$min}-#{$max}: $min $max));
+//    }
+//  }
+
+    
+// }
+
+
+
+
+// .el1 {
+
+//  @include breakPoints--b(300px,500px) {
+//    display: block;
+//  }
+
+//  @include breakPoints--b(400px,700px)  {
+//    display: inline;
+//  } 
+// }
+
+
+
+// .el2 {
+//  @include breakPoints--b(300px,500px) {
+//    color: red;
+//  }
+
+//  @include breakPoints--b(200px,700px) {
+//    color: purple;
+//  }
+
+// }
+
+
+// // @each $key, $value in $breakPoints--b {
+// //   @warn $key has value $value;
+// // }
+
+
+
+// ----------------------------------------------------------------------
+
+// @function multiplier($val) {
+  
+//  // just to make sure we have a fallback for multiplier
+//  $multiplier: $val;
+  
+//  // default $unit value
+//  $unit: rem;
+  
+//  @if type-of($val) == number and $val != 0 {
+    
+//    // determine the unit for $val
+//    $val: separateUnit($val);
+    
+//    @if last($val) != false {
+//      $unit: last($val);
+//    }
+    
+//    $val: first($val);
+
+//    // determine the multiplier
+//    @if $ie {
+//      @if $unit == rem {
+//        $multiplier: $val * $fontSizeBase * 1px;
+//      } @else {
+//        $multiplier: $val * 1px;
+//      }
+//    } @else {
+//      @if $unit == rem {
+//        $multiplier: $val * 1rem;
+//      } @else {
+//        $multiplier: $val / $fontSizeBase * 1rem;
+//      }
+//    }
+
+//  }
+
+//  @return $multiplier;
+// }
+
+// @function remNew($val) {
+//   $cVal: ();
+
+//  @if type-of($val) == list {
+    
+//    @each $i in $val {
+//      $i: multiplier($i);
+//      $cVal: append($cVal, $i);
+//    }
+  
+//  } @else if type-of($val) == number{
+  
+//     $cVal: multiplier($val);
+  
+//   } @else {
+//     $cVal: $val;
+//   }
+
+//   @return $cVal;
+// }
+
+// @warn remNew(false);
+// @warn multiplier(10);
+// @warn multiplier(10rem);
+// @warn multiplier(10px);
+
+
+
+// *[data-dynamic-value] {
+//  perspective: 400px;
+//  transform-style: preserve-3d;
+
+//  span { 
+//    display: inline-block; 
+//    transform-origin: bottom center;
+
+//    &:first-child {
+//    }
+
+//    &:last-child {
+//      width: 0;
+//      opacity: 0;
+//      transform: rotateX(90deg);
+//    }
+
+//  }
+
+//  .boxes-spaced_item:hover & {
+//    span {
+//      &:first-child {
+//        opacity: 0;
+//        transform: rotateX(-90deg);
+//      }
+
+//      &:last-child {
+//        width: auto;
+//        opacity: 1;
+//        transform: rotateX(0);
+//      }
+//    }
+//  }
+// }
+
+// *[data-dynamic-container] {
+
+
+//  [data-dynamic-flip] {
+//    perspective: 400px;
+//    transform-style: preserve-3d;
+//    position: relative;
+//    display: block;
+    
+//    & > span {
+//      display: block;
+//      width: 100%;
+//      transform-origin: center bottom;
+//      white-space: nowrap;
+
+//      &:first-child {
+//        @include opacity(1);
+//        transform: rotateX(0deg);
+//      }
+
+//      &:last-child {
+//        @include opacity(0);
+//        position: absolute;
+//        top: 0;
+//        left: 0;
+//        right: 0;
+//        // bottom: 0;
+//        transform: rotateX(90deg);
+//      }
+
+      
+  
+//    }
+
+//  }
+
+  
+
+// }
+
+// *[data-dynamic-container="flipped"] {
+//  [data-dynamic-flip] > span {
+//    &:first-child {
+//      @include opacity(0);
+//      transform: rotateX(-90deg);
+//    }
+//    &:last-child {
+//      @include opacity(1);
+//      transform: rotateX(0deg);
+//    }
+//  }
+// }
+
+
+
+
+// FLIP ELEMENT
+
+[data-dynamic-placeholder] {
+  @include opacity(1);
+
+  span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    @include transition(max-width,300,ms,linear); 
+  }
+
+  [data-dynamic-placeholder] {
+    max-width: 100%;
+    // background: red;
+  }
+
+  [data-dynamic-value] {
+    max-width: 0%;
+    // background: blue;
+  }
+
+  &[data-dynamic-container="visible"] {
+    [data-dynamic-placeholder] {
+      max-width: 0%;
+    }
+
+    [data-dynamic-value] {
+      max-width: 100%;
+    }
+
+  }
+}

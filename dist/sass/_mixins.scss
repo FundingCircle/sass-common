@@ -1,0 +1,1054 @@
+$ie: true;
+/* ---------------------------------------------------------------------- *\
+  CENTER BLOCK 
+  center block elements using margin: auto
+  you can set the top and bottom here or set them separately
+  if centerBlock(value, true) -> margin: value auto;
+\* ---------------------------------------------------------------------- */
+
+@mixin centerBlock($top:false, $bottom:false) {
+  
+  @if $top { $top: rem($top); }
+  @if $bottom { $bottom: rem($bottom); }
+  
+  @if $top and $bottom == false {
+
+    margin: {
+      top: $top;
+      left: auto;
+      right: auto;
+    }
+
+  } @else if $top == false and $bottom {
+    
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: $bottom;
+    }
+
+  } @else if $top and $bottom == true { 
+    
+    margin: $top auto;
+
+  } @else if $top and $bottom {
+
+    margin: $top auto $bottom;
+  
+  } @else {
+    margin: {
+      left: auto;
+      right: auto; 
+    }
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  PREFIX PROPERTIES
+\* ---------------------------------------------------------------------- */
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TRANSITION
+  $property: all / background / color / height / width / outline
+  $duration: any number
+  $unit: ms / s
+  $function: ease / linear / ease-in / ease-out / ease-in-out
+\* ---------------------------------------------------------------------- */
+
+@mixin transition($property:all, $duration:200, $unit: ms, $function: ease) {
+  @include prefix(transition, $property #{$duration}#{$unit} $function);
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  RGBA
+ 
+  Credits: @cballenar — January 4th, 2014
+
+  A SCSS mixin to create RGB fallbacks for RGBa styles.
+
+  This mixin takes up to 4 arguments (minimum of two)
+   - $property: the css property to be used,      e.g.: 'border'
+   - $attributes: the additional attributes,      e.g.: '1px solid'
+   - $color: the translucent color to be used,    e.g.: 'rgba(240,20,200,.5)'
+   - $background: color that will be used in mix, e.g.: '#DADADA'
+
+  You're required to enter at least the $property and $color variables, so you end up
+  with the following options:
+   - @include alpha-me($property, $color);
+   - @include alpha-me($property, $color, $background);
+   - @include alpha-me($property, $attributes, $color);
+   - @include alpha-me($property, $attributes, $color, $background);
+
+  E.g:
+    .element { 
+      @include alpha-me( color, rgba(black,.5) );
+
+      @include alpha-me( background-color, rgba(#dffa14,.5), #529ef0);
+
+      @include alpha-me( box-shadow, 1px 1px 2px, rgba(white, .25));
+
+      @include alpha-me( border, 3px solid, rgba(240,20,200,.5), #DADADA); }
+
+  
+  Notes
+   - If no background color is specified, white is used by default
+   - We can use the rgba SASS function to enter the translucent color in other formats
+     - rgba(red, .5)
+     - rgba(#dffa14, .75)
+   - Can you think of a better name for the mixin? I'm not in love with it...
+
+\* ---------------------------------------------------------------------- */
+
+@mixin rgba($var1, $var2, $var3:null, $var4:null) {
+
+  // Set variables for global use
+  $property:   $var1;
+  $attributes: null;
+  $color:      null;
+  $colorBg:   null;
+
+  // Check if $var2 is a color
+  @if ( type-of($var2) == color ) { 
+
+    // Set default background if not specified
+    @if not $var3 { $var3: #FFFFFF; }
+
+    // Update variables
+    $color:      $var2;
+    $colorBg:   $var3;
+
+
+  // Otherwise it should be the attributes
+  } @else if ( type-of($var2) != color ) {
+
+    // Set default background if not specified
+    @if not $var4 { $var4: #FFFFFF; }
+
+    // Update variables
+    $attributes: $var2;
+    $color:      $var3;
+    $colorBg:   $var4;
+
+  }
+
+  // Extract alpha channel from color
+  $percent: alpha($color) * 100%;
+
+  // Make color opaque
+  $opaque: opacify($color, 1);
+
+  // Blend color with background.
+  $colorSolid: mix($opaque, $colorBg, $percent);
+
+  // Return built style with solid color and transparent color
+  #{$property}: #{$attributes} $colorSolid;
+  #{$property}: #{$attributes} $color;
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CONDITIONS TO SHOW ONLY ON IE OR TO EXCLUDE IE
+  $ie: can be 8 or 9
+\* ---------------------------------------------------------------------- */
+
+@mixin forIE($ieVersion: 8) {
+  .ie-#{$ieVersion} & {
+    @content;
+  }
+}
+
+@mixin notIE($ieVersion: 8) {
+  html:not(.ie-#{$ieVersion}) {
+    @content;
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  MEDIA QUERIES
+  if one argument is set to false, it will be ignored 
+  eg breakPoints(false,500px) -> only max-width
+\* ---------------------------------------------------------------------- */
+
+@mixin breakPoints($min,$max) {
+  
+  // fallback for unitless values (convert to px)
+  $min: unitless($min);
+  $max: unitless($max);
+
+  @if($min == false) {
+    @media only screen and (max-width: $max - 1) {
+      @content;
+    }
+  } @else if ($max == false) {
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $min) and (max-width: $max - 1) {
+      @content;
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  OPACITY
+  argument between 0 and 1
+\* ---------------------------------------------------------------------- */
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  
+  $opacityIE: $opacity * 100;
+  filter: alpha(opacity=$opacityIE);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacityIE})";
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BOX SIZING
+  this should always be border-box
+\* ---------------------------------------------------------------------- */
+
+@mixin boxSizing($val:border-box) {
+  @include prefix(box-sizing, $val, webkit moz) 
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BOX SHADOW
+  wip
+\* ---------------------------------------------------------------------- */
+
+@mixin boxShadow($horizontalLength, $verticalLength, $blurRadius:false, $spread:false, $color:false, $inset:false) {
+
+  @if $inset {
+    $insetVal: inset;
+  } @else {
+    $insetVal: null;
+  }
+
+  $boxShadow: $insetVal $horizontalLength $verticalLength $blurRadius $spread $color;
+  @include prefix(box-shadow, $boxShadow, webkit)
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  COLORS FOR SELECTED TEXT
+\* ---------------------------------------------------------------------- */
+
+@mixin textSelection {
+  background: $ColorBrand-1;
+  color: $colorFontLight;
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BORDER RADIUS
+  e.g: borderRadius(10,'%') -> border-radius: 10%;
+\* ---------------------------------------------------------------------- */
+
+@mixin borderRadius($val, $unit:false) {
+
+    @if $unit {
+      $val: stripUnit($val);
+
+      @if type-of($val) == number and $val != 0 {
+
+        $cVal: #{$val}#{$unit};
+      
+      } @else if type-of($val) == list {
+
+        @each $i in $val {
+          @if type-of($i) == number and $i != 0 {
+            $i: #{$i}#{$unit};
+          }
+          $cVal: append($cVal,$i);
+        }
+      } @else {
+        $cVal: $val;
+      }
+
+    } @else {
+      
+      $cVal: rem($val);
+    
+    }
+
+    @include prefix(border-radius, $cVal, webkit)
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TABLES
+  Everything related to tables
+      - all arguments are optional
+      - structure -> table > table-cell
+   
+  $verticalAlign: top / baseline / ... / http://goo.gl/d8gtec
+   
+  $reset: two values between which the cells fall to full-width blocks
+   
+  $hide: two values between which the table is hidden
+   
+  $cols: false / equal / list
+    a) FALSE - lets the browser decide the column widths
+    b) EQUAL - all equal columns (does not work with table-layout: fixed)
+    c) LIST - it uses the golden ratio formula: (xi+xj)/xi = ratio
+   
+  $row: boolean -> if true, the structure is table > row > cell
+  
+  $padding -> default is $defaultColsPadding
+   
+  e.g: @include table( top, 700px 1000px , 100px 480px , 2 1 7 , false , 10rem )
+                        |    |              |             |      |        | padding
+                        |    |              |             |      | 1 row
+                        |    |              |             | 3 cols with
+                        |    |              |             | custom ratio
+                        |    |              | hide between 100px-480px
+                        |    | set cells to block and width: 100%
+                        |    | between 700-1000px
+                        | vertical-align: top
+\* ---------------------------------------------------------------------- */
+
+@mixin table($verticalAlign:top, $reset:false, $hide:false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+  display: table;
+  width: 100%;
+
+  @if $row {
+    & > * { display: table-row; }
+    
+    & > * > * {
+      @include tableCell($verticalAlign,$cols,$padding);
+    }
+
+  } @else {
+    & > * {
+     @include tableCell($verticalAlign,$cols,$padding); 
+    }
+  }
+  
+  @if $reset { 
+    main[data-role="wrap"] & {
+      @if $row {
+        & > * { 
+          @include resetColumns(first($reset),last($reset)); 
+        }
+      } @else {
+        @include resetColumns(first($reset),last($reset)); 
+      }
+    }
+  }
+  @if $hide { @include hideBetweenWidths(first($hide),last($hide)); }
+
+}
+
+// Calculate the general aspect ratio starting from an arbitrary number (1)
+$colRatio: 1;
+@for $i from 1 through 7 {
+  $colListLast: last($colRatio);
+  $colRatio: append($colRatio, $colListLast * $ratio);
+}
+
+@mixin tableCell($verticalAlign,$colList:false,$padding: false) {
+  display: table-cell;
+  vertical-align: $verticalAlign;
+
+  @if $padding {
+    padding: $padding;
+  }
+  
+  @if $colList == equal {
+    width: 1%;
+  } @else if $colList != false {
+    // calculate the passed vars sum - in order to have general proportions 
+    // we need this so we can apply the rule of three to find the new proportions
+    $colSum : 0;    
+
+    @each $colVal in $colList {
+      $colSum: $colSum + nth($colRatio,$colVal);
+    }
+
+    $colFinal: ();
+    @each $colVal in $colList {
+      $colFinal: append($colFinal,nth($colRatio,$colVal) * 100 / $colSum);
+    } 
+    $iteration : 1; // do not use index(), it fails on columns with same argument
+
+  @each $i in $colFinal {
+      &:nth-child(#{$iteration}) {
+        $iteration: $iteration + 1;
+        width: percentage($i)/100;
+      }
+    }
+
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  HIDE TABLES ON BREAKPOINTS
+  choose between what points to hide a certain element
+\* ---------------------------------------------------------------------- */
+
+@mixin hideBetweenWidths($minVal:false,$maxVal:false) {
+  @include breakPoints($minVal,$maxVal) { display: none; }
+}
+
+@mixin hideBetweenHeights($minVal:false,$maxVal:false) {
+  @include breakPoints($minVal,$maxVal) { display: none; }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  SHOW TABLES ONLY ON BREAKPOINTS
+  choose between what points to show a certain element
+  $displayType: default is block, but can be overwritten with other vals
+\* ---------------------------------------------------------------------- */
+
+@mixin showBetweenWidths($minVal:false,$maxVal:false,$displayType: block) {
+  display: none;
+  @include breakPoints($minVal,$maxVal) { display: $displayType; }
+}
+
+@mixin showBetweenHeights($minVal:false,$maxVal:false,$displayType: block) {
+  display: none;
+  @include breakPoints($minVal,$maxVal) { display: $displayType; }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  RESET TABLE LAYOUT ON BREAKPOINTS
+  choose between what points to transform the table layout to one column
+\* ---------------------------------------------------------------------- */
+
+@mixin resetColumns($minVal,$maxVal) {
+  @include breakPoints($minVal,$maxVal) {
+
+    display: block;
+    
+    & > *,
+    & > *[class*="col-"] {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  FONTS
+
+  formula for font size: f(i) = round(f(0) * r^(i/2)),
+  where f(0) : $fontSizeBase and r: $ratio or $sqrtRatio (case split)
+
+  $fontSize: integers were 0 is the base, n will calculate f(n)
+  $lineHeight: 
+    - true -> rounds up to the first multiplier of $fontBaseline
+    - number -> shows that number (considered to be in REM)
+    - string -> shows that string
+  $fontWieght: 300 (light), 400 (regular), 700 (bold)
+  $fontStyle: normal, italic, oblique
+  $fontVariant: normal, small-caps, etc.
+  $fontFamily: $fontFamilyDefault
+\* ---------------------------------------------------------------------- */
+
+@mixin font($fontSize, $lineHeight: false, $fontWeight: false, $fontStyle: false, $fontVariant: false, $fontFamily: false) {
+
+  /* CALCULATE THE FONT SIZE */
+
+  // step 1
+  // if negative parameter, we need to use 1 / $ratio
+  @if $fontSize < 0 {
+    $calcRatio: 1 / $ratio;
+    $calcSqrtRatio: 1 / $sqrtRatio;
+    $fontSize: negative($fontSize);
+  } @else {
+    $calcRatio: $ratio;
+    $calcSqrtRatio: $sqrtRatio;
+  }
+
+  // step 2
+  // calculate the multiplier for each value
+  @if $fontSize == 0 {
+    $multiplier: 1;
+  } @else if $fontSize % 2 == 0 {
+    $multiplier: pow($calcRatio, $fontSize / 2);
+  } @else {
+    $multiplier: pow($calcSqrtRatio, $fontSize);
+  }
+
+  // step 3
+  // calculate the font size (this needs to be unitless)
+  $fontSizeCalc: round($fontSizeBase * $multiplier);
+  
+  // step 4
+  // show the value as font-size and give it a value
+  font-size: rem($fontSizeCalc * 1px);  
+
+
+  /* LINE HEIGHT */
+  
+  // step 1 - deal with different values
+  @if $lineHeight == true {
+
+    // we find out the remainder
+    $remainder: $fontSizeCalc % $fontBaseline;
+    $lineHeight: rem($fontSizeCalc - $remainder + $fontBaseline * 1px);
+
+  } @else if type-of($lineHeight) == number {
+
+    // if a number, show that number
+    $lineHeight: rem($lineHeight);
+
+  }
+
+  // step 2 - show the line-height
+  @if $lineHeight {
+    line-height: $lineHeight;
+  }
+
+  /* FONT WEIGHT */
+  @if $fontWeight { font-weight: $fontWeight; }
+
+  /* FONT STYLE */
+  @if $fontStyle { font-style: $fontStyle; }
+
+  /* FONT VARIANT */
+  @if $fontVariant { font-variant: $fontVariant; }
+
+  /* FONT Family */
+  @if $fontFamily { 
+    font-family: $fontFamily; 
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GRADIENT GENERATOR 
+  Usage: @include gradient($orientation,($colorList),[$angle]);
+  $orientation: string -> horizontal / vertical / radial / angle
+  $colorList: a list of pairs for color stops (color percentage)
+             e.g (rgb(0,0,0) 0%, rgb(255,255,255) 15%, rgb(0,0,0) 100%)
+  $angle: if $orientation: angle, then here you set the angle degree
+           e.g. @include gradient(angle,(...),50deg);
+\* ---------------------------------------------------------------------- */
+
+@mixin gradient($orientation,$colorList,$angle:false) {
+  
+  // set type of gradient
+  $gradType: linear;
+  
+  @if $orientation == radial {
+    $gradType: radial;
+  }
+  
+  $direction-1: left;
+  $direction-2: left top, right top;
+  $direction-3: to right;
+  $gradientType: 1;
+
+  // "translate" $orientation
+  @if $orientation == radial {
+    
+    $direction-1: center, ellipse cover;
+    $direction-2: radial, center center, 0px, center center, 100%;
+    $direction-3: ellipse at center;
+  
+  } @else if $orientation == vertical {
+  
+    $direction-1: top;
+    $direction-2: left top, left bottom;
+    $direction-3: to bottom;
+    $gradientType: 0;
+
+  } @else if $orientation == angle {
+    $direction-1: $angle - 180;
+    $direction-2: $angle; // TO DO
+    $direction-3: $angle;
+    $gradientType: 1;
+  }
+
+  // fallback in case gradient is not supported
+  background: first(first($colorList));
+
+  $colorsFormat-1: $colorList; // this has the correct format
+  $colorsFormat-2: null;
+  
+  // prepare the format for the webkit custom gradient
+  $comma: null;
+  @each $i in $colorList {
+    
+    $colorsFormat-2: $colorsFormat-2 + $comma + color-stop(nth($i,2),nth($i,1));
+    
+    // add comma after first iteration
+    $comma: unquote(',');
+  }
+
+
+  background: -moz-#{$gradType}-gradient( 
+    $direction-1, 
+    $colorsFormat-1
+  );
+  
+  // TO FIX
+  // issue: $colorsFormat-2 breaks the layout
+  // background: -webkit-gradient(
+  //     $gradType,
+  //     $direction-2,
+  //     $colorsFormat-2
+  // );  
+
+  background: -webkit-#{$gradType}-gradient( 
+    $direction-1,
+    $colorsFormat-1
+  );
+
+  background: -o-#{$gradType}-gradient( 
+    $direction-1,
+    $colorsFormat-1
+  );
+
+  background: -ms-#{$gradType}-gradient( 
+    $direction-1,
+    $colorsFormat-1
+  );
+
+  background: #{$gradType}-gradient(
+    $direction-3,
+    $colorsFormat-1
+  );
+  
+  $ieFirstColor: ie-hex-str(first(first($colorList)));
+  $ieLastColor: ie-hex-str(first(last($colorList)));
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ieFirstColor}', endColorstr='#{$ieLastColor}',GradientType=1);
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  POSITION
+\* ---------------------------------------------------------------------- */
+
+@mixin pos($top:false, $right:false, $bottom:false, $left:false, $position:false, $zIndex: false) {
+  
+  $top: rem($top);
+  $right: rem($right);
+  $bottom: rem($bottom);
+  $left: rem($left);
+
+
+  @if $position { position: $position; }
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+  @if $zIndex { z-index: $zIndex; }
+}
+
+@mixin posAbs($top:false, $right:false, $bottom:false, $left:false, $zIndex:false) {
+  @include pos($top, $right, $bottom, $left, $position:absolute, $zIndex:$zIndex);
+}
+
+@mixin centerAbs($zIndex:false) {
+  @include posAbs(0,0,0,0,$zIndex);
+  margin: auto;
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CUSTOM FORMS
+\* ---------------------------------------------------------------------- */
+
+$customFormBlock: form;
+$customFormElement: radio, checkbox;
+$customFormModifier: null, right, center-up, center-down;
+
+@mixin customCheckboxAndRadio {
+
+  $elementWidth: rem(1);
+
+  %customChkRadModifiers {
+    position: relative;
+    text-align: left;
+  }
+
+  %customChkRadModifiers--right {
+    padding-right: $elementWidth + 0.5;
+    text-align: right;
+  }
+
+  %customChkRadModifiers--center-up {
+    text-align: center;
+  }
+
+  %customChkRadModifiers--center-down {
+    @extend %customChkRadModifiers--center-up;
+  }
+
+  %customChkRadModifiersWrappers {
+    padding-left: $elementWidth + rem(0.5);
+    @extend %customChkRadModifiers;
+  }
+
+  %customChkRadOrigInput {
+    @include posAbs(0,false,false,-9999px);
+  }
+
+  %customChkRadLabel {
+    display: block;
+    width: 100%;
+  }
+
+  %customChkRadPseudoElement {
+    content: '';
+    display: block;
+    width: $elementWidth;
+    height: $elementWidth;    
+  }
+
+  %customChkRadradio {
+    @extend %radioCustom;
+  }
+
+  %customChkRadcheckbox {
+    @extend %checkboxCustom;
+  }
+
+  %customChkRadActiveradio {
+    @extend %radioActiveCustom;
+  }
+
+  %customChkRadActivecheckbox {
+    @extend %checkboxActiveCustom;
+  }
+
+  %customChkRadNotCentered {
+    @include posAbs(0);
+  }
+
+  %customChkRadCentered {
+    @include centerBlock(0,true);
+  }
+
+  %customChkRadRegularPos {
+    left: 0;
+  }
+
+  %customChkRadRightPos {
+    right: 0;
+  }
+
+
+  $customFormBlock: form;
+  $customFormElement: radio, checkbox;
+  $customFormModifier: null, right, center-up, center-down;
+
+  @each $i in $customFormElement {
+  // iterate through elements so we can construct the CSS parents
+
+    .#{$customFormBlock}-#{$i} {
+
+      @extend %customChkRadModifiersWrappers;
+      
+      @each $j in $customFormModifier {
+        
+        @if $j == center-down or $j == right {
+          $pseudoElement: after;
+        } @else {
+          $pseudoElement: before;
+        }
+
+        @if $j == null {
+          $modJ: ();
+        } @else {
+          $modJ: --#{$j};
+        }
+        
+        &#{$modJ} {
+          @extend %customChkRadModifiers;
+          @extend %customChkRadModifiers--#{$j};
+
+          input[type="#{$i}"] {
+            @extend %customChkRadOrigInput;
+
+            &:checked + label:#{$pseudoElement} {
+              @extend %customChkRadActive#{$i};
+            }
+          }
+
+          label {
+            @extend %customChkRadLabel;
+            
+            &:#{$pseudoElement} {
+              @extend %customChkRadPseudoElement;
+              @extend %customChkRad#{$i};
+
+              @if $j == null or $j == right {
+                @extend %customChkRadNotCentered;
+              }
+
+              @if $j == null {
+                @extend %customChkRadRegularPos;
+              }
+
+              @if $j == right {
+                @extend %customChkRadRightPos;
+              }
+
+              @if $j == center-up or $j == center-down {
+                @extend %customChkRadCentered;
+              } 
+            } // pseudo element CSS block
+          } // label CSS block
+        } // modifier CSS block
+
+      } // modifier iteration   
+    } // element CSS block
+  } // element iteration
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GENERATE STATIC SHOW / HIDE HARDCODED
+\* ---------------------------------------------------------------------- */
+
+@mixin breakPointsCols {
+  [class^="show-"] { display: none; }
+  
+  @each $resMin in $breakPoints {
+    @each $resMax in $breakPoints {
+      @if $resMin < $resMax {
+        @include breakPoints($resMin,$resMax) {
+
+          .table-#{$resMin}-#{$resMax},
+          .show-#{$resMin}-#{$resMax} {
+            display: block;
+          }
+
+          .table-#{$resMin}-#{$resMax} > *,
+          .table-#{$resMin}-#{$resMax} > *[class*="col-"] {
+            display: block;
+            width: 100%;
+          }
+
+          .hide-#{$resMin}-#{$resMax} {
+            display: none;
+          }         
+
+        }
+      }
+    } // $resMax
+  } // $resMin
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GENERATE STATIC COLUMN FRAGMENTATION 
+  will be replaced in the future with the proper golden ratio cols system 
+\* ---------------------------------------------------------------------- */
+
+@mixin staticCols($noOfCols) {
+  @for $i from floor($noOfCols / 2) through $noOfCols {
+    @for $j from 2 through $i - 1 {
+      .col-#{$j}of#{$i} {
+        width: percentage($j/$i);
+      }
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CLEAR FIX
+  - $pseudo: true -> the element has a clear:both inside as an :after
+  - $pseudo: false -> the element becomes the clearer
+  - $extend: false -> useful for break points, applies in place
+\* ---------------------------------------------------------------------- */
+
+@mixin clearCSS($pseudo: true) {
+  @if $pseudo {
+    &:after {
+      content: '';
+      display: table;
+      width: 100%;
+      clear: both;
+    }
+    } @else {
+      clear: both;
+    }
+}
+
+.cl--a { @include clearCSS; }
+.cl { @include clearCSS(false); }
+
+@mixin clear($pseudo: true, $extend: true) {
+  @if $pseudo {
+    @if $extend {
+      @extend .cl--a;
+    } @else {
+      @include clearCSS;
+    }
+  }
+  @else {
+    @if $extend {
+      @extend .cl;
+    } @else {
+      @include clearCSS(false);
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TRIANGLE GENERATOR
+  $size: (width,height) - if height is not specified, height = width
+  $direction: up / down / right / left /
+              up left / up right
+              down left / down right
+\* ---------------------------------------------------------------------- */
+
+@mixin triangle($direction,$color,$size) {
+  display: block;
+  width: 0;
+  height: 0;
+  
+  // convert to rem / px
+  $size: rem($size);
+
+
+  // read width and height
+  $width: if(first($direction) == last($direction), first($size)/2, first($size));
+  $height: last($size);
+
+
+  @if first($direction) == up {
+    
+    @if last($direction) == right {
+      $solid: right;
+      $transparent: bottom;
+    } @else if last($direction) == left {
+      $solid: left;
+      $transparent: bottom;
+    } @else {
+      $solid: bottom;
+      $transparent: left, right;
+    }
+  
+  } @else if first($direction) == down {
+
+    @if last($direction) == right {
+      $solid: right;
+      $transparent: top;
+    } @else if last($direction) == left {
+      $solid: left;
+      $transparent: top;
+    } @else {
+      $solid: top;
+      $transparent: left, right;
+    }
+
+  } @else if $direction == right {
+
+    $solid: left;
+    $transparent: top, bottom;
+
+  } @else if $direction == left {
+
+    $solid: right;
+    $transparent: top, bottom;
+  
+  } @else {
+
+    $solid: top;
+    $transparent: left, right;
+  
+  } 
+
+  border-#{$solid}: $height solid $color;
+
+  @each $i in $transparent {
+    border-#{$i}: $width solid transparent;
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GROUP ELEMENTS ON MULTIPLE COLUMNS
+  $resolution - between what resolutions should this be active
+  $colGroup - how many colums should this have
+  $centerLast - boolean - center last row
+
+  e.g groupElements(0px 320px, 3, false);
+\* ---------------------------------------------------------------------- */
+
+@mixin groupElements($resolution, $colGroup, $centerLast:true) {
+
+  $elWidth: 1 / $colGroup;
+  @include breakPoints(first($resolution),last($resolution)) {
+    @include clear(true,false);
+    
+    display: block;
+      
+    & > * {
+      display: block;
+      float: left;
+      width: percentage($elWidth);
+    }
+
+    & > *:nth-child(#{$colGroup}n+1) {
+      @include clear(false,false);
+
+      @if $centerLast {
+        @for $i from 1 through ($colGroup - 1) {
+          &:nth-last-child(#{$i}) {
+            margin-left: percentage($elWidth / 2 * ($colGroup - $i));
+          }
+        }
+      }
+    }
+  }
+}

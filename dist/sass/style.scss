@@ -1,0 +1,2074 @@
+$ie: true;
+@import './_variables';
+@import './_functions';
+@import './_mixins';
+
+/* ---------------------------------------------------------------------- *\
+  LAYOUT
+  All things related to the page structure and helpful classes
+\* ---------------------------------------------------------------------- */
+
+html,
+body {
+  vertical-align: baseline;
+  
+  font-size: $fontSizeBase * 1px;
+}
+
+::-moz-selection { @include textSelection; }
+::selection { @include textSelection; }
+
+// @include breakPoints(false,$bpTabletPortrait) {
+//  html, body { @include font(-1); }
+// }
+
+body {
+  font-family: $fontFamilyDefault;
+  background: rgb(250,250,250);
+  color: $colorFontDarkHard;
+
+}
+
+html {
+  @include boxSizing();
+}
+
+*, *:after, *:before {
+  box-sizing: inherit;
+}
+
+main[data-role="wrap"] {
+  width: 100%;
+  position: relative;
+
+}
+
+body *,
+body *:before,
+body *:after {
+  @include transition();
+}
+
+main[data-role="wrap"] > * { width: 100%; }
+
+.wrap {
+  @include centerBlock(0,true);
+  width: 100%;
+  max-width: 980px;
+  padding: rem(0 1);
+}
+
+a {
+  text-decoration: none;
+  color: $colorCtaPrimary;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+
+// Floats
+.fl { float: left; }
+.fr { float: right; }
+
+.center-text { text-align: center; }
+.center {
+  @include centerBlock;
+}
+
+.bottom-divider {
+  border-bottom: 1px solid $colorDividerMain;
+}
+
+.block { display: block; }
+.rel { position: relative; }
+
+// img
+.full-width {
+  display: block;
+  width: 100%;
+}
+
+
+// Tables
+.table { @include table($padding: false); }
+.table--eq { @include table($padding: false, $cols: equal); }
+.table-r { @include table($padding: false, $row: true); }
+
+
+// Fonts
+.f-regular { font-weight: 400; }
+.f-bold { font-weight: 700; }
+
+
+// backgrounds
+.bg-1 { background: $colorBackground-2; }
+.bg-2 { background: $ColorBrand-6; }
+.bg-3 { background: rgb(219,241,255); }
+
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1em;
+}
+
+
+.upper-title {
+  @include font(-1, true, 300);
+  margin-bottom: rem(0.8);
+  text-transform: uppercase;
+}
+
+.img-round {
+  @include borderRadius(50, '%');
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+// List checked
+.list-checked {
+  @include centerBlock(0,2);
+  display: block;
+  padding: rem(0 0 0 2);
+  text-align: left;
+
+  & > li {
+    position: relative;
+    margin-bottom: rem(0.8);
+    list-style: none;
+
+    &:before {
+      @include posAbs(0,false,false,-1.5);
+      @extend .fci-icon;
+      display: block;
+      width: rem(1);
+      text-align: center;
+      color: $ColorBrand-2;
+    }
+  }
+  
+
+  &--reversed {
+    @extend .list-checked;
+    padding-left: rem(3);
+
+    & > li{
+
+      min-height: rem(2);
+
+      &:before {
+        @include borderRadius(50,'%');
+        @include font(0,2);
+        @extend .fci-icon;
+        left: rem(-3);
+        width: rem(2);
+        height: rem(2);
+        background: $colorHighlightSecondaries-2;
+        color: rgb(255,255,255);
+      }
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  DYNAMIC LOADERS
+\* ---------------------------------------------------------------------- */
+
+%posRel {
+  position: relative;
+}
+
+*[data-dynamic-container] { 
+  @include transition(all,300,ms,linear); 
+
+
+  &[data-dynamic-effect="from-top"] {
+    @extend %posRel;
+    top: rem(-2);
+  }
+
+  &[data-dynamic-effect="from-left"] {
+    @extend %posRel;
+    left: rem(-2);
+  }
+
+  &[data-dynamic-effect="from-right"] {
+    @extend %posRel;
+    right: rem(-2);
+  }
+
+  &[data-dynamic-effect="from-bottom"] {
+    @extend %posRel;
+    bottom: rem(-2);
+  }
+
+  &[data-dynamic-effect="fly-in"] { 
+    perspective:rem(10);
+
+    & > * { @include prefix(transform, translateZ(rem(10)), webkit ms); }
+  }
+
+  &[data-dynamic-effect="zoom-in"] { @include prefix(transform, scale(0.1), webkit ms); }
+
+  &[data-dynamic-hide] {
+    max-height: 0;
+  }
+
+}
+
+*[data-dynamic-container="hidden"] { 
+  @include opacity(0); 
+  
+  &[data-dynamic-hide] {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+*[data-dynamic-container="visible"] { 
+  @include opacity(1); 
+
+  &[data-dynamic-effect="from-top"] { top: rem(0);  }
+  &[data-dynamic-effect="from-left"] { left: rem(0);  }
+  &[data-dynamic-effect="from-right"] { right: rem(0);  }
+  &[data-dynamic-effect="from-bottom"] { bottom: rem(0);  }
+
+  &[data-dynamic-effect="fly-in"] > * { @include prefix(transform, translateZ(0), webkit ms); } 
+
+  &[data-dynamic-effect="zoom-in"] { @include prefix(transform, scale(1), webkit ms); }
+  
+  &[data-dynamic-hide] { max-height: 100%; }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BUTTONS
+  - modifiers can be size modifiers (--s) or type (--t)
+\* ---------------------------------------------------------------------- */
+
+.btn {
+  @include borderRadius(0.3);
+  border: none;
+  display: inline-block;
+  margin-bottom: rem(1);
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Button types
+  &--t1 {
+    color: $colorFontLight;
+    background: $ColorBrand-2;
+
+    &:hover {
+      background: darken($ColorBrand-2,10%);
+    } 
+  }
+
+  &--t2 {
+    background: $colorBackground-2;
+
+    &:hover {
+      color: $colorFontLight;
+      background: darken($ColorBrand-2,10%);
+    } 
+  }
+
+  &--full {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  // Button sizes
+  &--s1 {
+    @include font(0,3);
+    padding: rem(0 1.5);
+  }
+
+  &--s2 {
+    @include font(-1,2.5);
+    padding: rem(0 1);
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  Go to links
+\* ---------------------------------------------------------------------- */
+$goToLinkSize: rem(4);
+.go-to-link {
+  @include borderRadius(50,'%');
+  @include posAbs(-2,0,false,0);
+  @include centerBlock(0,true);
+  display: block;
+  z-index: 2;
+  width: $goToLinkSize;
+  height: $goToLinkSize;
+  line-height: $goToLinkSize / 2;
+  text-align: center;
+  background: inherit;
+
+  svg {
+    @include centerBlock(0.8,true); 
+  }
+
+  &:hover path {
+    fill: $ColorBrand-5;
+  }
+
+  // other go to links colors 
+  
+  .bg-1 & path { fill: $colorCtaPrimary; }
+  .bg-1 &:hover path { fill: $ColorBrand-5; }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  FORM ELEMENTS
+\* ---------------------------------------------------------------------- */
+
+//normal inputs
+input {
+  &:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
+    @include font(0, 3);
+    display: block;
+    width: 100%;
+    height: rem(3);
+    margin-bottom: rem(2);
+    padding: rem(0 1);
+    line-height: rem(3);
+    border: 1px solid $colorDividerMain;
+    
+    &:focus,
+    &:hover {
+      border-color: $ColorBrand-2;
+    }
+
+    &.success {
+      border-left: rem(0.3) solid $colorSuccess;
+    }
+
+    &.error {
+      border-left: rem(0.3) solid $colorError;
+    }
+
+    .col-2nd & {
+      @include borderRadius(0.3);
+      height: rem(2);
+      margin-bottom: rem(1);
+      padding: rem(0 0.5);
+      line-height: rem(2);
+
+    }
+
+  }
+
+
+}
+
+
+// Form subtitles
+form h3 {
+  margin-bottom: rem(0.5);
+  font-weight: 400;
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CUSTOM FORMS
+  customize the radio and checkbox inputs
+\* ---------------------------------------------------------------------- */
+
+%radioCustom {
+  @include borderRadius(50,'%');
+  background: $colorBackgroundMain;
+}
+
+%radioActiveCustom {
+  background: $ColorBrand-2;
+}
+
+%checkboxCustom {
+  background: $colorBackgroundMain;
+  border: 1px solid $ColorBrand-2;
+}
+
+%checkboxActiveCustom {
+  background: $ColorBrand-2;
+}
+
+// this mixins initiates the custom checkbox and radio form
+// should be found only once, after the customizations
+@include customCheckboxAndRadio;
+
+
+
+/* ---------------------------------------------------------------------- *\
+  HEADER
+\* ---------------------------------------------------------------------- */
+
+// hide the radio buttons that control the menu
+.menu-state {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+header {
+  border-bottom: 1px solid $colorDividerMain;
+  background: $colorBackgroundMain;
+}
+
+.header_logo {
+  .table {
+    & > * {
+      vertical-align: middle;
+    }
+  }
+}
+
+.table-logo {
+
+  .img {
+    display: block;
+  }
+
+  &-symbol { 
+    width: 22%;
+
+    img {
+      width: 85%;
+    }
+  }
+
+  &-text {
+    img {
+      width: 100%;
+    }
+  }
+
+}
+
+.header_logo:hover .table-logo-symbol img {
+  transform: rotateZ(180deg);
+}
+
+@include breakPoints(false,$bpMobileLandscape) {
+
+  main[data-role="wrap"] {
+    padding-top: $headerHeight;
+  }
+
+  header {
+    @include pos(0,false,false,0,fixed,95);
+    border-bottom: 5px solid $colorDividerMain;
+  }
+
+  .header {
+    
+    &_menu {
+      &--user,
+      &--main {
+        @include pos(0,$position: fixed, $zIndex: 100);
+        display: block;
+        min-height: 100%;
+        padding-top: rem(3);
+        width: $responsiveMenuWidth;
+        background: $colorDividerDark;
+        color: $colorFontLight;
+        
+
+        a {
+          &:not(.header_trigger--close) {
+            display: block;
+            padding: rem(0 1.5);
+            line-height: rem(3.5);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: inherit;
+
+            &:hover {
+              text-decoration: none;
+              background: rgba(0,0,0,0.1);
+            }   
+          }
+        }
+
+      }
+
+      &--main { 
+        left: negative($responsiveMenuWidth);
+
+        input[type="radio"]#menu-state--2:checked + & {
+          left: 0;
+        }
+
+      } // --main
+
+      &--user {
+        right: negative($responsiveMenuWidth);
+
+        input[type="radio"]#menu-state--3:checked + & {
+          right: 0;
+        }
+
+      } // --user
+    } // _menu
+
+
+    &_loans {
+      display: none;
+    } // _loans
+  
+    &_row {
+      &--main {
+        & > * {
+          vertical-align: middle;
+          height: $headerHeight;
+        }
+
+        & > [data-role="responsive-menu"] { text-align: center; }
+      } 
+    } // _row
+
+    &_trigger {
+    
+      &--main,
+      &--user {
+        width: 10%;
+        
+        &:before {
+          font-size: rem(2);
+          color: $colorCtaOn;
+        }
+        &:hover {
+          path {
+            fill: $ColorBrand-2;
+          }
+        }
+      } // --main, --user
+
+      &--main {
+        svg {
+          max-width: rem(2);
+        }
+      } // --main
+
+      &--user {
+        &:before {
+          font-size: rem(2.5);
+          color: $colorBackground-3;
+        }
+        svg {
+          max-width: rem(3);
+        }
+
+        path {
+          fill: $colorBackground-3;
+        }
+      } // --user
+
+      &--close {
+        @include font(5, 5);
+        @include posAbs(0,1);
+        display: block;
+        color: $colorFontDarkHard;
+
+        &:hover {
+          text-decoration: none;
+          color: $ColorBrand-2;
+        } 
+
+        main[data-move="right"] & {
+          right: auto;
+          left: rem(1);
+        }
+
+      } // --close
+      
+    } // _trigger 
+
+    &_logo {
+      width: 80%;
+      padding: rem(0.3 1);
+
+      .table {
+        max-width: 200px;
+        @include centerBlock(0,true);
+      }
+
+    } // _logo
+
+    &_call {
+      padding: rem(1 1.5);  
+      display: block;
+    } // _call
+  }
+
+}
+
+@include breakPoints($bpMobileLandscape,false) {
+
+  .header {
+
+    &_logo {
+      width: 33%;
+      padding-top: rem(0.8);
+    } // _logo
+
+    &_menu {
+      &--user {
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        
+        white-space: nowrap;
+
+        & > * {
+          display: inline-block;
+          vertical-align: top;
+        }
+        
+        & > a {
+          @include font(-1, 3, 700);
+          padding: rem(0 1);
+          border-left: 1px solid $colorDividerMain;
+        }
+      } // --user
+
+      &--main {
+        a {
+          & {
+            display: inline-block;
+            margin-right: rem(1);
+            line-height: rem(2.5);
+            position: relative;
+          }
+
+          &:before{
+            @include posAbs(-7px,0,false,0);
+            margin: auto;
+            
+            @include forIE {
+              display: none;
+            }
+
+            @include opacity(0);
+            
+            @include triangle(down, $ColorBrand-1, 0.625);
+            content: '';
+          }
+
+          &:hover,
+          &.is-active {
+            text-decoration: none;
+            color: $colorCtaOn;
+
+            &:before {
+              @include forIE {
+                display: block;
+              }
+              @include opacity(1);
+              @include pos($top: -2px);
+            }
+          }
+
+          header:not(:hover) &:not(.is-active) {
+            color: rgb(87,87,87);
+          }
+
+        }
+      } // --main
+    } // _menu
+
+    &_call {
+      @include font(-1,3);
+      text-align: right;
+      padding-right: rem(1);
+
+      span {
+        @include font(2,1);
+        display: block;
+      }
+    } // _call
+
+    &_trigger {
+      &--close,
+      &--main,
+      &--user {
+        display: none;
+      }
+    } // _trigger
+
+    &_loans {
+      font-weight: 300;
+      text-align: right;
+      line-height: rem(0.75);
+      span {
+        @include font(3,3,400);
+        display: block;
+      }
+    } // _loans
+
+    &_row {
+      &--secondary {
+        // margin-top: -15px;
+        &.table > * {
+          vertical-align: bottom;
+        }
+      }
+
+    } // _row
+
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  LANGUAGE SELECTOR
+\* ---------------------------------------------------------------------- */
+
+.lang-dd {
+  @include font(-1,1,400);
+  position: relative;
+  text-align: left;
+  white-space: nowrap;
+  display: inline-block;
+
+  .header_menu--user & {
+    margin-top: rem(0.7);
+  }
+
+
+  &_current {
+    @include clear;
+
+    display: block;
+    
+    @include breakPoints($bpMobileLandscape, false) {
+      background: $colorBackground-2;
+    }
+    
+    padding: rem(0.5 1.5 0.5 0.5);
+    position: relative;
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      @include triangle(down,$colorFontDarkHard,0.5);
+      @include posAbs(0.85,0.5);
+
+      .is-active & {
+        @include triangle(up,$colorFontDarkHard,0.5);
+        border-top: none;
+      }
+    }
+  }
+  
+  &_list {
+    @include posAbs(0, 0, false, false, -100);
+    background: $colorBackground-2;
+
+    // display: none;
+    // overflow: hidden;
+    height: 0;
+    @include opacity(0);
+
+
+    // functionality 
+    .is-active & {
+      // display: block;
+      height: auto;
+      top: rem(3);
+      @include opacity(1);
+      z-index: 100;
+    }
+
+    &:before {
+      content: '';
+      @include triangle(up,$colorBackground-2,1.4 0.7);
+      @include posAbs(-0.7,1);
+    }
+
+    a {
+      display: block;
+      padding: rem(1);
+      line-height: rem(1);
+
+      &:hover {
+        text-decoration: none;
+        background: lighten($colorBackground-2,5%);
+      }
+    }
+  }
+
+  img {
+    float: left;
+    margin: rem(0.1 0.5 0 0);
+    height: rem(0.8);
+  }
+
+
+}
+
+  .header_menu--user {
+    
+
+    .lang-dd {
+      
+      @include breakPoints(false, $bpMobileLandscape) {
+        margin: rem(1);
+        display: block;
+        &_current { 
+          background: lighten($colorFontDarkSoft,5%); 
+        }
+
+        &_list {
+          background: lighten($colorFontDarkSoft,5%);
+          width: 100%;
+
+          &:before {
+            border-bottom-color: lighten($colorFontDarkSoft,5%);
+          }
+        }
+      }
+      
+      &_current {
+        @include breakPoints($bpMobileLandscape,false) {
+          span {
+            display: none;
+          }
+        }
+
+        
+
+      }
+
+      img {
+        float: none;
+      }
+    }
+  }
+
+.footer-copy {
+  .lang-dd {
+    &_current {
+      background: $colorBackground-3;
+    }
+
+    &_list {
+      background: $colorBackground-3;
+      
+      &:before {
+        @include triangle(up,$colorBackground-3,1.4 0.7);
+      }
+
+      a {
+        &:hover {
+          background: lighten($colorBackground-3,5%);
+        }
+      }     
+
+    }
+
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BOXES SPACED
+\* ---------------------------------------------------------------------- */
+
+$boxesSpacedGap: rem(2);
+
+.boxes-spaced {
+  border-spacing: $boxesSpacedGap;
+  position: relative;
+  table-layout: fixed;
+
+  &_item {
+    background: $colorBackgroundMain;
+    padding: rem(2);  
+    
+    @include breakPoints(false,$bpMobileLandscape) {
+      margin-bottom: rem(1.5);
+    }
+  }
+
+  h2 {
+    font-weight: 300;
+    padding-bottom: rem(1);
+    margin-bottom: rem(1.5);
+    border-bottom: 1px solid $colorDividerMain;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  @include breakPoints(false,$bpMobileLandscape) {
+    padding: rem(1.5);
+  }
+
+  @include breakPoints($bpMobileLandscape,false) {
+    top: negative($boxesSpacedGap*2);
+    margin-bottom: negative($boxesSpacedGap*2);
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  HERO
+  - customize new hero images by adding a data-backgrond attr to &
+\* ---------------------------------------------------------------------- */
+.hero-wrap {
+  background: none no-repeat center top;
+  background-size: cover;
+  padding: rem(2 0 0);
+
+  h1 {
+    @include font(4);
+    margin-bottom: rem(1);
+    font-weight: 400;
+  }
+
+  h2 {
+    @include font(2,true,300);
+  }
+
+  aside {
+    @include font(-1);
+    padding: rem(0.8);
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    color: $colorFontLight;
+  }
+
+  &[data-background="1"] {
+    background-color: $colorBackground-2;
+    color: $colorFontLight; 
+
+    @include breakPoints(false,$bpMobilePortraitLarge) {
+      color: $colorFontDarkSoft;
+    }
+  }
+
+  &[data-background="business-loan-1"] {
+    @include breakPoints(false,$bpMobilePortraitLarge) {
+      background-image: path('hero/2/s.jpg', image);
+      background-size: contain;
+      background-position: bottom center;
+      padding-bottom: 15%;
+    }
+
+    h2 {
+      strong {
+        font-weight: 400;
+      }
+    }   
+  }
+
+  &[data-background="business-loan-2"] {
+    h2 {
+      @include font(4,true,700);
+      margin-bottom: rem(0.8);
+    }
+
+    h3 {
+      @include font(0,true,300);
+    }
+
+  }
+
+  &[data-background="about-us-1"] {
+    @include gradient(angle,($ColorBrand-1 0%, $ColorBrand-5 100%), 25deg);
+    color: $colorFontLight;
+  } 
+
+  @include breakPoints(false,$bpMobilePortraitLarge) {
+    text-align: center;
+
+    h1 {
+      @include font(4);
+    }
+
+    h2 {
+      @include font(0);
+    }
+
+    aside {
+      display: none;
+    }
+  }
+
+  @include breakPoints($bpMobilePortraitLarge,$bpMobileLandscape) {
+    padding-top: rem(3);
+
+    h1 {
+      @include font(3);
+      width: 70%;
+    }
+
+    &[data-background="1"],
+    &[data-background="business-loan-1"] {
+      h2 {
+        @include font(0);
+        width: 60%;
+      }
+    }
+    
+    &[data-background="1"] {
+      background-image: path('hero/1/s.jpg',image);
+    }
+
+    &[data-background="business-loan-1"] {
+      background-image: path('hero/2/s.jpg',image);
+    }
+  }
+
+  @include breakPoints(false,$bpMobileLandscape) {
+
+    &[data-background="business-loan-2"] {
+      background-image: path('hero/3/s.jpg',image);
+      background-size: contain;
+      background-position: bottom center;
+      padding-bottom: 52%;
+      position: relative;
+    }
+
+    &[data-background="business-loan-2"] {
+      h2 {
+        @include font(3);
+        color: $colorCtaPrimary;
+      } 
+    }
+
+    &[data-background="business-loan-2"] {
+      aside {
+        @include posAbs(false,false,0,0);
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  @include breakPoints($bpMobileLandscape,false) {
+    padding-top: rem(6);
+
+    &[data-background="1"] {
+      background-image: path('hero/1/l.jpg',image);
+    }
+
+    &[data-background="business-loan-1"] {
+      background-image: path('hero/2/l.jpg',image);
+    }
+
+    &[data-background="business-loan-2"] {
+      padding-top: rem(3);
+      background-image: path('hero/3/l.jpg',image);
+    }
+
+    &[data-background="1"] {
+      h2 {
+        max-width: 60%;
+      }
+    }
+
+    &[data-background="business-loan-1"] {
+      h1 {
+        max-width: 70%;
+      }
+    }
+
+    &[data-background="business-loan-2"] {
+      h2, h3 {
+        color: $colorFontLight;
+      }
+      h3 {
+        max-width: 70%;
+      }
+    }
+
+    aside {
+      margin: rem(0 2 3 0);
+      max-width: 30%;
+      float: right;
+    }
+  }
+
+}
+
+.business-loan-trust {
+  background: $colorBackgroundMain;
+  padding: rem(2);
+  border: 1px solid $colorDividerMain;
+
+  @include breakPoints($bpMobileLandscape,false) {
+    width: 45%;
+  }
+
+  h4 {
+    @include font(3,true,300);
+    color: $colorFontDarkSoft;
+    margin-bottom: rem(0.8);
+  }
+
+  p {
+    display: block;
+    margin-bottom: rem(1);
+  }
+
+  small {
+    @include font(-1);
+    display: block;
+    margin-bottom: rem(0.4);
+  }
+
+  & > img {
+    display: block;
+    width: 100%;
+    max-width: rem(9);
+  }
+
+}
+
+.loan-trust-stars {
+  display: inline-block;
+  color: $colorFontDarkSoft;
+
+  & > * {
+    @include font(0,1.5);
+    @include borderRadius(0.2);
+    margin-right: rem(0.15);
+    float: left;
+    background: rgb(0, 127, 78);
+    width: rem(1.5);
+    height: rem(1.5);
+    color: $colorFontLight;
+    text-align: center;
+  }
+
+  @include clear;
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  -----------------------------------------------------------------------
+  -----------------------------------------------------------------------
+  --------------------------- SPECIAL MODULES ---------------------------
+  -----------------------------------------------------------------------
+  -----------------------------------------------------------------------
+\* ---------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------- *\
+  FT.COM
+\* ---------------------------------------------------------------------- */
+
+.sp-ftcom {
+  padding: rem(2.5 1);
+
+  h2 {
+    @include font(2,true,400);
+    margin-bottom: rem(1.5);
+  }
+  
+  p {
+    @include font(0,true);
+  }
+  
+  &_img {
+    padding-right: rem(1);
+
+    img {
+      display: block;
+      max-width: 176px;
+      
+      @include breakPoints(false,$bpMobilePortraitLarge) {
+        @include centerBlock(0,2);    
+      }
+    }
+  }
+}
+
+.footnotes {
+  padding: rem(2 1);
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  LOAN CALCULATOR
+\* ---------------------------------------------------------------------- */
+
+.wrap--calc-who {
+  padding: rem(3 0);
+}
+
+.calc-loan {
+  padding: rem(2 1);
+
+  h2 {
+    @include font(3);
+    margin-bottom: rem(1);
+  }
+
+  &_values {
+    white-space: nowrap;
+    line-height: rem(2);
+    margin-bottom: rem(2);
+
+    .table > div:nth-child(2) {
+      width: 100%;
+      vertical-align: middle;
+      padding: rem(0 1);
+
+      &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: $colorBackground-3;
+      }
+    }
+
+    &_fee {
+      @include font(-1, inherit);
+    }
+  }
+
+  &_footer {
+  
+    &_note {
+      @include font(-1);
+      vertical-align: middle;
+      padding-right: rem(1);
+      color: $colorCtaNav;
+    }
+    
+    .btn {
+      margin-bottom: 0;
+    }
+  
+  }
+
+  .form-radio-group {
+    @include font(-1);
+    margin-bottom: rem(1.5);
+
+    & > * {
+      float: left;
+      margin-right: rem(1.5);
+    }
+
+    label:before {
+      @include centerBlock(0.5,true);
+    }
+
+    & > *:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &_advantages {
+    padding: 0;
+
+    & > li {
+      padding-left: rem(2);
+
+      &:before {
+        left: rem(0.5);
+      }
+
+    }
+  }
+}
+
+.slider {
+  @include borderRadius(0.35);
+  @include centerBlock(1,2);
+  position: relative;
+  width: 100%;
+  height: rem(0.7);
+  background: $colorBackgroundMain;
+  cursor: pointer;
+
+  &-progress {
+    @include borderRadius(inherit);
+    @include posAbs(0,false,false,0);
+    height: 100%;
+    background: rgb(61, 125, 202);
+  }
+
+  &-handle {
+    @include gradient(vertical,(rgb(15,179,202) 0%, rgb(9,127,201) 100%));
+    display: block;
+    height: rem(2);
+    width: rem(1);
+    margin-left: rem(-0.5);
+    position: relative;
+    float: right;
+    top: rem(-0.7);
+    cursor: ew-resize;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GOVERNMENT NOTIFICATION
+\* ---------------------------------------------------------------------- */
+
+.gov-not {
+  @include font(1,2);
+  padding: rem(2 1);
+  color: $colorFontDarkSoft;
+
+  & > * {
+    vertical-align: middle
+  }
+
+  img {
+    float: right;
+    width: 70%;
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  FEATURED IN
+\* ---------------------------------------------------------------------- */
+
+.business-featured {
+  padding: rem(2 1);
+
+  &_items > * {
+    @include font(-1);
+    padding: rem(1 0.5);
+    text-align: center;
+
+    span {
+      display: block;
+      height: rem(4);
+      margin-bottom: rem(0.8);
+      position: relative;
+    }
+
+    img {
+      @include centerAbs;
+      display: block;
+      max-height: 100%;
+      max-width: 70%;
+
+      @include breakPoints(false,$bpMobileLandscape) {
+        max-width: 40%;
+      }
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  WHO WE ARE
+\* ---------------------------------------------------------------------- */
+
+.who-we-are-wrap {
+
+  @include breakPoints(false,$bpMobileLandscape) {
+    padding: rem(2 0);
+  } 
+
+  @include breakPoints($bpMobileLandscape,false) {
+    padding: rem(2);
+  }
+
+  h3 {
+    @include font(3,3);
+    color: $colorFontLight;
+    font-weight: 400;
+    margin-bottom: rem(1);
+  }
+
+  p {
+    @include font(1,2,300);
+
+    strong {
+      font-weight: 400;
+    }
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  FAST APPLY - STRAIGHTFORWARD APPLICATION
+\* ---------------------------------------------------------------------- */
+
+.business-fast-apply {
+  padding: rem(3 1);
+  font-weight: 300;
+
+  &_info {
+    margin-bottom: rem(1.5);
+    
+    & > div:first-child {
+      padding-right: rem(1);
+    }
+
+    h2 {
+      @include font(3);
+      font-weight: inherit;
+      margin-bottom: rem(1);      
+    }
+
+  } // _info
+
+  &_icons {
+    @include font(-1,true,400);
+
+    & > div {
+      padding: rem(0 1);
+
+      & > a {
+        font-weight: 700;
+      }
+    }
+
+    img {
+      @include centerBlock(0,2);
+      display: block;
+      height: rem(6);
+    }
+
+    h4 {
+      @include font(2,false,300);
+      color: $ColorBrand-1;
+      margin-bottom: 0;   
+    }
+  } // _icons
+}
+
+.box-nesta {
+  @include font(-1);
+  background: $colorBackground-2;
+  text-align: center;
+  padding: rem(0.5);
+
+  h3 {
+    margin-bottom: rem(0.5);
+
+    img {
+      height: rem(1);
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BUSINESS QUESTIONS
+\* ---------------------------------------------------------------------- */
+
+.business-questions {
+  padding: rem(3 1);
+
+  h2 {
+    @include font(3,false,300);
+    text-align: center;
+    margin-bottom: rem(1);
+  }
+
+  &-item {
+    margin-bottom: rem(1);
+
+    & > * {
+      @include font(-1);
+      vertical-align: middle;
+      padding: rem(0 0.5);
+    }
+
+    & > div > * {
+      display: block;
+    }
+
+    &_thumb > * {
+      width: 100%;
+      height: auto;
+    }
+
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BUSINESS LOANS
+\* ---------------------------------------------------------------------- */
+
+.business-loans-wrap {
+  @include font(-1);
+  padding: rem(5 1);
+
+  &_thumb {
+
+    @include breakPoints($bpMobileLandscape,false) {
+      padding-right: rem(3);
+    }
+
+    img {
+      @include centerBlock(0,true);
+      display: block;
+      width: 100%;
+      max-width: rem(15);
+    }
+
+  }
+
+  &_info {
+    @include breakPoints($bpMobileLandscape,false) {
+      padding-left: rem(3);
+      border-left: 1px solid $colorDividerMain;
+    }
+    
+    &_note {
+      display: block;
+      font-style: italic;
+      padding-bottom: rem(1.5);
+      color: $colorCtaNav;
+    }
+    
+    p {
+      margin-bottom: rem(1);
+    }
+
+    ul {
+      padding-left: rem(1);
+
+      @include breakPoints(false,400px) {
+        margin: 0;
+      }
+
+    }
+
+    li {
+      padding-bottom: rem(1);
+    }
+
+  }
+
+  h3 {
+    @include font(2);
+    color: $ColorBrand-2;
+    margin-bottom: rem(1);
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  LEADERSHIP TEAM
+\* ---------------------------------------------------------------------- */
+
+%about-us-h2 {
+  @include font(3);
+  text-align: center;
+  font-weight: 400; 
+}
+
+.leaders {
+  @extend .table--eq;
+  text-align: center;
+
+  &-wrap {
+
+    margin-bottom: rem(2);
+
+    h2 {
+      @extend %about-us-h2;
+    }
+  }
+
+  @include groupElements(0 $bpMobileLandscape, 2);
+
+
+  &_item {
+    padding-bottom: rem(2);
+
+    * {
+      display: block;
+    }
+    
+    img {
+      @include centerBlock(false,0.5);
+    }
+
+    &_name {
+      @include font(1);
+    }
+
+    &_position {
+      font-weight: 300;
+      @include breakPoints(0, $bpMobileLandscape) {
+        br {
+          display: none;
+        }     
+      }     
+    }
+  } // _item
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  ABOUT US
+\* ---------------------------------------------------------------------- */
+
+.about-us {
+  
+  &-intro {
+    h2 {
+      @extend %about-us-h2;
+      color: $ColorBrand-1;
+    }   
+  }
+
+  &-press {
+    &_list {
+      @include table(top, 0px 480px, false, 3 6, true);
+    }
+
+    &_img {
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    &_title {
+      display: block;
+      font-weight: 600;
+      margin-bottom: rem(0.5);
+    }
+
+    &_excerpt {
+      p {
+        @include font(0);
+      }
+    }
+
+    h2 {
+      @extend %about-us-h2;
+    }
+
+  }
+
+  &-media-coverage {
+    @include table(middle, false 320px, false false, 6 2);
+
+    & > a {
+      white-space: nowrap;
+    }
+
+    &_items {
+      & > div {
+        @include table(middle, $padding: 0);
+        width: auto;
+        max-width: 100%;
+
+        
+        img {
+          display: block;
+          width: 100%;
+          // max-width: 100%;
+          // max-height: rem(3);
+        }
+      }
+    }
+  }
+
+}
+
+
+
+
+/* ---------------------------------------------------------------------- *\
+  -----------------------------------------------------------------------
+  ----------------------- END OF SPECIAL MODULES ------------------------
+  -----------------------------------------------------------------------
+\* ---------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------- *\
+  FOOTER
+\* ---------------------------------------------------------------------- */
+
+.footer {
+  &-sect--1 {
+    border: 1px solid $colorDividerMain;
+    border-width: 1px 0;
+    padding: rem(2 0);
+    color: $colorCtaNav;
+    font-weight: 300;     
+  }
+
+  &-number {
+    @include font(5,3,400);
+    color: $colorFontDarkSoft;
+    margin-bottom: rem(1);
+
+    &-label {
+      @include font(0,inherit);
+      vertical-align: top;  
+    }   
+  }
+
+  @include breakPoints(false,$bpMobileLandscape) {
+    &-sect--1 {
+      text-align: center;
+    }
+    &-number {
+      margin-bottom: 0;
+
+      &-label {
+          display: block;
+        }
+      
+      &-wrap {
+        margin-bottom: rem(2);
+      }
+    }
+
+  }
+
+  &-links {
+    text-align: center;
+    padding: rem(1);    
+
+    a {
+      @include font(-1);
+      display: inline-block;
+      margin: rem(0 1);
+      position: relative;   
+
+      &:not(:last-child):after {
+        @include posAbs(0,-1);
+        content: '|';
+        color: $colorDividerMain;
+        display: block;
+        text-align: right;
+        width: 0;
+      } 
+    }
+  }
+
+  &-copy {
+    @include font(-1);
+    padding: rem(1 0);
+    border-top: 1px solid $colorDividerMain;
+    color: $colorFontDarkSoft;
+
+    .table {
+      @include table(top, 0 $bpMobileLandscape, false false, 6 4);
+    }
+
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  BUSINESS PRODUCTS
+\* ---------------------------------------------------------------------- */
+
+.business-products {
+  @extend .footer-links;
+  padding: rem(2 1);
+  text-align: left;
+
+  a {
+    margin: rem(0 2 0 0);
+
+    :not(:last-child):after {
+      content: '/';
+    }
+
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  ------------------------------------------------------------------------
+  ------------------------ UNDERSTANDING RISKS ---------------------------
+  ------------------------------------------------------------------------
+\* ---------------------------------------------------------------------- */
+
+.struct-sls {
+  @include table(top, 0 $bpMobileLandscape, false false, 2 4 2, false, rem(1 2 2));
+  @include centerBlock(2,2);
+}
+
+.wrap.struct-sls > * {
+  @include breakPoints(false, $bpMobileLandscape) {
+    width: 100%;
+    padding: rem(0 0 3);
+  }
+}
+
+.side-menu {
+  
+  &_wrap {
+    padding: 0;
+  }
+
+  padding: $defaultColsPadding;
+  background: $colorBackground-2;
+
+  a {
+    display: block;
+    @include font(0,2);
+    color: $colorFontDarkSoft;
+
+    &.el-active {
+      color: $colorHighlightSecondaries-2
+    }
+  }
+
+  &_subcat {
+    display: block;
+    padding-left: rem(1);
+
+    a { 
+      @include font(-1);
+      position: relative;
+      
+      &:before {
+        content: '•';
+        position: absolute;
+        left: rem(-1);
+        top: 0;
+        width: rem(1);
+      }
+    
+    }
+  }
+
+  h5 {
+    @include font(0,true,300);
+    margin: rem(1 0 0.5);
+  }
+}
+
+.col-2nd {
+  padding: 0;
+  @include font(-1, true);
+
+  & > * {
+    margin-bottom: rem(1.5);
+  }
+
+  h4 {
+    @include font(1,true,300);
+    margin-bottom: rem(0.5);
+
+  }
+}
+
+.side-box-1 {
+  display: block;
+  background: $colorBackground-2;
+  padding: rem(1);
+  color: $colorFontDarkSoft;
+}
+
+// Thumb
+.thumb {
+  display: block;
+  position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  &--video {
+    @extend .thumb;
+    background: rgb(0,0,0);
+
+    img {
+      @include opacity(0.6);
+    }
+
+    &:before,
+    &:after {
+      @include centerAbs(2);
+      content: '';
+    }
+
+    &:before {
+      @include borderRadius(50,'%');
+
+      width: rem(2.5);
+      height: rem(2.5);
+      border: 3px solid rgb(255,255,255);
+    }
+
+    &:after {
+      @include triangle(right,rgb(255,255,255),1);
+    }
+
+    &:hover {
+      &:before {
+        width: rem(4);
+        height: rem(4);
+        border-width: 2px;
+      }
+    }
+  }
+}
+
+.article-main {
+  padding-top: 0;
+
+  h1 {
+    @include font(3,true,300);
+  }
+
+  h2 {
+    @include font(2,true,300);
+  }
+
+  h3 {
+    @include font(1,true,300);
+  } 
+}
+
+.emp-box {
+  background: $colorBackground-2;
+  // border: 1px solid $colorDividerMain;
+  padding: rem(1);
+  margin: rem(1 0 2);
+  color: $colorFontDarkSoft;
+
+  h4 {
+    @include font(1,true,300);
+  }
+
+  h5 {
+    @include font(0,true,300);
+  }
+
+  img.full-width {
+    margin-bottom: rem(1);
+  } 
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.emp-table {
+  @include font(0,true,300);
+
+  background: $colorBackground-2;
+  border: 1px solid $colorDividerMain;
+  text-align: left;
+  margin-bottom: rem(1);
+
+  tr {
+    border-bottom: 1px solid $colorDividerMain;
+  }
+
+  th {
+    @include font(0,true,400);
+  }
+
+  th, td {
+    padding: rem(0.5);
+  }
+
+}
+
+.side-menu_wrap {
+
+  @include breakPoints(false,$bpMobileLandscape) {
+    .side-menu { 
+      display: none; 
+      position: relative;
+
+      .header_trigger--close {
+        @include font(2,3);
+      }
+    }
+
+    input[type="radio"]#submenu-side:checked ~ .side-menu {
+      display: block;
+    }
+    
+    input[type="radio"]#submenu-side:checked ~ label[for="submenu-side"] {
+      display: none;
+    }
+
+  }
+
+  @include breakPoints($bpMobileLandscape,false) {
+    label[for="submenu-side"] {
+      display: none;
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  ------------------------------------------------------------------------
+  --------------------- END OF UNDERSTANDING RISKS -----------------------
+  ------------------------------------------------------------------------
+\* ---------------------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GENERAL MIXINS
+\* ---------------------------------------------------------------------- */
+
+@include breakPointsCols;
+@include staticCols(6);
+
+
+
+/* ---------------------------------------------------------------------- *\
+  EXPERIMENTS
+  - should be removed on production
+\* ---------------------------------------------------------------------- */
+
+// @import './_experiments';
