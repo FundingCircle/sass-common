@@ -1,0 +1,2 @@
+exclude: 'vendor/**'
+scss_files: ['dist/**/*.scss', 'src/**/*.scss']
