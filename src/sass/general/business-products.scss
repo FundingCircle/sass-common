@@ -1,0 +1,18 @@
+/* ---------------------------------------------------------------------- *\
+  BUSINESS PRODUCTS
+\* ---------------------------------------------------------------------- */
+
+.business-products {
+  @extend .footer-links;
+  padding: rem(2 1);
+  text-align: left;
+
+  a {
+    margin: rem(0 2 0 0);
+
+    :not(:last-child):after {
+      content: '/';
+    }
+
+  }
+}

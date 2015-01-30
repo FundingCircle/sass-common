@@ -1,0 +1,130 @@
+// Colors
+//
+// List of all the colors used across the website
+// 
+// Styleguide 4.0
+
+// Brand colors
+// 
+// $ColorBrand1 - primary color
+// $ColorBrand2 - buttons, actions, links, etc.
+// $ColorBrand3 - accents, others
+// $ColorBrand4 - positive actions
+// $ColorBrand5 - accents
+// $ColorBrand6 - special backgrounds
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.1
+
+$ColorBrand1: rgb(192, 40, 185);
+$ColorBrand2: rgb(58, 119, 193);
+$ColorBrand3: rgb(55, 176, 201);
+$ColorBrand4: rgb(118, 189, 33);
+$ColorBrand5: rgb(255, 78, 0);
+$ColorBrand6: rgb(255, 199, 68);
+
+
+// Call to action
+// 
+// $colorCtaPrimary - buttons and text links / same as $ColorBrand2
+// $colorCtaOn - focus links / same as $ColorBrand1
+// $colorCtaNav - navigation CTA
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.2
+
+$colorCtaOn: rgb(192, 40, 185);
+$colorCtaPrimary: rgb(58, 119, 193);
+$colorCtaNav: rgb(87, 87, 87);
+
+
+// Highlihgts
+// 
+// $colorHighlightPrimaries1 - ? / same as $ColorBrand3
+// $colorHighlightPrimaries2 - ? / same as $ColorBrand6
+// $colorHighlightSecondaries1 - ? / same as $ColorBrand5
+// $colorHighlightSecondaries2 - ? / same as $ColorBrand4
+// $colorHighlightExternal - ?
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.3
+
+$colorHighlightPrimaries1: rgb(55, 176, 201);;
+$colorHighlightPrimaries2: rgb(255, 199, 68);
+$colorHighlightSecondaries1: rgb(255, 78, 0);
+$colorHighlightSecondaries2: rgb(118, 189, 33);
+$colorHighlightExternal: rgb(232, 232, 232);
+
+
+
+// Background
+// 
+// $colorBackgroundMain - main background
+// $colorBackground2 - light background
+// $colorBackground3 - dark background
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.4
+
+$colorBackgroundMain: rgb(255, 255, 255);
+$colorBackground2: rgb(232, 232, 232);
+$colorBackground3: rgb(204, 204, 204);
+
+
+
+// Dividers
+// 
+// $colorDividerMain - main divider
+// $colorDividerDark - dark divider
+// $colorDividerLight - light divider
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.5
+
+$colorDividerMain: rgb(204, 204, 204);
+$colorDividerDark: rgb(56, 56, 56);
+$colorDividerLight: rgba(255, 255, 255,.6);
+
+
+
+// Text
+// 
+// $colorFontLight - font light
+// $colorFontDarkHard - font dark hard
+// $colorFontDarkSoft - font dark soft
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.6
+
+$colorFontLight: rgb(255, 255, 255);
+$colorFontDarkHard: rgb(0, 0, 0);
+$colorFontDarkSoft: rgb(56, 56, 56);
+
+
+
+// System
+// 
+// $colorError - error
+// $colorSuccess - success
+// $colorMessage - message / same as $ColorBrand1
+// 
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+// 
+// Styleguide 4.7
+
+$colorError: rgb(214, 0, 54);
+$colorSuccess: rgb(0, 156, 80);
+$colorMessage: rgb(192, 40, 185);

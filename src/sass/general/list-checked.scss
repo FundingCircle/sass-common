@@ -1,0 +1,44 @@
+// List checked
+.list-checked {
+  @include centerBlock(0,2);
+  display: block;
+  padding: rem(0 0 0 2);
+  text-align: left;
+
+  & > li {
+    position: relative;
+    margin-bottom: rem(0.8);
+    list-style: none;
+
+    &:before {
+      @include posAbs(0,false,false,-1.5);
+      @extend .fci-icon;
+      display: block;
+      width: rem(1);
+      text-align: center;
+      color: $ColorBrand-2;
+    }
+  }
+  
+
+  &--reversed {
+    @extend .list-checked;
+    padding-left: rem(3);
+
+    & > li{
+
+      min-height: rem(2);
+
+      &:before {
+        @include borderRadius(50,'%');
+        @include font(0,2);
+        @extend .fci-icon;
+        left: rem(-3);
+        width: rem(2);
+        height: rem(2);
+        background: $colorHighlightSecondaries-2;
+        color: rgb(255,255,255);
+      }
+    }
+  }
+}
