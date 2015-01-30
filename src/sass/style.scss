@@ -1,37 +1,67 @@
-@import './_variables';
-@import './_functions';
-@import './_mixins';
+/* ---------------------------------------------------------------------- *\
+  PREREQUISITES
+\* ---------------------------------------------------------------------- */
 
+// IE variable is set to true if you have to support IE8 (REM not supported)
+// as an alternative, you can use a REM polyfill or you can create two stylesheets
+// if set to false, the default unit is REM
 
+$ie: true;
+$generalPath: 'general/';
 
-
-
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
+@import '_variables.scss';
+@import '_functions.scss';
+@import '_mixins.scss';
 
 
 /* ---------------------------------------------------------------------- *\
-  ------------------------------------------------------------------------
-  ------------------------ UNDERSTANDING RISKS ---------------------------
-  ------------------------------------------------------------------------
+  HTML STRUCTURE
 \* ---------------------------------------------------------------------- */
 
-
-
+// load the HTML structure
+@import $generalPath + 'structure.scss';
 
 
 /* ---------------------------------------------------------------------- *\
-  ------------------------------------------------------------------------
-  --------------------- END OF UNDERSTANDING RISKS -----------------------
-  ------------------------------------------------------------------------
+  HELPFUL CLASSES & MIXINS
 \* ---------------------------------------------------------------------- */
 
-
-
-/* ---------------------------------------------------------------------- *\
-  GENERAL MIXINS
-\* ---------------------------------------------------------------------- */
+@import $generalPath + 'useful-classes.scss';
 
 @include breakPointsCols;
 @include staticCols(6);
+
+
+/* ---------------------------------------------------------------------- *\
+  COMPONENTS
+\* ---------------------------------------------------------------------- */
+
+// articles structure
+@import $generalPath + 'articles.scss';
+
+// everything call to action related
+@import $generalPath + 'buttons.scss';
+@import $generalPath + 'go-to-links.scss';
+
+
+// everything related to forms
+@import $generalPath + 'forms.scss';
+
+// hero images
+@import $generalPath + 'hero.scss';
+
+
+/* ---------------------------------------------------------------------- *\
+  DYNAMIC LOADERS
+  - transitions for elements fetched with AJAX
+\* ---------------------------------------------------------------------- */
+
+@import $generalPath + 'dynamic-loaders.scss';
+
+
+
+
 
 
 

@@ -9,9 +9,9 @@
 //
 // Styleguide 1.0
 
-$functionsPath: 'functions/'
+$functionsPath: 'functions/';
 
-@import $functionsPath + 'math.scss'
-@import $functionsPath + 'lists.scss'
-@import $functionsPath + 'units.scss'
-@import $functionsPath + 'paths.scss'
+@import $functionsPath + 'math.scss';
+@import $functionsPath + 'lists.scss';
+@import $functionsPath + 'paths.scss';
+@import $functionsPath + 'units.scss';

@@ -36,6 +36,10 @@ main[data-role="wrap"] {
   width: 100%;
   position: relative;
 
+  & > * {
+    width: 100%;
+  }
+
 }
 
 body *,
@@ -44,7 +48,6 @@ body *:after {
   @include transition();
 }
 
-main[data-role="wrap"] > * { width: 100%; }
 
 
 a {
@@ -59,7 +62,6 @@ a {
 p {
   margin: 0 0 1em;
 }
-
 
 
 // Headers
