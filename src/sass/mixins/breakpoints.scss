@@ -1,0 +1,95 @@
+/* ---------------------------------------------------------------------- *\
+  MEDIA QUERIES
+  if one argument is set to false, it will be ignored 
+  eg breakPoints(false,500px) -> only max-width
+\* ---------------------------------------------------------------------- */
+
+@mixin breakPoints($min,$max) {
+  
+  // fallback for unitless values (convert to px)
+  $min: unitless($min);
+  $max: unitless($max);
+
+  @if($min == false) {
+    @media only screen and (max-width: $max - 1) {
+      @content;
+    }
+  } @else if ($max == false) {
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $min) and (max-width: $max - 1) {
+      @content;
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GENERATE STATIC SHOW / HIDE HARDCODED
+\* ---------------------------------------------------------------------- */
+
+@mixin breakPointsCols {
+  [class^="show-"] { display: none; }
+  
+  @each $resMin in $breakPoints {
+    @each $resMax in $breakPoints {
+      @if $resMin < $resMax {
+        @include breakPoints($resMin,$resMax) {
+
+          .table-#{$resMin}-#{$resMax},
+          .show-#{$resMin}-#{$resMax} {
+            display: block;
+          }
+
+          .table-#{$resMin}-#{$resMax} > *,
+          .table-#{$resMin}-#{$resMax} > *[class*="col-"] {
+            display: block;
+            width: 100%;
+          }
+
+          .hide-#{$resMin}-#{$resMax} {
+            display: none;
+          }         
+
+        }
+      }
+    } // $resMax
+  } // $resMin
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  HIDE TABLES ON BREAKPOINTS
+  choose between what points to hide a certain element
+\* ---------------------------------------------------------------------- */
+
+@mixin hideBetweenWidths($minVal:false,$maxVal:false) {
+  @include breakPoints($minVal,$maxVal) { display: none; }
+}
+
+@mixin hideBetweenHeights($minVal:false,$maxVal:false) {
+  @include breakPoints($minVal,$maxVal) { display: none; }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  SHOW TABLES ONLY ON BREAKPOINTS
+  choose between what points to show a certain element
+  $displayType: default is block, but can be overwritten with other vals
+\* ---------------------------------------------------------------------- */
+
+@mixin showBetweenWidths($minVal:false,$maxVal:false,$displayType: block) {
+  display: none;
+  @include breakPoints($minVal,$maxVal) { display: $displayType; }
+}
+
+@mixin showBetweenHeights($minVal:false,$maxVal:false,$displayType: block) {
+  display: none;
+  @include breakPoints($minVal,$maxVal) { display: $displayType; }
+}
+
