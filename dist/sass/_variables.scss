@@ -1,89 +1,13 @@
 $ie: true;
-/* ---------------------------------------------------------------------- *\
-  GENERAL / MISC
-\* ---------------------------------------------------------------------- */
+// Variables
+//
+// All the defined variables that you can use in the project
+// 
+// Styleguide 2.0
 
-$ratio: 1.618;
-$sqrtRatio: 1.27201964951;
-$fontSizeBase: 16;
-$fontBaseline: $fontSizeBase / 2;
+$variablesPath: 'variables/';
 
-$fontFamilyDefault: 'Source Sans Pro', sans-serif;
-
-@if $ie {
-  $defaultColsPadding: $fontSizeBase * 1px;
-} @else {
-  $defaultColsPadding: 1rem;
-}
-
-$headerHeight: 60px;
-$responsiveMenuWidth: 260px;
-
-// do not remove or modify these values
-// the values are used in class names - removing or modifying them may result in broken layouts
-
-$bpMobilePortrait: 320;
-$bpMobilePortraitLarge: 480;
-$bpMobileLandscape: 640;
-$bpTabletPortrait: 768;
-$bpTabletLandscape: 800;
-$bpDesktop: 1024;
-
-$breakPoints: 0, $bpMobilePortrait, $bpMobilePortraitLarge, $bpMobileLandscape, $bpTabletPortrait, $bpTabletLandscape, $bpDesktop;
-
-
-
-/* ---------------------------------------------------------------------- *\
-  PATHS
-\* ---------------------------------------------------------------------- */
-
-$imgPath: '../img/';
-$svgPath: $imgPath + 'svg/';
-$iconsPath: '../fonts';
-
-
-
-/* ---------------------------------------------------------------------- *\
-  COLORS
-\* ---------------------------------------------------------------------- */
-
-// Brand
-$ColorBrand-1: rgb(192, 40, 185);
-$ColorBrand-2: rgb(58, 119, 193);
-$ColorBrand-3: rgb(55, 176, 201);
-$ColorBrand-4: rgb(118, 189, 33);
-$ColorBrand-5: rgb(255, 78, 0);
-$ColorBrand-6: rgb(255, 199, 68);
-
-// Call to action 
-$colorCtaOn: $ColorBrand-1; // on/focus
-$colorCtaPrimary: $ColorBrand-2; // primary CTA / text links
-$colorCtaNav: rgb(87, 87, 87); // nav CTA
-
-// Highlight palette
-$colorHighlightPrimaries-1: $ColorBrand-3;
-$colorHighlightPrimaries-2: $ColorBrand-6;
-$colorHighlightSecondaries-1: $ColorBrand-5;
-$colorHighlightSecondaries-2: $ColorBrand-4;
-$colorHighlightExternal: rgb(232, 232, 232);
-
-// Background pallete
-$colorBackgroundMain: rgb(255, 255, 255);
-$colorBackground-2: rgb(232, 232, 232);
-$colorBackground-3: rgb(204, 204, 204);
-
-// Dividers
-$colorDividerMain: rgb(204, 204, 204);
-$colorDividerDark: rgb(56, 56, 56);
-$colorDividerLight: rgba(255, 255, 255,.6);
-
-
-// Text
-$colorFontLight: rgb(255, 255, 255);
-$colorFontDarkHard: rgb(0, 0, 0);
-$colorFontDarkSoft: rgb(56, 56, 56);
-
-// System
-$colorError: rgb(214, 0, 54);
-$colorSuccess: rgb(0, 156, 80);
-$colorMessage: $ColorBrand-1;
+@import $variablesPath + 'breakpoints.scss';
+@import $variablesPath + 'colors.scss';
+@import $variablesPath + 'misc.scss';
+@import $variablesPath + 'paths.scss';

@@ -11,7 +11,7 @@
   "ignore": [
     "**/*",
     "!dist/**/*"
-   ]
+   ],
 
   "dependencies": {
     "normalize-css": "3.0.2"

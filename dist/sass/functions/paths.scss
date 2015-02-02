@@ -1,0 +1,27 @@
+$ie: true;
+// Image paths
+// 
+// Set path to images:
+// 
+// $name - the filename in quotes. e.q 'image.png'
+// $type - image / svg / icons
+// 
+// markup:
+// path($name, $type: false)
+// // path('image.png',image)
+// 
+// Styleguide 1.4
+
+@function path($name,$type: false) {
+  $path: null;
+  
+  @if $type == image {
+    $path: $imgPath;
+  } @else if $type == svg {
+    $path: $svgPath;
+  } @else if $type == icons {
+    $path: $iconsPath;
+  }
+
+  @return unquote('url(') + $path + $name + unquote(')');
+}

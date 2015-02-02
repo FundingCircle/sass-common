@@ -1,0 +1,43 @@
+$ie: true;
+// Math functions
+// 
+// All the math functions that you can use
+// 
+// Styleguide 1.1
+
+
+
+// Power
+// 
+// Rise a number to a certain power. It has two parameters:
+// 
+// $number, $exp - raise $number to the power of $exp 
+// 
+// markup:
+// pow($number, $exp)
+// // pow(5,2) -> 25
+//
+// 
+// Styleguide 1.1.1
+
+@function pow($number, $exp) {
+  $value: $number;
+  @if $exp > 0 {
+    // If the exponent is positive, multiply.
+    @for $i from 2 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    // If the exponent is negative, divide.
+    @for $i from 0 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @else {
+    // If the exponent is zero, just return 1.
+    $value: 1;
+  }
+  @return $value;
+}
+

@@ -1,0 +1,79 @@
+$ie: true;
+// Breakpoints
+//
+// SASS breakpoints variables.
+// The project has a series of predefined break points. 
+// Although this values can be used because they offer a general structure, it's better to define your own values when building modules, according to the designs provided.
+// This values are unitless and they should remain that way.
+// 
+// Styleguide 2.0
+
+
+
+// $bpMobilePortrait
+// 
+// Normal smartphone in portrait mode
+// 
+// Styleguide 2.1
+
+$bpMobilePortrait: 320;
+
+
+
+// $bpMobilePortraitLarge
+// 
+// Large smartphone in portrait mode
+// 
+// Styleguide 2.2
+
+$bpMobilePortraitLarge: 480;
+
+
+
+// $bpMobileLandscape 
+// 
+// Normal smartphone in landscape mode
+// 
+// Styleguide 2.3
+
+$bpMobileLandscape: 640;
+
+
+
+// $bpTabletPortrait
+// 
+// Normal tablet in portrait mode
+// 
+// Styleguide 2.4
+
+$bpTabletPortrait: 768;
+
+
+
+// $bpTabletLandscape
+// 
+// Normal tablet in landscape mode
+// 
+// Styleguide 2.5
+
+$bpTabletLandscape: 800;
+
+
+
+// $bpDesktop
+// 
+// Everything bigger than a normal tablet
+// 
+// Styleguide 2.6
+
+$bpDesktop: 1024;
+
+
+
+// $breakPoints
+// 
+// A list with all the above values, starting from 0 to $bpDesktop
+// 
+// Styleguide 2.7
+
+$breakPoints: 0, $bpMobilePortrait, $bpMobilePortraitLarge, $bpMobileLandscape, $bpTabletPortrait, $bpTabletLandscape, $bpDesktop;

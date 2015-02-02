@@ -1,0 +1,34 @@
+$ie: true;
+// FLIP ELEMENT
+
+[data-dynamic-placeholder] {
+  @include opacity(1);
+
+  span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    @include transition(max-width,300,ms,linear); 
+  }
+
+  [data-dynamic-placeholder] {
+    max-width: 100%;
+    // background: red;
+  }
+
+  [data-dynamic-value] {
+    max-width: 0%;
+    // background: blue;
+  }
+
+  &[data-dynamic-container="visible"] {
+    [data-dynamic-placeholder] {
+      max-width: 0%;
+    }
+
+    [data-dynamic-value] {
+      max-width: 100%;
+    }
+
+  }
+}

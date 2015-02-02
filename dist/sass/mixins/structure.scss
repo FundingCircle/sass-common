@@ -1,0 +1,232 @@
+$ie: true;
+/* ---------------------------------------------------------------------- *\
+  CENTER BLOCK 
+  center block elements using margin: auto
+  you can set the top and bottom here or set them separately
+  if centerBlock(value, true) -> margin: value auto;
+\* ---------------------------------------------------------------------- */
+
+@mixin centerBlock($top:false, $bottom:false) {
+  
+  @if $top { $top: rem($top); }
+  @if $bottom { $bottom: rem($bottom); }
+  
+  @if $top and $bottom == false {
+
+    margin: {
+      top: $top;
+      left: auto;
+      right: auto;
+    }
+
+  } @else if $top == false and $bottom {
+    
+    margin: {
+      left: auto;
+      right: auto;
+      bottom: $bottom;
+    }
+
+  } @else if $top and $bottom == true { 
+    
+    margin: $top auto;
+
+  } @else if $top and $bottom {
+
+    margin: $top auto $bottom;
+  
+  } @else {
+    margin: {
+      left: auto;
+      right: auto; 
+    }
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TABLES
+  Everything related to tables
+      - all arguments are optional
+      - structure -> table > table-cell
+   
+  $verticalAlign: top / baseline / ... / http://goo.gl/d8gtec
+   
+  $reset: two values between which the cells fall to full-width blocks
+   
+  $hide: two values between which the table is hidden
+   
+  $cols: false / equal / list
+    a) FALSE - lets the browser decide the column widths
+    b) EQUAL - all equal columns (does not work with table-layout: fixed)
+    c) LIST - it uses the golden ratio formula: (xi+xj)/xi = ratio
+   
+  $row: boolean -> if true, the structure is table > row > cell
+  
+  $padding -> default is $defaultColsPadding
+   
+  e.g: @include table( top, 700px 1000px , 100px 480px , 2 1 7 , false , 10rem )
+                        |    |              |             |      |        | padding
+                        |    |              |             |      | 1 row
+                        |    |              |             | 3 cols with
+                        |    |              |             | custom ratio
+                        |    |              | hide between 100px-480px
+                        |    | set cells to block and width: 100%
+                        |    | between 700-1000px
+                        | vertical-align: top
+\* ---------------------------------------------------------------------- */
+
+@mixin table($verticalAlign:top, $reset:false, $hide:false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+  display: table;
+  width: 100%;
+
+  @if $row {
+    & > * { display: table-row; }
+    
+    & > * > * {
+      @include tableCell($verticalAlign,$cols,$padding);
+    }
+
+  } @else {
+    & > * {
+     @include tableCell($verticalAlign,$cols,$padding); 
+    }
+  }
+  
+  @if $reset { 
+    main[data-role="wrap"] & {
+      @if $row {
+        & > * { 
+          @include resetColumns(first($reset),last($reset)); 
+        }
+      } @else {
+        @include resetColumns(first($reset),last($reset)); 
+      }
+    }
+  }
+  @if $hide { @include hideBetweenWidths(first($hide),last($hide)); }
+
+}
+
+// Calculate the general aspect ratio starting from an arbitrary number (1)
+$colRatio: 1;
+@for $i from 1 through 7 {
+  $colListLast: last($colRatio);
+  $colRatio: append($colRatio, $colListLast * $ratio);
+}
+
+@mixin tableCell($verticalAlign,$colList:false,$padding: false) {
+  display: table-cell;
+  vertical-align: $verticalAlign;
+
+  @if $padding {
+    padding: $padding;
+  }
+  
+  @if $colList == equal {
+    width: 1%;
+  } @else if $colList != false {
+    // calculate the passed vars sum - in order to have general proportions 
+    // we need this so we can apply the rule of three to find the new proportions
+    $colSum : 0;    
+
+    @each $colVal in $colList {
+      $colSum: $colSum + nth($colRatio,$colVal);
+    }
+
+    $colFinal: ();
+    @each $colVal in $colList {
+      $colFinal: append($colFinal,nth($colRatio,$colVal) * 100 / $colSum);
+    } 
+    $iteration : 1; // do not use index(), it fails on columns with same argument
+
+  @each $i in $colFinal {
+      &:nth-child(#{$iteration}) {
+        $iteration: $iteration + 1;
+        width: percentage($i)/100;
+      }
+    }
+
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  RESET TABLE LAYOUT ON BREAKPOINTS
+  choose between what points to transform the table layout to one column
+\* ---------------------------------------------------------------------- */
+
+@mixin resetColumns($minVal,$maxVal) {
+  @include breakPoints($minVal,$maxVal) {
+
+    display: block;
+    
+    & > *,
+    & > *[class*="col-"] {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GENERATE STATIC COLUMN FRAGMENTATION 
+  will be replaced in the future with the proper golden ratio cols system 
+\* ---------------------------------------------------------------------- */
+
+@mixin staticCols($noOfCols) {
+  @for $i from floor($noOfCols / 2) through $noOfCols {
+    @for $j from 2 through $i - 1 {
+      .col-#{$j}of#{$i} {
+        width: percentage($j/$i);
+      }
+    }
+  }
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  GROUP ELEMENTS ON MULTIPLE COLUMNS
+  $resolution - between what resolutions should this be active
+  $colGroup - how many colums should this have
+  $centerLast - boolean - center last row
+
+  e.g groupElements(0px 320px, 3, false);
+\* ---------------------------------------------------------------------- */
+
+@mixin groupElements($resolution, $colGroup, $centerLast:true) {
+
+  $elWidth: 1 / $colGroup;
+  @include breakPoints(first($resolution),last($resolution)) {
+    @include clear(true,false);
+    
+    display: block;
+      
+    & > * {
+      display: block;
+      float: left;
+      width: percentage($elWidth);
+    }
+
+    & > *:nth-child(#{$colGroup}n+1) {
+      @include clear(false,false);
+
+      @if $centerLast {
+        @for $i from 1 through ($colGroup - 1) {
+          &:nth-last-child(#{$i}) {
+            margin-left: percentage($elWidth / 2 * ($colGroup - $i));
+          }
+        }
+      }
+    }
+  }
+}
+
+
