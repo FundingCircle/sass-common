@@ -2,11 +2,11 @@
 //
 // All the defined variables that you can use in the project
 // 
-// Styleguide 2.0
+// Styleguide 1.0
 
-$variablesPath: 'variables/';
 
-@import $variablesPath + 'breakpoints.scss';
-@import $variablesPath + 'colors.scss';
-@import $variablesPath + 'misc.scss';
-@import $variablesPath + 'paths.scss';
+@import '_variables/breakpoints.scss';
+@import '_variables/colors.scss';
+@import '_variables/misc.scss';
+@import '_variables/paths.scss';
+

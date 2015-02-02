@@ -4,26 +4,18 @@
 // 
 // Styleguide 1.0
 
-$mixinsPath: 'mixins/';
 
-// some general mixins
-@import $mixinsPath + 'misc.scss';
+@import '_mixins/misc.scss';
 
-// ITTT
-@import $mixinsPath + 'conditionals.scss';
+@import '_mixins/conditionals.scss';
 
-// everything related to responsive
-@import $mixinsPath + 'breakpoints.scss';
+@import '_mixins/breakpoints.scss';
 
-// shorthands for CSS properties
-@import $mixinsPath + 'css-properties.scss';
+@import '_mixins/css-properties.scss';
 
-// everything related to fonts
-@import $mixinsPath + 'fonts.scss';
+@import '_mixins/fonts.scss';
 
-// everything related to forms
-@import $mixinsPath + 'forms.scss';
+@import '_mixins/forms.scss';
 
-// everything related to columns, structure, etc.
-@import $mixinsPath + 'structure.scss';
+@import '_mixins/structure.scss';
 

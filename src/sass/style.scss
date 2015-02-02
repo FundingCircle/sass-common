@@ -7,27 +7,25 @@
 // if set to true, the default unit is REM
 
 $REMsupport: false;
-$generalPath: 'general/';
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
 @import '_variables.scss';
 @import '_functions.scss';
 @import '_mixins.scss';
 
-
 /* ---------------------------------------------------------------------- *\
   HTML STRUCTURE
 \* ---------------------------------------------------------------------- */
 
 // load the HTML structure
-@import $generalPath + 'structure.scss';
+@import 'general/structure.scss';
 
 
 /* ---------------------------------------------------------------------- *\
   HELPFUL CLASSES & MIXINS
 \* ---------------------------------------------------------------------- */
 
-@import $generalPath + 'useful-classes.scss';
+@import 'general/useful-classes.scss';
 
 @include breakPointsCols;
 @include staticCols(6);
@@ -38,18 +36,18 @@ $generalPath: 'general/';
 \* ---------------------------------------------------------------------- */
 
 // articles structure
-@import $generalPath + 'articles.scss';
+@import 'general/article.scss';
 
 // everything call to action related
-@import $generalPath + 'buttons.scss';
-@import $generalPath + 'go-to-links.scss';
+@import 'general/buttons.scss';
+@import 'general/go-to-links.scss';
 
 
 // everything related to forms
-@import $generalPath + 'forms.scss';
+@import 'general/forms.scss';
 
 // hero images
-@import $generalPath + 'hero.scss';
+@import 'general/hero.scss';
 
 
 /* ---------------------------------------------------------------------- *\
@@ -57,7 +55,7 @@ $generalPath: 'general/';
   - transitions for elements fetched with AJAX
 \* ---------------------------------------------------------------------- */
 
-@import $generalPath + 'dynamic-loaders.scss';
+@import 'general/dynamic-loaders.scss';
 
 
 

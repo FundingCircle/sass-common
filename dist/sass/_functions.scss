@@ -10,9 +10,7 @@ $ie: true;
 //
 // Styleguide 1.0
 
-$functionsPath: 'functions/';
-
-@import $functionsPath + 'math.scss';
-@import $functionsPath + 'lists.scss';
-@import $functionsPath + 'paths.scss';
-@import $functionsPath + 'units.scss';
+@import '_functions/math.scss';
+@import '_functions/lists.scss';
+@import '_functions/paths.scss';
+@import '_functions/units.scss';

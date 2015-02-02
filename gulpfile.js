@@ -6,12 +6,17 @@ var insert = require('gulp-insert');
 var rename = require('gulp-rename');
 var sequence = require('run-sequence');
 
+var styleguide = require('sc5-styleguide');
+var sass = require('gulp-sass');
+
 var paths = {};
 
 paths.build = {};
 paths.build.root = 'dist';
 paths.build.sass = paths.build.root + '/sass';
 paths.build.fonts = paths.build.root + '/fonts';
+paths.build.styleguide = paths.build.root + '/styleguide';
+
 
 paths.source = {};
 paths.source.root = 'src';
@@ -53,8 +58,35 @@ gulp.task('build:mixins', function() {
           .pipe(gulp.dest(paths.build.sass));
 });
 
+
+// Living styleguide
+paths.source.sassTemp = paths.source.root + '/sass/**/*';
+
+gulp.task('styleguide:generate', function() {
+  return gulp.src(paths.source.sassTemp)
+    .pipe(styleguide.generate({
+        title: 'Funding Circle Styleguide',
+        server: true,
+        port: 8081,
+        rootPath: paths.build.styleguide,
+        overviewPath: 'README.md'
+      }))
+    .pipe(gulp.dest(paths.build.styleguide));
+});
+
+
+gulp.task('styleguide:applystyles', function() {
+  return gulp.src(paths.source.sassTemp)
+    .pipe(sass({
+      errLogToConsole: true
+    }))
+    .pipe(styleguide.applyStyles())
+    .pipe(gulp.dest(paths.build.styleguide));
+});
+
+
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], callback);
+  sequence('clean', ['build:mixins', 'build:icon-font'], ['styleguide:generate', 'styleguide:applystyles'], callback);
 });
 
 gulp.task('default', ['build']);

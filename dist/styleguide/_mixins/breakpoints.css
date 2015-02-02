@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------------------- *\
+  MEDIA QUERIES
+  if one argument is set to false, it will be ignored 
+  eg breakPoints(false,500px) -> only max-width
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
+  GENERATE STATIC SHOW / HIDE HARDCODED
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
+  HIDE TABLES ON BREAKPOINTS
+  choose between what points to hide a certain element
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
+  SHOW TABLES ONLY ON BREAKPOINTS
+  choose between what points to show a certain element
+  $displayType: default is block, but can be overwritten with other vals
+\* ---------------------------------------------------------------------- */
