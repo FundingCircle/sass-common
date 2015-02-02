@@ -60,10 +60,10 @@ gulp.task('build:mixins', function() {
 
 
 // Living styleguide
-paths.source.sassTemp = paths.source.root + '/sass/**/*';
+paths.source.sassTemp = paths.source.root + '/sass/style.scss';
 
 gulp.task('styleguide:generate', function() {
-  return gulp.src(paths.source.sassTemp)
+  return gulp.src(paths.source.root + '/sass/**/*')
     .pipe(styleguide.generate({
         title: 'Funding Circle Styleguide',
         server: true,
@@ -76,7 +76,7 @@ gulp.task('styleguide:generate', function() {
 
 
 gulp.task('styleguide:applystyles', function() {
-  return gulp.src(paths.source.sassTemp)
+  return gulp.src(paths.source.root + '/sass/style.scss')
     .pipe(sass({
       errLogToConsole: true
     }))
