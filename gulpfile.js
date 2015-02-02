@@ -30,21 +30,24 @@ gulp.task('build:icon-font', function() {
         fontName: fontName, // required
         appendCodepoints: true // recommended option
       }))
-      .on('codepoints', function(codepoints) {
-        gulp.src(paths.source.iconfontTemplate)
-            .pipe(template({
-              glyphs: codepoints,
-              fontName: fontName,
-              fontPath: '../fonts/',
-              className: 'fci'
-            }))
-            .pipe(gulp.dest(paths.build.fonts + '/' + fontName + '.css'));
-      })
+      .on('codepoints', buildIconFontCss)
       .pipe(gulp.dest(paths.build.fonts));
+
+  function buildIconFontCss(codepoints) {
+    gulp.src(paths.source.iconfontTemplate)
+        .pipe(template({
+          glyphs: codepoints,
+          fontName: fontName,
+          fontPath: '../fonts/',
+          className: 'fci'
+        }))
+        .pipe(gulp.dest(paths.build.fonts + '/' + fontName + '.css'));
+  }
 });
 
 gulp.task('build:mixins', function() {
   return gulp.src(paths.source.stylesheets)
+          .pipe(insert.prepend('$ie: true;\n'))
           .pipe(gulp.dest(paths.build.sass));
 });
 
