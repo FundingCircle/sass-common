@@ -34,6 +34,7 @@
 .fci-menu-icon:before { content: "\E002" }
 .fci-tick:before { content: "\E003" }
 .fci-user-icon:before { content: "\E004" }
+.fci-phone-circled:before { content: "\E005" }
 
 
 .list-checked > *:before,

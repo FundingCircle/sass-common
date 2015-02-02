@@ -2,8 +2,9 @@ var gulp = require('gulp');
 var del = require('del');
 var template = require('gulp-template');
 var iconfont = require('gulp-iconfont');
-var sequence = require('run-sequence');
 var insert = require('gulp-insert');
+var rename = require('gulp-rename');
+var sequence = require('run-sequence');
 
 var paths = {};
 
@@ -41,7 +42,8 @@ gulp.task('build:icon-font', function() {
           fontPath: '../fonts/',
           className: 'fci'
         }))
-        .pipe(gulp.dest(paths.build.fonts + '/' + fontName + '.css'));
+        .pipe(rename(fontName + '.css'))
+        .pipe(gulp.dest(paths.build.fonts));
   }
 });
 
