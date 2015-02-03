@@ -111,8 +111,9 @@ $ie: true;
   $multiplier: $val;
   
   // default $unit value
-  $unit: unquote(unit($val));
-  
+  // $unit: unquote(unit($val));
+  $unit: rem;
+
   @if type-of($val) == number and $val != 0 {
     
     // determine the unit for $val
@@ -123,7 +124,7 @@ $ie: true;
     }
     
     $val: first($val);
-
+    
     // determine the multiplier
     @if $REMsupport {
       @if $unit == rem {
@@ -179,3 +180,5 @@ $ie: true;
 
   @return $cVal;
 }
+
+  @warn rem(10);
