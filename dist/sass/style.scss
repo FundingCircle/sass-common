@@ -1,32 +1,40 @@
 $ie: true;
-/* ---------------------------------------------------------------------- *\
-  PREREQUISITES
-\* ---------------------------------------------------------------------- */
-
-// $REMsupport variable is set to false if you have to support IE8 (REM not supported)
-// as an alternative, you can use a REM polyfill or you can create two stylesheets
-// if set to true, the default unit is REM
+// REM Support
+// 
+// $REMsupport - flag for REM support. REM is not supported in IE8
+// 
+// variables.rem
 
 $REMsupport: false;
 
+
+
+
+
+// PREREQUISITES
+// 
+// Mandatory imports
+// 
+// 
+
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
-@import '_variables.scss';
-@import '_functions.scss';
-@import '_mixins.scss';
+@import './_variables.scss';
+@import './_functions.scss';
+@import './_mixins.scss';
 
 /* ---------------------------------------------------------------------- *\
   HTML STRUCTURE
 \* ---------------------------------------------------------------------- */
 
 // load the HTML structure
-@import 'general/structure.scss';
+@import './general/structure.scss';
 
 
 /* ---------------------------------------------------------------------- *\
   HELPFUL CLASSES & MIXINS
 \* ---------------------------------------------------------------------- */
 
-@import 'general/useful-classes.scss';
+@import './general/useful-classes.scss';
 
 @include breakPointsCols;
 @include staticCols(6);
@@ -37,18 +45,18 @@ $REMsupport: false;
 \* ---------------------------------------------------------------------- */
 
 // articles structure
-@import 'general/article.scss';
+@import './general/article.scss';
 
 // everything call to action related
-@import 'general/buttons.scss';
-@import 'general/go-to-links.scss';
+@import './general/buttons.scss';
+@import './general/go-to-links.scss';
 
 
 // everything related to forms
-@import 'general/forms.scss';
+@import './general/forms.scss';
 
 // hero images
-@import 'general/hero.scss';
+@import './general/hero.scss';
 
 
 /* ---------------------------------------------------------------------- *\
@@ -56,13 +64,7 @@ $REMsupport: false;
   - transitions for elements fetched with AJAX
 \* ---------------------------------------------------------------------- */
 
-@import 'general/dynamic-loaders.scss';
-
-
-
-
-
-
+@import './general/dynamic-loaders.scss';
 
 /* ---------------------------------------------------------------------- *\
   EXPERIMENTS

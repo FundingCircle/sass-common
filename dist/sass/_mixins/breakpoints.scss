@@ -1,9 +1,4 @@
 $ie: true;
-/* ---------------------------------------------------------------------- *\
-  MEDIA QUERIES
-  if one argument is set to false, it will be ignored 
-  eg breakPoints(false,500px) -> only max-width
-\* ---------------------------------------------------------------------- */
 
 @mixin breakPoints($min,$max) {
   
@@ -27,10 +22,6 @@ $ie: true;
 }
 
 
-
-/* ---------------------------------------------------------------------- *\
-  GENERATE STATIC SHOW / HIDE HARDCODED
-\* ---------------------------------------------------------------------- */
 
 @mixin breakPointsCols {
   [class^="show-"] { display: none; }
@@ -63,11 +54,6 @@ $ie: true;
 
 
 
-/* ---------------------------------------------------------------------- *\
-  HIDE TABLES ON BREAKPOINTS
-  choose between what points to hide a certain element
-\* ---------------------------------------------------------------------- */
-
 @mixin hideBetweenWidths($minVal:false,$maxVal:false) {
   @include breakPoints($minVal,$maxVal) { display: none; }
 }
@@ -77,12 +63,6 @@ $ie: true;
 }
 
 
-
-/* ---------------------------------------------------------------------- *\
-  SHOW TABLES ONLY ON BREAKPOINTS
-  choose between what points to show a certain element
-  $displayType: default is block, but can be overwritten with other vals
-\* ---------------------------------------------------------------------- */
 
 @mixin showBetweenWidths($minVal:false,$maxVal:false,$displayType: block) {
   display: none;

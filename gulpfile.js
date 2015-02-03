@@ -63,7 +63,7 @@ gulp.task('build:mixins', function() {
 paths.source.sassTemp = paths.source.root + '/sass/style.scss';
 
 gulp.task('styleguide:generate', function() {
-  return gulp.src(paths.source.root + '/sass/**/*')
+  return gulp.src(paths.source.root + '/sass/**/*.scss')
     .pipe(styleguide.generate({
         title: 'Funding Circle Styleguide',
         server: true,
@@ -86,7 +86,7 @@ gulp.task('styleguide:applystyles', function() {
 
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], ['styleguide:generate', 'styleguide:applystyles'], callback);
+  sequence('clean', ['build:mixins', 'build:icon-font'], ['styleguide:generate','styleguide:applystyles'], callback);
 });
 
 gulp.task('default', ['build']);

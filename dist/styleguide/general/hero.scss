@@ -1,0 +1,65 @@
+/* ---------------------------------------------------------------------- *\
+  HERO
+  - customize new hero images by adding a data-backgrond attr to &
+\* ---------------------------------------------------------------------- */
+
+
+.hero-wrap {
+  background: none no-repeat center top;
+  background-size: cover;
+  padding: rem(2 0 0);
+
+  h1 {
+    @include font(4);
+    margin-bottom: rem(1);
+    font-weight: 400;
+  }
+
+  h2 {
+    @include font(2,true,300);
+  }
+
+  aside {
+    @include font(-1);
+    padding: rem(0.8);
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    color: $colorFontLight;
+  }
+
+  @include breakPoints(false,$bpMobilePortraitLarge) {
+    text-align: center;
+
+    h1 {
+      @include font(4);
+    }
+
+    h2 {
+      @include font(0);
+    }
+
+    aside {
+      display: none;
+    }
+  }
+
+  @include breakPoints($bpMobilePortraitLarge,$bpMobileLandscape) {
+    padding-top: rem(3);
+
+    h1 {
+      @include font(3);
+      width: 70%;
+    }
+  }
+
+  @include breakPoints($bpMobileLandscape,false) {
+    padding-top: rem(6);
+
+    aside {
+      margin: rem(0 2 3 0);
+      max-width: 30%;
+      float: right;
+    }
+  }
+  
+}
