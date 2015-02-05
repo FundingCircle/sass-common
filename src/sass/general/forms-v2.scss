@@ -384,24 +384,67 @@ body {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------- *\
+  MESSAGES
+  - .message / --error / --warning / --success
+\* ---------------------------------------------------------------------- */
+
 .message {
-  @extend .fci-icons;
+  @extend .fci-icon;
   @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
   background: rgb(255,255,255);
   padding: rem(.7 1);
   margin-bottom: rem(2);
+  position: relative;
 
   $borderColor: $colorMessage;
+  
   @include breakPoints(0, $formBreakpoint) {
     border-bottom: 4px solid $borderColor;
+    text-align: center;
+
+    &:before {
+      margin: rem(0 auto 1);
+    }
   }
 
   @include breakPoints($formBreakpoint, false) {
     border-left: 4px solid $borderColor;
+    padding-left: rem(5);
+
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: rem(1);
+      margin: auto 0;
+    }
   }
 
   & > :last-child {
     margin-bottom: 0;
+  }
+
+  &:before { 
+    color: $borderColor; 
+    display: block;
+    font-size: rem(2.5);
+    line-height: rem(2.5);
+    height: rem(2.5);
   }
 
   &_title {
@@ -414,6 +457,24 @@ body {
     @extend .message;
 
     $borderColor: $colorError;
+    
+    &:before { color: $borderColor; }
+    
+    @include breakPoints(0, $formBreakpoint) {
+      border-bottom-color: $borderColor;
+    }
+
+    @include breakPoints($formBreakpoint, false) {
+      border-left: 4px solid $borderColor;
+    }
+  }
+
+  &--warning {
+    @extend .message;
+
+    $borderColor: $colorWarning;
+
+    &:before { color: $borderColor; }
 
     @include breakPoints(0, $formBreakpoint) {
       border-bottom-color: $borderColor;
@@ -430,6 +491,8 @@ body {
 
     $borderColor: $colorSuccess;
     
+    &:before { color: $borderColor; }
+
     @include breakPoints(0, $formBreakpoint) {
       border-bottom-color: $borderColor;
     }
@@ -439,6 +502,12 @@ body {
     }
   }  
 }
+
+
+
+
+
+
 
 
 

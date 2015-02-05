@@ -50,3 +50,22 @@
   @extend .fci-icon;
   @extend .fci-close;
 }
+
+.message {
+
+  &:before {
+    @extend .fci-icon;
+    @extend .fci-info;
+  }
+
+  &--error:before,
+  &--warning:before { 
+    @extend .fci-icon;
+    @extend .fci-attention; 
+  }
+
+  &--success:before {
+    @extend .fci-icon;
+    @extend .fci-tick;
+  }
+}

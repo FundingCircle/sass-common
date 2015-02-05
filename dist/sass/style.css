@@ -1338,20 +1338,41 @@ body {
     /* FONT Family */
     margin: 3.2px 0; }
 
-.message, .message--error, .message--success {
+/* ---------------------------------------------------------------------- *\
+  MESSAGES
+  - .message / --error / --warning / --success
+\* ---------------------------------------------------------------------- */
+.message, .message--error, .message--warning, .message--success {
   -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
   background: white;
   padding: 11.2px 16px;
-  margin-bottom: 32px; }
+  margin-bottom: 32px;
+  position: relative; }
   @media only screen and (min-width: 0px) and (max-width: 639px) {
-    .message, .message--error, .message--success {
-      border-bottom: 4px solid #c028b9; } }
+    .message, .message--error, .message--warning, .message--success {
+      border-bottom: 4px solid #c028b9;
+      text-align: center; }
+      .message:before, .message--error:before, .message--warning:before, .message--success:before {
+        margin: 0 auto 16px; } }
   @media only screen and (min-width: 640px) {
-    .message, .message--error, .message--success {
-      border-left: 4px solid #c028b9; } }
-  .message > :last-child, .message--error > :last-child, .message--success > :last-child {
+    .message, .message--error, .message--warning, .message--success {
+      border-left: 4px solid #c028b9;
+      padding-left: 80px; }
+      .message:before, .message--error:before, .message--warning:before, .message--success:before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 16px;
+        margin: auto 0; } }
+  .message > :last-child, .message--error > :last-child, .message--warning > :last-child, .message--success > :last-child {
     margin-bottom: 0; }
+  .message:before, .message--error:before, .message--warning:before, .message--success:before {
+    color: #c028b9;
+    display: block;
+    font-size: 40px;
+    line-height: 40px;
+    height: 40px; }
   .message_title {
     /* CALCULATE THE FONT SIZE */
     font-size: 26px;
@@ -1364,12 +1385,24 @@ body {
     /* FONT Family */
     display: block;
     margin-bottom: 8px; }
+  .message--error:before {
+    color: #d60036; }
   @media only screen and (min-width: 0px) and (max-width: 639px) {
     .message--error {
       border-bottom-color: #d60036; } }
   @media only screen and (min-width: 640px) {
     .message--error {
       border-left: 4px solid #d60036; } }
+  .message--warning:before {
+    color: #ffc744; }
+  @media only screen and (min-width: 0px) and (max-width: 639px) {
+    .message--warning {
+      border-bottom-color: #ffc744; } }
+  @media only screen and (min-width: 640px) {
+    .message--warning {
+      border-left: 4px solid #ffc744; } }
+  .message--success:before {
+    color: #009c50; }
   @media only screen and (min-width: 0px) and (max-width: 639px) {
     .message--success {
       border-bottom-color: #009c50; } }
