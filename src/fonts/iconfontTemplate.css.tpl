@@ -34,7 +34,8 @@
 <% }); %>
 
 .list-checked > *:before,
-.list-checked--reversed > *:before {
+.list-checked--reversed > *:before,
+.form-checkbox span:before {
   @extend .fci-icon;
   @extend .fci-tick;
 } 

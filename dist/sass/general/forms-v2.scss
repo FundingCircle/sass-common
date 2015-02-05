@@ -440,3 +440,159 @@ body {
     }
   }  
 }
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CUSTOM CHECKBOXES AND RADIO BUTTONS
+  - .form-radio / .form-checkbox if you don't want the positioning
+  - .form-radio.form-radio--top/right/bottom/left if you want the positioning
+\* ---------------------------------------------------------------------- */
+
+$radioAndCheckboxSize: 24px;
+
+
+.form {
+
+  &-radio,
+  &-checkbox {
+    position: relative;
+    
+    input {
+      position: absolute;
+      top: 0;
+      left: -9999px;
+    }
+
+    label {
+
+      span {
+        position: relative;
+        display: block;
+        height: $radioAndCheckboxSize;
+        width: $radioAndCheckboxSize;
+      
+        &:before,
+        &:after {
+          @include centerAbs(1);
+          display: block;
+        }
+
+        &:after {
+          @extend %insetElement;
+          content: '';
+          background: rgb(255,255,255);
+          border: 1px solid $formInputBorderMain;
+        }
+
+        &:before {
+          z-index: 2;
+        }
+      }
+    }
+
+    &--left { @extend %posLeft; }
+    &--right { @extend %posRight; }
+    &--bottom { @extend %posBottom; }
+    &--top { @extend %posTop; }
+  }
+
+  &-radio {
+    label {
+      span {
+        &:before, 
+        &:after {
+          @include borderRadius(50, '%');
+        }
+
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          background: $colorCtaPrimary;
+
+        }
+      }
+    }
+  
+    input:checked ~ label span:before {
+      width: $radioAndCheckboxSize / 2;
+      height: $radioAndCheckboxSize / 2;
+    }
+
+  }
+
+  &-checkbox {
+    label {
+      span {
+        &:before {
+          right: auto;
+          margin: auto 0 auto 15%;
+          line-height: $radioAndCheckboxSize;
+          color: $colorCtaPrimary;
+          overflow: hidden;
+          width: 0;
+        }
+      }
+    }
+    input:checked ~ label span:before {
+      width: 70%;
+    }
+  }
+
+}
+
+
+
+
+
+%posLeft {
+  label {
+    padding-left: $radioAndCheckboxSize + 5;
+    line-height: $radioAndCheckboxSize;
+
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  
+  }
+}
+
+%posRight {
+  label {
+    padding-right: $radioAndCheckboxSize + 5;
+    line-height: $radioAndCheckboxSize;
+    text-align: right;
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  
+  }
+}
+
+%posTop {
+  label {
+    span { margin: 0 auto 5px; }
+    text-align: center;
+  }
+}
+
+%posBottom {
+  label {
+    padding-bottom: $radioAndCheckboxSize + 5;
+    span { 
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto; 
+    }
+    text-align: center;
+  }
+}
+

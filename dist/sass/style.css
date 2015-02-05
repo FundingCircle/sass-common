@@ -1378,6 +1378,90 @@ body {
       border-left: 4px solid #009c50; } }
 
 /* ---------------------------------------------------------------------- *\
+  CUSTOM CHECKBOXES AND RADIO BUTTONS
+  - .form-radio / .form-checkbox if you don't want the positioning
+  - .form-radio.form-radio--top/right/bottom/left if you want the positioning
+\* ---------------------------------------------------------------------- */
+.form-radio, .form-checkbox {
+  position: relative; }
+  .form-radio input, .form-checkbox input {
+    position: absolute;
+    top: 0;
+    left: -9999px; }
+  .form-radio label span, .form-checkbox label span {
+    position: relative;
+    display: block;
+    height: 24px;
+    width: 24px; }
+    .form-radio label span:before, .form-radio label span:after, .form-checkbox label span:before, .form-checkbox label span:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      margin: auto;
+      display: block; }
+    .form-radio label span:after, .form-checkbox label span:after {
+      content: '';
+      background: white;
+      border: 1px solid #dddddd; }
+    .form-radio label span:before, .form-checkbox label span:before {
+      z-index: 2; }
+.form-radio label span:before, .form-radio label span:after {
+  -webkit-border-radius: 50%;
+  border-radius: 50%; }
+.form-radio label span:before {
+  content: '';
+  width: 0;
+  height: 0;
+  background: #3a77c1; }
+.form-radio input:checked ~ label span:before {
+  width: 12px;
+  height: 12px; }
+.form-checkbox label span:before {
+  right: auto;
+  margin: auto 0 auto 15%;
+  line-height: 24px;
+  color: #3a77c1;
+  overflow: hidden;
+  width: 0; }
+.form-checkbox input:checked ~ label span:before {
+  width: 70%; }
+
+.form-radio--left label, .form-checkbox--left label {
+  padding-left: 29px;
+  line-height: 24px; }
+  .form-radio--left label span, .form-checkbox--left label span {
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.form-radio--right label, .form-checkbox--right label {
+  padding-right: 29px;
+  line-height: 24px;
+  text-align: right; }
+  .form-radio--right label span, .form-checkbox--right label span {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.form-radio--top label, .form-checkbox--top label {
+  text-align: center; }
+  .form-radio--top label span, .form-checkbox--top label span {
+    margin: 0 auto 5px; }
+
+.form-radio--bottom label, .form-checkbox--bottom label {
+  padding-bottom: 29px;
+  text-align: center; }
+  .form-radio--bottom label span, .form-checkbox--bottom label span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto; }
+
+/* ---------------------------------------------------------------------- *\
   HERO
   - customize new hero images by adding a data-backgrond attr to &
 \* ---------------------------------------------------------------------- */
