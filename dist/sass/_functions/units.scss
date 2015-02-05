@@ -128,12 +128,16 @@ $ie: true;
     @if $REMsupport {
       @if $unit == rem {
         $multiplier: $val * 1rem;
+      } @else if $unit == unquote('%') {
+        $multiplier: $val * 1%;
       } @else {
         $multiplier: $val / $fontSizeBase * 1rem;
       }
     } @else {
       @if $unit == rem {
         $multiplier: $val * $fontSizeBase * 1px;
+      } @else if $unit == unquote('%') {
+        $multiplier: $val * 1%;
       } @else {
         $multiplier: $val * 1px;
       }

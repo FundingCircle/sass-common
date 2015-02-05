@@ -245,7 +245,7 @@ a {
   a:hover {
     text-decoration: underline; }
 
-p {
+p, .tooltip_text {
   margin: 0 0 1em; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1089,7 +1089,7 @@ body {
       /* FONT STYLE */
       /* FONT VARIANT */
       /* FONT Family */ }
-    .form-default_info-box p {
+    .form-default_info-box p, .form-default_info-box .tooltip_text {
       /* CALCULATE THE FONT SIZE */
       font-size: 13px;
       /* LINE HEIGHT */
@@ -1460,6 +1460,104 @@ body {
     left: 0;
     right: 0;
     margin: 0 auto; }
+
+/* ---------------------------------------------------------------------- *\
+  TOOLTIPS
+  - text to click / hover goes into .tooltip_trigger
+  - if tooltip_clickable, then the parent should toggle class .is-active
+  - is-right if doesn't fit in left
+\* ---------------------------------------------------------------------- */
+.tooltip {
+  position: relative; }
+  .tooltip_content {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 13px;
+    /* LINE HEIGHT */
+    line-height: 16px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    position: absolute;
+    bottom: 100%;
+    left: -32px;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 4.8px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4.8px 0 rgba(0, 0, 0, 0.1);
+    display: block;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    overflow: hidden;
+    background: white;
+    min-width: 220px;
+    max-width: 450px;
+    padding: 16px;
+    border-top: 4px solid #c028b9;
+    margin-bottom: 16px; }
+    .tooltip_content:before {
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 16px solid white;
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      position: absolute;
+      bottom: -15px;
+      left: 24px;
+      content: ''; }
+    .tooltip_content.is-right {
+      left: auto;
+      right: -32px; }
+      .tooltip_content.is-right:before {
+        left: auto;
+        right: 24px; }
+  .tooltip_title {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 20px;
+    /* LINE HEIGHT */
+    line-height: 24px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    display: block;
+    color: #c028b9;
+    margin-bottom: 8px; }
+  .tooltip_text {
+    display: block; }
+    .tooltip_text:last-child {
+      margin-bottom: 0; }
+  .tooltip_symbol {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    line-height: 1.2em;
+    font-size: .8em;
+    text-align: center;
+    color: white;
+    background: #575757;
+    cursor: pointer; }
+    .tooltip_symbol:before {
+      content: '?'; }
+    .tooltip_symbol:hover {
+      background: #3a77c1; }
+  .tooltip.is-active .tooltip_content, .tooltip .tooltip_trigger:not(.tooltip_clickable):hover + .tooltip_content {
+    overflow: visible;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    z-index: 100; }
+  .tooltip_close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #575757; }
+    .tooltip_close:hover {
+      text-decoration: none;
+      color: #3a77c1; }
 
 /* ---------------------------------------------------------------------- *\
   HERO

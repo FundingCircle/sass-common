@@ -35,7 +35,12 @@
 
 .list-checked > *:before,
 .list-checked--reversed > *:before,
-.form-checkbox span:before {
+.form-checkbox tt {
   @extend .fci-icon;
   @extend .fci-tick;
 } 
+
+.tooltip_close {
+  @extend .fci-icon;
+  @extend .fci-close;
+}

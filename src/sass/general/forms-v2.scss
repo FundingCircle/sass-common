@@ -595,3 +595,110 @@ $radioAndCheckboxSize: 24px;
   }
 }
 
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TOOLTIPS
+  - text to click / hover goes into .tooltip_trigger
+  - if tooltip_clickable, then the parent should toggle class .is-active
+  - is-right if doesn't fit in left
+\* ---------------------------------------------------------------------- */
+
+.tooltip {
+  position: relative;
+
+  $arrowPadding: 1;
+  $arrowWidth: 1;
+
+  &_content {
+    @include font(-1, true);
+    @include posAbs(false, false, 100%, negative($arrowPadding + $arrowWidth), -1);    
+    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1)); 
+
+    display: block;
+    @include opacity(0);
+    overflow: hidden;
+    background: rgb(255,255,255);
+    min-width: 220px;
+    max-width: 450px;
+    padding: rem(1);
+    border-top: 4px solid $ColorBrand1;
+    margin-bottom: rem(1);
+
+    &:before {
+      @include triangle(down, rgb(255,255,255), ($arrowWidth * 2) $arrowWidth);
+      @include posAbs(false, false, -15px, $arrowPadding + .5);
+      content: '';
+    }
+
+    &.is-right {
+      left: auto;
+      right: rem(negative($arrowPadding + $arrowWidth));
+
+      &:before {
+        left: auto;
+        right: rem($arrowPadding + .5);
+      }
+    }
+  }
+
+  &_title {
+    @include font(1, true);
+    display: block;
+    color: $ColorBrand1;
+    margin-bottom: rem(.5);
+  }
+
+  &_text {
+    @extend p;
+    display: block;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &_symbol {
+    @include borderRadius(50, '%');
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    line-height: 1.2em;
+    font-size: .8em;
+    text-align: center;
+    color: $colorFontLight;
+    background: $colorCtaNav;
+    cursor: pointer;
+
+    &:before {
+      content: '?';
+    }
+    
+    &:hover {
+      background: $colorCtaPrimary;
+    }
+  }
+
+  &.is-active,
+  .tooltip_trigger:not(.tooltip_clickable):hover + {
+    .tooltip_content {
+      // display: block;
+      overflow: visible;
+      @include opacity(1);
+      z-index: 100;
+    }
+  }
+
+  &_close {
+    position: absolute;
+    top: rem(1);
+    right: rem(1);
+    color: $colorCtaNav;
+
+    &:hover {
+      text-decoration: none;
+      color: $colorCtaPrimary;
+    }
+  }
+}
