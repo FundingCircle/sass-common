@@ -8,8 +8,6 @@ $REMsupport: false;
 
 
 
-
-
 // PREREQUISITES
 // 
 // Mandatory imports
@@ -52,7 +50,8 @@ $REMsupport: false;
 
 
 // everything related to forms
-@import './general/forms.scss';
+// @import './general/forms.scss';
+@import './general/forms-v2.scss';
 
 // hero images
 @import './general/hero.scss';
@@ -65,9 +64,6 @@ $REMsupport: false;
 
 @import './general/dynamic-loaders.scss';
 
-/* ---------------------------------------------------------------------- *\
-  EXPERIMENTS
-  - should be removed on production
-\* ---------------------------------------------------------------------- */
 
-// @import './_experiments';
+
+

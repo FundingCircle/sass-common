@@ -54,7 +54,7 @@ $fontFamilyDefault: 'Source Sans Pro', sans-serif;
 // 
 // Styleguide 5.4
 
-$defaultColsPadding: rem(1);
+$defaultColsPadding: $fontSizeBase * 1px;
 
 
 // Hardcoded sizes

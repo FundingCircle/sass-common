@@ -84,9 +84,14 @@ gulp.task('styleguide:applystyles', function() {
     .pipe(gulp.dest(paths.build.styleguide));
 });
 
+gulp.task('sass', function () {
+    gulp.src(paths.source.root + '/sass/style.scss')
+        .pipe(sass())
+        .pipe(gulp.dest(paths.build.sass));
+});
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], ['styleguide:generate','styleguide:applystyles'], callback);
+  sequence('clean', ['build:mixins', 'build:icon-font'], 'sass', callback);
 });
 
 gulp.task('default', ['build']);

@@ -111,7 +111,6 @@ $ie: true;
   $multiplier: $val;
   
   // default $unit value
-  // $unit: unquote(unit($val));
   $unit: rem;
 
   @if type-of($val) == number and $val != 0 {
@@ -181,4 +180,3 @@ $ie: true;
   @return $cVal;
 }
 
-  @warn rem(10);

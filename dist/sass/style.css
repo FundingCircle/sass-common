@@ -19,7 +19,7 @@
   - $pseudo: false -> the element becomes the clearer
   - $extend: false -> useful for break points, applies in place
 \* ---------------------------------------------------------------------- */
-.cl--a:after {
+.cl--a:after, .form-default:after {
   content: '';
   display: table;
   width: 100%;
@@ -107,6 +107,25 @@
   $function: ease / linear / ease-in / ease-out / ease-in-out
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
+  RESET UL
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
+  ANIMATION
+  
+  @include keyframes(slide-down) {
+    0% { opacity: 1; }
+    90% { opacity: 0; }
+  }
+
+  .element {
+    width: 100px;
+    height: 100px;
+    background: black;
+    @include animation('slide-down 5s 3');
+  }
+
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
   FONTS
 
   formula for font size: f(i) = round(f(0) * r^(i/2)),
@@ -121,9 +140,6 @@
   $fontStyle: normal, italic, oblique
   $fontVariant: normal, small-caps, etc.
   $fontFamily: $fontFamilyDefault
-\* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *\
-  CUSTOM FORMS
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
   CENTER BLOCK 
@@ -311,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .upper-title {
   /* CALCULATE THE FONT SIZE */
-  font-size: 8px;
+  font-size: 13px;
   /* LINE HEIGHT */
   line-height: 16px;
   /* FONT WEIGHT */
@@ -369,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
       border-width: 2px; }
 
 .side-menu {
-  padding: rem(1);
+  padding: 16px;
   background: #e8e8e8; }
   .side-menu_wrap {
     padding: 0; }
@@ -379,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
         position: relative; }
         .side-menu_wrap .side-menu .header_trigger--close {
           /* CALCULATE THE FONT SIZE */
-          font-size: 68px;
+          font-size: 26px;
           /* LINE HEIGHT */
           line-height: 48px;
           /* FONT WEIGHT */
@@ -411,7 +427,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 16px; }
     .side-menu_subcat a {
       /* CALCULATE THE FONT SIZE */
-      font-size: 8px;
+      font-size: 13px;
       /* LINE HEIGHT */
       /* FONT WEIGHT */
       /* FONT STYLE */
@@ -457,9 +473,9 @@ h1, h2, h3, h4, h5, h6 {
     .struct-sls > *:nth-child(3) {
       width: 21.65475%; }
   @media only screen and (min-width: 0px) and (max-width: 639px) {
-    main[data-role="wrap"] .struct-sls {
+    body .struct-sls {
       display: block; }
-      main[data-role="wrap"] .struct-sls > *, main[data-role="wrap"] .struct-sls > *[class*="col-"] {
+      body .struct-sls > *, body .struct-sls > *[class*="col-"] {
         display: block;
         width: 100%; } }
   @media only screen and (max-width: false-1) {
@@ -473,7 +489,7 @@ h1, h2, h3, h4, h5, h6 {
 .col-2nd {
   padding: 0;
   /* CALCULATE THE FONT SIZE */
-  font-size: 8px;
+  font-size: 13px;
   /* LINE HEIGHT */
   line-height: 16px;
   /* FONT WEIGHT */
@@ -484,9 +500,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 24px; }
   .col-2nd h4 {
     /* CALCULATE THE FONT SIZE */
-    font-size: 33px;
+    font-size: 20px;
     /* LINE HEIGHT */
-    line-height: 40px;
+    line-height: 24px;
     /* FONT WEIGHT */
     font-weight: 300;
     /* FONT STYLE */
@@ -733,9 +749,9 @@ h1, h2, h3, h4, h5, h6 {
     /* FONT Family */ }
   .article-main h2 {
     /* CALCULATE THE FONT SIZE */
-    font-size: 68px;
+    font-size: 26px;
     /* LINE HEIGHT */
-    line-height: 72px;
+    line-height: 32px;
     /* FONT WEIGHT */
     font-weight: 300;
     /* FONT STYLE */
@@ -743,9 +759,9 @@ h1, h2, h3, h4, h5, h6 {
     /* FONT Family */ }
   .article-main h3 {
     /* CALCULATE THE FONT SIZE */
-    font-size: 33px;
+    font-size: 20px;
     /* LINE HEIGHT */
-    line-height: 40px;
+    line-height: 24px;
     /* FONT WEIGHT */
     font-weight: 300;
     /* FONT STYLE */
@@ -759,9 +775,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #383838; }
   .emp-box h4 {
     /* CALCULATE THE FONT SIZE */
-    font-size: 33px;
+    font-size: 20px;
     /* LINE HEIGHT */
-    line-height: 40px;
+    line-height: 24px;
     /* FONT WEIGHT */
     font-weight: 300;
     /* FONT STYLE */
@@ -850,7 +866,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 24px; }
   .btn--s2 {
     /* CALCULATE THE FONT SIZE */
-    font-size: 8px;
+    font-size: 13px;
     /* LINE HEIGHT */
     line-height: 40px;
     /* FONT WEIGHT */
@@ -891,98 +907,475 @@ form h3 {
   font-weight: 400; }
 
 /* ---------------------------------------------------------------------- *\
-  FORM ELEMENTS
+  FORMS
 \* ---------------------------------------------------------------------- */
-input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
+@-webkit-keyframes loopRotate {
+  0% {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-moz-keyframes loopRotate {
+  0% {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-ms-keyframes loopRotate {
+  0% {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-o-keyframes loopRotate {
+  0% {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes loopRotate {
+  0% {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+::-webkit-input-placeholder {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  font-style: italic;
+  color: #383838; }
+
+:-moz-placeholder {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  font-style: italic;
+  color: #383838; }
+
+::-moz-placeholder {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  font-style: italic;
+  color: #383838; }
+
+:-ms-input-placeholder {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  font-style: italic;
+  color: #383838; }
+
+body {
+  background: #f6f5f3; }
+
+.super-bold {
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.form-default {
+  background: #e9e7e5;
+  padding: 32px;
+  margin-bottom: 48px;
   /* CALCULATE THE FONT SIZE */
   font-size: 16px;
   /* LINE HEIGHT */
-  line-height: 48px;
   /* FONT WEIGHT */
   /* FONT STYLE */
   /* FONT VARIANT */
   /* FONT Family */
-  display: block;
-  width: 100%;
-  height: 48px;
-  margin-bottom: 32px;
-  padding: 0 16px;
-  line-height: 48px;
-  border: 1px solid #cccccc; }
-  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):focus, input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):hover {
-    border-color: #3a77c1; }
-  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]).success {
-    border-left: 4.8px solid #009c50; }
-  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]).error {
-    border-left: 4.8px solid #d60036; }
-  .col-2nd input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
-    -webkit-border-radius: 4.8px;
-    border-radius: 4.8px;
-    height: 32px;
-    margin-bottom: 16px;
-    padding: 0 8px;
-    line-height: 32px; }
+  color: #383838;
+  border: none; }
+  @media only screen and (min-width: 640px) {
+    .form-default {
+      float: left;
+      width: 66%; } }
+  @media only screen and (min-width: 480px) {
+    .form-default_dob-wrap {
+      display: table;
+      width: 100%;
+      margin-bottom: 32px; }
+      .form-default_dob-wrap > * {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0; }
+        .form-default_dob-wrap > *:nth-child(1) {
+          width: 19.09883%; }
+        .form-default_dob-wrap > *:nth-child(2) {
+          width: 49.99927%; }
+        .form-default_dob-wrap > *:nth-child(3) {
+          width: 30.9019%; }
+      .form-default_dob-wrap > *:nth-child(2) {
+        padding: 0 16px; } }
+  @media only screen and (min-width: 480px) {
+    .form-default_date-wrap {
+      display: table;
+      width: 100%; }
+      .form-default_date-wrap > * {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0; }
+        .form-default_date-wrap > *:nth-child(1) {
+          width: 72.35984%; }
+        .form-default_date-wrap > *:nth-child(2) {
+          width: 27.64016%; }
+      .form-default_date-wrap > *:first-child {
+        padding-right: 16px; } }
+  .form-default_info-box {
+    background: white;
+    padding: 24px; }
+    @media only screen and (min-width: 0px) and (max-width: 639px) {
+      .form-default_info-box {
+        border-bottom: 4px solid #c028b9; } }
+    @media only screen and (min-width: 640px) {
+      .form-default_info-box {
+        float: right;
+        width: 33.3%;
+        border-left: 4px solid #c028b9; } }
+    .form-default_info-box h5 {
+      color: #c028b9;
+      /* CALCULATE THE FONT SIZE */
+      font-size: 16px;
+      /* LINE HEIGHT */
+      line-height: 24px;
+      /* FONT WEIGHT */
+      font-weight: 400;
+      /* FONT STYLE */
+      /* FONT VARIANT */
+      /* FONT Family */ }
+    .form-default_info-box p {
+      /* CALCULATE THE FONT SIZE */
+      font-size: 13px;
+      /* LINE HEIGHT */
+      line-height: 16px;
+      /* FONT WEIGHT */
+      /* FONT STYLE */
+      /* FONT VARIANT */
+      /* FONT Family */ }
+  .form-default > .btn {
+    float: right; }
+  .form-default label {
+    display: block;
+    font-weight: 300;
+    margin-bottom: 8px; }
+    .form-default label.required:after {
+      content: '*';
+      color: #3a77c1;
+      padding-left: 0.3em; }
+  .form-default_wrap h1 {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 42px;
+    /* LINE HEIGHT */
+    line-height: 48px;
+    /* FONT WEIGHT */
+    font-weight: 300;
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */ }
+  .form-default_wrap h2 {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 26px;
+    /* LINE HEIGHT */
+    line-height: 32px;
+    /* FONT WEIGHT */
+    font-weight: 300;
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    margin-bottom: 16px; }
+  .form-default_element {
+    position: relative;
+    margin-bottom: 32px; }
+    .form-default_element.is-loading:before {
+      content: '';
+      display: block;
+      background: url(url(../img/input-loader.gif)) no-repeat center center;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 9.6px;
+      right: 9.6px;
+      -webkit-animation: loopRotate 2s linear infinite;
+      -moz-animation: loopRotate 2s linear infinite;
+      -ms-animation: loopRotate 2s linear infinite;
+      -o-animation: loopRotate 2s linear infinite;
+      animation: loopRotate 2s linear infinite; }
+  .form-default input:not([type="checkbox"]):not([type="radio"]), .form-default .select, .form-default textarea {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 16px;
+    /* LINE HEIGHT */
+    line-height: 40px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    min-height: 40px;
+    display: block;
+    width: 100%;
+    background: white;
+    border: none;
+    outline: 1px solid #dddddd;
+    padding: 0 16px;
+    outline-offset: initial; }
+    .form-default input:not([type="checkbox"]):not([type="radio"]):focus, .form-default .select:focus, .form-default textarea:focus {
+      outline-color: #37b0c9; }
+    .form-default input:not([type="checkbox"]):not([type="radio"]).valid, .form-default .select.valid, .form-default textarea.valid {
+      border-right: 4px solid #009c50; }
+    .form-default input:not([type="checkbox"]):not([type="radio"]).error, .form-default .select.error, .form-default textarea.error {
+      outline-color: #d60036;
+      color: #d60036; }
+  .form-default input:not([type="checkbox"]):not([type="radio"]), .form-default textarea {
+    -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2); }
+  .form-default .select {
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); }
+  .form-default textarea {
+    resize: none; }
+  .form-default .select {
+    height: 40px;
+    position: relative; }
+    .form-default .select:before, .form-default .select:after {
+      content: '';
+      display: block;
+      position: absolute; }
+    html:not(.ie) .form-default .select:before {
+      width: 41.6px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      border-left: 1px solid #dddddd; }
+    html:not(.ie) .form-default .select:after {
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 8px solid #dddddd;
+      border-left: 5.6px solid transparent;
+      border-right: 5.6px solid transparent;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 16.64px;
+      margin: auto 0; }
+    .form-default .select select {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      padding: 0 16px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      background: none;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      vertical-align: middle; }
+      .ie .form-default .select select {
+        padding: 8px 16px; }
+      .form-default .select select::-ms-expand {
+        display: none; }
+      .form-default .select select:focus {
+        -moz-outline-style: none;
+        outline-style: none; }
+    .form-default .select option {
+      padding: 8px 16px; }
+  .form-default .error-message {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 16px;
+    /* LINE HEIGHT */
+    line-height: 24px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    margin-top: 16px;
+    position: relative;
+    width: 100%;
+    color: white;
+    background: #d60036;
+    padding: 12.8px 16px; }
+    .form-default .error-message:before {
+      display: block;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid #d60036;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 32px; }
+  .form-default .form-default_tooltip {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 16px;
+    /* LINE HEIGHT */
+    line-height: 24px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    -webkit-box-shadow: 0 0 4.8px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4.8px 0 rgba(0, 0, 0, 0.1);
+    height: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: white;
+    color: #c028b9;
+    overflow: hidden; }
+    .form-default .form-default_tooltip:before {
+      content: '';
+      position: absolute; }
+    .form-default .form-default_tooltip.is-visible {
+      height: auto;
+      padding: 12.8px 16px;
+      overflow: visible; }
+    @media only screen and (min-width: 0px) and (max-width: 639px) {
+      .form-default .form-default_tooltip.is-visible {
+        margin-bottom: 16px; }
+        .form-default .form-default_tooltip.is-visible:before {
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 10px solid white;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          bottom: -10px;
+          left: 32px; } }
+    @media only screen and (min-width: 640px) {
+      .form-default .form-default_tooltip {
+        width: 250px;
+        position: absolute;
+        left: 100%;
+        margin-left: 16px; }
+        .form-default .form-default_tooltip.is-visible:before {
+          display: block;
+          width: 0;
+          height: 0;
+          border-right: 10px solid white;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          top: 12.8px;
+          left: -10px; } }
+  .form-default_autocomplete {
+    margin: 0;
+    padding: 0;
+    background: white;
+    outline: 1px solid #3a77c1;
+    color: #3a77c1;
+    text-transform: uppercase; }
+    .form-default_autocomplete li {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+    .form-default_autocomplete li {
+      padding: 8px;
+      cursor: pointer; }
+      .form-default_autocomplete li:hover, .form-default_autocomplete li:first-child {
+        font-weight: 600; }
+      .form-default_autocomplete li:not(:last-child) {
+        border-bottom: 1px solid #3a77c1; }
+  .form-default_chars-left {
+    text-align: right;
+    /* CALCULATE THE FONT SIZE */
+    font-size: 13px;
+    /* LINE HEIGHT */
+    line-height: 16px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    margin: 3.2px 0; }
 
-/* ---------------------------------------------------------------------- *\
-  CUSTOM FORMS
-  customize the radio and checkbox inputs
-\* ---------------------------------------------------------------------- */
-.form-radio label:before, .form-radio--right label:after, .form-radio--center-up label:before, .form-radio--center-down label:after {
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background: white; }
-
-.form-radio input[type="radio"]:checked + label:before, .form-radio--right input[type="radio"]:checked + label:after, .form-radio--center-up input[type="radio"]:checked + label:before, .form-radio--center-down input[type="radio"]:checked + label:after {
-  background: #3a77c1; }
-
-.form-checkbox label:before, .form-checkbox--right label:after, .form-checkbox--center-up label:before, .form-checkbox--center-down label:after {
+.message, .message--error, .message--success {
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
   background: white;
-  border: 1px solid #3a77c1; }
-
-.form-checkbox input[type="checkbox"]:checked + label:before, .form-checkbox--right input[type="checkbox"]:checked + label:after, .form-checkbox--center-up input[type="checkbox"]:checked + label:before, .form-checkbox--center-down input[type="checkbox"]:checked + label:after {
-  background: #3a77c1; }
-
-.form-radio, .form-checkbox, .form-radio--right, .form-radio--center-up, .form-radio--center-down, .form-checkbox--right, .form-checkbox--center-up, .form-checkbox--center-down {
-  position: relative;
-  text-align: left; }
-
-.form-radio--right, .form-checkbox--right {
-  padding-right: 16.5px;
-  text-align: right; }
-
-.form-radio--center-down, .form-checkbox--center-down, .form-radio--center-up, .form-checkbox--center-up {
-  text-align: center; }
-
-.form-radio, .form-checkbox {
-  padding-left: 24px; }
-
-.form-radio input[type="radio"], .form-radio--right input[type="radio"], .form-radio--center-up input[type="radio"], .form-radio--center-down input[type="radio"], .form-checkbox input[type="checkbox"], .form-checkbox--right input[type="checkbox"], .form-checkbox--center-up input[type="checkbox"], .form-checkbox--center-down input[type="checkbox"] {
-  position: absolute;
-  top: 0;
-  left: -9999px; }
-
-.form-radio label, .form-radio--right label, .form-radio--center-up label, .form-radio--center-down label, .form-checkbox label, .form-checkbox--right label, .form-checkbox--center-up label, .form-checkbox--center-down label {
-  display: block;
-  width: 100%; }
-
-.form-radio label:before, .form-radio--right label:after, .form-radio--center-up label:before, .form-radio--center-down label:after, .form-checkbox label:before, .form-checkbox--right label:after, .form-checkbox--center-up label:before, .form-checkbox--center-down label:after {
-  content: '';
-  display: block;
-  width: 16px;
-  height: 16px; }
-
-.form-radio label:before, .form-radio--right label:after, .form-checkbox label:before, .form-checkbox--right label:after {
-  position: absolute;
-  top: 0; }
-
-.form-radio--center-up label:before, .form-radio--center-down label:after, .form-checkbox--center-up label:before, .form-checkbox--center-down label:after {
-  margin: 0 auto; }
-
-.form-radio label:before, .form-checkbox label:before {
-  left: 0; }
-
-.form-radio--right label:after, .form-checkbox--right label:after {
-  right: 0; }
+  padding: 11.2px 16px;
+  margin-bottom: 32px; }
+  @media only screen and (min-width: 0px) and (max-width: 639px) {
+    .message, .message--error, .message--success {
+      border-bottom: 4px solid #c028b9; } }
+  @media only screen and (min-width: 640px) {
+    .message, .message--error, .message--success {
+      border-left: 4px solid #c028b9; } }
+  .message > :last-child, .message--error > :last-child, .message--success > :last-child {
+    margin-bottom: 0; }
+  .message_title {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 26px;
+    /* LINE HEIGHT */
+    line-height: 32px;
+    /* FONT WEIGHT */
+    font-weight: 300;
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    display: block;
+    margin-bottom: 8px; }
+  @media only screen and (min-width: 0px) and (max-width: 639px) {
+    .message--error {
+      border-bottom-color: #d60036; } }
+  @media only screen and (min-width: 640px) {
+    .message--error {
+      border-left: 4px solid #d60036; } }
+  @media only screen and (min-width: 0px) and (max-width: 639px) {
+    .message--success {
+      border-bottom-color: #009c50; } }
+  @media only screen and (min-width: 640px) {
+    .message--success {
+      border-left: 4px solid #009c50; } }
 
 /* ---------------------------------------------------------------------- *\
   HERO
@@ -1004,9 +1397,9 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
     font-weight: 400; }
   .hero-wrap h2 {
     /* CALCULATE THE FONT SIZE */
-    font-size: 68px;
+    font-size: 26px;
     /* LINE HEIGHT */
-    line-height: 72px;
+    line-height: 32px;
     /* FONT WEIGHT */
     font-weight: 300;
     /* FONT STYLE */
@@ -1014,7 +1407,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
     /* FONT Family */ }
   .hero-wrap aside {
     /* CALCULATE THE FONT SIZE */
-    font-size: 8px;
+    font-size: 13px;
     /* LINE HEIGHT */
     /* FONT WEIGHT */
     /* FONT STYLE */
@@ -1132,8 +1525,3 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
     transform: scale(1); }
   *[data-dynamic-container="visible"][data-dynamic-hide] {
     max-height: 100%; }
-
-/* ---------------------------------------------------------------------- *\
-  EXPERIMENTS
-  - should be removed on production
-\* ---------------------------------------------------------------------- */

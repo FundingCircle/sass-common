@@ -96,7 +96,7 @@ $ie: true;
   }
   
   @if $reset { 
-    main[data-role="wrap"] & {
+    body & {
       @if $row {
         & > * { 
           @include resetColumns(first($reset),last($reset)); 

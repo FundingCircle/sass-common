@@ -21,10 +21,11 @@ $ie: true;
 // Styleguide 1.1.1
 
 @function pow($number, $exp) {
-  $value: $number;
+  $value: 1;
+
   @if $exp > 0 {
     // If the exponent is positive, multiply.
-    @for $i from 2 through $exp {
+    @for $i from 1 through $exp {
       $value: $value * $number;
     }
   }

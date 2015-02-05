@@ -46,7 +46,7 @@
     $insetVal: null;
   }
 
-  $boxShadow: $insetVal $horizontalLength $verticalLength $blurRadius $spread $color;
+  $boxShadow: $insetVal rem($horizontalLength) rem($verticalLength) rem($blurRadius) rem($spread) $color;
   @include prefix(box-shadow, $boxShadow, webkit)
 
 }
@@ -311,3 +311,65 @@
 @mixin transition($property:all, $duration:200, $unit: ms, $function: ease) {
   @include prefix(transition, $property #{$duration}#{$unit} $function);
 }
+
+
+
+/* ---------------------------------------------------------------------- *\
+  RESET UL
+\* ---------------------------------------------------------------------- */
+
+@mixin resetList {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+/* ---------------------------------------------------------------------- *\
+  ANIMATION
+  
+  @include keyframes(slide-down) {
+    0% { opacity: 1; }
+    90% { opacity: 0; }
+  }
+
+  .element {
+    width: 100px;
+    height: 100px;
+    background: black;
+    @include animation('slide-down 5s 3');
+  }
+
+\* ---------------------------------------------------------------------- */
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }  
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+  @-o-keyframes $animation-name {
+    @content;
+  }  
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+

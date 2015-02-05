@@ -16,7 +16,7 @@ $ie: true;
   $fontFamily: $fontFamilyDefault
 \* ---------------------------------------------------------------------- */
 
-@mixin font($fontSize, $lineHeight: false, $fontWeight: false, $fontStyle: false, $fontVariant: false, $fontFamily: false) {
+@mixin font($fontSize, $lineHeight: false, $fontWeight: false, $fontStyle: false, $fontVariant: false, $fontFamily: false, $test: false) {
 
   /* CALCULATE THE FONT SIZE */
 
@@ -41,14 +41,23 @@ $ie: true;
     $multiplier: pow($calcSqrtRatio, $fontSize);
   }
 
+
+
   // step 3
   // calculate the font size (this needs to be unitless)
   $fontSizeCalc: round($fontSizeBase * $multiplier);
+
+
+
   
   // step 4
   // show the value as font-size and give it a value
   font-size: rem($fontSizeCalc * 1px);  
+ 
 
+  @if $test {
+    @warn rem($fontSizeCalc * 1px);
+  } 
 
   /* LINE HEIGHT */
   
