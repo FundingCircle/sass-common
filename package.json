@@ -7,6 +7,9 @@
     "url": "https://github.com/FundingCircle/sass-common.git"
   },
   "license": "Commercial",
+  "scripts": {
+    "gulp": "gulp"
+  },
   "bugs": {
     "url": "https://github.com/FundingCircle/static-content/issues"
   },
