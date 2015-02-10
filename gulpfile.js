@@ -91,7 +91,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], 'sass', callback);
+  sequence('clean', ['build:mixins', 'build:icon-font'], callback);
 });
 
 gulp.task('default', ['build']);
