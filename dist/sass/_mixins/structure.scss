@@ -230,3 +230,81 @@ $colRatio: 1;
 }
 
 
+
+@mixin tableCellV2($verticalAlign: false, $cols: false, $padding: false) {
+  display: table-cell;
+  
+  @if $verticalAlign {
+    vertical-align: $verticalAlign;
+  }
+  
+  @if $padding {
+    padding: rem($padding);
+  }
+
+  @if $cols == equal {
+    width: 1%;
+  } @else if type-of($cols) == list {
+    
+    $cols: colsWidth($cols);
+
+    @for $i from 1 through length($cols) {
+      &:nth-child(#{$i}) {
+        width: nth($cols, $i);
+      }
+    }
+
+  }
+}
+
+
+@mixin tableV2($verticalAlign:top, $hide: false, $reset: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+
+  // table general stuff
+  width: 100%;
+
+  // hide or reset at certain breakpoints
+  @if $row {
+    & > * > * {
+      @if $reset { @include showBetweenWidths(first($reset), last($reset)) }
+      @if $hide { @include hideBetweenWidths(first($hide), last($hide)) }
+    }
+  } @else {
+    & > * {
+      @if $reset { @include showBetweenWidths(first($reset), last($reset)) }
+      @if $hide { @include hideBetweenWidths(first($hide), last($hide)) }
+    }
+  }
+
+  // columns outside the $hide and $reset areas
+  $minPoint: false;
+  
+  @if $hide and $reset {
+    @if last($hide) > last($reset) {
+      $minPoint: last($hide)
+    } @else {
+      $minPoint: last($reset);
+    }
+  } @else if $hide {
+    $minPoint: last($hide);
+  } @else if $reset {
+    $minPoint: last($reset);
+  }
+
+  @include breakPoints($minPoint, false) {
+    display: table;
+    @if $row {
+      & > * { display: table-row; }
+      & > * > * {
+        @include tableCellV2($verticalAlign, $cols, $padding);
+      }
+    } @else {
+      & > * {
+       @include tableCellV2($verticalAlign, $cols, $padding); 
+      }
+    }
+  }
+}
+
+
+

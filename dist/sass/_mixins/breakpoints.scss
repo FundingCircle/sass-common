@@ -65,12 +65,12 @@ $ie: true;
 
 
 @mixin showBetweenWidths($minVal:false,$maxVal:false,$displayType: block) {
-  display: none;
+  // display: none;
   @include breakPoints($minVal,$maxVal) { display: $displayType; }
 }
 
 @mixin showBetweenHeights($minVal:false,$maxVal:false,$displayType: block) {
-  display: none;
+  // display: none;
   @include breakPoints($minVal,$maxVal) { display: $displayType; }
 }
 
