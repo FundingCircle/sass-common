@@ -12,7 +12,7 @@ var sass = require('gulp-sass');
 var paths = {};
 
 paths.build = {};
-paths.build.root = 'dist';
+paths.build.root = process.env.SC_BUILD_PATH || 'dist';
 paths.build.sass = paths.build.root + '/sass';
 paths.build.fonts = paths.build.root + '/fonts';
 paths.build.styleguide = paths.build.root + '/styleguide';
