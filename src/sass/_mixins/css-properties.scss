@@ -111,17 +111,17 @@
   background: first(first($colorList));
 
   $gradientColorFormat1: $colorList; // this has the correct format
-  $gradientColorFormat2: null;
+  // $gradientColorFormat2: ();
   
   // prepare the format for the webkit custom gradient
-  $comma: null;
-  @each $i in $colorList {
+  // $comma: null;
+  // @each $i in $colorList {
     
-    $gradientColorFormat2: $gradientColorFormat2 + $comma + color-stop(nth($i,2),nth($i,1));
+  //   $gradientColorFormat2: $gradientColorFormat2 + $comma + color-stop(nth($i,2),nth($i,1));
     
-    // add comma after first iteration
-    $comma: unquote(',');
-  }
+  //   // add comma after first iteration
+  //   $comma: unquote(',');
+  // }
 
 
   background: -moz-#{$gradType}-gradient( 
