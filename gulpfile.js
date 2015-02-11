@@ -54,7 +54,6 @@ gulp.task('build:icon-font', function() {
 
 gulp.task('build:mixins', function() {
   return gulp.src(paths.source.stylesheets)
-          .pipe(insert.prepend('$ie: true;\n'))
           .pipe(gulp.dest(paths.build.sass));
 });
 

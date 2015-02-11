@@ -81,43 +81,43 @@
     $gradType: radial;
   }
   
-  $direction-1: left;
-  $direction-2: left top, right top;
-  $direction-3: to right;
+  $gradientDirection1: left;
+  $gradientDirection2: left top, right top;
+  $gradientDirection3: to right;
   $gradientType: 1;
 
   // "translate" $orientation
   @if $orientation == radial {
     
-    $direction-1: center, ellipse cover;
-    $direction-2: radial, center center, 0px, center center, 100%;
-    $direction-3: ellipse at center;
+    $gradientDirection1: center, ellipse cover;
+    $gradientDirection2: radial, center center, 0px, center center, 100%;
+    $gradientDirection3: ellipse at center;
   
   } @else if $orientation == vertical {
   
-    $direction-1: top;
-    $direction-2: left top, left bottom;
-    $direction-3: to bottom;
+    $gradientDirection1: top;
+    $gradientDirection2: left top, left bottom;
+    $gradientDirection3: to bottom;
     $gradientType: 0;
 
   } @else if $orientation == angle {
-    $direction-1: $angle - 180;
-    $direction-2: $angle; // TO DO
-    $direction-3: $angle;
+    $gradientDirection1: $angle - 180;
+    $gradientDirection2: $angle; // TO DO
+    $gradientDirection3: $angle;
     $gradientType: 1;
   }
 
   // fallback in case gradient is not supported
   background: first(first($colorList));
 
-  $colorsFormat-1: $colorList; // this has the correct format
-  $colorsFormat-2: null;
+  $gradientColorFormat1: $colorList; // this has the correct format
+  $gradientColorFormat2: null;
   
   // prepare the format for the webkit custom gradient
   $comma: null;
   @each $i in $colorList {
     
-    $colorsFormat-2: $colorsFormat-2 + $comma + color-stop(nth($i,2),nth($i,1));
+    $gradientColorFormat2: $gradientColorFormat2 + $comma + color-stop(nth($i,2),nth($i,1));
     
     // add comma after first iteration
     $comma: unquote(',');
@@ -125,36 +125,36 @@
 
 
   background: -moz-#{$gradType}-gradient( 
-    $direction-1, 
-    $colorsFormat-1
+    $gradientDirection1, 
+    $gradientColorFormat1
   );
   
   // TO FIX
-  // issue: $colorsFormat-2 breaks the layout
+  // issue: $gradientColorFormat2 breaks the layout
   // background: -webkit-gradient(
   //     $gradType,
-  //     $direction-2,
-  //     $colorsFormat-2
+  //     $gradientDirection2,
+  //     $gradientColorFormat2
   // );  
 
   background: -webkit-#{$gradType}-gradient( 
-    $direction-1,
-    $colorsFormat-1
+    $gradientDirection1,
+    $gradientColorFormat1
   );
 
   background: -o-#{$gradType}-gradient( 
-    $direction-1,
-    $colorsFormat-1
+    $gradientDirection1,
+    $gradientColorFormat1
   );
 
   background: -ms-#{$gradType}-gradient( 
-    $direction-1,
-    $colorsFormat-1
+    $gradientDirection1,
+    $gradientColorFormat1
   );
 
   background: #{$gradType}-gradient(
-    $direction-3,
-    $colorsFormat-1
+    $gradientDirection3,
+    $gradientColorFormat1
   );
   
   $ieFirstColor: ie-hex-str(first(first($colorList)));
@@ -347,20 +347,20 @@
 
 \* ---------------------------------------------------------------------- */
 
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes $animation-name {
+@mixin keyframes($animationName) {
+  @-webkit-keyframes $animationName {
     @content;
   }
-  @-moz-keyframes $animation-name {
+  @-moz-keyframes $animationName {
     @content;
   }  
-  @-ms-keyframes $animation-name {
+  @-ms-keyframes $animationName {
     @content;
   }
-  @-o-keyframes $animation-name {
+  @-o-keyframes $animationName {
     @content;
   }  
-  @keyframes $animation-name {
+  @keyframes $animationName {
     @content;
   }
 }
