@@ -531,7 +531,7 @@ $radioAndCheckboxSize: 24px;
 
     label {
 
-      span {
+      tt {
         position: relative;
         display: block;
         height: $radioAndCheckboxSize;
@@ -564,7 +564,7 @@ $radioAndCheckboxSize: 24px;
 
   &-radio {
     label {
-      span {
+      tt {
         &:before, 
         &:after {
           @include borderRadius(50, '%');
@@ -580,7 +580,7 @@ $radioAndCheckboxSize: 24px;
       }
     }
   
-    input:checked ~ label span:before {
+    input:checked ~ label tt:before {
       width: $radioAndCheckboxSize / 2;
       height: $radioAndCheckboxSize / 2;
     }
@@ -589,7 +589,7 @@ $radioAndCheckboxSize: 24px;
 
   &-checkbox {
     label {
-      span {
+      tt {
         &:before {
           right: auto;
           margin: auto 0 auto 15%;
@@ -600,7 +600,8 @@ $radioAndCheckboxSize: 24px;
         }
       }
     }
-    input:checked ~ label span:before {
+
+    input:checked ~ label tt:before {
       width: 70%;
     }
   }
@@ -616,7 +617,7 @@ $radioAndCheckboxSize: 24px;
     padding-left: $radioAndCheckboxSize + 5;
     line-height: $radioAndCheckboxSize;
 
-    span {
+    tt {
       position: absolute;
       top: 0;
       left: 0;
@@ -631,7 +632,7 @@ $radioAndCheckboxSize: 24px;
     line-height: $radioAndCheckboxSize;
     text-align: right;
 
-    span {
+    tt {
       position: absolute;
       top: 0;
       right: 0;
@@ -642,7 +643,7 @@ $radioAndCheckboxSize: 24px;
 
 %posTop {
   label {
-    span { margin: 0 auto 5px; }
+    tt { margin: 0 auto 5px; }
     text-align: center;
   }
 }
@@ -650,7 +651,7 @@ $radioAndCheckboxSize: 24px;
 %posBottom {
   label {
     padding-bottom: $radioAndCheckboxSize + 5;
-    span { 
+    tt { 
       position: absolute;
       bottom: 0;
       left: 0;
