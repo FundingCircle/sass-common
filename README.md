@@ -18,10 +18,10 @@ After that, run `bower install` and you are all set!
 Source files are located in `src` and are built into the build directory. This is `dest` by default.
 
 ### Overriding the build path
-You may want to override the build path, for example to develop styles on one of the other FundingCircle projects. Override the build path using the environment variable `SC_BUILD_PATH`.  
+You may want to override the build path, for example to develop styles on one of the other FundingCircle projects. Override the build path using the environment variable `BUILD_PATH`.  
 e.g.
 ```shell
-$ SC_BUILD_PATH=/path/to/fca-frontend gulp build
+$ BUILD_PATH=/path/to/fca-frontend gulp build
 ```
 
 ## Releasing a new version
