@@ -15,23 +15,23 @@ $REMsupport: false;
 // 
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
-@import './_variables.scss';
-@import './_functions.scss';
-@import './_mixins.scss';
+@import './_variables';
+@import './_functions';
+@import './_mixins';
 
 /* ---------------------------------------------------------------------- *\
   HTML STRUCTURE
 \* ---------------------------------------------------------------------- */
 
 // load the HTML structure
-@import './general/structure.scss';
+@import './general/structure';
 
 
 /* ---------------------------------------------------------------------- *\
   HELPFUL CLASSES & MIXINS
 \* ---------------------------------------------------------------------- */
 
-@import './general/useful-classes.scss';
+@import './general/useful-classes';
 
 @include breakPointsCols;
 @include staticCols(6);
@@ -42,19 +42,19 @@ $REMsupport: false;
 \* ---------------------------------------------------------------------- */
 
 // articles structure
-@import './general/article.scss';
+@import './general/article';
 
 // everything call to action related
-@import './general/buttons.scss';
-@import './general/go-to-links.scss';
+@import './general/buttons';
+@import './general/go-to-links';
 
 
 // everything related to forms
-// @import './general/forms.scss';
-@import './general/forms-v2.scss';
+// @import './general/forms';
+@import './general/forms-v2';
 
 // hero images
-@import './general/hero.scss';
+@import './general/hero';
 
 
 /* ---------------------------------------------------------------------- *\
@@ -62,7 +62,7 @@ $REMsupport: false;
   - transitions for elements fetched with AJAX
 \* ---------------------------------------------------------------------- */
 
-@import './general/dynamic-loaders.scss';
+@import './general/dynamic-loaders';
 
 
 

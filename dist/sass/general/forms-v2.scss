@@ -91,7 +91,7 @@ body {
   @extend .cl--a;
 
   color: $colorFontDarkSoft;
-  border: none;
+  border: 0;
 
 
   & > .btn { float: right; }
@@ -148,7 +148,7 @@ body {
     display: block;
     width: 100%;
     background: $formInputBackgroundMain;
-    border: none;
+    border: 0;
     // border-right: 4px solid rgba(255,255,255,0);
     outline: 1px solid $formInputBorderMain;
     padding: rem(0 1);
@@ -175,19 +175,14 @@ body {
     @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true); 
   }
 
-  // beveled elements
-  .select {
-   @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));  
-  }
-
   textarea {
     resize: none;
   }
 
-
-
-
   .select {
+    // beveled elements
+    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));  
+
     $dropDownIconWidth: rem(2.6);
     $arrowWidth: .5;
     $arrowHeight: .7;
@@ -239,7 +234,7 @@ body {
         display: none;
       }
 
-      border: none;
+      border: 0;
       background: none;
       margin: 0;
 

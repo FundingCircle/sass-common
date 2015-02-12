@@ -54,7 +54,8 @@
     @include font(0,true,400);
   }
 
-  th, td {
+  th, 
+  td {
     padding: rem(0.5);
   }
 

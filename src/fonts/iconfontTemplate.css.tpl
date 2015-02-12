@@ -26,7 +26,7 @@
 }
 
 [class^="<%= className %>-"]:before,
-[class*=" <%= className %>-"]:before{
+[class*=" <%= className %>-"]:before {
   @extend .fci-icon;
 }
 

@@ -31,7 +31,7 @@
   }
 
   &[data-dynamic-effect="fly-in"] { 
-    perspective:rem(10);
+    perspective: rem(10);
 
     & > * { @include prefix(transform, translateZ(rem(10)), webkit ms); }
   }

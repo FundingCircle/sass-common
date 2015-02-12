@@ -5,17 +5,11 @@
 // Styleguide 1.0
 
 
-@import '_mixins/misc.scss';
-
-@import '_mixins/conditionals.scss';
-
-@import '_mixins/breakpoints.scss';
-
-@import '_mixins/css-properties.scss';
-
-@import '_mixins/fonts.scss';
-
-// @import '_mixins/forms.scss';
-
-@import '_mixins/structure.scss';
+@import '_mixins/misc';
+@import '_mixins/conditionals';
+@import '_mixins/breakpoints';
+@import '_mixins/css-properties';
+@import '_mixins/fonts';
+// @import '_mixins/forms';
+@import '_mixins/structure';
 

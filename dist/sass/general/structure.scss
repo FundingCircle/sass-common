@@ -28,7 +28,9 @@ html {
   @include boxSizing();
 }
 
-*, *:after, *:before {
+*, 
+*:after, 
+*:before {
   box-sizing: inherit;
 }
 
@@ -65,7 +67,12 @@ p {
 
 
 // Headers
-h1, h2, h3, h4, h5, h6 {
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
   margin: 0 0 1em;
 }
 

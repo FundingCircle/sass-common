@@ -280,7 +280,7 @@ $colRatio: 1;
   
   @if $hide and $reset {
     @if last($hide) > last($reset) {
-      $minPoint: last($hide)
+      $minPoint: last($hide);
     } @else {
       $minPoint: last($reset);
     }

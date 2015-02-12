@@ -124,11 +124,11 @@
         }
       }
 
-      input[type="radio"]#submenu-side:checked ~ .side-menu {
+      input[type="radio"].submenu-side-trigger:checked ~ .side-menu {
         display: block;
       }
       
-      input[type="radio"]#submenu-side:checked ~ label[for="submenu-side"] {
+      input[type="radio"].submenu-side-trigger:checked ~ label[for="submenu-side"] {
         display: none;
       }
 
@@ -150,7 +150,7 @@
     color: $colorFontDarkSoft;
 
     &.el-active {
-      color: $colorHighlightSecondaries2
+      color: $colorHighlightSecondaries2;
     }
   }
 
