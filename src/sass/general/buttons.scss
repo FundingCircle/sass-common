@@ -1,0 +1,52 @@
+/* ---------------------------------------------------------------------- *\
+  BUTTONS
+  - modifiers can be size modifiers (--s) or type (--t)
+\* ---------------------------------------------------------------------- */
+
+.btn {
+  @include borderRadius(0.3);
+  border: 0;
+  display: inline-block;
+  margin-bottom: rem(1);
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Button types
+  &--t1 {
+    color: $colorFontLight;
+    background: $ColorBrand2;
+
+    &:hover {
+      background: darken($ColorBrand2,10%);
+    } 
+  }
+
+  &--t2 {
+    background: $colorBackground2;
+
+    &:hover {
+      color: $colorFontLight;
+      background: darken($ColorBrand2,10%);
+    } 
+  }
+
+  &--full {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  // Button sizes
+  &--s1 {
+    @include font(0,3);
+    padding: rem(0 1.5);
+  }
+
+  &--s2 {
+    @include font(-1,2.5);
+    padding: rem(0 1);
+  }
+}

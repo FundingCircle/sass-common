@@ -1,0 +1,38 @@
+/* ---------------------------------------------------------------------- *\
+  Go to links
+\* ---------------------------------------------------------------------- */
+
+$goToLinkSize: rem(4);
+.go-to-link {
+  @include borderRadius(50,'%');
+  @include posAbs(-2,0,false,0);
+  @include centerBlock(0,true);
+  display: block;
+  z-index: 2;
+  width: $goToLinkSize;
+  height: $goToLinkSize;
+  line-height: $goToLinkSize / 2;
+  text-align: center;
+  background: inherit;
+
+  svg {
+    @include centerBlock(0.8,true); 
+  }
+
+  &:hover path {
+    fill: $ColorBrand5;
+  }
+
+  // other go to links colors 
+  
+  .bg-1 & path { fill: $colorCtaPrimary; }
+  .bg-1 &:hover path { fill: $ColorBrand5; }
+
+}
+
+
+// Form subtitles
+form h3 {
+  margin-bottom: rem(0.5);
+  font-weight: 400;
+}

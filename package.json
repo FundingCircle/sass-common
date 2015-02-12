@@ -7,6 +7,10 @@
     "url": "https://github.com/FundingCircle/sass-common.git"
   },
   "license": "Commercial",
+  "scripts": {
+    "postinstall": "bower install & gulp",
+    "gulp": "gulp"
+  },
   "bugs": {
     "url": "https://github.com/FundingCircle/static-content/issues"
   },
@@ -17,7 +21,9 @@
     "gulp-insert": "^0.4.0",
     "gulp-minify-css": "^0.4.3",
     "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.3.2",
     "gulp-template": "^2.1.0",
-    "run-sequence": "^1.0.2"
+    "run-sequence": "^1.0.2",
+    "sc5-styleguide": "^0.3.4"
   }
 }

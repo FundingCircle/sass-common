@@ -35,10 +35,38 @@
 .fci-tick:before { content: "\E003"; }
 .fci-user-icon:before { content: "\E004"; }
 .fci-phone-circled:before { content: "\E005"; }
+.fci-attention:before { content: "\E006"; }
+.fci-info:before { content: "\E007"; }
+.fci-close:before { content: "\E008"; }
 
 
 .list-checked > *:before,
-.list-checked--reversed > *:before {
+.list-checked--reversed > *:before,
+.form-checkbox tt {
   @extend .fci-icon;
   @extend .fci-tick;
 } 
+
+.tooltip_close {
+  @extend .fci-icon;
+  @extend .fci-close;
+}
+
+.message {
+
+  &:before {
+    @extend .fci-icon;
+    @extend .fci-info;
+  }
+
+  &--error:before,
+  &--warning:before { 
+    @extend .fci-icon;
+    @extend .fci-attention; 
+  }
+
+  &--success:before {
+    @extend .fci-icon;
+    @extend .fci-tick;
+  }
+}

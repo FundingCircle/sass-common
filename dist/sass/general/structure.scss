@@ -1,0 +1,78 @@
+/* ---------------------------------------------------------------------- *\
+  LAYOUT
+  All things related to the page structure and helpful classes
+\* ---------------------------------------------------------------------- */
+
+html,
+body {
+  vertical-align: baseline;
+  
+  font-size: $fontSizeBase * 1px;
+}
+
+::-moz-selection { @include textSelection; }
+::selection { @include textSelection; }
+
+// @include breakPoints(false,$bpTabletPortrait) {
+//  html, body { @include font(-1); }
+// }
+
+body {
+  font-family: $fontFamilyDefault;
+  background: rgb(250,250,250);
+  color: $colorFontDarkHard;
+
+}
+
+html {
+  @include boxSizing();
+}
+
+*, 
+*:after, 
+*:before {
+  box-sizing: inherit;
+}
+
+main[data-role="wrap"] {
+  width: 100%;
+  position: relative;
+
+  & > * {
+    width: 100%;
+  }
+
+}
+
+body *,
+body *:before,
+body *:after {
+  @include transition();
+}
+
+
+
+a {
+  text-decoration: none;
+  color: $colorCtaPrimary;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+
+// Headers
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  margin: 0 0 1em;
+}
+

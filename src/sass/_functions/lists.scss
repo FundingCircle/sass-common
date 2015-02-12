@@ -1,0 +1,179 @@
+// List manipulations
+// 
+// All the functions that alter a list
+// 
+// Styleguide 1.2
+
+
+
+// First item
+// 
+// Get the first item from a list
+// 
+// markup:
+// first($list)
+// // $list: 5 1 2 6 10;
+// // first($list) -> 5
+// 
+// Styleguide 1.2.1
+
+@function first($list) {
+  @return nth($list, 1);
+}
+
+
+
+// Last item
+// 
+// Get the last item from a list
+// 
+// markup:
+// last($list)
+// // $list: 5 1 2 6 10
+// // last($list) -> 10
+// 
+// Styleguide 1.2.2
+
+@function last($list) {
+  @return nth($list, length($list));
+}
+
+
+
+// Remove from list
+// 
+// Removes an item from a list
+// 
+// markup:
+// remove($list, $val)
+// 
+// Styleguide 1.2.3
+
+@function removeFromList($list, $val) {
+
+  $newList: ();
+
+  @for $i from 1 through length($list) {
+    @if nth($list, $i) != $val {
+      $newList: append($newList, nth($list, $i));
+    }
+  }
+
+  @return $newList;
+}
+
+
+
+// Replace value from list
+
+@function replaceFromList($list, $oldVal, $newVal) {
+
+  $newList: ();
+
+  @for $i from 1 through length($list) {
+    
+    @if nth($list, $i) == $oldVal {
+      $newList: append($newList, $newVal);
+    } @else {
+      $newList: append($newList, nth($list,$i));
+    }
+  
+  }
+
+  @return $newList();
+}
+
+
+// Find in list
+
+@function findInList($list, $val) {
+  $flag: false;
+  
+  @for $i from 1 through length($list) {
+    @if nth($list, $i) == $val {
+      $flag: true;
+    }
+  }
+
+  @return $flag;
+}
+
+
+// Insert in list
+
+@function insertInList($list, $val, $position) {
+  $newList: ();
+  
+  @if $position <= length($list) {
+  
+    @for $i from 1 through length($list) {
+      @if $i == $position {
+        $newList: append($newList, $val);
+      }
+
+      $newList: append($newList, nth($list, $i));
+    }
+  
+  } @else {
+    $newList: append($list, $val);
+  }
+
+
+  @return $newList();
+}
+
+
+
+// MERGE INTERVALS
+
+@function mergeIntervals($intervals...) {
+  $newIntervals: ();
+  $skipThese: ();
+
+  $intervalsLength: length($intervals);
+
+  @for $i from 1 through $intervalsLength {
+    $first: first(nth($intervals, $i));
+    $last: last(nth($intervals, $i));
+    
+
+    @if findInList($skipThese, $first $last) == false {
+      
+      @for $j from $i+1 through $intervalsLength {
+        $firstC: first(nth($intervals, $j));
+        $lastC: last(nth($intervals, $j));
+        
+
+        // check to see if the intervals are overlapped (we need to skip the ones that we already did)
+        @if $last >= $firstC and $first <= $lastC and findInList($skipThese, $firstC $lastC) == false {
+
+          // does the new interval have a lower margin?
+          @if $first > $firstC {
+            $first: $firstC;
+          }
+
+          // does the new interval have a higher margin?
+          @if $last < $lastC {
+            $last: $lastC;
+          }
+
+          // this interval was absorbed into the new intervals so we can remove it
+          // $intervals: removeFromList($intervals, nth($intervals, $j));
+
+          // this interval was absorbed into the new one, so we can flag it (so we can skip it from iteration)
+          // $intervals: replaceFromList($intervals, $firstC $lastC, test);
+          
+          $skipThese: append($skipThese, ($firstC $lastC), comma);
+          // @warn $skipThese;
+        }
+        
+
+      }
+      
+      $newIntervals: append($newIntervals, ($first $last), comma);
+    }
+    
+  }
+
+  @return $newIntervals;
+}

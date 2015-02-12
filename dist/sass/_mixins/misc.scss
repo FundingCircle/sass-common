@@ -1,0 +1,140 @@
+/* ---------------------------------------------------------------------- *\
+  COLORS FOR SELECTED TEXT
+\* ---------------------------------------------------------------------- */
+
+@mixin textSelection {
+  background: $ColorBrand1;
+  color: $colorFontLight;
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  PREFIX PROPERTIES
+\* ---------------------------------------------------------------------- */
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TRIANGLE GENERATOR
+  $size: (width,height) - if height is not specified, height = width
+  $direction: up / down / right / left /
+              up left / up right
+              down left / down right
+\* ---------------------------------------------------------------------- */
+
+@mixin triangle($direction,$color,$size) {
+  display: block;
+  width: 0;
+  height: 0;
+  
+  // convert to rem / px
+  $size: rem($size);
+
+
+  // read width and height
+  $width: if(first($direction) == last($direction), first($size)/2, first($size));
+  $height: last($size);
+
+
+  @if first($direction) == up {
+    
+    @if last($direction) == right {
+      $solid: right;
+      $transparent: bottom;
+    } @else if last($direction) == left {
+      $solid: left;
+      $transparent: bottom;
+    } @else {
+      $solid: bottom;
+      $transparent: left, right;
+    }
+  
+  } @else if first($direction) == down {
+
+    @if last($direction) == right {
+      $solid: right;
+      $transparent: top;
+    } @else if last($direction) == left {
+      $solid: left;
+      $transparent: top;
+    } @else {
+      $solid: top;
+      $transparent: left, right;
+    }
+
+  } @else if $direction == right {
+
+    $solid: left;
+    $transparent: top, bottom;
+
+  } @else if $direction == left {
+
+    $solid: right;
+    $transparent: top, bottom;
+  
+  } @else {
+
+    $solid: top;
+    $transparent: left, right;
+  
+  } 
+
+  border-#{$solid}: $height solid $color;
+
+  @each $i in $transparent {
+    border-#{$i}: $width solid transparent;
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CLEAR FIX
+  - $pseudo: true -> the element has a clear:both inside as an :after
+  - $pseudo: false -> the element becomes the clearer
+  - $extend: false -> useful for break points, applies in place
+\* ---------------------------------------------------------------------- */
+
+@mixin clearCSS($pseudo: true) {
+  @if $pseudo {
+    &:after {
+      content: '';
+      display: table;
+      width: 100%;
+      clear: both;
+    }
+    } @else {
+      clear: both;
+    }
+}
+
+.cl--a { @include clearCSS; }
+.cl { @include clearCSS(false); }
+
+@mixin clear($pseudo: true, $extend: true) {
+  @if $pseudo {
+    @if $extend {
+      @extend .cl--a;
+    } @else {
+      @include clearCSS;
+    }
+  }
+  @else {
+    @if $extend {
+      @extend .cl;
+    } @else {
+      @include clearCSS(false);
+    }
+  }
+}

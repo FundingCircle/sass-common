@@ -1,0 +1,756 @@
+/* ---------------------------------------------------------------------- *\
+  FORMS
+\* ---------------------------------------------------------------------- */
+$formInputBackgroundMain: rgb(255,255,255);
+$formInputBorderMain: rgb(221,221,221);
+
+$formBreakpoint: $bpMobileLandscape;
+
+@include keyframes(loopRotate) {
+  0% { 
+    @include prefix(transform, rotate(0));  
+  }
+  
+  100% { 
+    @include prefix(transform, rotate(360deg));
+  }
+}
+
+
+
+@mixin placeholderStyle {
+  @include opacity(0.4);
+  font-style: italic;
+  color: $colorFontDarkSoft;
+}
+
+::-webkit-input-placeholder { @include placeholderStyle; }
+:-moz-placeholder { @include placeholderStyle; }
+::-moz-placeholder { @include placeholderStyle; }
+:-ms-input-placeholder { @include placeholderStyle; }
+
+body {
+  background: rgb(246,245,243);
+}
+
+.super-bold {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form-default {
+  background: rgb(233,231,229);
+  padding: rem(2);
+  margin-bottom: rem(3);
+
+  &_dob-wrap {
+
+    @include breakPoints($bpMobilePortraitLarge, false) {
+      @include table(top, false, false, 4 6 5, false, 0);
+      margin-bottom: rem(2);
+
+      & > *:nth-child(2) {
+        padding: rem(0 1);
+      }
+    }
+  }
+
+  &_date-wrap {
+    @include breakPoints($bpMobilePortraitLarge, false) {
+      @include table(top, false, false, 5 3, false, 0);
+
+      & > *:first-child {
+        padding-right: rem(1);
+      }      
+    }    
+  }
+
+  &_info-box {
+    background: rgb(255,255,255);
+    padding: rem(1.5);
+
+    @include breakPoints(0, $formBreakpoint) {
+      border-bottom: 4px solid $ColorBrand1;
+    }
+
+    @include breakPoints($formBreakpoint, false) {
+      border-left: 4px solid $ColorBrand1;
+    }
+
+    h5 {
+      color: $ColorBrand1;
+      @include font(0, true, 400);
+    }
+
+    p {
+      @include font(-1, true);
+    }
+  }
+
+  @include font(0);
+  @extend .cl--a;
+
+  color: $colorFontDarkSoft;
+  border: 0;
+
+
+  & > .btn { float: right; }
+
+  label {
+    display: block;
+    font-weight: 300;
+    margin-bottom: rem(0.5);
+
+    &.required:after {
+      content: '*';
+      color: $ColorBrand2;
+      padding-left: 0.3em;
+    }
+  }
+
+  &_wrap { 
+    h1 { @include font(4, true, 300); }
+    h2 { 
+      @include font(2, true, 300); 
+      margin-bottom: rem(1);
+    }
+  }
+
+
+  &_element {
+    position: relative;
+    margin-bottom: rem(2);
+
+
+
+    &.is-loading:before {
+      content: '';
+      display: block;
+      background: url(path('input-loader.gif',image)) no-repeat center center;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: rem(.6);
+      right: rem(.6);
+      // transition: none;
+      @include animation(loopRotate 2s linear infinite);
+
+    }
+
+  }
+
+  // all form fields, except checkbox and radio
+  input:not([type="checkbox"]):not([type="radio"]),
+  .select,
+  textarea {
+    @include font(0, 2.5);
+    min-height: rem(2.5);
+    display: block;
+    width: 100%;
+    background: $formInputBackgroundMain;
+    border: 0;
+    // border-right: 4px solid rgba(255,255,255,0);
+    outline: 1px solid $formInputBorderMain;
+    padding: rem(0 1);
+    outline-offset: initial;
+
+    &:focus {
+      outline-color: $ColorBrand3;
+    }
+
+    &.valid {
+      border-right: 4px solid $colorSuccess;
+    }
+
+    &.error {
+      outline-color: $colorError;
+      color: $colorError;
+    }
+  }
+
+  
+  // inset elements
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea {
+    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true); 
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .select {
+    // beveled elements
+    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));  
+
+    $dropDownIconWidth: rem(2.6);
+    $arrowWidth: .5;
+    $arrowHeight: .7;
+
+    $arrowPosRight: $dropDownIconWidth / (2 + $arrowWidth);
+
+    height: rem(2.5);
+    position: relative;
+    
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+
+    html:not(.ie) & {
+      &:before {
+        width: $dropDownIconWidth;
+        height: 100%;
+        top: 0;
+        right: 0;
+        border-left: 1px solid $formInputBorderMain;
+      }
+
+      &:after {
+        @include triangle(down, $formInputBorderMain, $arrowHeight $arrowWidth);
+        @include posAbs($top: 0, $bottom: 0);
+        right: $arrowPosRight;
+        margin: auto 0;
+      }
+    }
+
+
+    select {
+      @include centerAbs();
+      
+      padding: rem(0 1);
+      .ie & {
+        padding: rem(0.5 1);
+      }
+
+      -webkit-appearance: none;
+        -moz-appearance: none;
+             appearance: none;
+
+      &::-ms-expand {
+        display: none;
+      }
+
+      border: 0;
+      background: none;
+      margin: 0;
+
+      width: 100%;
+      height: 100%;
+      vertical-align: middle;
+
+      &:focus {
+        -moz-outline-style: none;
+             outline-style: none; 
+      }
+    }
+
+    option {
+      padding: rem(0.5 1);
+    }
+
+  }
+
+  // error message
+  .error-message {
+    @include font(0, true);
+    margin-top: rem(1);
+    position: relative;
+    width: 100%;
+    color: rgb(255,255,255);
+    background: $colorError;
+    padding: rem(.8 1);
+
+    &:before {
+      $arrowHeight: 10px;
+      @include triangle(up, $colorError, ($arrowHeight * 2) $arrowHeight);
+      content: '';
+      position: absolute;
+      top: negative($arrowHeight);
+      left: rem(2);
+
+    }
+
+  }
+
+
+  // tooltip
+  .form-default_tooltip {
+    $tooltipBackground: rgb(255,255,255);
+    $arrowHeight: 10px;
+
+    @include font(0, true);
+    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1)); 
+
+    height: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: $tooltipBackground;
+    color: $ColorBrand1;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+    }
+
+    &.is-visible {
+      height: auto;
+      padding: rem(.8 1);
+      overflow: visible;
+    }
+
+    @include breakPoints(0, $formBreakpoint) {
+      
+      &.is-visible {
+        margin-bottom: rem(1);
+
+        &:before {
+          @include triangle(down, $tooltipBackground, ($arrowHeight * 2) $arrowHeight);
+          bottom: negative($arrowHeight);
+          left: rem(2);
+        }
+      }
+    };
+
+    @include breakPoints($formBreakpoint, false) {
+      width: 250px;
+      position: absolute;
+      left: 100%;
+      margin-left: rem(1);
+
+      &.is-visible:before {
+        @include triangle(left, $tooltipBackground, ($arrowHeight * 2) $arrowHeight);
+        top: rem(.8);
+        left: negative($arrowHeight);
+      }
+    }
+
+  }
+
+  &_autocomplete {
+    @include resetList;
+    background: rgb(255,255,255);
+    outline: 1px solid $ColorBrand2;
+    
+    color: $ColorBrand2;
+    text-transform: uppercase;
+    
+    li {
+      padding: rem(.5);
+      cursor: pointer;
+
+      &:hover,
+      &:first-child {
+        font-weight: 600;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $ColorBrand2;
+      }
+    }
+  }
+
+  // chars left
+  &_chars-left {
+    text-align: right;
+    @include font(-1, true);
+    margin: rem(0.2 0);
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------- *\
+  MESSAGES
+  - .message / --error / --warning / --success
+\* ---------------------------------------------------------------------- */
+
+.message {
+  @extend .fci-icon;
+  @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
+  background: rgb(255,255,255);
+  padding: rem(.7 1);
+  margin-bottom: rem(2);
+  position: relative;
+
+  $borderColor: $colorMessage;
+  
+  @include breakPoints(0, $formBreakpoint) {
+    border-bottom: 4px solid $borderColor;
+    text-align: center;
+
+    &:before {
+      margin: rem(0 auto 1);
+    }
+  }
+
+  @include breakPoints($formBreakpoint, false) {
+    border-left: 4px solid $borderColor;
+    padding-left: rem(5);
+
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: rem(1);
+      margin: auto 0;
+    }
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  &:before { 
+    color: $borderColor; 
+    display: block;
+    font-size: rem(2.5);
+    line-height: rem(2.5);
+    height: rem(2.5);
+  }
+
+  &_title {
+    @include font(2, true, 300);
+    display: block;
+    margin-bottom: rem(.5);
+  }
+
+  &--error {
+    @extend .message;
+
+    $borderColor: $colorError;
+    
+    &:before { color: $borderColor; }
+    
+    @include breakPoints(0, $formBreakpoint) {
+      border-bottom-color: $borderColor;
+    }
+
+    @include breakPoints($formBreakpoint, false) {
+      border-left: 4px solid $borderColor;
+    }
+  }
+
+  &--warning {
+    @extend .message;
+
+    $borderColor: $colorWarning;
+
+    &:before { color: $borderColor; }
+
+    @include breakPoints(0, $formBreakpoint) {
+      border-bottom-color: $borderColor;
+    }
+
+    @include breakPoints($formBreakpoint, false) {
+      border-left: 4px solid $borderColor;
+    }
+  }
+
+
+  &--success {
+    @extend .message;
+
+    $borderColor: $colorSuccess;
+    
+    &:before { color: $borderColor; }
+
+    @include breakPoints(0, $formBreakpoint) {
+      border-bottom-color: $borderColor;
+    }
+
+    @include breakPoints($formBreakpoint, false) {
+      border-left: 4px solid $borderColor;
+    }
+  }  
+}
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------- *\
+  CUSTOM CHECKBOXES AND RADIO BUTTONS
+  - .form-radio / .form-checkbox if you don't want the positioning
+  - .form-radio.form-radio--top/right/bottom/left if you want the positioning
+\* ---------------------------------------------------------------------- */
+
+$radioAndCheckboxSize: 24px;
+
+
+.form {
+
+  &-radio,
+  &-checkbox {
+    position: relative;
+    
+    input {
+      position: absolute;
+      top: 0;
+      left: -9999px;
+    }
+
+    label {
+
+      tt {
+        position: relative;
+        display: block;
+        height: $radioAndCheckboxSize;
+        width: $radioAndCheckboxSize;
+      
+        &:before,
+        &:after {
+          @include centerAbs(1);
+          display: block;
+        }
+
+        &:after {
+          @extend %insetElement;
+          content: '';
+          background: rgb(255,255,255);
+          border: 1px solid $formInputBorderMain;
+        }
+
+        &:before {
+          z-index: 2;
+        }
+      }
+    }
+
+    &--left { @extend %posLeft; }
+    &--right { @extend %posRight; }
+    &--bottom { @extend %posBottom; }
+    &--top { @extend %posTop; }
+  }
+
+  &-radio {
+    label {
+      tt {
+        &:before, 
+        &:after {
+          @include borderRadius(50, '%');
+        }
+
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          background: $colorCtaPrimary;
+
+        }
+      }
+    }
+  
+    input:checked ~ label tt:before {
+      width: $radioAndCheckboxSize / 2;
+      height: $radioAndCheckboxSize / 2;
+    }
+
+  }
+
+  &-checkbox {
+    label {
+      tt {
+        &:before {
+          right: auto;
+          margin: auto 0 auto 15%;
+          line-height: $radioAndCheckboxSize;
+          color: $colorCtaPrimary;
+          overflow: hidden;
+          width: 0;
+        }
+      }
+    }
+
+    input:checked ~ label tt:before {
+      width: 70%;
+    }
+  }
+
+}
+
+
+
+
+
+%posLeft {
+  label {
+    padding-left: $radioAndCheckboxSize + 5;
+    line-height: $radioAndCheckboxSize;
+
+    tt {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  
+  }
+}
+
+%posRight {
+  label {
+    padding-right: $radioAndCheckboxSize + 5;
+    line-height: $radioAndCheckboxSize;
+    text-align: right;
+
+    tt {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  
+  }
+}
+
+%posTop {
+  label {
+    tt { margin: 0 auto 5px; }
+    text-align: center;
+  }
+}
+
+%posBottom {
+  label {
+    padding-bottom: $radioAndCheckboxSize + 5;
+    tt { 
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto; 
+    }
+    text-align: center;
+  }
+}
+
+
+
+
+/* ---------------------------------------------------------------------- *\
+  TOOLTIPS
+  - text to click / hover goes into .tooltip_trigger
+  - if tooltip_clickable, then the parent should toggle class .is-active
+  - is-right if doesn't fit in left
+\* ---------------------------------------------------------------------- */
+
+.tooltip {
+  position: relative;
+
+  $arrowPadding: 1;
+  $arrowWidth: 1;
+
+  &_content {
+    @include font(-1, true);
+    @include posAbs(false, false, 100%, negative($arrowPadding + $arrowWidth), -1);    
+    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1)); 
+
+    display: block;
+    @include opacity(0);
+    overflow: hidden;
+    background: rgb(255,255,255);
+    min-width: 220px;
+    max-width: 450px;
+    padding: rem(1);
+    border-top: 4px solid $ColorBrand1;
+    margin-bottom: rem(1);
+
+    &:before {
+      @include triangle(down, rgb(255,255,255), ($arrowWidth * 2) $arrowWidth);
+      @include posAbs(false, false, -15px, $arrowPadding + .5);
+      content: '';
+    }
+
+    &.is-right {
+      left: auto;
+      right: rem(negative($arrowPadding + $arrowWidth));
+
+      &:before {
+        left: auto;
+        right: rem($arrowPadding + .5);
+      }
+    }
+  }
+
+  &_title {
+    @include font(1, true);
+    display: block;
+    color: $ColorBrand1;
+    margin-bottom: rem(.5);
+  }
+
+  &_text {
+    @extend p;
+    display: block;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &_symbol {
+    @include borderRadius(50, '%');
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    line-height: 1.2em;
+    font-size: .8em;
+    text-align: center;
+    color: $colorFontLight;
+    background: $colorCtaNav;
+    cursor: pointer;
+
+    &:before {
+      content: '?';
+    }
+    
+    &:hover {
+      background: $colorCtaPrimary;
+    }
+  }
+
+  &.is-active,
+  .tooltip_trigger:not(.tooltip_clickable):hover + {
+    .tooltip_content {
+      // display: block;
+      overflow: visible;
+      @include opacity(1);
+      z-index: 100;
+    }
+  }
+
+  &_close {
+    position: absolute;
+    top: rem(1);
+    right: rem(1);
+    color: $colorCtaNav;
+
+    &:hover {
+      text-decoration: none;
+      color: $colorCtaPrimary;
+    }
+  }
+}

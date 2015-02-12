@@ -26,15 +26,40 @@
 }
 
 [class^="<%= className %>-"]:before,
-[class*=" <%= className %>-"]:before{
+[class*=" <%= className %>-"]:before {
   @extend .fci-icon;
 }
 
-<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>" }
+<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>"; }
 <% }); %>
 
 .list-checked > *:before,
-.list-checked--reversed > *:before {
+.list-checked--reversed > *:before,
+.form-checkbox tt {
   @extend .fci-icon;
   @extend .fci-tick;
 } 
+
+.tooltip_close {
+  @extend .fci-icon;
+  @extend .fci-close;
+}
+
+.message {
+
+  &:before {
+    @extend .fci-icon;
+    @extend .fci-info;
+  }
+
+  &--error:before,
+  &--warning:before { 
+    @extend .fci-icon;
+    @extend .fci-attention; 
+  }
+
+  &--success:before {
+    @extend .fci-icon;
+    @extend .fci-tick;
+  }
+}
