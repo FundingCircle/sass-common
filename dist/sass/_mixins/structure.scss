@@ -307,3 +307,63 @@ $colRatio: 1;
 
 
 
+/* ---------------------------------------------------------------------- *\
+  FLOAT MIXINS
+  - generate classes for different box sizes
+  - cols format is &-[x]size
+  - if you have 5 params inside class .test, the result will be:
+    .test-col--xsmall {}
+    .test-col--small {}
+    .test-com--medium {}
+    .test-col--large {}
+    .test-col--xlarge {}
+  - adding more values will add more x to the size (eg: xxsize, xxxlarge, etc.)
+\* ---------------------------------------------------------------------- */
+
+
+@mixin cols($cols) {
+
+  // sort cols and convert to percentages
+  $cols: colsWidth(quickSort($cols));
+  $colsLength: length($cols);
+
+  $splitMediumList: ceil($colsLength / 2);
+  
+  $splitSmallList: $splitMediumList - 1;
+  $splitLargeList: $splitMediumList + 1;
+
+  @if $colsLength <= 2 {
+    $splitSmallList: $splitMediumList;
+    $splitMediumList: $splitMediumList + 1;
+  }
+
+  &-col-- {
+
+    // small size columns
+    $prefixSmall: '';
+    
+    @for $i from $splitSmallList through 1 {
+      &#{$prefixSmall}small {
+        width: nth($cols, $i) * 1%;
+      }
+      $prefixSmall: x#{$prefixSmall};
+    }
+
+    // medium size columns
+    &medium {
+      width: nth($cols, $splitMediumList) * 1%;
+    }
+
+    // large size columns
+    $prefixLarge: '';
+
+    @for $i from $splitLargeList through length($cols) {
+      &#{$prefixLarge}large {
+        width: nth($cols, $i) * 1%;
+      }
+      $prefixLarge: x#{$prefixLarge};
+    }
+  }
+}
+
+
