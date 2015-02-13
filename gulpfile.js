@@ -27,7 +27,7 @@ paths.source.svgFonts = paths.source.root + '/fonts/svg/**/*';
 var fontName = "fc-icons";
 
 gulp.task('clean', function(callback) {
-  del(paths.build.root, callback);
+  del(paths.build.root, {force:true}, callback);
 });
 
 gulp.task('build:icon-font', function() {
