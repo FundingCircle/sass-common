@@ -5,19 +5,35 @@
   $min: unitless($min);
   $max: unitless($max);
 
-  @if($min == false) {
+  @if $min == false and $max == false {
+
+    // if both values are false, just show the content
+    @content;
+
+  }
+  @else if $min == false {
+  
+    // only show the upper limit
     @media only screen and (max-width: $max - 1) {
       @content;
     }
-  } @else if ($max == false) {
+  
+  } @else if $max == false {
+
+    // from $min to infinity and beyond
     @media only screen and (min-width: $min) {
       @content;
     }
+
   } @else {
+
+    // show the content between $min and $max
     @media only screen and (min-width: $min) and (max-width: $max - 1) {
       @content;
     }
+
   }
+
 }
 
 
