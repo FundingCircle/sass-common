@@ -369,18 +369,17 @@ $colRatio: 1;
 
 
 
-@mixin wrapThis($padding: false, $min: false $max: false) {
+@mixin wrapThis($padding: false, $breakPoints: (false false)) {
 
   @include centerBlock(0,true);
   width: 100%;
   max-width: 980px;
 
   @if $padding {
-    @include breakPoints($min, $max) {
+    @include breakPoints(first($breakPoints), last($breakPoints)) {
       padding-left: $defaultColsPadding;
       padding-right: $defaultColsPadding;
     }
   }
 }
-
 
