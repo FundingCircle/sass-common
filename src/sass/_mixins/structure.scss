@@ -364,6 +364,22 @@ $colRatio: 1;
       $prefixLarge: x#{$prefixLarge};
     }
   }
+
 }
 
+
+
+@mixin wrapThis($padding: false, $breakPoints: (false false)) {
+
+  @include centerBlock(0,true);
+  width: 100%;
+  max-width: 980px;
+
+  @if $padding {
+    @include breakPoints(first($breakPoints), last($breakPoints)) {
+      padding-left: $defaultColsPadding;
+      padding-right: $defaultColsPadding;
+    }
+  }
+}
 
