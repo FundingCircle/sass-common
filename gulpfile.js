@@ -20,7 +20,7 @@ paths.build.styleguide = paths.build.root + '/styleguide';
 
 paths.source = {};
 paths.source.root = 'src';
-paths.source.iconfontTemplate = paths.source.root + '/fonts/iconfontTemplate.css.tpl';
+paths.source.iconfontTemplate = paths.source.root + '/fonts/iconfontTemplate.scss.tpl';
 paths.source.stylesheets = paths.source.root + '/sass/**/*';
 paths.source.svgFonts = paths.source.root + '/fonts/svg/**/*';
 
@@ -44,10 +44,9 @@ gulp.task('build:icon-font', function() {
         .pipe(template({
           glyphs: codepoints,
           fontName: fontName,
-          fontPath: '../fonts/',
           className: 'fci'
         }))
-        .pipe(rename(fontName + '.css'))
+        .pipe(rename(fontName + '.scss'))
         .pipe(gulp.dest(paths.build.fonts));
   }
 });

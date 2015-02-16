@@ -1,7 +1,7 @@
 // REM Support
-// 
+//
 // $REMsupport - flag for REM support. REM is not supported in IE8
-// 
+//
 // variables.rem
 
 $REMsupport: false;
@@ -9,11 +9,12 @@ $REMsupport: false;
 
 
 // PREREQUISITES
-// 
+//
 // Mandatory imports
-// 
-// 
+//
+//
 
+@import './fonts';
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
 @import './variables';
 @import './functions';
@@ -63,7 +64,3 @@ $REMsupport: false;
 \* ---------------------------------------------------------------------- */
 
 @import './general/dynamic-loaders';
-
-
-
-
