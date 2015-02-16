@@ -2,13 +2,15 @@
   ICON FONT DEFINITIONS
 \* ---------------------------------------------------------------------- */
 
+$fontPath: 'fonts/' !default;
+
 @font-face {
   font-family: "fc-icons";
-  src: url('../fonts/fc-icons.eot');
-  src: url('../fonts/fc-icons.eot?#iefix') format('eot'),
-    url('../fonts/fc-icons.woff') format('woff'),
-    url('../fonts/fc-icons.ttf') format('truetype'),
-    url('../fonts/fc-icons.svg#fc-icons') format('svg');
+  src: url('#{$fontPath}fc-icons.eot');
+  src: url('#{$fontPath}fc-icons.eot?#iefix') format('eot'),
+    url('#{$fontPath}fc-icons.woff') format('woff'),
+    url('#{$fontPath}fc-icons.ttf') format('truetype'),
+    url('#{$fontPath}fc-icons.svg#fc-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -45,7 +47,7 @@
 .form-checkbox tt {
   @extend .fci-icon;
   @extend .fci-tick;
-} 
+}
 
 .tooltip_close {
   @extend .fci-icon;
@@ -60,9 +62,9 @@
   }
 
   &--error:before,
-  &--warning:before { 
+  &--warning:before {
     @extend .fci-icon;
-    @extend .fci-attention; 
+    @extend .fci-attention;
   }
 
   &--success:before {
