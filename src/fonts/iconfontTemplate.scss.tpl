@@ -2,13 +2,15 @@
   ICON FONT DEFINITIONS
 \* ---------------------------------------------------------------------- */
 
+$fontPath: 'fonts/' !default;
+
 @font-face {
   font-family: "<%= fontName %>";
-  src: url('<%= fontPath %><%= fontName %>.eot');
-  src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'),
-    url('<%= fontPath %><%= fontName %>.woff') format('woff'),
-    url('<%= fontPath %><%= fontName %>.ttf') format('truetype'),
-    url('<%= fontPath %><%= fontName %>.svg#<%= fontName %>') format('svg');
+  src: url('#{$fontPath}<%= fontName %>.eot');
+  src: url('#{$fontPath}<%= fontName %>.eot?#iefix') format('eot'),
+    url('#{$fontPath}<%= fontName %>.woff') format('woff'),
+    url('#{$fontPath}<%= fontName %>.ttf') format('truetype'),
+    url('#{$fontPath}<%= fontName %>.svg#<%= fontName %>') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,7 +40,7 @@
 .form-checkbox tt {
   @extend .fci-icon;
   @extend .fci-tick;
-} 
+}
 
 .tooltip_close {
   @extend .fci-icon;
@@ -53,9 +55,9 @@
   }
 
   &--error:before,
-  &--warning:before { 
+  &--warning:before {
     @extend .fci-icon;
-    @extend .fci-attention; 
+    @extend .fci-attention;
   }
 
   &--success:before {
