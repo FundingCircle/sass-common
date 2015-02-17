@@ -1,15 +1,15 @@
 /* ---------------------------------------------------------------------- *\
-  CENTER BLOCK 
+  CENTER BLOCK
   center block elements using margin: auto
   you can set the top and bottom here or set them separately
   if centerBlock(value, true) -> margin: value auto;
 \* ---------------------------------------------------------------------- */
 
 @mixin centerBlock($top:false, $bottom:false) {
-  
+
   @if $top { $top: rem($top); }
   @if $bottom { $bottom: rem($bottom); }
-  
+
   @if $top and $bottom == false {
 
     margin: {
@@ -19,25 +19,25 @@
     }
 
   } @else if $top == false and $bottom {
-    
+
     margin: {
       left: auto;
       right: auto;
       bottom: $bottom;
     }
 
-  } @else if $top and $bottom == true { 
-    
+  } @else if $top and $bottom == true {
+
     margin: $top auto;
 
   } @else if $top and $bottom {
 
     margin: $top auto $bottom;
-  
+
   } @else {
     margin: {
       left: auto;
-      right: auto; 
+      right: auto;
     }
   }
 
@@ -50,22 +50,22 @@
   Everything related to tables
       - all arguments are optional
       - structure -> table > table-cell
-   
+
   $verticalAlign: top / baseline / ... / http://goo.gl/d8gtec
-   
+
   $reset: two values between which the cells fall to full-width blocks
-   
+
   $hide: two values between which the table is hidden
-   
+
   $cols: false / equal / list
     a) FALSE - lets the browser decide the column widths
     b) EQUAL - all equal columns (does not work with table-layout: fixed)
     c) LIST - it uses the golden ratio formula: (xi+xj)/xi = ratio
-   
+
   $row: boolean -> if true, the structure is table > row > cell
-  
+
   $padding -> default is $defaultColsPadding
-   
+
   e.g: @include table( top, 700px 1000px , 100px 480px , 2 1 7 , false , 10rem )
                         |    |              |             |      |        | padding
                         |    |              |             |      | 1 row
@@ -83,25 +83,25 @@
 
   @if $row {
     & > * { display: table-row; }
-    
+
     & > * > * {
       @include tableCell($verticalAlign,$cols,$padding);
     }
 
   } @else {
     & > * {
-     @include tableCell($verticalAlign,$cols,$padding); 
+     @include tableCell($verticalAlign,$cols,$padding);
     }
   }
-  
-  @if $reset { 
+
+  @if $reset {
     body & {
       @if $row {
-        & > * { 
-          @include resetColumns(first($reset),last($reset)); 
+        & > * {
+          @include resetColumns(first($reset),last($reset));
         }
       } @else {
-        @include resetColumns(first($reset),last($reset)); 
+        @include resetColumns(first($reset),last($reset));
       }
     }
   }
@@ -123,13 +123,13 @@ $colRatio: 1;
   @if $padding {
     padding: $padding;
   }
-  
+
   @if $colList == equal {
     width: 1%;
   } @else if $colList != false {
-    // calculate the passed vars sum - in order to have general proportions 
+    // calculate the passed vars sum - in order to have general proportions
     // we need this so we can apply the rule of three to find the new proportions
-    $colSum : 0;    
+    $colSum : 0;
 
     @each $colVal in $colList {
       $colSum: $colSum + nth($colRatio,$colVal);
@@ -138,7 +138,7 @@ $colRatio: 1;
     $colFinal: ();
     @each $colVal in $colList {
       $colFinal: append($colFinal,nth($colRatio,$colVal) * 100 / $colSum);
-    } 
+    }
     $iteration : 1; // do not use index(), it fails on columns with same argument
 
   @each $i in $colFinal {
@@ -163,7 +163,7 @@ $colRatio: 1;
   @include breakPoints($minVal,$maxVal) {
 
     display: block;
-    
+
     & > *,
     & > *[class*="col-"] {
       display: block;
@@ -175,8 +175,8 @@ $colRatio: 1;
 
 
 /* ---------------------------------------------------------------------- *\
-  GENERATE STATIC COLUMN FRAGMENTATION 
-  will be replaced in the future with the proper golden ratio cols system 
+  GENERATE STATIC COLUMN FRAGMENTATION
+  will be replaced in the future with the proper golden ratio cols system
 \* ---------------------------------------------------------------------- */
 
 @mixin staticCols($noOfCols) {
@@ -205,9 +205,9 @@ $colRatio: 1;
   $elWidth: 1 / $colGroup;
   @include breakPoints(first($resolution),last($resolution)) {
     @include clear(true,false);
-    
+
     display: block;
-      
+
     & > * {
       display: block;
       float: left;
@@ -235,7 +235,7 @@ $colRatio: 1;
   @if $verticalAlign {
     vertical-align: $verticalAlign;
   }
-  
+
   @if $padding {
     padding: rem($padding);
   }
@@ -243,7 +243,7 @@ $colRatio: 1;
   @if $cols == equal {
     width: 1%;
   } @else if type-of($cols) == list {
-    
+
     $cols: colsWidth($cols);
 
     @for $i from 1 through length($cols) {
@@ -276,7 +276,7 @@ $colRatio: 1;
 
   // columns outside the $hide and $reset areas
   $minPoint: false;
-  
+
   @if $hide and $reset {
     @if last($hide) > last($reset) {
       $minPoint: last($hide);
@@ -289,19 +289,26 @@ $colRatio: 1;
     $minPoint: last($reset);
   }
 
-  @include breakPoints($minPoint, false) {
-  
-    display: table;
-  
-    @if $row {
-      & > * { display: table-row; }
-      & > * > * {
-        @include tableCellV2($verticalAlign, $cols, $padding);
-      }
-    } @else {
-      & > * {
-       @include tableCellV2($verticalAlign, $cols, $padding); 
-      }
+  @mixin dtStyle {
+   display: table;
+
+   @if $row {
+     & > * { display: table-row; }
+     & > * > * {
+       @include tableCellV2($verticalAlign, $cols, $padding);
+     }
+   } @else {
+     & > * {
+      @include tableCellV2($verticalAlign, $cols, $padding);
+     }
+   }
+  }
+
+  @if $ie {
+    @include dtStyle;
+  } @else {
+    @include breakPoints($minPoint, false) {
+      @include dtStyle;
     }
   }
 
@@ -330,7 +337,7 @@ $colRatio: 1;
   $colsLength: length($cols);
 
   $splitMediumList: ceil($colsLength / 2);
-  
+
   $splitSmallList: $splitMediumList - 1;
   $splitLargeList: $splitMediumList + 1;
 
@@ -343,7 +350,7 @@ $colRatio: 1;
 
     // small size columns
     $prefixSmall: '';
-    
+
     @for $i from $splitSmallList through 1 {
       &#{$prefixSmall}small {
         width: nth($cols, $i) * 1%;
