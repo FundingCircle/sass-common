@@ -7,11 +7,11 @@ $formInputBorderMain: rgb(221,221,221);
 $formBreakpoint: $bpMobileLandscape;
 
 @include keyframes(loopRotate) {
-  0% { 
-    @include prefix(transform, rotate(0));  
+  0% {
+    @include prefix(transform, rotate(0));
   }
-  
-  100% { 
+
+  100% {
     @include prefix(transform, rotate(360deg));
   }
 }
@@ -25,13 +25,13 @@ $formBreakpoint: $bpMobileLandscape;
 }
 
 ::-webkit-input-placeholder { @include placeholderStyle; }
-:-moz-placeholder { @include placeholderStyle; }
-::-moz-placeholder { @include placeholderStyle; }
-:-ms-input-placeholder { @include placeholderStyle; }
+     :-ms-input-placeholder { @include placeholderStyle; }
+         ::-moz-placeholder { @include placeholderStyle; }
+          :-moz-placeholder { @include placeholderStyle; }
 
-body {
-  background: rgb(246,245,243);
-}
+// body {
+//   background: rgb(246,245,243);
+// }
 
 .super-bold {
   font-weight: 700;
@@ -61,8 +61,8 @@ body {
 
       & > *:first-child {
         padding-right: rem(1);
-      }      
-    }    
+      }
+    }
   }
 
   &_info-box {
@@ -108,10 +108,10 @@ body {
     }
   }
 
-  &_wrap { 
+  &_wrap {
     h1 { @include font(4, true, 300); }
-    h2 { 
-      @include font(2, true, 300); 
+    h2 {
+      @include font(2, true, 300);
       margin-bottom: rem(1);
     }
   }
@@ -140,7 +140,7 @@ body {
   }
 
   // all form fields, except checkbox and radio
-  input:not([type="checkbox"]):not([type="radio"]),
+  input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
   .select,
   textarea {
     @include font(0, 2.5);
@@ -168,11 +168,11 @@ body {
     }
   }
 
-  
+
   // inset elements
-  input:not([type="checkbox"]):not([type="radio"]),
+  input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
   textarea {
-    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true); 
+    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true);
   }
 
   textarea {
@@ -181,7 +181,7 @@ body {
 
   .select {
     // beveled elements
-    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));  
+    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
 
     $dropDownIconWidth: rem(2.6);
     $arrowWidth: .5;
@@ -191,7 +191,7 @@ body {
 
     height: rem(2.5);
     position: relative;
-    
+
     &:before,
     &:after {
       content: '';
@@ -220,7 +220,7 @@ body {
 
     select {
       @include centerAbs();
-      
+
       padding: rem(0 1);
       .ie & {
         padding: rem(0.5 1);
@@ -244,7 +244,7 @@ body {
 
       &:focus {
         -moz-outline-style: none;
-             outline-style: none; 
+             outline-style: none;
       }
     }
 
@@ -278,12 +278,12 @@ body {
 
 
   // tooltip
-  .form-default_tooltip {
+  &_tooltip {
     $tooltipBackground: rgb(255,255,255);
     $arrowHeight: 10px;
 
     @include font(0, true);
-    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1)); 
+    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1));
 
     height: 0;
     padding: 0;
@@ -306,7 +306,7 @@ body {
     }
 
     @include breakPoints(0, $formBreakpoint) {
-      
+
       &.is-visible {
         margin-bottom: rem(1);
 
@@ -337,10 +337,10 @@ body {
     @include resetList;
     background: rgb(255,255,255);
     outline: 1px solid $ColorBrand2;
-    
+
     color: $ColorBrand2;
     text-transform: uppercase;
-    
+
     li {
       padding: rem(.5);
       cursor: pointer;
@@ -394,7 +394,7 @@ body {
   position: relative;
 
   $borderColor: $colorMessage;
-  
+
   @include breakPoints(0, $formBreakpoint) {
     border-bottom: 4px solid $borderColor;
     text-align: center;
@@ -421,8 +421,8 @@ body {
     margin-bottom: 0;
   }
 
-  &:before { 
-    color: $borderColor; 
+  &:before {
+    color: $borderColor;
     display: block;
     font-size: rem(2.5);
     line-height: rem(2.5);
@@ -439,9 +439,9 @@ body {
     @extend .message;
 
     $borderColor: $colorError;
-    
+
     &:before { color: $borderColor; }
-    
+
     @include breakPoints(0, $formBreakpoint) {
       border-bottom-color: $borderColor;
     }
@@ -472,7 +472,7 @@ body {
     @extend .message;
 
     $borderColor: $colorSuccess;
-    
+
     &:before { color: $borderColor; }
 
     @include breakPoints(0, $formBreakpoint) {
@@ -482,7 +482,7 @@ body {
     @include breakPoints($formBreakpoint, false) {
       border-left: 4px solid $borderColor;
     }
-  }  
+  }
 }
 
 
@@ -507,7 +507,7 @@ $radioAndCheckboxSize: 24px;
   &-radio,
   &-checkbox {
     position: relative;
-    
+
     input {
       position: absolute;
       top: 0;
@@ -521,7 +521,7 @@ $radioAndCheckboxSize: 24px;
         display: block;
         height: $radioAndCheckboxSize;
         width: $radioAndCheckboxSize;
-      
+
         &:before,
         &:after {
           @include centerAbs(1);
@@ -550,7 +550,7 @@ $radioAndCheckboxSize: 24px;
   &-radio {
     label {
       tt {
-        &:before, 
+        &:before,
         &:after {
           @include borderRadius(50, '%');
         }
@@ -564,7 +564,7 @@ $radioAndCheckboxSize: 24px;
         }
       }
     }
-  
+
     input:checked ~ label tt:before {
       width: $radioAndCheckboxSize / 2;
       height: $radioAndCheckboxSize / 2;
@@ -607,7 +607,7 @@ $radioAndCheckboxSize: 24px;
       top: 0;
       left: 0;
     }
-  
+
   }
 }
 
@@ -622,7 +622,7 @@ $radioAndCheckboxSize: 24px;
       top: 0;
       right: 0;
     }
-  
+
   }
 }
 
@@ -636,12 +636,12 @@ $radioAndCheckboxSize: 24px;
 %posBottom {
   label {
     padding-bottom: $radioAndCheckboxSize + 5;
-    tt { 
+    tt {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      margin: 0 auto; 
+      margin: 0 auto;
     }
     text-align: center;
   }
@@ -665,8 +665,8 @@ $radioAndCheckboxSize: 24px;
 
   &_content {
     @include font(-1, true);
-    @include posAbs(false, false, 100%, negative($arrowPadding + $arrowWidth), -1);    
-    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1)); 
+    @include posAbs(false, false, 100%, negative($arrowPadding + $arrowWidth), -1);
+    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1));
 
     display: block;
     @include opacity(0);
@@ -726,7 +726,7 @@ $radioAndCheckboxSize: 24px;
     &:before {
       content: '?';
     }
-    
+
     &:hover {
       background: $colorCtaPrimary;
     }
