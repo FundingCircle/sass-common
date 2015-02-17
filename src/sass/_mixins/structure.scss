@@ -77,7 +77,7 @@
                         | vertical-align: top
 \* ---------------------------------------------------------------------- */
 
-@mixin table($verticalAlign:top, $reset:false, $hide:false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+@mixin tableOld($verticalAlign:top, $reset:false, $hide:false, $cols: false, $row:false, $padding: $defaultColsPadding) {
   display: table;
   width: 100%;
 
@@ -256,7 +256,7 @@ $colRatio: 1;
 }
 
 
-@mixin tableV2($verticalAlign:top, $reset: false, $hide: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+@mixin table($verticalAlign:top, $reset: false, $hide: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
 
   // table general stuff
   width: 100%;
