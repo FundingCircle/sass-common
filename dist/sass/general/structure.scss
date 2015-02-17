@@ -6,16 +6,13 @@
 html,
 body {
   vertical-align: baseline;
-  
+
   font-size: $fontSizeBase * 1px;
 }
 
 ::-moz-selection { @include textSelection; }
 ::selection { @include textSelection; }
 
-// @include breakPoints(false,$bpTabletPortrait) {
-//  html, body { @include font(-1); }
-// }
 
 body {
   font-family: $fontFamilyDefault;
@@ -28,8 +25,8 @@ html {
   @include boxSizing();
 }
 
-*, 
-*:after, 
+*,
+*:after,
 *:before {
   box-sizing: inherit;
 }
@@ -55,7 +52,7 @@ body *:after {
 a {
   text-decoration: none;
   color: $colorCtaPrimary;
-  
+
   &:hover {
     text-decoration: underline;
   }
@@ -67,11 +64,11 @@ p {
 
 
 // Headers
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
   margin: 0 0 1em;
 }

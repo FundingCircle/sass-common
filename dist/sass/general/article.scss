@@ -11,12 +11,11 @@
 
   h3 {
     @include font(1,true,300);
-  } 
+  }
 }
 
 .emp-box {
   background: $colorBackground2;
-  // border: 1px solid $colorDividerMain;
   padding: rem(1);
   margin: rem(1 0 2);
   color: $colorFontDarkSoft;
@@ -31,7 +30,7 @@
 
   img.full-width {
     margin-bottom: rem(1);
-  } 
+  }
 
   strong {
     font-weight: 600;
@@ -54,7 +53,7 @@
     @include font(0,true,400);
   }
 
-  th, 
+  th,
   td {
     padding: rem(0.5);
   }

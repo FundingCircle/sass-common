@@ -11,7 +11,7 @@
       @if type-of($val) == number and $val != 0 {
 
         $cVal: #{$val}#{$unit};
-      
+
       } @else if type-of($val) == list {
 
         @each $i in $val {
@@ -25,9 +25,9 @@
       }
 
     } @else {
-      
+
       $cVal: rem($val);
-    
+
     }
 
     @include prefix(border-radius, $cVal, webkit)
@@ -58,12 +58,12 @@
 \* ---------------------------------------------------------------------- */
 
 @mixin boxSizing($val:border-box) {
-  @include prefix(box-sizing, $val, webkit moz) 
+  @include prefix(box-sizing, $val, webkit moz)
 }
 
 
 /* ---------------------------------------------------------------------- *\
-  GRADIENT GENERATOR 
+  GRADIENT GENERATOR
   Usage: @include gradient($orientation,($colorList),[$angle]);
   $orientation: string -> horizontal / vertical / radial / angle
   $colorList: a list of pairs for color stops (color percentage)
@@ -73,14 +73,14 @@
 \* ---------------------------------------------------------------------- */
 
 @mixin gradient($orientation,$colorList,$angle:false) {
-  
+
   // set type of gradient
   $gradType: linear;
-  
+
   @if $orientation == radial {
     $gradType: radial;
   }
-  
+
   $gradientDirection1: left;
   $gradientDirection2: left top, right top;
   $gradientDirection3: to right;
@@ -88,13 +88,13 @@
 
   // "translate" $orientation
   @if $orientation == radial {
-    
+
     $gradientDirection1: center, ellipse cover;
     $gradientDirection2: radial, center center, 0px, center center, 100%;
     $gradientDirection3: ellipse at center;
-  
+
   } @else if $orientation == vertical {
-  
+
     $gradientDirection1: top;
     $gradientDirection2: left top, left bottom;
     $gradientDirection3: to bottom;
@@ -111,43 +111,23 @@
   background: first(first($colorList));
 
   $gradientColorFormat1: $colorList; // this has the correct format
-  // $gradientColorFormat2: ();
-  
-  // prepare the format for the webkit custom gradient
-  // $comma: null;
-  // @each $i in $colorList {
-    
-  //   $gradientColorFormat2: $gradientColorFormat2 + $comma + color-stop(nth($i,2),nth($i,1));
-    
-  //   // add comma after first iteration
-  //   $comma: unquote(',');
-  // }
 
-
-  background: -moz-#{$gradType}-gradient( 
-    $gradientDirection1, 
-    $gradientColorFormat1
-  );
-  
-  // TO FIX
-  // issue: $gradientColorFormat2 breaks the layout
-  // background: -webkit-gradient(
-  //     $gradType,
-  //     $gradientDirection2,
-  //     $gradientColorFormat2
-  // );  
-
-  background: -webkit-#{$gradType}-gradient( 
+  background: -moz-#{$gradType}-gradient(
     $gradientDirection1,
     $gradientColorFormat1
   );
 
-  background: -o-#{$gradType}-gradient( 
+  background: -webkit-#{$gradType}-gradient(
     $gradientDirection1,
     $gradientColorFormat1
   );
 
-  background: -ms-#{$gradType}-gradient( 
+  background: -o-#{$gradType}-gradient(
+    $gradientDirection1,
+    $gradientColorFormat1
+  );
+
+  background: -ms-#{$gradType}-gradient(
     $gradientDirection1,
     $gradientColorFormat1
   );
@@ -156,7 +136,7 @@
     $gradientDirection3,
     $gradientColorFormat1
   );
-  
+
   $ieFirstColor: ie-hex-str(first(first($colorList)));
   $ieLastColor: ie-hex-str(first(last($colorList)));
 
@@ -172,7 +152,7 @@
 
 @mixin opacity($opacity) {
   opacity: $opacity;
-  
+
   $opacityIE: $opacity * 100;
   filter: alpha(opacity=$opacityIE);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacityIE})";
@@ -185,7 +165,7 @@
 \* ---------------------------------------------------------------------- */
 
 @mixin pos($top:false, $right:false, $bottom:false, $left:false, $position:false, $zIndex: false) {
-  
+
   $top: rem($top);
   $right: rem($right);
   $bottom: rem($bottom);
@@ -213,7 +193,7 @@
 
 /* ---------------------------------------------------------------------- *\
   RGBA
- 
+
   Credits: @cballenar — January 4th, 2014
 
   A SCSS mixin to create RGB fallbacks for RGBa styles.
@@ -232,7 +212,7 @@
    - @include alpha-me($property, $attributes, $color, $background);
 
   E.g:
-    .element { 
+    .element {
       @include alpha-me( color, rgba(black,.5) );
 
       @include alpha-me( background-color, rgba(#dffa14,.5), #529ef0);
@@ -241,7 +221,7 @@
 
       @include alpha-me( border, 3px solid, rgba(240,20,200,.5), #DADADA); }
 
-  
+
   Notes
    - If no background color is specified, white is used by default
    - We can use the rgba SASS function to enter the translucent color in other formats
@@ -260,7 +240,7 @@
   $colorBg:   null;
 
   // Check if $var2 is a color
-  @if ( type-of($var2) == color ) { 
+  @if ( type-of($var2) == color ) {
 
     // Set default background if not specified
     @if not $var3 { $var3: #FFFFFF; }
@@ -332,7 +312,7 @@
 
 /* ---------------------------------------------------------------------- *\
   ANIMATION
-  
+
   @include keyframes(slide-down) {
     0% { opacity: 1; }
     90% { opacity: 0; }
@@ -353,13 +333,13 @@
   }
   @-moz-keyframes $animationName {
     @content;
-  }  
+  }
   @-ms-keyframes $animationName {
     @content;
   }
   @-o-keyframes $animationName {
     @content;
-  }  
+  }
   @keyframes $animationName {
     @content;
   }
@@ -370,6 +350,6 @@
   -moz-animation: #{$str};
   -ms-animation: #{$str};
   -o-animation: #{$str};
-  animation: #{$str};      
+  animation: #{$str};
 }
 

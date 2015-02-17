@@ -29,10 +29,6 @@ $formBreakpoint: $bpMobileLandscape;
          ::-moz-placeholder { @include placeholderStyle; }
           :-moz-placeholder { @include placeholderStyle; }
 
-// body {
-//   background: rgb(246,245,243);
-// }
-
 .super-bold {
   font-weight: 700;
   text-transform: uppercase;
@@ -132,7 +128,6 @@ $formBreakpoint: $bpMobileLandscape;
       position: absolute;
       top: rem(.6);
       right: rem(.6);
-      // transition: none;
       @include animation(loopRotate 2s linear infinite);
 
     }
@@ -149,7 +144,6 @@ $formBreakpoint: $bpMobileLandscape;
     width: 100%;
     background: $formInputBackgroundMain;
     border: 0;
-    // border-right: 4px solid rgba(255,255,255,0);
     outline: 1px solid $formInputBorderMain;
     padding: rem(0 1);
     outline-offset: initial;

@@ -5,7 +5,7 @@
   where f(0) : $fontSizeBase and r: $ratio or $sqrtRatio (case split)
 
   $fontSize: integers were 0 is the base, n will calculate f(n)
-  $lineHeight: 
+  $lineHeight:
     - true -> rounds up to the first multiplier of $fontBaseline
     - number -> shows that number (considered to be in REM)
     - string -> shows that string
@@ -48,18 +48,18 @@
 
 
 
-  
+
   // step 4
   // show the value as font-size and give it a value
-  font-size: rem($fontSizeCalc * 1px);  
- 
+  font-size: rem($fontSizeCalc * 1px);
+
 
   @if $test {
     @warn rem($fontSizeCalc * 1px);
-  } 
+  }
 
   /* LINE HEIGHT */
-  
+
   // step 1 - deal with different values
   @if $lineHeight == true {
 
@@ -89,8 +89,8 @@
   @if $fontVariant { font-variant: $fontVariant; }
 
   /* FONT Family */
-  @if $fontFamily { 
-    font-family: $fontFamily; 
+  @if $fontFamily {
+    font-family: $fontFamily;
   }
 
 }

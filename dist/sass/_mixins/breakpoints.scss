@@ -1,6 +1,6 @@
 
 @mixin breakPoints($min,$max) {
-  
+
   // fallback for unitless values (convert to px)
   $min: unitless($min);
   $max: unitless($max);
@@ -12,12 +12,12 @@
 
   }
   @else if $min == false {
-  
+
     // only show the upper limit
     @media only screen and (max-width: $max - 1) {
       @content;
     }
-  
+
   } @else if $max == false {
 
     // from $min to infinity and beyond
@@ -40,7 +40,7 @@
 
 @mixin breakPointsCols {
   [class^="show-"] { display: none; }
-  
+
   @each $resMin in $breakPoints {
     @each $resMax in $breakPoints {
       @if $resMin < $resMax {
@@ -59,7 +59,7 @@
 
           .hide-#{$resMin}-#{$resMax} {
             display: none;
-          }         
+          }
 
         }
       }
@@ -80,12 +80,10 @@
 
 
 @mixin showBetweenWidths($minVal:false,$maxVal:false,$displayType: block) {
-  // display: none;
   @include breakPoints($minVal,$maxVal) { display: $displayType; }
 }
 
 @mixin showBetweenHeights($minVal:false,$maxVal:false,$displayType: block) {
-  // display: none;
   @include breakPoints($minVal,$maxVal) { display: $displayType; }
 }
 
