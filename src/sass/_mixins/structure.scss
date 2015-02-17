@@ -232,7 +232,6 @@ $colRatio: 1;
 
 @mixin tableCellV2($verticalAlign: false, $cols: false, $padding: false) {
   display: table-cell;
-  
   @if $verticalAlign {
     vertical-align: $verticalAlign;
   }
@@ -249,7 +248,7 @@ $colRatio: 1;
 
     @for $i from 1 through length($cols) {
       &:nth-child(#{$i}) {
-        width: nth($cols, $i);
+        width: nth($cols, $i) * 1%;
       }
     }
 
@@ -257,7 +256,7 @@ $colRatio: 1;
 }
 
 
-@mixin tableV2($verticalAlign:top, $hide: false, $reset: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+@mixin tableV2($verticalAlign:top, $reset: false, $hide: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
 
   // table general stuff
   width: 100%;
@@ -291,7 +290,9 @@ $colRatio: 1;
   }
 
   @include breakPoints($minPoint, false) {
+  
     display: table;
+  
     @if $row {
       & > * { display: table-row; }
       & > * > * {
@@ -303,6 +304,7 @@ $colRatio: 1;
       }
     }
   }
+
 }
 
 
