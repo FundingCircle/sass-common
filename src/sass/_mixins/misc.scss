@@ -36,7 +36,7 @@
   display: block;
   width: 0;
   height: 0;
-  
+
   // convert to rem / px
   $size: rem($size);
 
@@ -47,7 +47,7 @@
 
 
   @if first($direction) == up {
-    
+
     @if last($direction) == right {
       $solid: right;
       $transparent: bottom;
@@ -58,7 +58,7 @@
       $solid: bottom;
       $transparent: left, right;
     }
-  
+
   } @else if first($direction) == down {
 
     @if last($direction) == right {
@@ -81,13 +81,13 @@
 
     $solid: right;
     $transparent: top, bottom;
-  
+
   } @else {
 
     $solid: top;
     $transparent: left, right;
-  
-  } 
+
+  }
 
   border-#{$solid}: $height solid $color;
 

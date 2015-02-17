@@ -1,20 +1,20 @@
 // List manipulations
-// 
+//
 // All the functions that alter a list
-// 
+//
 // Styleguide 1.2
 
 
 
 // First item
-// 
+//
 // Get the first item from a list
-// 
+//
 // markup:
 // first($list)
 // // $list: 5 1 2 6 10;
 // // first($list) -> 5
-// 
+//
 // Styleguide 1.2.1
 
 @function first($list) {
@@ -24,14 +24,14 @@
 
 
 // Last item
-// 
+//
 // Get the last item from a list
-// 
+//
 // markup:
 // last($list)
 // // $list: 5 1 2 6 10
 // // last($list) -> 10
-// 
+//
 // Styleguide 1.2.2
 
 @function last($list) {
@@ -41,12 +41,12 @@
 
 
 // Remove from list
-// 
+//
 // Removes an item from a list
-// 
+//
 // markup:
 // remove($list, $val)
-// 
+//
 // Styleguide 1.2.3
 
 @function removeFromList($list, $val) {
@@ -71,13 +71,13 @@
   $newList: ();
 
   @for $i from 1 through length($list) {
-    
+
     @if nth($list, $i) == $oldVal {
       $newList: append($newList, $newVal);
     } @else {
       $newList: append($newList, nth($list,$i));
     }
-  
+
   }
 
   @return $newList();
@@ -88,7 +88,7 @@
 
 @function findInList($list, $val) {
   $flag: false;
-  
+
   @for $i from 1 through length($list) {
     @if nth($list, $i) == $val {
       $flag: true;
@@ -103,9 +103,9 @@
 
 @function insertInList($list, $val, $position) {
   $newList: ();
-  
+
   @if $position <= length($list) {
-  
+
     @for $i from 1 through length($list) {
       @if $i == $position {
         $newList: append($newList, $val);
@@ -113,7 +113,7 @@
 
       $newList: append($newList, nth($list, $i));
     }
-  
+
   } @else {
     $newList: append($list, $val);
   }
@@ -135,14 +135,14 @@
   @for $i from 1 through $intervalsLength {
     $first: first(nth($intervals, $i));
     $last: last(nth($intervals, $i));
-    
+
 
     @if findInList($skipThese, $first $last) == false {
-      
+
       @for $j from $i+1 through $intervalsLength {
         $firstC: first(nth($intervals, $j));
         $lastC: last(nth($intervals, $j));
-        
+
 
         // check to see if the intervals are overlapped (we need to skip the ones that we already did)
         @if $last >= $firstC and $first <= $lastC and findInList($skipThese, $firstC $lastC) == false {
@@ -162,17 +162,16 @@
 
           // this interval was absorbed into the new one, so we can flag it (so we can skip it from iteration)
           // $intervals: replaceFromList($intervals, $firstC $lastC, test);
-          
+
           $skipThese: append($skipThese, ($firstC $lastC), comma);
-          // @warn $skipThese;
         }
-        
+
 
       }
-      
+
       $newIntervals: append($newIntervals, ($first $last), comma);
     }
-    
+
   }
 
   @return $newIntervals;
@@ -183,7 +182,7 @@
 
 @function largestNoInList($list) {
   $largest: first($list);
-  
+
   @for $i from 1 through length($list) {
     @if nth($list, $i) > $largest {
       $largest: nth($list, $i);
@@ -197,7 +196,7 @@
 
 @function smallestNoInList($list) {
   $smallest: first($list);
-  
+
   @for $i from 1 through length($list) {
     @if nth($list, $i) < $smallest {
       $smallest: nth($list, $i);

@@ -110,13 +110,15 @@
 // Side menu
 
 .side-menu {
-  
+
   &_wrap {
-    padding: 0;
-    
+    &.side-menu_wrap {
+      padding: 0;
+    }
+
     @include breakPoints(false,$bpMobileLandscape) {
-      .side-menu { 
-        display: none; 
+      .side-menu {
+        display: none;
         position: relative;
 
         .header_trigger--close {
@@ -127,7 +129,7 @@
       input[type="radio"].submenu-side-trigger:checked ~ .side-menu {
         display: block;
       }
-      
+
       input[type="radio"].submenu-side-trigger:checked ~ label[for="submenu-side"] {
         display: none;
       }
@@ -138,7 +140,7 @@
       label[for="submenu-side"] {
         display: none;
       }
-    }    
+    }
   }
 
   padding: $defaultColsPadding;
@@ -158,10 +160,10 @@
     display: block;
     padding-left: rem(1);
 
-    a { 
+    a {
       @include font(-1);
       position: relative;
-      
+
       &:before {
         content: '•';
         position: absolute;
@@ -169,7 +171,7 @@
         top: 0;
         width: rem(1);
       }
-    
+
     }
   }
 
@@ -192,7 +194,7 @@
 // Structure small / large / small
 
 .struct-sls {
-  @include table(top, 0 $bpMobileLandscape, false false, 2 4 2, false, rem(1 2 2));
+  @include tableV2(top, 0 $bpMobileLandscape, false, 2 4 2, false, 1 2 2);
   @include centerBlock(2,2);
 
   &.wrap > * {

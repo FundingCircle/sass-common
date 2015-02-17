@@ -46,7 +46,7 @@ $customFormModifier: null, right, center-up, center-down;
     content: '';
     display: block;
     width: $elementWidth;
-    height: $elementWidth;    
+    height: $elementWidth;
   }
 
   %customChkRadradio {
@@ -92,9 +92,9 @@ $customFormModifier: null, right, center-up, center-down;
     .#{$customFormBlock}-#{$i} {
 
       @extend %customChkRadModifiersWrappers;
-      
+
       @each $j in $customFormModifier {
-        
+
         @if $j == center-down or $j == right {
           $pseudoElement: after;
         } @else {
@@ -106,7 +106,7 @@ $customFormModifier: null, right, center-up, center-down;
         } @else {
           $modJ: --#{$j};
         }
-        
+
         &#{$modJ} {
           @extend %customChkRadModifiers;
           @extend %customChkRadModifiers--#{$j};
@@ -121,7 +121,7 @@ $customFormModifier: null, right, center-up, center-down;
 
           label {
             @extend %customChkRadLabel;
-            
+
             &:#{$pseudoElement} {
               @extend %customChkRadPseudoElement;
               @extend %customChkRad#{$i};
@@ -140,12 +140,12 @@ $customFormModifier: null, right, center-up, center-down;
 
               @if $j == center-up or $j == center-down {
                 @extend %customChkRadCentered;
-              } 
+              }
             } // pseudo element CSS block
           } // label CSS block
         } // modifier CSS block
 
-      } // modifier iteration   
+      } // modifier iteration
     } // element CSS block
   } // element iteration
 

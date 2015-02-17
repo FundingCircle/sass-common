@@ -14,7 +14,7 @@ $colRatio: 1;
 
 
 @function colsWidth($cols: false) {
-  
+
   @if type-of($cols) == list {
     // read the list and calculate the percentages
 
@@ -35,7 +35,7 @@ $colRatio: 1;
 
     @each $colVal in $cols {
       $colsWidth: append($colsWidth, nth($colRatio, $colVal) * 100 / $colSum);
-    }    
+    }
 
 
   } @else if $cols == equal {

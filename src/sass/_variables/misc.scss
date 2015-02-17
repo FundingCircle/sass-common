@@ -1,17 +1,17 @@
 // Misc variables
 //
 // Other variables
-// 
+//
 // Styleguide 5.0
 
 // Ratios
-// 
+//
 // $ratio - ratio used for defining the columns and font proportions
 // $sqrtRatio - the square root of $ratio (needs hard-coding due to SASS limitations)
-// 
+//
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1">Value: {$modifiers}</div>
-// 
+//
 // Styleguide 5.1
 
 $ratio: 1.618;
@@ -19,13 +19,13 @@ $sqrtRatio: 1.27201964951;
 
 
 // Font size and baseline (see mixins for complete documentation)
-// 
+//
 // $fontSizeBase - all font sizes are in direct relation to this
 // $fontBaseline - for improved control over the font size
-// 
+//
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1">Value: {$modifiers}</div>
-// 
+//
 // Styleguide 5.2
 
 $fontSizeBase: 16;
@@ -33,37 +33,37 @@ $fontBaseline: $fontSizeBase / 2;
 
 
 // Font family (see mixins for complete documentation)
-// 
+//
 // $fontFamilyDefault - default font family used
-// 
+//
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1; font-family: {$modifiers}">Value: {$modifiers}</div>
-// 
+//
 // Styleguide 5.3
 
 $fontFamilyDefault: 'Source Sans Pro', sans-serif;
 
 
 // Paddings
-// 
+//
 // $defaultColsPadding - default padding for columns
-// 
+//
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1; padding: $defaultColsPadding"><div style="background: $colorBackgroundMain;">Value: {$modifiers}</div></div>
-// 
+//
 // Styleguide 5.4
 
 $defaultColsPadding: $fontSizeBase * 1px;
 
 
 // Hardcoded sizes
-// 
+//
 // $headerHeight - height for the header in responsive mode
 // $responsiveMenuWidth - the maximum width the responsive menu can have
-// 
+//
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1;">Value: {$modifiers}</div>
-// 
+//
 // Styleguide 5.5
 
 $headerHeight: 60px;
