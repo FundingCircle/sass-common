@@ -45,70 +45,6 @@
 
 
 
-/* ---------------------------------------------------------------------- *\
-  TABLES
-  Everything related to tables
-      - all arguments are optional
-      - structure -> table > table-cell
-
-  $verticalAlign: top / baseline / ... / http://goo.gl/d8gtec
-
-  $reset: two values between which the cells fall to full-width blocks
-
-  $hide: two values between which the table is hidden
-
-  $cols: false / equal / list
-    a) FALSE - lets the browser decide the column widths
-    b) EQUAL - all equal columns (does not work with table-layout: fixed)
-    c) LIST - it uses the golden ratio formula: (xi+xj)/xi = ratio
-
-  $row: boolean -> if true, the structure is table > row > cell
-
-  $padding -> default is $defaultColsPadding
-
-  e.g: @include table( top, 700px 1000px , 100px 480px , 2 1 7 , false , 10rem )
-                        |    |              |             |      |        | padding
-                        |    |              |             |      | 1 row
-                        |    |              |             | 3 cols with
-                        |    |              |             | custom ratio
-                        |    |              | hide between 100px-480px
-                        |    | set cells to block and width: 100%
-                        |    | between 700-1000px
-                        | vertical-align: top
-\* ---------------------------------------------------------------------- */
-
-@mixin table($verticalAlign:top, $reset:false, $hide:false, $cols: false, $row:false, $padding: $defaultColsPadding) {
-  display: table;
-  width: 100%;
-
-  @if $row {
-    & > * { display: table-row; }
-
-    & > * > * {
-      @include tableCell($verticalAlign,$cols,$padding);
-    }
-
-  } @else {
-    & > * {
-     @include tableCell($verticalAlign,$cols,$padding);
-    }
-  }
-
-  @if $reset {
-    body & {
-      @if $row {
-        & > * {
-          @include resetColumns(first($reset),last($reset));
-        }
-      } @else {
-        @include resetColumns(first($reset),last($reset));
-      }
-    }
-  }
-  @if $hide { @include hideBetweenWidths(first($hide),last($hide)); }
-
-}
-
 // Calculate the general aspect ratio starting from an arbitrary number (1)
 $colRatio: 1;
 @for $i from 1 through 7 {
@@ -256,7 +192,40 @@ $colRatio: 1;
 }
 
 
-@mixin tableV2($verticalAlign:top, $reset: false, $hide: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
+
+/* ---------------------------------------------------------------------- *\
+  TABLES
+  Everything related to tables
+      - all arguments are optional
+      - structure -> table > table-cell
+
+  $verticalAlign: top / baseline / ... / http://goo.gl/d8gtec
+
+  $reset: two values between which the cells fall to full-width blocks
+
+  $hide: two values between which the table is hidden
+
+  $cols: false / equal / list
+    a) FALSE - lets the browser decide the column widths
+    b) EQUAL - all equal columns (does not work with table-layout: fixed)
+    c) LIST - it uses the golden ratio formula: (xi+xj)/xi = ratio
+
+  $row: boolean -> if true, the structure is table > row > cell
+
+  $padding -> default is $defaultColsPadding
+
+  e.g: @include table( top, 700px 1000px , 100px 480px , 2 1 7 , false , 10 )
+                        |    |              |             |      |        | padding
+                        |    |              |             |      | 1 row
+                        |    |              |             | 3 cols with
+                        |    |              |             | custom ratio
+                        |    |              | hide between 100px-480px
+                        |    | set cells to block and width: 100%
+                        |    | between 700-1000px
+                        | vertical-align: top
+\* ---------------------------------------------------------------------- */
+
+@mixin table($verticalAlign:top, $reset: false, $hide: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
 
   // table general stuff
   width: 100%;
