@@ -68,3 +68,23 @@ $defaultColsPadding: $fontSizeBase * 1px;
 
 $headerHeight: 60px;
 $responsiveMenuWidth: 260px;
+
+
+// Forms
+//
+// Styleguide 5.6
+$formColsRatio: 6 4;
+$selectIconWidth: 2.6 * $fontSizeBase * 1px;
+$selectArrowWidth: .5;
+$selectArrowHeight: .7;
+$selectArrowPosRight: $selectIconWidth / (2 + $selectArrowWidth);
+
+$errorMessageArrowHeight: 10px;
+
+$tooltipArrowHeight: 10px;
+
+$radioAndCheckboxSize: 24px;
+
+$inputTooltipArrowPadding: 1;
+$inputTooltipArrowWidth: 1;
+
