@@ -1,10 +1,6 @@
 /* ---------------------------------------------------------------------- *\
   FORMS
 \* ---------------------------------------------------------------------- */
-$formInputBackgroundMain: rgb(255,255,255);
-$formInputBorderMain: rgb(221,221,221);
-
-$formBreakpoint: $bpMobileLandscape;
 
 @include keyframes(loopRotate) {
   0% {
@@ -16,7 +12,29 @@ $formBreakpoint: $bpMobileLandscape;
   }
 }
 
+.wrap--form {
+  @include wrapThis(true, $formBreakpoint false);
+  @include breakPoints(false, $formBreakpoint) {
+    & > *:not([class*="form-default"]) {
+      padding-left: $defaultColsPadding;
+      padding-right: $defaultColsPadding;
+    }
+  }
 
+  & > h1 { @include font(4, true, 300); }
+
+  & > h2 {
+    @include font(2, true, 300);
+    margin-bottom: rem(1);
+  }
+
+  & > h2,
+  & > p {
+    @extend .form-default-col--large;
+    float: none;
+  }
+
+}
 
 @mixin placeholderStyle {
   @include opacity(0.4);
@@ -29,15 +47,27 @@ $formBreakpoint: $bpMobileLandscape;
          ::-moz-placeholder { @include placeholderStyle; }
           :-moz-placeholder { @include placeholderStyle; }
 
-.super-bold {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 .form-default {
   background: rgb(233,231,229);
   padding: rem(2);
-  margin-bottom: rem(3);
+  margin: 0;
+
+  // cols
+  @include breakPoints($formBreakpoint, false) {
+    @include cols($formColsRatio);
+
+    float: left;
+
+    &-col {
+      &--small {
+        float: right;
+        padding-left: rem(2);
+        margin-bottom: rem(2);
+      }
+    };
+  }
+
+  @extend .form-default-col--large;
 
   &_dob-wrap {
 
@@ -105,11 +135,8 @@ $formBreakpoint: $bpMobileLandscape;
   }
 
   &_wrap {
-    h1 { @include font(4, true, 300); }
-    h2 {
-      @include font(2, true, 300);
-      margin-bottom: rem(1);
-    }
+    @extend .cl--a;
+    margin-bottom: rem(3);
   }
 
 
@@ -174,15 +201,6 @@ $formBreakpoint: $bpMobileLandscape;
   }
 
   .select {
-    // beveled elements
-    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
-
-    $dropDownIconWidth: rem(2.6);
-    $arrowWidth: .5;
-    $arrowHeight: .7;
-
-    $arrowPosRight: $dropDownIconWidth / (2 + $arrowWidth);
-
     height: rem(2.5);
     position: relative;
 
@@ -191,12 +209,13 @@ $formBreakpoint: $bpMobileLandscape;
       content: '';
       display: block;
       position: absolute;
+      z-index: 1;
     }
 
 
     html:not(.ie) & {
       &:before {
-        width: $dropDownIconWidth;
+        width: $selectIconWidth;
         height: 100%;
         top: 0;
         right: 0;
@@ -204,41 +223,49 @@ $formBreakpoint: $bpMobileLandscape;
       }
 
       &:after {
-        @include triangle(down, $formInputBorderMain, $arrowHeight $arrowWidth);
+        @include triangle(down, $formInputBorderMain, $selectArrowHeight $selectArrowWidth);
         @include posAbs($top: 0, $bottom: 0);
-        right: $arrowPosRight;
+        right: $selectArrowPosRight;
         margin: auto 0;
       }
     }
 
 
     select {
+      @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
       @include centerAbs();
+      @include borderRadius(0);
 
       padding: rem(0 1);
       .ie & {
         padding: rem(0.5 1);
       }
 
-      -webkit-appearance: none;
-        -moz-appearance: none;
-             appearance: none;
+      @include prefix(appearance, none, webkit moz);
 
       &::-ms-expand {
         display: none;
       }
 
-      border: 0;
-      background: none;
       margin: 0;
+      background: none;
+      border: 0;
 
       width: 100%;
       height: 100%;
       vertical-align: middle;
+      z-index: 2;
 
       &:focus {
         -moz-outline-style: none;
              outline-style: none;
+      }
+
+      &.valid { @extend .select.valid; }
+      &.error {
+        outline-width: 1px;
+        outline-style: solid;
+        @extend .select.error;
       }
     }
 
@@ -259,11 +286,10 @@ $formBreakpoint: $bpMobileLandscape;
     padding: rem(.8 1);
 
     &:before {
-      $arrowHeight: 10px;
-      @include triangle(up, $colorError, ($arrowHeight * 2) $arrowHeight);
+      @include triangle(up, $colorError, ($errorMessageArrowHeight * 2) $errorMessageArrowHeight);
       content: '';
       position: absolute;
-      top: negative($arrowHeight);
+      top: negative($errorMessageArrowHeight);
       left: rem(2);
 
     }
@@ -273,8 +299,6 @@ $formBreakpoint: $bpMobileLandscape;
 
   // tooltip
   &_tooltip {
-    $tooltipBackground: rgb(255,255,255);
-    $arrowHeight: 10px;
 
     @include font(0, true);
     @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1));
@@ -305,8 +329,8 @@ $formBreakpoint: $bpMobileLandscape;
         margin-bottom: rem(1);
 
         &:before {
-          @include triangle(down, $tooltipBackground, ($arrowHeight * 2) $arrowHeight);
-          bottom: negative($arrowHeight);
+          @include triangle(down, $tooltipBackground, ($tooltipArrowHeight * 2) $tooltipArrowHeight);
+          bottom: negative($tooltipArrowHeight);
           left: rem(2);
         }
       }
@@ -319,9 +343,9 @@ $formBreakpoint: $bpMobileLandscape;
       margin-left: rem(1);
 
       &.is-visible:before {
-        @include triangle(left, $tooltipBackground, ($arrowHeight * 2) $arrowHeight);
+        @include triangle(left, $tooltipBackground, ($tooltipArrowHeight * 2) $tooltipArrowHeight);
         top: rem(.8);
-        left: negative($arrowHeight);
+        left: negative($tooltipArrowHeight);
       }
     }
 
@@ -493,8 +517,6 @@ $formBreakpoint: $bpMobileLandscape;
   - .form-radio.form-radio--top/right/bottom/left if you want the positioning
 \* ---------------------------------------------------------------------- */
 
-$radioAndCheckboxSize: 24px;
-
 
 .form {
 
@@ -654,12 +676,9 @@ $radioAndCheckboxSize: 24px;
 .tooltip {
   position: relative;
 
-  $arrowPadding: 1;
-  $arrowWidth: 1;
-
   &_content {
     @include font(-1, true);
-    @include posAbs(false, false, 100%, negative($arrowPadding + $arrowWidth), -1);
+    @include posAbs(false, false, 100%, negative($inputTooltipArrowPadding + $inputTooltipArrowWidth), -1);
     @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1));
 
     display: block;
@@ -673,18 +692,18 @@ $radioAndCheckboxSize: 24px;
     margin-bottom: rem(1);
 
     &:before {
-      @include triangle(down, rgb(255,255,255), ($arrowWidth * 2) $arrowWidth);
-      @include posAbs(false, false, -15px, $arrowPadding + .5);
+      @include triangle(down, rgb(255,255,255), ($inputTooltipArrowWidth * 2) $inputTooltipArrowWidth);
+      @include posAbs(false, false, -15px, $inputTooltipArrowPadding + .5);
       content: '';
     }
 
     &.is-right {
       left: auto;
-      right: rem(negative($arrowPadding + $arrowWidth));
+      right: rem(negative($inputTooltipArrowPadding + $inputTooltipArrowWidth));
 
       &:before {
         left: auto;
-        right: rem($arrowPadding + .5);
+        right: rem($inputTooltipArrowPadding + .5);
       }
     }
   }

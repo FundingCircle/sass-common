@@ -345,13 +345,14 @@ $colRatio: 1;
 
 }
 
-
-
-@mixin wrapThis($padding: false, $breakPoints: (false false)) {
-
+%wrapPlaceholder {
   @include centerBlock(0,true);
   width: 100%;
   max-width: 980px;
+}
+
+@mixin wrapThis($padding: false, $breakPoints: (false false)) {
+  @extend %wrapPlaceholder;
 
   @if $padding {
     @include breakPoints(first($breakPoints), last($breakPoints)) {

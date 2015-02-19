@@ -15,7 +15,7 @@ $fontPath: 'fonts/' !default;
   font-style: normal;
 }
 
-.fci-icon {
+.fci-icon:before {
   font-family: "<%= fontName %>" !important;
   font-style: normal !important;
   font-weight: normal !important;
