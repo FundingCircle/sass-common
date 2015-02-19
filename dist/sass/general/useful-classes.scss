@@ -1,9 +1,5 @@
-.wrap {
-  @include centerBlock(0,true);
-  width: 100%;
-  max-width: 980px;
-  padding: rem(0 1);
-}
+.wrap { @include wrapThis(true); }
+.wrap--nopad { @include wrapThis(); }
 
 // Floats
 .fl { float: left; }
@@ -49,6 +45,11 @@
 .upper-title {
   @include font(-1, true, 300);
   margin-bottom: rem(0.8);
+  text-transform: uppercase;
+}
+
+.super-bold {
+  font-weight: 700;
   text-transform: uppercase;
 }
 
