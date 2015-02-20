@@ -34,10 +34,8 @@
   }
 
   &--t3 {
-    background: none;
     color: $colorFontLight;
     border: 1px solid rgb(255,255,255);
-    transition: 0.15s ease-in-out;
 
     &:hover {
       background: rgba(255,255,255,0.40);
