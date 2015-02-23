@@ -56,7 +56,9 @@
   @include breakPoints($formBreakpoint, false) {
     @include cols($formColsRatio);
 
-    float: left;
+    .wrap--form & {
+      float: left;
+    }
 
     &-col {
       &--small {
@@ -67,7 +69,9 @@
     };
   }
 
-  @extend .form-default-col--large;
+  .wrap--form & {
+    @extend .form-default-col--large;
+  }
 
   &_dob-wrap {
 
@@ -236,6 +240,12 @@
       @include centerAbs();
       @include borderRadius(0);
 
+      &:-moz-focusring {
+        transition: none;
+        text-shadow: 0 0 0 #000;
+        color: transparent;
+      }
+
       padding: rem(0 1);
       .ie & {
         padding: rem(0.5 1);
@@ -257,8 +267,8 @@
       z-index: 2;
 
       &:focus {
-        -moz-outline-style: none;
-             outline-style: none;
+        outline: 1px solid $ColorBrand3;
+        outline-offset: 0;
       }
 
       &.valid { @extend .select.valid; }
