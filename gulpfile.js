@@ -1,3 +1,4 @@
+var concat = require('gulp-concat');
 var gulp = require('gulp');
 var del = require('del');
 var template = require('gulp-template');
@@ -23,6 +24,12 @@ paths.source.root = 'src';
 paths.source.iconfontTemplate = paths.source.root + '/fonts/iconfontTemplate.scss.tpl';
 paths.source.stylesheets = paths.source.root + '/sass/**/*';
 paths.source.svgFonts = paths.source.root + '/fonts/svg/**/*';
+
+
+paths.bower = {};
+paths.bower.root = 'bower_components';
+paths.bower.normalize = paths.bower.root + '/normalize-css/normalize.css';
+
 
 var fontName = "fc-icons";
 
@@ -56,6 +63,11 @@ gulp.task('build:mixins', function() {
           .pipe(gulp.dest(paths.build.sass));
 });
 
+gulp.task('build:libraries', function() {
+  return gulp.src([paths.bower.normalize, paths.build.sass + '/style.scss'])
+             .pipe(concat('style.scss'))
+             .pipe(gulp.dest(paths.build.sass));
+})
 
 // Living styleguide
 paths.source.sassTemp = paths.source.root + '/sass/style.scss';
@@ -83,13 +95,14 @@ gulp.task('styleguide:applystyles', function() {
 });
 
 gulp.task('sass', function () {
-    gulp.src(paths.source.root + '/sass/style.scss')
+    gulp.src(paths.build.sass + '/style.scss')
+        .pipe(insert.prepend('$ie: false;\n'))
         .pipe(sass())
-        .pipe(gulp.dest(paths.build.sass));
+        .pipe(gulp.dest(paths.build.root));
 });
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], callback);
+  sequence('clean', ['build:mixins', 'build:icon-font'], 'build:libraries', 'sass', callback);
 });
 
 gulp.task('default', ['build']);
