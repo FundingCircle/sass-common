@@ -56,7 +56,9 @@
   @include breakPoints($formBreakpoint, false) {
     @include cols($formColsRatio);
 
-    float: left;
+    .wrap--form & {
+      float: left;
+    }
 
     &-col {
       &--small {
@@ -67,7 +69,9 @@
     };
   }
 
-  @extend .form-default-col--large;
+  .wrap--form & {
+    @extend .form-default-col--large;
+  }
 
   &_dob-wrap {
 
@@ -189,7 +193,6 @@
     }
   }
 
-
   // inset elements
   input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
   textarea {
@@ -200,9 +203,9 @@
     resize: none;
   }
 
-  .select {
-    height: rem(2.5);
+  %select {
     position: relative;
+    height: rem(2.5);
 
     &:before,
     &:after {
@@ -212,16 +215,7 @@
       z-index: 1;
     }
 
-
     html:not(.ie) & {
-      &:before {
-        width: $selectIconWidth;
-        height: 100%;
-        top: 0;
-        right: 0;
-        border-left: 1px solid $formInputBorderMain;
-      }
-
       &:after {
         @include triangle(down, $formInputBorderMain, $selectArrowHeight $selectArrowWidth);
         @include posAbs($top: 0, $bottom: 0);
@@ -230,19 +224,16 @@
       }
     }
 
-
     select {
-      @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
-      @include centerAbs();
       @include borderRadius(0);
 
-      padding: rem(0 1);
-      .ie & {
-        padding: rem(0.5 1);
+      &:-moz-focusring {
+        transition: none;
+        text-shadow: 0 0 0 #000;
+        color: transparent;
       }
 
       @include prefix(appearance, none, webkit moz);
-
       &::-ms-expand {
         display: none;
       }
@@ -256,9 +247,42 @@
       vertical-align: middle;
       z-index: 2;
 
+      padding: rem(0 1);
+
+      .ie & {
+        padding: rem(0.5 1);
+      }
+    }
+
+    option {
+      padding: rem(0.5 1);
+    }
+
+  }
+
+  .select {
+    @extend %select;
+
+
+    html:not(.ie) & {
+      &:before {
+        width: $selectIconWidth;
+        height: 100%;
+        top: 0;
+        right: 0;
+        border-left: 1px solid $formInputBorderMain;
+      }
+    }
+
+
+    select {
+      @include centerAbs();
+      @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
+
+
       &:focus {
-        -moz-outline-style: none;
-             outline-style: none;
+        outline: 1px solid $ColorBrand3;
+        outline-offset: 0;
       }
 
       &.valid { @extend .select.valid; }
@@ -269,10 +293,40 @@
       }
     }
 
-    option {
-      padding: rem(0.5 1);
+
+  }
+
+  .select--inline {
+    @extend %select;
+    display: inline-block;
+
+
+    html:not(.ie) & {
+      &:after {
+        border-top-color: $colorFontDarkSoft;
+      }
     }
 
+    select {
+      border-bottom: 2px solid $colorDividerMain;
+      color: $colorFontDarkSoft;
+      font-weight: 700;
+      padding-right: rem($selectIconWidth / 1.5);
+      text-align: center;
+
+      &.error {
+        border-bottom-color: $colorError;
+      }
+
+      &.valid {
+        border-bottom-color: $colorSuccess;
+      }
+
+      &:focus {
+        outline: 0;
+        border-bottom-color: $ColorBrand3;
+      }
+    }
   }
 
   // error message

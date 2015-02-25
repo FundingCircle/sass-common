@@ -40,7 +40,7 @@
 .bg-1 { background: $colorBackground2; }
 .bg-2 { background: $ColorBrand6; }
 .bg-3 { background: rgb(219,241,255); }
-
+.bg-4 { background: $colorBackgroundMain; }
 
 .upper-title {
   @include font(-1, true, 300);
