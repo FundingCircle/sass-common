@@ -63,7 +63,7 @@ gulp.task('build:mixins', function() {
           .pipe(gulp.dest(paths.build.sass));
 });
 
-gulp.task('build:libraries', function() {
+gulp.task('libraries', function() {
   return gulp.src([paths.bower.normalize, paths.build.sass + '/style.scss'])
              .pipe(concat('style.scss'))
              .pipe(gulp.dest(paths.build.sass));
@@ -102,7 +102,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], 'build:libraries', 'sass', callback);
+  sequence('clean', ['build:mixins', 'build:icon-font'], 'libraries', 'sass', callback);
 });
 
 gulp.task('default', ['build']);
