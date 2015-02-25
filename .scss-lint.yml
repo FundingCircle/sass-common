@@ -1,5 +1,6 @@
 ---
 exclude:
+  - 'dist/*.css'
   - 'node_modules/**/*'
   - 'vendor/**/*'
 # TODO FIXME: Delete the following lines
