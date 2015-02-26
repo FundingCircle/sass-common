@@ -3,15 +3,18 @@
 \* ---------------------------------------------------------------------- */
 
 $goToLinkSize: rem(4);
+
 .go-to-link {
-  @include borderRadius(50,'%');
-  @include posAbs(-2,0,false,0);
-  @include centerBlock(0,true);
+  @include borderRadius(50, '%');
+  @include posAbs(negative($goToLinkSize / 2), 0, false, 0);
+  @include centerBlock(0, true);
+
   display: block;
   z-index: 2;
   width: $goToLinkSize;
   height: $goToLinkSize;
-  line-height: $goToLinkSize / 2;
+  font-size: $goToLinkSize / 3;
+  line-height: $goToLinkSize / 1.5;
   text-align: center;
   background: inherit;
 
@@ -19,8 +22,8 @@ $goToLinkSize: rem(4);
     @include centerBlock(0.8,true);
   }
 
-  &:hover path {
-    fill: $ColorBrand5;
+  &:hover {
+    text-decoration: none;
   }
 
   // other go to links colors
