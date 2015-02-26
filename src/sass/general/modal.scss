@@ -1,0 +1,60 @@
+.modal {
+
+  &_wrap {
+    &:before {
+      content: '';
+      display: block;
+
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      z-index: 110;
+
+      width: 100%;
+      height: 100%;
+
+      @include forIE() {
+        @include opacity(.5);
+        background: rgb(0, 0, 0);
+      }
+      background: rgba(0, 0, 0, .5);
+    }
+  }
+
+  &_close {
+
+    display: block;
+    position: absolute;
+    top: rem(1);
+    right: rem(1);
+    color: $colorDividerLight;
+
+    &:before {
+      content: '&times;';
+    }
+
+    &:hover {
+      color: $colorCtaOn;
+      text-decoration: none;
+    }
+  }
+
+  border-top: 5px solid $ColorBrand1;
+
+  position: absolute;
+  top: rem(2);
+  left: rem(2);
+  right: rem(2);
+  z-index: 111;
+
+  margin-bottom: rem(2);
+  padding: rem(2);
+
+  background: rgb(255, 255, 255);
+
+  @include boxShadow(0, 0, 1, false, rgb(0, 0, 0));
+
+}

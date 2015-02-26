@@ -1316,6 +1316,47 @@ form h3 {
   margin-bottom: 8px;
   font-weight: 400; }
 
+.modal {
+  border-top: 5px solid #c028b9;
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  right: 32px;
+  z-index: 111;
+  margin-bottom: 32px;
+  padding: 32px;
+  background: white;
+  -webkit-box-shadow: 0 0 16px false black;
+  box-shadow: 0 0 16px false black; }
+  .modal_wrap:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 110;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); }
+    .ie-8 .modal_wrap:before {
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+      background: black; }
+  .modal_close {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: rgba(255, 255, 255, 0.6); }
+    .modal_close:before {
+      content: '&times;'; }
+    .modal_close:hover {
+      color: #c028b9;
+      text-decoration: none; }
+
 /* ---------------------------------------------------------------------- *\
   FORMS
 \* ---------------------------------------------------------------------- */
