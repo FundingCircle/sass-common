@@ -585,7 +585,7 @@ td, th {
 .wrap, .wrap--nopad, .wrap--form {
   margin: 0 auto;
   width: 100%;
-  max-width: 980px; }
+  max-width: 1200px; }
 
 /* ---------------------------------------------------------------------- *\
   HTML STRUCTURE
@@ -1299,13 +1299,14 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   width: 64px;
   height: 64px;
-  line-height: 32px;
+  font-size: 21.33333px;
+  line-height: 42.66667px;
   text-align: center;
   background: inherit; }
   .go-to-link svg {
     margin: 12.8px auto; }
-  .go-to-link:hover path {
-    fill: #ff4e00; }
+  .go-to-link:hover {
+    text-decoration: none; }
   .bg-1 .go-to-link path {
     fill: #3a77c1; }
   .bg-1 .go-to-link:hover path {
