@@ -42,7 +42,8 @@ $fontPath: 'fonts/' !default;
   @extend .fci-tick;
 }
 
-.tooltip_close {
+.tooltip_close,
+.modal_close {
   @extend .fci-icon;
   @extend .fci-close;
 }
