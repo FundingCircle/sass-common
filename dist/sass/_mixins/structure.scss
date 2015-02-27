@@ -348,7 +348,7 @@ $colRatio: 1;
 %wrapPlaceholder {
   @include centerBlock(0,true);
   width: 100%;
-  max-width: 980px;
+  max-width: 1200px;
 }
 
 @mixin wrapThis($padding: false, $breakPoints: (false false)) {
