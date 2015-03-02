@@ -33,13 +33,6 @@
     @include font(-1, 2.25);
     padding: rem(0 1);
 
-    &.btn--primary {
-      font-size: 0;
-      &:before {
-        @include font(-1);
-        content: 'This button type is unsupported';
-      }
-    }
   }
 
   &--full {
