@@ -1316,7 +1316,7 @@ h1, h2, h3, h4, h5, h6 {
       border-color: rgba(255, 255, 255, 0.5);
       background: rgba(0, 0, 0, 0.2); }
     .btn--secondary-alt.btn--disabled, .btn--disabled.btn--t3 {
-      border: none;
+      border: 0;
       background: rgba(0, 0, 0, 0.2);
       color: rgba(255, 255, 255, 0.2); }
   .btn[class*="fci-"]:before, [class*="fci-"].btn--large:before, [class*="fci-"].btn--s3:before, [class*="fci-"].btn--normal:before, [class*="fci-"].btn--s1:before, [class*="fci-"].btn--medium:before, [class*="fci-"].btn--small:before, [class*="fci-"].btn--s2:before, [class*="fci-"].btn--primary:before, [class*="fci-"].btn--t1:before, [class*="fci-"].btn--secondary:before, [class*="fci-"].btn--t2:before, [class*="fci-"].btn--secondary-alt:before, [class*="fci-"].btn--t3:before {

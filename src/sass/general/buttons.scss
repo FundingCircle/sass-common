@@ -108,7 +108,7 @@
     }
 
     &.btn--disabled {
-      border: none;
+      border: 0;
       background: rgba($colorCtaAlternativeBack, .2);
       color: rgba($colorCtaAlternative, .2);
     }
