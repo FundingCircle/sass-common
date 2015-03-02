@@ -634,7 +634,7 @@ body *, body *:before, body *:after {
 
 a {
   text-decoration: none;
-  color: #3a77c1; }
+  color: #097fc9; }
   a:hover {
     text-decoration: underline; }
 
@@ -1225,35 +1225,32 @@ h1, h2, h3, h4, h5, h6 {
   BUTTONS
   - modifiers can be size modifiers (--s) or type (--t)
 \* ---------------------------------------------------------------------- */
-.btn {
+.btn, .btn--large, .btn--s3, .btn--normal, .btn--s1, .btn--medium, .btn--small, .btn--s2, .btn--primary, .btn--t1, .btn--secondary, .btn--t2, .btn--secondary-alt, .btn--t3 {
   -webkit-border-radius: 4.8px;
   border-radius: 4.8px;
   border: 0;
   display: inline-block;
   margin-bottom: 16px;
-  white-space: nowrap; }
-  .btn:hover {
+  white-space: nowrap;
+  /* -------------------------------------- */
+  /* ------------- DEPRECATED ------------- */
+  /* will be removed after we replace them  */
+  /* in both static-pages and broker app    */
+  /* -------------------------------------- */
+  /* END OF DEPRECATED */ }
+  .btn:hover, .btn--large:hover, .btn--s3:hover, .btn--normal:hover, .btn--s1:hover, .btn--medium:hover, .btn--small:hover, .btn--s2:hover, .btn--primary:hover, .btn--t1:hover, .btn--secondary:hover, .btn--t2:hover, .btn--secondary-alt:hover, .btn--t3:hover {
     text-decoration: none; }
-  .btn--t1 {
-    color: white;
-    background: #3a77c1; }
-    .btn--t1:hover {
-      background: #2e5f9a; }
-  .btn--t2 {
-    background: #e8e8e8; }
-    .btn--t2:hover {
-      color: white;
-      background: #2e5f9a; }
-  .btn--t3 {
-    color: white;
-    border: 1px solid white; }
-    .btn--t3:hover {
-      background: rgba(255, 255, 255, 0.4); }
-  .btn--full {
-    display: block;
-    text-align: center;
-    width: 100%; }
-  .btn--s1 {
+  .btn--large, .btn--s3 {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 20px;
+    /* LINE HEIGHT */
+    line-height: 52px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    padding: 0 16px; }
+  .btn--normal, .btn--s1, .btn--medium {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
     /* LINE HEIGHT */
@@ -1262,27 +1259,71 @@ h1, h2, h3, h4, h5, h6 {
     /* FONT STYLE */
     /* FONT VARIANT */
     /* FONT Family */
-    padding: 0 24px; }
-  .btn--s2 {
+    padding: 0 16px; }
+  .btn--small, .btn--s2 {
     /* CALCULATE THE FONT SIZE */
     font-size: 13px;
     /* LINE HEIGHT */
-    line-height: 40px;
+    line-height: 36px;
     /* FONT WEIGHT */
     /* FONT STYLE */
     /* FONT VARIANT */
     /* FONT Family */
     padding: 0 16px; }
-  .btn--s3 {
-    /* CALCULATE THE FONT SIZE */
-    font-size: 20px;
-    /* LINE HEIGHT */
-    line-height: 62px;
-    /* FONT WEIGHT */
-    /* FONT STYLE */
-    /* FONT VARIANT */
-    /* FONT Family */
-    padding: 0 40px; }
+    .btn--small.btn--primary, .btn--small.btn--t1, .btn--t1.btn--s2, .btn--primary.btn--s2 {
+      font-size: 0; }
+      .btn--small.btn--primary:before, .btn--small.btn--t1:before, .btn--t1.btn--s2:before, .btn--primary.btn--s2:before {
+        /* CALCULATE THE FONT SIZE */
+        font-size: 13px;
+        /* LINE HEIGHT */
+        /* FONT WEIGHT */
+        /* FONT STYLE */
+        /* FONT VARIANT */
+        /* FONT Family */
+        content: 'This button type is unsupported'; }
+  .btn--full {
+    display: block;
+    text-align: center;
+    width: 100%; }
+  .btn--primary, .btn--t1 {
+    color: white;
+    background: #097fc9; }
+    .btn--primary:hover, .btn--t1:hover {
+      background: #3e9bd6; }
+    .btn--primary:active, .btn--t1:active, .btn--primary:focus, .btn--t1:focus {
+      background: #065e94; }
+    .btn--primary.btn--disabled, .btn--disabled.btn--t1 {
+      background: #dddddd; }
+  .btn--secondary, .btn--t2 {
+    color: #097fc9;
+    border: 1px solid #9b9b9b; }
+    .btn--secondary:hover, .btn--t2:hover {
+      border-color: #097fc9;
+      background: rgba(255, 255, 255, 0.6); }
+    .btn--secondary:active, .btn--t2:active, .btn--secondary:focus, .btn--t2:focus {
+      border-color: #097fc9;
+      background: rgba(62, 155, 214, 0.1); }
+    .btn--secondary.btn--disabled, .btn--disabled.btn--t2 {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: #c3c3c3;
+      color: #c3c3c3; }
+  .btn--secondary-alt, .btn--t3 {
+    color: white;
+    border: 1px solid white; }
+    .btn--secondary-alt:hover, .btn--t3:hover {
+      background: rgba(0, 0, 0, 0.3); }
+    .btn--secondary-alt:active, .btn--t3:active, .btn--secondary-alt:focus, .btn--t3:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.2); }
+    .btn--secondary-alt.btn--disabled, .btn--disabled.btn--t3 {
+      border: none;
+      background: rgba(0, 0, 0, 0.2);
+      color: rgba(255, 255, 255, 0.2); }
+  .btn[class*="fci-"]:before, [class*="fci-"].btn--large:before, [class*="fci-"].btn--s3:before, [class*="fci-"].btn--normal:before, [class*="fci-"].btn--s1:before, [class*="fci-"].btn--medium:before, [class*="fci-"].btn--small:before, [class*="fci-"].btn--s2:before, [class*="fci-"].btn--primary:before, [class*="fci-"].btn--t1:before, [class*="fci-"].btn--secondary:before, [class*="fci-"].btn--t2:before, [class*="fci-"].btn--secondary-alt:before, [class*="fci-"].btn--t3:before {
+    float: left;
+    font-size: inherit;
+    line-height: inherit;
+    margin-right: 12px; }
 
 /* ---------------------------------------------------------------------- *\
   Go to links
@@ -1308,7 +1349,7 @@ h1, h2, h3, h4, h5, h6 {
   .go-to-link:hover {
     text-decoration: none; }
   .bg-1 .go-to-link path {
-    fill: #3a77c1; }
+    fill: #097fc9; }
   .bg-1 .go-to-link:hover path {
     fill: #ff4e00; }
 
@@ -1540,7 +1581,7 @@ form h3 {
       /* FONT STYLE */
       /* FONT VARIANT */
       /* FONT Family */ }
-  .form-default > .btn {
+  .form-default > .btn, .form-default > .btn--large, .form-default > .btn--s3, .form-default > .btn--normal, .form-default > .btn--s1, .form-default > .btn--medium, .form-default > .btn--small, .form-default > .btn--s2, .form-default > .btn--primary, .form-default > .btn--t1, .form-default > .btn--secondary, .form-default > .btn--t2, .form-default > .btn--secondary-alt, .form-default > .btn--t3 {
     float: right; }
   .form-default label {
     display: block;
@@ -1899,7 +1940,7 @@ form h3 {
   content: '';
   width: 0;
   height: 0;
-  background: #3a77c1; }
+  background: #097fc9; }
 .form-radio input:checked ~ label tt:before {
   width: 12px;
   height: 12px; }
@@ -1907,7 +1948,7 @@ form h3 {
   right: auto;
   margin: auto 0 auto 15%;
   line-height: 24px;
-  color: #3a77c1;
+  color: #097fc9;
   overflow: hidden;
   width: 0; }
 .form-checkbox input:checked ~ label tt:before {
@@ -2027,7 +2068,7 @@ form h3 {
     .tooltip_symbol:before {
       content: '?'; }
     .tooltip_symbol:hover {
-      background: #3a77c1; }
+      background: #097fc9; }
   .tooltip.is-active .tooltip_content, .tooltip .tooltip_trigger:not(.tooltip_clickable):hover + .tooltip_content {
     overflow: visible;
     opacity: 1;
@@ -2041,7 +2082,7 @@ form h3 {
     color: #575757; }
     .tooltip_close:hover {
       text-decoration: none;
-      color: #3a77c1; }
+      color: #097fc9; }
 
 /* ---------------------------------------------------------------------- *\
   HERO
