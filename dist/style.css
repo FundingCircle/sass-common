@@ -332,7 +332,7 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .list-checked > :before, .list-checked--reversed > :before, .form-checkbox tt:before, .tooltip_close:before, .message:before, .message--error:before, .message--warning:before, .message--success:before {
+.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .list-checked > :before, .list-checked--reversed > :before, .form-checkbox tt:before, .tooltip_close:before, .modal_close:before, .message:before, .message--error:before, .message--warning:before, .message--success:before {
   font-family: "fc-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -364,7 +364,7 @@ td, th {
 .fci-info:before, .message:before, .message--error:before, .message--warning:before, .message--success:before {
   content: "\E007"; }
 
-.fci-close:before, .tooltip_close:before {
+.fci-close:before, .tooltip_close:before, .modal_close:before {
   content: "\E008"; }
 
 /* ---------------------------------------------------------------------- *\
@@ -582,7 +582,7 @@ td, th {
     .test-col--xlarge {}
   - adding more values will add more x to the size (eg: xxsize, xxxlarge, etc.)
 \* ---------------------------------------------------------------------- */
-.wrap, .wrap--nopad, .wrap--form {
+.wrap, .wrap--nopad, .modal, .wrap--form {
   margin: 0 auto;
   width: 100%;
   max-width: 1200px; }
@@ -634,7 +634,7 @@ body *, body *:before, body *:after {
 
 a {
   text-decoration: none;
-  color: #097fc9; }
+  color: #3a77c1; }
   a:hover {
     text-decoration: underline; }
 
@@ -1225,32 +1225,35 @@ h1, h2, h3, h4, h5, h6 {
   BUTTONS
   - modifiers can be size modifiers (--s) or type (--t)
 \* ---------------------------------------------------------------------- */
-.btn, .btn--large, .btn--s3, .btn--normal, .btn--s1, .btn--medium, .btn--small, .btn--s2, .btn--primary, .btn--t1, .btn--secondary, .btn--t2, .btn--secondary-alt, .btn--t3 {
+.btn {
   -webkit-border-radius: 4.8px;
   border-radius: 4.8px;
   border: 0;
   display: inline-block;
   margin-bottom: 16px;
-  white-space: nowrap;
-  /* -------------------------------------- */
-  /* ------------- DEPRECATED ------------- */
-  /* will be removed after we replace them  */
-  /* in both static-pages and broker app    */
-  /* -------------------------------------- */
-  /* END OF DEPRECATED */ }
-  .btn:hover, .btn--large:hover, .btn--s3:hover, .btn--normal:hover, .btn--s1:hover, .btn--medium:hover, .btn--small:hover, .btn--s2:hover, .btn--primary:hover, .btn--t1:hover, .btn--secondary:hover, .btn--t2:hover, .btn--secondary-alt:hover, .btn--t3:hover {
+  white-space: nowrap; }
+  .btn:hover {
     text-decoration: none; }
-  .btn--large, .btn--s3 {
-    /* CALCULATE THE FONT SIZE */
-    font-size: 20px;
-    /* LINE HEIGHT */
-    line-height: 52px;
-    /* FONT WEIGHT */
-    /* FONT STYLE */
-    /* FONT VARIANT */
-    /* FONT Family */
-    padding: 0 16px; }
-  .btn--normal, .btn--s1, .btn--medium {
+  .btn--t1 {
+    color: white;
+    background: #3a77c1; }
+    .btn--t1:hover {
+      background: #2e5f9a; }
+  .btn--t2 {
+    background: #e8e8e8; }
+    .btn--t2:hover {
+      color: white;
+      background: #2e5f9a; }
+  .btn--t3 {
+    color: white;
+    border: 1px solid white; }
+    .btn--t3:hover {
+      background: rgba(255, 255, 255, 0.4); }
+  .btn--full {
+    display: block;
+    text-align: center;
+    width: 100%; }
+  .btn--s1 {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
     /* LINE HEIGHT */
@@ -1259,71 +1262,27 @@ h1, h2, h3, h4, h5, h6 {
     /* FONT STYLE */
     /* FONT VARIANT */
     /* FONT Family */
-    padding: 0 16px; }
-  .btn--small, .btn--s2 {
+    padding: 0 24px; }
+  .btn--s2 {
     /* CALCULATE THE FONT SIZE */
     font-size: 13px;
     /* LINE HEIGHT */
-    line-height: 36px;
+    line-height: 40px;
     /* FONT WEIGHT */
     /* FONT STYLE */
     /* FONT VARIANT */
     /* FONT Family */
     padding: 0 16px; }
-    .btn--small.btn--primary, .btn--small.btn--t1, .btn--t1.btn--s2, .btn--primary.btn--s2 {
-      font-size: 0; }
-      .btn--small.btn--primary:before, .btn--small.btn--t1:before, .btn--t1.btn--s2:before, .btn--primary.btn--s2:before {
-        /* CALCULATE THE FONT SIZE */
-        font-size: 13px;
-        /* LINE HEIGHT */
-        /* FONT WEIGHT */
-        /* FONT STYLE */
-        /* FONT VARIANT */
-        /* FONT Family */
-        content: 'This button type is unsupported'; }
-  .btn--full {
-    display: block;
-    text-align: center;
-    width: 100%; }
-  .btn--primary, .btn--t1 {
-    color: white;
-    background: #097fc9; }
-    .btn--primary:hover, .btn--t1:hover {
-      background: #3e9bd6; }
-    .btn--primary:active, .btn--t1:active, .btn--primary:focus, .btn--t1:focus {
-      background: #065e94; }
-    .btn--primary.btn--disabled, .btn--disabled.btn--t1 {
-      background: #dddddd; }
-  .btn--secondary, .btn--t2 {
-    color: #097fc9;
-    border: 1px solid #9b9b9b; }
-    .btn--secondary:hover, .btn--t2:hover {
-      border-color: #097fc9;
-      background: rgba(255, 255, 255, 0.6); }
-    .btn--secondary:active, .btn--t2:active, .btn--secondary:focus, .btn--t2:focus {
-      border-color: #097fc9;
-      background: rgba(62, 155, 214, 0.1); }
-    .btn--secondary.btn--disabled, .btn--disabled.btn--t2 {
-      background: rgba(255, 255, 255, 0.6);
-      border-color: #c3c3c3;
-      color: #c3c3c3; }
-  .btn--secondary-alt, .btn--t3 {
-    color: white;
-    border: 1px solid white; }
-    .btn--secondary-alt:hover, .btn--t3:hover {
-      background: rgba(0, 0, 0, 0.3); }
-    .btn--secondary-alt:active, .btn--t3:active, .btn--secondary-alt:focus, .btn--t3:focus {
-      border-color: rgba(255, 255, 255, 0.5);
-      background: rgba(0, 0, 0, 0.2); }
-    .btn--secondary-alt.btn--disabled, .btn--disabled.btn--t3 {
-      border: 0;
-      background: rgba(0, 0, 0, 0.2);
-      color: rgba(255, 255, 255, 0.2); }
-  .btn[class*="fci-"]:before, [class*="fci-"].btn--large:before, [class*="fci-"].btn--s3:before, [class*="fci-"].btn--normal:before, [class*="fci-"].btn--s1:before, [class*="fci-"].btn--medium:before, [class*="fci-"].btn--small:before, [class*="fci-"].btn--s2:before, [class*="fci-"].btn--primary:before, [class*="fci-"].btn--t1:before, [class*="fci-"].btn--secondary:before, [class*="fci-"].btn--t2:before, [class*="fci-"].btn--secondary-alt:before, [class*="fci-"].btn--t3:before {
-    float: left;
-    font-size: inherit;
-    line-height: inherit;
-    margin-right: 12px; }
+  .btn--s3 {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 20px;
+    /* LINE HEIGHT */
+    line-height: 62px;
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    padding: 0 40px; }
 
 /* ---------------------------------------------------------------------- *\
   Go to links
@@ -1349,13 +1308,74 @@ h1, h2, h3, h4, h5, h6 {
   .go-to-link:hover {
     text-decoration: none; }
   .bg-1 .go-to-link path {
-    fill: #097fc9; }
+    fill: #3a77c1; }
   .bg-1 .go-to-link:hover path {
     fill: #ff4e00; }
 
 form h3 {
   margin-bottom: 8px;
   font-weight: 400; }
+
+.modal {
+  width: auto;
+  border-top: 5px solid #c028b9;
+  position: absolute;
+  top: -80px;
+  left: 32px;
+  right: 32px;
+  z-index: 111;
+  margin-bottom: 32px;
+  padding: 32px;
+  background: white;
+  -webkit-box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+  .modal_wrap {
+    display: none; }
+    .modal_wrap.is-visible {
+      display: block; }
+      .modal_wrap.is-visible:before {
+        background: rgba(0, 0, 0, 0.5); }
+      .modal_wrap.is-visible .modal {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        top: 0; }
+    .modal_wrap:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 110;
+      width: 100%;
+      height: 100%;
+      background: transparent; }
+      .ie-8 .modal_wrap:before {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        background: black; }
+  .modal_close {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 13px;
+    /* LINE HEIGHT */
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #575757; }
+    .modal_close:hover {
+      color: #c028b9;
+      text-decoration: none; }
 
 /* ---------------------------------------------------------------------- *\
   FORMS
@@ -1581,7 +1601,7 @@ form h3 {
       /* FONT STYLE */
       /* FONT VARIANT */
       /* FONT Family */ }
-  .form-default > .btn, .form-default > .btn--large, .form-default > .btn--s3, .form-default > .btn--normal, .form-default > .btn--s1, .form-default > .btn--medium, .form-default > .btn--small, .form-default > .btn--s2, .form-default > .btn--primary, .form-default > .btn--t1, .form-default > .btn--secondary, .form-default > .btn--t2, .form-default > .btn--secondary-alt, .form-default > .btn--t3 {
+  .form-default > .btn {
     float: right; }
   .form-default label {
     display: block;
@@ -1940,7 +1960,7 @@ form h3 {
   content: '';
   width: 0;
   height: 0;
-  background: #097fc9; }
+  background: #3a77c1; }
 .form-radio input:checked ~ label tt:before {
   width: 12px;
   height: 12px; }
@@ -1948,7 +1968,7 @@ form h3 {
   right: auto;
   margin: auto 0 auto 15%;
   line-height: 24px;
-  color: #097fc9;
+  color: #3a77c1;
   overflow: hidden;
   width: 0; }
 .form-checkbox input:checked ~ label tt:before {
@@ -2068,7 +2088,7 @@ form h3 {
     .tooltip_symbol:before {
       content: '?'; }
     .tooltip_symbol:hover {
-      background: #097fc9; }
+      background: #3a77c1; }
   .tooltip.is-active .tooltip_content, .tooltip .tooltip_trigger:not(.tooltip_clickable):hover + .tooltip_content {
     overflow: visible;
     opacity: 1;
@@ -2082,7 +2102,7 @@ form h3 {
     color: #575757; }
     .tooltip_close:hover {
       text-decoration: none;
-      color: #097fc9; }
+      color: #3a77c1; }
 
 /* ---------------------------------------------------------------------- *\
   HERO
