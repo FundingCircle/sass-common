@@ -1961,12 +1961,12 @@ form h3 {
     position: absolute;
     top: 0;
     left: -9999px; }
-  .form-radio label tt, .form-checkbox label tt {
+  .form-radio label .ui-checkbox, .form-radio label .ui-radio, .form-checkbox label .ui-checkbox, .form-checkbox label .ui-radio {
     position: relative;
     display: block;
     height: 24px;
     width: 24px; }
-    .form-radio label tt:before, .form-radio label tt:after, .form-checkbox label tt:before, .form-checkbox label tt:after {
+    .form-radio label .ui-checkbox:before, .form-radio label .ui-checkbox:after, .form-radio label .ui-radio:before, .form-radio label .ui-radio:after, .form-checkbox label .ui-checkbox:before, .form-checkbox label .ui-checkbox:after, .form-checkbox label .ui-radio:before, .form-checkbox label .ui-radio:after {
       position: absolute;
       top: 0;
       right: 0;
@@ -1975,37 +1975,37 @@ form h3 {
       z-index: 1;
       margin: auto;
       display: block; }
-    .form-radio label tt:after, .form-checkbox label tt:after {
+    .form-radio label .ui-checkbox:after, .form-radio label .ui-radio:after, .form-checkbox label .ui-checkbox:after, .form-checkbox label .ui-radio:after {
       content: '';
       background: white;
       border: 1px solid #dddddd; }
-    .form-radio label tt:before, .form-checkbox label tt:before {
+    .form-radio label .ui-checkbox:before, .form-radio label .ui-radio:before, .form-checkbox label .ui-checkbox:before, .form-checkbox label .ui-radio:before {
       z-index: 2; }
-.form-radio label tt:before, .form-radio label tt:after {
+.form-radio label .ui-radio:before, .form-radio label .ui-radio:after {
   -webkit-border-radius: 50%;
   border-radius: 50%; }
-.form-radio label tt:before {
+.form-radio label .ui-radio:before {
   content: '';
   width: 0;
   height: 0;
   background: #097fc9; }
-.form-radio input:checked ~ label tt:before {
+.form-radio input:checked ~ label .ui-radio:before {
   width: 12px;
   height: 12px; }
-.form-checkbox label tt:before {
+.form-checkbox label .ui-checkbox:before {
   right: auto;
   margin: auto 0 auto 15%;
   line-height: 24px;
   color: #097fc9;
   overflow: hidden;
   width: 0; }
-.form-checkbox input:checked ~ label tt:before {
+.form-checkbox input:checked ~ label .ui-checkbox:before {
   width: 70%; }
 
 .form-radio--left label, .form-checkbox--left label {
   padding-left: 29px;
   line-height: 24px; }
-  .form-radio--left label tt, .form-checkbox--left label tt {
+  .form-radio--left label .ui-radio, .form-checkbox--left label .ui-radio, .form-radio--left label .ui-checkbox, .form-checkbox--left label .ui-checkbox {
     position: absolute;
     top: 0;
     left: 0; }
@@ -2014,20 +2014,20 @@ form h3 {
   padding-right: 29px;
   line-height: 24px;
   text-align: right; }
-  .form-radio--right label tt, .form-checkbox--right label tt {
+  .form-radio--right label .ui-radio, .form-checkbox--right label .ui-radio, .form-radio--right label .ui-checkbox, .form-checkbox--right label .ui-checkbox {
     position: absolute;
     top: 0;
     right: 0; }
 
 .form-radio--top label, .form-checkbox--top label {
   text-align: center; }
-  .form-radio--top label tt, .form-checkbox--top label tt {
+  .form-radio--top label .ui-radio, .form-checkbox--top label .ui-radio, .form-radio--top label .ui-checkbox, .form-checkbox--top label .ui-checkbox {
     margin: 0 auto 5px; }
 
 .form-radio--bottom label, .form-checkbox--bottom label {
   padding-bottom: 29px;
   text-align: center; }
-  .form-radio--bottom label tt, .form-checkbox--bottom label tt {
+  .form-radio--bottom label .ui-radio, .form-checkbox--bottom label .ui-radio, .form-radio--bottom label .ui-checkbox, .form-checkbox--bottom label .ui-checkbox {
     position: absolute;
     bottom: 0;
     left: 0;
