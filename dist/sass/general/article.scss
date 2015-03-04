@@ -12,6 +12,10 @@
   h3 {
     @include font(1,true,300);
   }
+
+  p {
+    @include font(0, true);
+  }
 }
 
 .emp-box {

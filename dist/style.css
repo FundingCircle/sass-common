@@ -818,8 +818,8 @@ h1, h2, h3, h4, h5, h6 {
     /* FONT VARIANT */
     /* FONT Family */
     color: #383838; }
-    .side-menu a.el-active {
-      color: #76bd21; }
+    .side-menu a.is-active {
+      font-weight: 600; }
   .side-menu_subcat {
     display: block;
     padding-left: 16px; }
@@ -1158,6 +1158,15 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 24px;
     /* FONT WEIGHT */
     font-weight: 300;
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */ }
+  .article-main p, .article-main .tooltip_text {
+    /* CALCULATE THE FONT SIZE */
+    font-size: 16px;
+    /* LINE HEIGHT */
+    line-height: 24px;
+    /* FONT WEIGHT */
     /* FONT STYLE */
     /* FONT VARIANT */
     /* FONT Family */ }

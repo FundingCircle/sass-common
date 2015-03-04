@@ -152,8 +152,8 @@
     @include font(0,2);
     color: $colorFontDarkSoft;
 
-    &.el-active {
-      color: $colorHighlightSecondaries2;
+    &.is-active {
+      font-weight: 600;
     }
   }
 
