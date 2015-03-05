@@ -458,61 +458,78 @@
 \* ---------------------------------------------------------------------- */
 
 .message {
-  @extend .fci-icon;
-  @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
-  background: rgb(255,255,255);
-  padding: rem(.7 1);
-  margin-bottom: rem(2);
-  position: relative;
 
-  $borderColor: $colorMessage;
+  &,
+  &--error,
+  &--warning,
+  &--success {
+    @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
+    background: rgb(255,255,255);
+    padding: rem(.7 1);
+    margin-bottom: rem(2);
+    position: relative;
 
-  @include breakPoints(0, $formBreakpoint) {
-    border-bottom: 4px solid $borderColor;
-    text-align: center;
+    $borderColor: $colorMessage;
+
+    @include breakPoints(0, $formBreakpoint) {
+      border-bottom: 4px solid $borderColor;
+      text-align: center;
+
+      &:before {
+        margin: rem(0 auto 1);
+      }
+    }
+
+    @include breakPoints($formBreakpoint, false) {
+      border-left: 4px solid $borderColor;
+      padding-left: rem(5);
+
+      &:before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: rem(1);
+        margin: auto 0;
+      }
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
 
     &:before {
-      margin: rem(0 auto 1);
+      @extend .fci-icon;
+
+      color: $borderColor;
+      display: block;
+      font-size: rem(2.5);
+      line-height: rem(2.5);
+      height: rem(2.5);
+    }
+
+    &_title {
+      @include font(2, true, 300);
+      display: block;
+      margin-bottom: rem(.5);
+    }
+
+  }
+
+  & {
+    &:before {
+      @extend .fci-info;
     }
   }
 
-  @include breakPoints($formBreakpoint, false) {
-    border-left: 4px solid $borderColor;
-    padding-left: rem(5);
-
-    &:before {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: rem(1);
-      margin: auto 0;
-    }
-  }
-
-  & > :last-child {
-    margin-bottom: 0;
-  }
-
-  &:before {
-    color: $borderColor;
-    display: block;
-    font-size: rem(2.5);
-    line-height: rem(2.5);
-    height: rem(2.5);
-  }
-
-  &_title {
-    @include font(2, true, 300);
-    display: block;
-    margin-bottom: rem(.5);
-  }
 
   &--error {
-    @extend .message;
 
     $borderColor: $colorError;
 
-    &:before { color: $borderColor; }
+    &:before {
+      @extend .fci-attention;
+      color: $borderColor;
+    }
 
     @include breakPoints(0, $formBreakpoint) {
       border-bottom-color: $borderColor;
@@ -524,11 +541,13 @@
   }
 
   &--warning {
-    @extend .message;
 
     $borderColor: $colorWarning;
 
-    &:before { color: $borderColor; }
+    &:before {
+      @extend .fci-attention;
+      color: $borderColor;
+    }
 
     @include breakPoints(0, $formBreakpoint) {
       border-bottom-color: $borderColor;
@@ -541,11 +560,13 @@
 
 
   &--success {
-    @extend .message;
 
     $borderColor: $colorSuccess;
 
-    &:before { color: $borderColor; }
+    &:before {
+      @extend .fci-tick;
+      color: $borderColor;
+    }
 
     @include breakPoints(0, $formBreakpoint) {
       border-bottom-color: $borderColor;
@@ -647,6 +668,9 @@
     label {
       .ui-checkbox {
         &:before {
+          @extend .fci-icon;
+          @extend .fci-tick;
+
           right: auto;
           margin: auto 0 auto 15%;
           line-height: $radioAndCheckboxSize;
@@ -811,7 +835,6 @@
   &.is-active,
   .tooltip_trigger:not(.tooltip_clickable):hover + {
     .tooltip_content {
-      // display: block;
       overflow: visible;
       @include opacity(1);
       z-index: 100;
@@ -827,6 +850,11 @@
     &:hover {
       text-decoration: none;
       color: $colorCtaPrimary;
+    }
+
+    &:before {
+      @extend .fci-icon;
+      @extend .fci-close;
     }
   }
 }
