@@ -43,6 +43,7 @@
 .bg-4 { background: $colorBackgroundMain; }
 .bg-5 { background: $colorBackground4; }
 .bg-6 { background: $colorBackground5;}
+.bg-7 { background: $colorBackground6;}
 
 .upper-title {
   @include font(-1, true, 300);
