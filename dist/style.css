@@ -719,6 +719,15 @@ h1, h2, h3, h4, h5, h6 {
 .bg-4 {
   background: white; }
 
+.bg-5 {
+  background: #838280; }
+
+.bg-6 {
+  background: #952d72; }
+
+.bg-7 {
+  background: #f6f5f3; }
+
 .upper-title {
   /* CALCULATE THE FONT SIZE */
   font-size: 13px;
