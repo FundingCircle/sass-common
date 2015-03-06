@@ -332,7 +332,7 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .list-checked > :before, .list-checked--reversed > :before, .form-checkbox tt:before, .tooltip_close:before, .modal_close:before, .message:before, .message--error:before, .message--warning:before, .message--success:before {
+.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .modal_close:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before {
   font-family: "fc-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -349,7 +349,7 @@ td, th {
 .fci-menu-icon:before {
   content: "\E002"; }
 
-.fci-tick:before, .list-checked > :before, .list-checked--reversed > :before, .form-checkbox tt:before, .message--success:before {
+.fci-tick:before, .message--success:before, .form-checkbox label .ui-checkbox:before {
   content: "\E003"; }
 
 .fci-user-icon:before {
@@ -361,10 +361,10 @@ td, th {
 .fci-attention:before, .message--error:before, .message--warning:before {
   content: "\E006"; }
 
-.fci-info:before, .message:before, .message--error:before, .message--warning:before, .message--success:before {
+.fci-info:before, .message:before {
   content: "\E007"; }
 
-.fci-close:before, .tooltip_close:before, .modal_close:before {
+.fci-close:before, .modal_close:before, .tooltip_close:before {
   content: "\E008"; }
 
 /* ---------------------------------------------------------------------- *\
@@ -599,11 +599,11 @@ html, body {
   font-size: 16px; }
 
 ::-moz-selection {
-  background: #c028b9;
+  background: #ab3383;
   color: white; }
 
 ::selection {
-  background: #c028b9;
+  background: #ab3383;
   color: white; }
 
 body {
@@ -1159,7 +1159,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     /* FONT STYLE */
     /* FONT VARIANT */
-    /* FONT Family */ }
+    /* FONT Family */
+    margin: 8px 0; }
   .article-main h3 {
     /* CALCULATE THE FONT SIZE */
     font-size: 20px;
@@ -1366,7 +1367,7 @@ form h3 {
 
 .modal {
   width: auto;
-  border-top: 5px solid #c028b9;
+  border-top: 5px solid #ab3383;
   position: absolute;
   top: -80px;
   left: 32px;
@@ -1420,7 +1421,7 @@ form h3 {
     right: 16px;
     color: #575757; }
     .modal_close:hover {
-      color: #c028b9;
+      color: #ab3383;
       text-decoration: none; }
 
 /* ---------------------------------------------------------------------- *\
@@ -1623,12 +1624,12 @@ form h3 {
     padding: 24px; }
     @media only screen and (min-width: 0px) and (max-width: 639px) {
       .form-default_info-box {
-        border-bottom: 4px solid #c028b9; } }
+        border-bottom: 4px solid #ab3383; } }
     @media only screen and (min-width: 640px) {
       .form-default_info-box {
-        border-left: 4px solid #c028b9; } }
+        border-left: 4px solid #ab3383; } }
     .form-default_info-box h5 {
-      color: #c028b9;
+      color: #ab3383;
       /* CALCULATE THE FONT SIZE */
       font-size: 16px;
       /* LINE HEIGHT */
@@ -1830,7 +1831,7 @@ form h3 {
     top: 0;
     left: 0;
     background: white;
-    color: #c028b9;
+    color: #ab3383;
     overflow: hidden; }
     .form-default_tooltip:before {
       content: '';
@@ -1909,13 +1910,13 @@ form h3 {
   position: relative; }
   @media only screen and (min-width: 0px) and (max-width: 639px) {
     .message, .message--error, .message--warning, .message--success {
-      border-bottom: 4px solid #c028b9;
+      border-bottom: 4px solid #ab3383;
       text-align: center; }
       .message:before, .message--error:before, .message--warning:before, .message--success:before {
         margin: 0 auto 16px; } }
   @media only screen and (min-width: 640px) {
     .message, .message--error, .message--warning, .message--success {
-      border-left: 4px solid #c028b9;
+      border-left: 4px solid #ab3383;
       padding-left: 80px; }
       .message:before, .message--error:before, .message--warning:before, .message--success:before {
         position: absolute;
@@ -1926,12 +1927,12 @@ form h3 {
   .message > :last-child, .message--error > :last-child, .message--warning > :last-child, .message--success > :last-child {
     margin-bottom: 0; }
   .message:before, .message--error:before, .message--warning:before, .message--success:before {
-    color: #c028b9;
+    color: #ab3383;
     display: block;
     font-size: 40px;
     line-height: 40px;
     height: 40px; }
-  .message_title {
+  .message_title, .message--error_title, .message--warning_title, .message--success_title {
     /* CALCULATE THE FONT SIZE */
     font-size: 26px;
     /* LINE HEIGHT */
@@ -1943,30 +1944,30 @@ form h3 {
     /* FONT Family */
     display: block;
     margin-bottom: 8px; }
-  .message--error:before {
-    color: #d60036; }
-  @media only screen and (min-width: 0px) and (max-width: 639px) {
-    .message--error {
-      border-bottom-color: #d60036; } }
-  @media only screen and (min-width: 640px) {
-    .message--error {
-      border-left: 4px solid #d60036; } }
-  .message--warning:before {
-    color: #ffc744; }
-  @media only screen and (min-width: 0px) and (max-width: 639px) {
-    .message--warning {
-      border-bottom-color: #ffc744; } }
-  @media only screen and (min-width: 640px) {
-    .message--warning {
-      border-left: 4px solid #ffc744; } }
-  .message--success:before {
-    color: #009c50; }
-  @media only screen and (min-width: 0px) and (max-width: 639px) {
-    .message--success {
-      border-bottom-color: #009c50; } }
-  @media only screen and (min-width: 640px) {
-    .message--success {
-      border-left: 4px solid #009c50; } }
+.message--error:before {
+  color: #d60036; }
+@media only screen and (min-width: 0px) and (max-width: 639px) {
+  .message--error {
+    border-bottom-color: #d60036; } }
+@media only screen and (min-width: 640px) {
+  .message--error {
+    border-left: 4px solid #d60036; } }
+.message--warning:before {
+  color: #ffc744; }
+@media only screen and (min-width: 0px) and (max-width: 639px) {
+  .message--warning {
+    border-bottom-color: #ffc744; } }
+@media only screen and (min-width: 640px) {
+  .message--warning {
+    border-left: 4px solid #ffc744; } }
+.message--success:before {
+  color: #009c50; }
+@media only screen and (min-width: 0px) and (max-width: 639px) {
+  .message--success {
+    border-bottom-color: #009c50; } }
+@media only screen and (min-width: 640px) {
+  .message--success {
+    border-left: 4px solid #009c50; } }
 
 /* ---------------------------------------------------------------------- *\
   CUSTOM CHECKBOXES AND RADIO BUTTONS
@@ -2084,7 +2085,7 @@ form h3 {
     min-width: 220px;
     max-width: 450px;
     padding: 16px;
-    border-top: 4px solid #c028b9;
+    border-top: 4px solid #ab3383;
     margin-bottom: 16px; }
     .tooltip_content:before {
       display: block;
@@ -2113,7 +2114,7 @@ form h3 {
     /* FONT VARIANT */
     /* FONT Family */
     display: block;
-    color: #c028b9;
+    color: #ab3383;
     margin-bottom: 8px; }
   .tooltip_text {
     display: block; }

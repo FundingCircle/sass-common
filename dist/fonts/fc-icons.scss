@@ -42,34 +42,3 @@ $fontPath: 'fonts/' !default;
 .fci-close:before { content: "\E008"; }
 
 
-.list-checked > *:before,
-.list-checked--reversed > *:before,
-.form-checkbox tt {
-  @extend .fci-icon;
-  @extend .fci-tick;
-}
-
-.tooltip_close,
-.modal_close {
-  @extend .fci-icon;
-  @extend .fci-close;
-}
-
-.message {
-
-  &:before {
-    @extend .fci-icon;
-    @extend .fci-info;
-  }
-
-  &--error:before,
-  &--warning:before {
-    @extend .fci-icon;
-    @extend .fci-attention;
-  }
-
-  &--success:before {
-    @extend .fci-icon;
-    @extend .fci-tick;
-  }
-}
