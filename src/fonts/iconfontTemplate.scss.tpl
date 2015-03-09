@@ -48,28 +48,80 @@ $fontPath: 'fonts/' !default;
 
 $sourceSans: (
   (
-    name: black,
     folder: black,
-    file: Black
+    file: Black,
+    weight: 800,
+    style: normal
   ),(
-    name: black_italic,
     folder: black-italic,
-    file: BlackItalic
+    file: BlackItalic,
+    weight: 800,
+    style: italic
+  ),(
+    folder: bold,
+    file: Bold,
+    weight: 700,
+    style: normal
+  ),(
+    folder: bold-italic,
+    file: BoldItalic,
+    weight: 700,
+    style: italic
+  ),(
+    folder: extra-light,
+    file: ExtraLight,
+    weight: 200,
+    style: normal
+  ),(
+    folder: extra-light-italic,
+    file: ExtraLightItalic,
+    weight: 200,
+    style: italic
+  ),(
+    folder: italic,
+    file: Italic,
+    weight: normal,
+    style: italic
+  ),(
+    folder: light,
+    file: Light,
+    weight: 300,
+    style: normal
+  ),(
+    folder: light-italic,
+    file: LightItalic,
+    weight: 300,
+    style: italic
+  ),(
+    folder: regular,
+    file: Regular,
+    weight: 400,
+    style: normal
+  ),(
+    folder: semi-bold,
+    file: Semibold,
+    weight: 600,
+    style: normal
+  ),(
+    folder: semi-bold-italic,
+    file: SemiboldItalic,
+    weight: 600,
+    style: italic
   )
 );
 
 
 @each $item in $sourceSans {
   @font-face {
-      font-family: 'source_sans_pro#{map-get($item, name)}';
+      font-family: 'Source Sans Pro';
       src: url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.eot');
       src: url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.eot?#iefix') format('embedded-opentype'),
            url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.woff2') format('woff2'),
            url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.woff') format('woff'),
            url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.ttf') format('truetype'),
            url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.svg#source_sans_problack_italic') format('svg');
-      font-weight: normal;
-      font-style: normal;
+      font-weight: map-get($item, weight);
+      font-style: map-get($item, style);
 
   }
 }
