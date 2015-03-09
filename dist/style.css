@@ -1994,12 +1994,14 @@ form h3 {
       z-index: 1;
       margin: auto;
       display: block; }
+    .form-radio label .ui-checkbox:before, .form-radio label .ui-radio:before, .form-checkbox label .ui-checkbox:before, .form-checkbox label .ui-radio:before {
+      z-index: 2; }
     .form-radio label .ui-checkbox:after, .form-radio label .ui-radio:after, .form-checkbox label .ui-checkbox:after, .form-checkbox label .ui-radio:after {
       content: '';
       background: white;
       border: 1px solid #dddddd; }
-    .form-radio label .ui-checkbox:before, .form-radio label .ui-radio:before, .form-checkbox label .ui-checkbox:before, .form-checkbox label .ui-radio:before {
-      z-index: 2; }
+.form-checkbox input:focus ~ label .ui-checkbox:after, .form-radio input:focus ~ label .ui-radio:after {
+  border-color: #37b0c9; }
 .form-radio label .ui-radio:before, .form-radio label .ui-radio:after {
   -webkit-border-radius: 50%;
   border-radius: 50%; }
