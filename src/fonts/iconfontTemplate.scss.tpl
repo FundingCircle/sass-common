@@ -47,67 +47,18 @@ $fontPath: 'fonts/' !default;
 
 
 $sourceSans: (
-  (
-    folder: black,
-    file: Black,
-    weight: 800,
-    style: normal
-  ),(
-    folder: black-italic,
-    file: BlackItalic,
-    weight: 800,
-    style: italic
-  ),(
-    folder: bold,
-    file: Bold,
-    weight: 700,
-    style: normal
-  ),(
-    folder: bold-italic,
-    file: BoldItalic,
-    weight: 700,
-    style: italic
-  ),(
-    folder: extra-light,
-    file: ExtraLight,
-    weight: 200,
-    style: normal
-  ),(
-    folder: extra-light-italic,
-    file: ExtraLightItalic,
-    weight: 200,
-    style: italic
-  ),(
-    folder: italic,
-    file: Italic,
-    weight: normal,
-    style: italic
-  ),(
-    folder: light,
-    file: Light,
-    weight: 300,
-    style: normal
-  ),(
-    folder: light-italic,
-    file: LightItalic,
-    weight: 300,
-    style: italic
-  ),(
-    folder: regular,
-    file: Regular,
-    weight: 400,
-    style: normal
-  ),(
-    folder: semi-bold,
-    file: Semibold,
-    weight: 600,
-    style: normal
-  ),(
-    folder: semi-bold-italic,
-    file: SemiboldItalic,
-    weight: 600,
-    style: italic
-  )
+  ( folder: black,                file: Black,              weight: 800,  style: normal ),
+  ( folder: black-italic,         file: BlackItalic,        weight: 800,  style: italic ),
+  ( folder: bold,                 file: Bold,               weight: 700,  style: normal ),
+  ( folder: bold-italic,          file: BoldItalic,         weight: 700,  style: italic ),
+  ( folder: extra-light,          file: ExtraLight,         weight: 200,  style: normal ),
+  ( folder: extra-light-italic,   file: ExtraLightItalic,   weight: 200,  style: italic ),
+  ( folder: italic,               file: Italic,             weight: 400,  style: italic ),
+  ( folder: light,                file: Light,              weight: 300,  style: normal ),
+  ( folder: light-italic,         file: LightItalic,        weight: 300,  style: italic ),
+  ( folder: regular,              file: Regular,            weight: 400,  style: normal ),
+  ( folder: semi-bold,            file: Semibold,           weight: 600,  style: normal ),
+  ( folder: semi-bold-italic,     file: SemiboldItalic,     weight: 600,  style: italic )
 );
 
 
