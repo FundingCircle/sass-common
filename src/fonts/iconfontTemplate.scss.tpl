@@ -38,3 +38,38 @@ $fontPath: 'fonts/' !default;
 <% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>"; }
 <% }); %>
 
+
+
+/* ---------------------------------------------------------------------- *\
+  SOURCE SANS
+\* ---------------------------------------------------------------------- */
+
+
+
+$sourceSans: (
+  (
+    name: black,
+    folder: black,
+    file: Black
+  ),(
+    name: black_italic,
+    folder: black-italic,
+    file: BlackItalic
+  )
+);
+
+
+@each $item in $sourceSans {
+  @font-face {
+      font-family: 'source_sans_pro#{map-get($item, name)}';
+      src: url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.eot');
+      src: url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.eot?#iefix') format('embedded-opentype'),
+           url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.woff2') format('woff2'),
+           url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.woff') format('woff'),
+           url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.ttf') format('truetype'),
+           url('#{$fontPath}fonts/#{map-get($item, folder)}/SourceSansPro-#{map-get($item, file)}-webfont.svg#source_sans_problack_italic') format('svg');
+      font-weight: normal;
+      font-style: normal;
+
+  }
+}
