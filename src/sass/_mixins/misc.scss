@@ -92,7 +92,8 @@
   border-#{$solid}: $height solid $color;
 
   @each $i in $transparent {
-    border-#{$i}: $width solid transparent;
+    $colorBorder: transparent;
+    border-#{$i}: $width solid $colorBorder;
   }
 
 }
