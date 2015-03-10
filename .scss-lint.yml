@@ -1,7 +1,7 @@
 ---
 exclude:
-  - 'bower_components/**/*.css'
-  - 'dist/*.css'
+  - 'bower_components/normalize-css/*.css'
+  - 'dist/**/*'
   - 'node_modules/**/*'
   - 'vendor/**/*'
 # TODO FIXME: Delete the following lines
