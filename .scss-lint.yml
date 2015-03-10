@@ -1,5 +1,6 @@
 ---
 exclude:
+  - 'bower_components/**/*.css'
   - 'dist/*.css'
   - 'node_modules/**/*'
   - 'vendor/**/*'

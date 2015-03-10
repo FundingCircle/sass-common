@@ -15,6 +15,8 @@ $fontPath: 'fonts/' !default;
   font-style: normal;
 }
 
+// We need the important rule so that we don't override the icon fonts
+// scss-lint:disable ImportantRule
 .fci-icon:before {
   font-family: "<%= fontName %>" !important;
   font-style: normal !important;
@@ -26,6 +28,7 @@ $fontPath: 'fonts/' !default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+// scss-lint:enable ImportantRule
 
 [class^="<%= className %>-"]:before,
 [class*=" <%= className %>-"]:before {
