@@ -23,6 +23,7 @@ paths.source = {};
 paths.source.root = 'src';
 paths.source.iconfontTemplate = paths.source.root + '/fonts/iconfontTemplate.scss.tpl';
 paths.source.stylesheets = paths.source.root + '/sass/**/*';
+paths.source.fontsMain = paths.source.root + '/fonts/fonts/**/*';
 paths.source.svgFonts = paths.source.root + '/fonts/svg/**/*';
 
 
@@ -63,6 +64,13 @@ gulp.task('build:mixins', function() {
           .pipe(gulp.dest(paths.build.sass));
 });
 
+gulp.task('build:fonts', function() {
+  return gulp.src(paths.source.fontsMain)
+          .pipe(gulp.dest(paths.build.fonts + '/fonts/'));
+});
+
+
+
 gulp.task('libraries', function() {
   return gulp.src([paths.bower.normalize, paths.build.sass + '/style.scss'])
              .pipe(concat('style.scss'))
@@ -102,7 +110,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font'], 'libraries', 'sass', callback);
+  sequence('clean', ['build:mixins', 'build:icon-font', 'build:fonts'], 'libraries', 'sass', callback);
 });
 
 gulp.task('default', ['build']);
