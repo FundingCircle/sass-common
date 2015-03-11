@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -366,6 +365,93 @@ td, th {
 
 .fci-close:before, .modal_close:before, .tooltip_close:before {
   content: "\E008"; }
+
+/* ---------------------------------------------------------------------- *\
+  SOURCE SANS
+\* ---------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/regular/SourceSansPro-Regular-webfont.eot');
+  src: url('fonts/fonts/regular/SourceSansPro-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/regular/SourceSansPro-Regular-webfont.woff2') format('woff2'), url('fonts/fonts/regular/SourceSansPro-Regular-webfont.woff') format('woff'), url('fonts/fonts/regular/SourceSansPro-Regular-webfont.ttf') format('truetype'), url('fonts/fonts/regular/SourceSansPro-Regular-webfont.svg#source_sans_proregular') format('svg');
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/extra-light/SourceSansPro-ExtraLight-webfont.eot');
+  src: url('fonts/fonts/extra-light/SourceSansPro-ExtraLight-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/extra-light/SourceSansPro-ExtraLight-webfont.woff2') format('woff2'), url('fonts/fonts/extra-light/SourceSansPro-ExtraLight-webfont.woff') format('woff'), url('fonts/fonts/extra-light/SourceSansPro-ExtraLight-webfont.ttf') format('truetype'), url('fonts/fonts/extra-light/SourceSansPro-ExtraLight-webfont.svg#source_sans_proextralight') format('svg');
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/extra-light-italic/SourceSansPro-ExtraLightItalic-webfont.eot');
+  src: url('fonts/fonts/extra-light-italic/SourceSansPro-ExtraLightItalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/extra-light-italic/SourceSansPro-ExtraLightItalic-webfont.woff2') format('woff2'), url('fonts/fonts/extra-light-italic/SourceSansPro-ExtraLightItalic-webfont.woff') format('woff'), url('fonts/fonts/extra-light-italic/SourceSansPro-ExtraLightItalic-webfont.ttf') format('truetype'), url('fonts/fonts/extra-light-italic/SourceSansPro-ExtraLightItalic-webfont.svg#source_sans_proXLtIt') format('svg');
+  font-weight: 200;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/light/SourceSansPro-Light-webfont.eot');
+  src: url('fonts/fonts/light/SourceSansPro-Light-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/light/SourceSansPro-Light-webfont.woff2') format('woff2'), url('fonts/fonts/light/SourceSansPro-Light-webfont.woff') format('woff'), url('fonts/fonts/light/SourceSansPro-Light-webfont.ttf') format('truetype'), url('fonts/fonts/light/SourceSansPro-Light-webfont.svg#source_sans_prolight') format('svg');
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/light-italic/SourceSansPro-LightItalic-webfont.eot');
+  src: url('fonts/fonts/light-italic/SourceSansPro-LightItalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/light-italic/SourceSansPro-LightItalic-webfont.woff2') format('woff2'), url('fonts/fonts/light-italic/SourceSansPro-LightItalic-webfont.woff') format('woff'), url('fonts/fonts/light-italic/SourceSansPro-LightItalic-webfont.ttf') format('truetype'), url('fonts/fonts/light-italic/SourceSansPro-LightItalic-webfont.svg#source_sans_prolight_italic') format('svg');
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/italic/SourceSansPro-Italic-webfont.eot');
+  src: url('fonts/fonts/italic/SourceSansPro-Italic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/italic/SourceSansPro-Italic-webfont.woff2') format('woff2'), url('fonts/fonts/italic/SourceSansPro-Italic-webfont.woff') format('woff'), url('fonts/fonts/italic/SourceSansPro-Italic-webfont.ttf') format('truetype'), url('fonts/fonts/italic/SourceSansPro-Italic-webfont.svg#source_sans_proitalic') format('svg');
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/bold/SourceSansPro-Bold-webfont.eot');
+  src: url('fonts/fonts/bold/SourceSansPro-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/bold/SourceSansPro-Bold-webfont.woff2') format('woff2'), url('fonts/fonts/bold/SourceSansPro-Bold-webfont.woff') format('woff'), url('fonts/fonts/bold/SourceSansPro-Bold-webfont.ttf') format('truetype'), url('fonts/fonts/bold/SourceSansPro-Bold-webfont.svg#source_sans_probold') format('svg');
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/bold-italic/SourceSansPro-BoldItalic-webfont.eot');
+  src: url('fonts/fonts/bold-italic/SourceSansPro-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/bold-italic/SourceSansPro-BoldItalic-webfont.woff2') format('woff2'), url('fonts/fonts/bold-italic/SourceSansPro-BoldItalic-webfont.woff') format('woff'), url('fonts/fonts/bold-italic/SourceSansPro-BoldItalic-webfont.ttf') format('truetype'), url('fonts/fonts/bold-italic/SourceSansPro-BoldItalic-webfont.svg#source_sans_probold_italic') format('svg');
+  font-weight: 700;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/semi-bold/SourceSansPro-Semibold-webfont.eot');
+  src: url('fonts/fonts/semi-bold/SourceSansPro-Semibold-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/semi-bold/SourceSansPro-Semibold-webfont.woff2') format('woff2'), url('fonts/fonts/semi-bold/SourceSansPro-Semibold-webfont.woff') format('woff'), url('fonts/fonts/semi-bold/SourceSansPro-Semibold-webfont.ttf') format('truetype'), url('fonts/fonts/semi-bold/SourceSansPro-Semibold-webfont.svg#source_sans_prosemibold') format('svg');
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/semi-bold-italic/SourceSansPro-SemiboldItalic-webfont.eot');
+  src: url('fonts/fonts/semi-bold-italic/SourceSansPro-SemiboldItalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/semi-bold-italic/SourceSansPro-SemiboldItalic-webfont.woff2') format('woff2'), url('fonts/fonts/semi-bold-italic/SourceSansPro-SemiboldItalic-webfont.woff') format('woff'), url('fonts/fonts/semi-bold-italic/SourceSansPro-SemiboldItalic-webfont.ttf') format('truetype'), url('fonts/fonts/semi-bold-italic/SourceSansPro-SemiboldItalic-webfont.svg#source_sans_proSBdIt') format('svg');
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/black/SourceSansPro-Black-webfont.eot');
+  src: url('fonts/fonts/black/SourceSansPro-Black-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/black/SourceSansPro-Black-webfont.woff2') format('woff2'), url('fonts/fonts/black/SourceSansPro-Black-webfont.woff') format('woff'), url('fonts/fonts/black/SourceSansPro-Black-webfont.ttf') format('truetype'), url('fonts/fonts/black/SourceSansPro-Black-webfont.svg#source_sans_problack') format('svg');
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/fonts/black-italic/SourceSansPro-BlackItalic-webfont.eot');
+  src: url('fonts/fonts/black-italic/SourceSansPro-BlackItalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/fonts/black-italic/SourceSansPro-BlackItalic-webfont.woff2') format('woff2'), url('fonts/fonts/black-italic/SourceSansPro-BlackItalic-webfont.woff') format('woff'), url('fonts/fonts/black-italic/SourceSansPro-BlackItalic-webfont.ttf') format('truetype'), url('fonts/fonts/black-italic/SourceSansPro-BlackItalic-webfont.svg#source_sans_problack_italic') format('svg');
+  font-weight: 800;
+  font-style: italic; }
 
 /* ---------------------------------------------------------------------- *\
   COLUMNS WIDTH
@@ -1742,7 +1828,7 @@ form h3 {
       padding: 0 16px; }
       .form-default .select select:-moz-focusring, .form-default .select--inline select:-moz-focusring {
         transition: none;
-        text-shadow: 0 0 0 #000;
+        text-shadow: 0 0 0 black;
         color: transparent; }
       .form-default .select select::-ms-expand, .form-default .select--inline select::-ms-expand {
         display: none; }
