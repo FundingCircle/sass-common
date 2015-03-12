@@ -30,15 +30,21 @@
   }
 
   // calculate the font size (this needs to be unitless)
-  $fontSize: rem(round($fontSizeBase * $multiplier) * 1px);
+  $fontSize: round($fontSizeBase * $multiplier) * 1px;
+  $lineHeight: lineHeight($fontSize);
 
-  @return ($fontSize, lineHeight($fontSize));
+  @return rem($fontSize $lineHeight);
 }
 
 
 // calculate lineHeight
 @function lineHeight($fontSize) {
-  $lineHeight: $fontSize + rem(.5) !default;
+  $lineHeight: $fontSize !default;
+
+  // we find out the remainder
+  $remainder: $fontSize % $fontBaseline;
+  $lineHeight: $fontSize - $remainder + $fontBaseline * 1px;
 
   @return $lineHeight;
 }
+
