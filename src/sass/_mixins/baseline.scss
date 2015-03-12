@@ -1,5 +1,7 @@
-$REMsupport: true;
+$REMsupport: false;
 $capHeight: .7;
+$gridline: $fontBaseline * 1px;
+$gridOpacity: .2;
 
 @mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0) {
   // during calculations, all values should remain unitless
@@ -62,8 +64,8 @@ $capHeight: .7;
   $baseAdjustment: ($fontSize / 2 * (($lineHeight * $fontSizeBase / $fontSize) - $capHeight)) / $fontSizeBase + .00001;
 
   // amount of spacing to the bottom
-  $basePush: $below - $baseAdjustment;
-  $baseAbovePush: $above *  $fontBaseline / $fontSizeBase;
+  $basePush: rem($below) - rem($baseAdjustment * 1px);
+  $baseAbovePush: rem($above *  $fontBaseline / $fontSizeBase);
 
 
   /* ------------------------- *\
@@ -73,6 +75,8 @@ $capHeight: .7;
 
     @if $fontWeight == thin {
       $fontWeightNumber: 300;
+    } @else if $fontWeight == bold {
+      $fontWeightNumber: 600;
     }
 
   /* -------------------- *\
@@ -83,12 +87,16 @@ $capHeight: .7;
   line-height: rem($lineHeight * 1px);
 
   @if $above > 0 {
-    padding-top: rem($baseAbovePush * 1px);
+    padding-top: $baseAbovePush;
   }
-  margin-bottom: rem($basePush * 1px);
-  margin-top: rem($baseAdjustment * 1px);
+  margin-bottom: 32 - $baseAdjustment * 1px;
+  margin-top: $baseAdjustment * 1px;
 
+  font-weight: $fontWeightNumber;
 
+  $gridline: rem(.5);
+  $gridOpacity: .2;
+  // background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
 }
 
 
@@ -108,9 +116,7 @@ $capHeight: .7;
   }
 
   input:checked ~ &:after {
-    $gridline: rem(.5);
-    $gridOpacity: .2;
-    background: repeating-linear-gradient(0deg, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
+    background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
   }
 }
 
@@ -131,6 +137,12 @@ $capHeight: .7;
 }
 
 .testbaseline {
-  @include baseline(1);
+  @include baseline(1, regular, 5, 0);
+}
+
+main[data-role="wrap"] {
+  background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
 }
 // TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP //
+
+
