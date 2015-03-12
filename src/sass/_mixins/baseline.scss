@@ -1,0 +1,8 @@
+@mixin baseline($fontScale, $type: regular, $below: false, $above: false) {
+
+  $fontSize: fontSize($fontScale);
+
+  font-size: first($fontSize);
+  line-height: last($fontSize);
+
+}
