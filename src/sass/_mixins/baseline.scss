@@ -1,5 +1,5 @@
-$REMsupport: false;
-$capHeight: .7;
+$REMsupport: true;
+$capHeight: .62;
 $gridline: $fontBaseline * 1px;
 $gridOpacity: .2;
 
@@ -60,12 +60,7 @@ $gridOpacity: .2;
      CALCULATE BASELINE VALUES
   \* ------------------------- */
 
-  // base adjustment top / bottom
-  $baseAdjustment: ($fontSize / 2 * (($lineHeight * $fontSizeBase / $fontSize) - $capHeight)) / $fontSizeBase + .00001;
-
-  // amount of spacing to the bottom
-  $basePush: rem($below) - rem($baseAdjustment * 1px);
-  $baseAbovePush: rem($above *  $fontBaseline / $fontSizeBase);
+  $baselineAdjustment: rem($fontSize * (($lineHeight / $fontSize) - $capHeight) / 2 + .00001px);
 
 
   /* ------------------------- *\
@@ -86,17 +81,11 @@ $gridOpacity: .2;
   font-size: rem($fontSize * 1px);
   line-height: rem($lineHeight * 1px);
 
-  @if $above > 0 {
-    padding-top: $baseAbovePush;
-  }
-  margin-bottom: 32 - $baseAdjustment * 1px;
-  margin-top: $baseAdjustment * 1px;
-
   font-weight: $fontWeightNumber;
 
-  $gridline: rem(.5);
-  $gridOpacity: .2;
-  // background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
+  margin-bottom: rem($below) - $baselineAdjustment;
+  padding-top: rem($above) + $baselineAdjustment;
+
 }
 
 
@@ -141,8 +130,29 @@ $gridOpacity: .2;
 }
 
 main[data-role="wrap"] {
-  background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
+  // background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
 }
 // TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP //
 
+
+/* ---------------------------------------------------------------------- *\
+  MESSAGES
+  - .message / --error / --warning / --success
+\* ---------------------------------------------------------------------- */
+
+.message {
+  &_title {
+    @include baseline(3, regular, 3, 2);
+  }
+
+  &_content {
+    @include baseline(1, regular, 2, 3);
+
+    &--1 { @include baseline(0, regular, 1, 5); }
+    &--2 { @include baseline(-1, regular, 1, 1); }
+    &--3 { @include baseline(6, regular, 1, 1); }
+    &--4 { @include baseline(2, regular, 1, 0); }
+    &--5 { @include baseline(4, regular, 0, 2); }
+  }
+}
 
