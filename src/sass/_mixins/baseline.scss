@@ -93,7 +93,7 @@
 
   font-weight: $fontWeightNumber;
 
-  padding-top: $baselineAdjustment;
+  padding-top: rem($above) + $baselineAdjustment;
 
   @if $hasChild {
     & > * {
