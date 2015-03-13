@@ -1,9 +1,6 @@
-$REMsupport: false;
 $capHeight: .656;
-$gridline: $fontBaseline * 1px;
-$gridOpacity: .2;
 
-@mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0, $hasChild: true) {
+@mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0, $hasChild: false) {
   // during calculations, all values should remain unitless
 
   /* ------------------- *\
@@ -62,7 +59,6 @@ $gridOpacity: .2;
 
   $baselineAdjustment: rem($fontSize * (($lineHeight / $fontSize) - $capHeight) / 2 + .00001px);
 
-    @warn $baselineAdjustment;
 
   /* ------------------------- *\
      SET FONT WEIGHT
@@ -84,14 +80,19 @@ $gridOpacity: .2;
 
   font-weight: $fontWeightNumber;
 
-  margin-bottom: rem($below) - $baselineAdjustment;
   padding-top: $baselineAdjustment;
 
   @if $hasChild {
-    > * {
+    & > * {
       position: relative;
       top: negative($baselineAdjustment);
+
+      &:last-child {
+        margin-bottom: $baselineAdjustment + rem($below) - $baselineAdjustment;
+      }
     }
+  } @else {
+    margin-bottom: rem($below) - $baselineAdjustment;
   }
 
 }
@@ -99,48 +100,6 @@ $gridOpacity: .2;
 
 
 
-// TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP //
-
-.baseline {
-  position: relative;
-  &:after {
-    @include posAbs(0, 0, 0, 0, 1000);
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  input:checked ~ &:after {
-    background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
-  }
-}
-
-#show-baseline {
-  display: none;
-
-  + label {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: rgb(255, 255, 255);
-    background: $ColorBrand1;
-    z-index: 1001;
-    text-align: center;
-    padding: 5px;
-  }
-}
-
-.testbaseline {
-  @include baseline(1, regular, 5, 0);
-}
-
-main[data-role="wrap"] {
-  // background: repeating-linear-gradient(to bottom, rgba(171, 51, 131, $gridOpacity) 0, rgba(171, 51, 131, $gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) $gridline, rgba(255,255,255,$gridOpacity) (2 * $gridline));
-}
-// TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP //
 
 
 /* ---------------------------------------------------------------------- *\
@@ -164,7 +123,12 @@ main[data-role="wrap"] {
   }
 
   &_inner {
-    @include baseline(1, regular, 1, 1);
+    @include baseline(1, regular, 4, 2);
+
+    &--child {
+      background: rgba(0,0,0,.2);
+      @include baseline(1, regular, 3, 5, true);
+    }
   }
 }
 
