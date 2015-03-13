@@ -1,4 +1,16 @@
-$capHeight: .656;
+// Baseline
+//
+// Align typography to baseline
+//
+// $fontScale: integer - [-1, 6]
+// $fontWeight: thin, regular, bold
+// $below: how many REMs to add bellow as margin
+// $above: how many REMs to add above as padding
+// $hasChild: HANDLE WITH CARE - tries to fix the position on the grid for children element
+// $hasChild:  - APPLIES POSITION RELATIVE the all direct children elements
+// Styleguide 1.0
+
+
 
 @mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0, $hasChild: false) {
   // during calculations, all values should remain unitless
@@ -57,6 +69,7 @@ $capHeight: .656;
      CALCULATE BASELINE VALUES
   \* ------------------------- */
 
+  // we need to find the error - distance between baseline and the base of the font
   $baselineAdjustment: rem($fontSize * (($lineHeight / $fontSize) - $capHeight) / 2 + .00001px);
 
 
@@ -96,39 +109,3 @@ $capHeight: .656;
   }
 
 }
-
-
-
-
-
-
-/* ---------------------------------------------------------------------- *\
-  MESSAGES
-  - .message / --error / --warning / --success
-\* ---------------------------------------------------------------------- */
-
-.message {
-  &_title {
-    @include baseline(3, regular, 3, 2);
-  }
-
-  &_content {
-    // @include baseline(1, regular, 2, 3);
-
-    &--1 { @include baseline(0, regular, 1, 5); }
-    &--2 { @include baseline(-1, regular, 1, 1); }
-    &--3 { @include baseline(6, regular, 1, 1); }
-    &--4 { @include baseline(2, regular, 1, 0); }
-    &--5 { @include baseline(4, regular, 0, 2); }
-  }
-
-  &_inner {
-    @include baseline(1, regular, 4, 2);
-
-    &--child {
-      background: rgba(0,0,0,.2);
-      @include baseline(1, regular, 3, 5, true);
-    }
-  }
-}
-
