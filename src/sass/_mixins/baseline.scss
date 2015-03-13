@@ -1,9 +1,9 @@
-$REMsupport: true;
-$capHeight: .62;
+$REMsupport: false;
+$capHeight: .656;
 $gridline: $fontBaseline * 1px;
 $gridOpacity: .2;
 
-@mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0) {
+@mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0, $hasChild: true) {
   // during calculations, all values should remain unitless
 
   /* ------------------- *\
@@ -62,6 +62,7 @@ $gridOpacity: .2;
 
   $baselineAdjustment: rem($fontSize * (($lineHeight / $fontSize) - $capHeight) / 2 + .00001px);
 
+    @warn $baselineAdjustment;
 
   /* ------------------------- *\
      SET FONT WEIGHT
@@ -84,7 +85,14 @@ $gridOpacity: .2;
   font-weight: $fontWeightNumber;
 
   margin-bottom: rem($below) - $baselineAdjustment;
-  padding-top: rem($above) + $baselineAdjustment;
+  padding-top: $baselineAdjustment;
+
+  @if $hasChild {
+    > * {
+      position: relative;
+      top: negative($baselineAdjustment);
+    }
+  }
 
 }
 
@@ -146,13 +154,17 @@ main[data-role="wrap"] {
   }
 
   &_content {
-    @include baseline(1, regular, 2, 3);
+    // @include baseline(1, regular, 2, 3);
 
     &--1 { @include baseline(0, regular, 1, 5); }
     &--2 { @include baseline(-1, regular, 1, 1); }
     &--3 { @include baseline(6, regular, 1, 1); }
     &--4 { @include baseline(2, regular, 1, 0); }
     &--5 { @include baseline(4, regular, 0, 2); }
+  }
+
+  &_inner {
+    @include baseline(1, regular, 1, 1);
   }
 }
 
