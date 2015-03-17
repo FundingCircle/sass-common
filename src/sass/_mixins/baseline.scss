@@ -11,7 +11,6 @@
 // Styleguide 1.0
 
 
-
 @mixin baseline($fontScale, $fontWeight: regular, $below: 0, $above: 0, $hasChild: false) {
   // during calculations, all values should remain unitless
 
@@ -89,7 +88,8 @@
   \* -------------------- */
 
   font-size: rem($fontSize * 1px);
-  line-height: rem($lineHeight * 1px);
+  // line-height: rem($lineHeight * 1px);
+  line-height: $lineHeight / $fontSize * 1em;
 
   font-weight: $fontWeightNumber;
 
