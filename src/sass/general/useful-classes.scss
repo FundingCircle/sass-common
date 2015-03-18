@@ -211,7 +211,7 @@
 
 .col-2nd {
   padding: 0;
-  @include font(-1, true);
+  @include font(-1);
 
   & > * {
     margin-bottom: rem(1.5);

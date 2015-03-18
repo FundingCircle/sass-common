@@ -113,7 +113,7 @@
     }
 
     p {
-      @include font(-1, true);
+      @include font(-1);
     }
   }
 
@@ -331,7 +331,7 @@
 
   // error message
   .error-message {
-    @include font(0, true);
+    @include font(0);
     margin-top: rem(1);
     position: relative;
     width: 100%;
@@ -354,7 +354,7 @@
   // tooltip
   &_tooltip {
 
-    @include font(0, true);
+    @include font(0);
     @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1));
 
     height: 0;
@@ -431,7 +431,7 @@
   // chars left
   &_chars-left {
     text-align: right;
-    @include font(-1, true);
+    @include font(-1);
     margin: rem(0.2 0);
   }
 
@@ -801,7 +801,7 @@
   }
 
   &_title {
-    @include font(1, true);
+    @include font(1);
     display: block;
     color: $ColorBrand1;
     margin-bottom: rem(.5);
