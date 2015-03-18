@@ -6,7 +6,7 @@
 html,
 body {
   vertical-align: baseline;
-  font-size: $fontSizeBase * 1px;
+  @include font(0);
 }
 
 ::-moz-selection { @include textSelection; }
