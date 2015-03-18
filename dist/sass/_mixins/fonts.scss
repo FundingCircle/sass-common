@@ -15,7 +15,7 @@
   $fontFamily: $fontFamilyDefault
 \* ---------------------------------------------------------------------- */
 
-@mixin font($fontSize, $lineHeight: true, $fontWeight: false, $fontStyle: false, $fontVariant: false, $fontFamily: false, $test: false) {
+@mixin font($fontSize, $lineHeight: false, $fontWeight: false, $fontStyle: false, $fontVariant: false, $fontFamily: false, $test: false) {
 
   /* CALCULATE THE FONT SIZE */
 
