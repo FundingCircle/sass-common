@@ -1883,7 +1883,7 @@ form h3 {
     .form-default .select--inline select {
       border-bottom: 2px solid #cccccc;
       color: #383838;
-      font-weight: 700;
+      font-weight: 600;
       padding-right: 27.73333px;
       text-align: center; }
       .form-default .select--inline select.error {
