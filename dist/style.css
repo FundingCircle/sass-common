@@ -672,7 +672,7 @@ td, th {
   - if you have 5 params inside class .test, the result will be:
     .test-col--xsmall {}
     .test-col--small {}
-    .test-com--medium {}
+    .test-col--medium {}
     .test-col--large {}
     .test-col--xlarge {}
   - adding more values will add more x to the size (eg: xxsize, xxxlarge, etc.)
@@ -1682,11 +1682,11 @@ form h3 {
   border: 0; }
   @media only screen and (min-width: 640px) {
     .form-default-col--small {
-      width: 27.64016%; }
+      width: 38.1971%; }
     .form-default-col--medium {
-      width: 72.35984%; }
+      width: 61.8029%; }
     .form-default-col--large, .wrap--form > h2, .wrap--form > p, .wrap--form > .tooltip_text, .wrap--form .form-default {
-      width: 72.35984%; }
+      width: 61.8029%; }
     .wrap--form .form-default {
       float: left; }
     .form-default-col--small {
