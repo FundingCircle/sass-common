@@ -69,7 +69,7 @@
 
     &:hover {
       border-color: $colorCtaPrimary;
-      background: rgba(255, 255, 255, .6);
+      background: rgba($colorCtaDisabledText, .6);
     }
 
     &:active,
@@ -80,7 +80,7 @@
 
     &.btn--disabled,
     &[disabled] {
-      background: rgba(255, 255, 255, .6);
+      background: rgba($colorCtaDisabledText, .6);
       border-color: $colorCtaSecondaryDisabled;
       color: $colorCtaSecondaryDisabled;
     }
