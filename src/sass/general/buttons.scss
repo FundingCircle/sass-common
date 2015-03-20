@@ -56,8 +56,9 @@
       background: $colorCtaPrimaryActive;
     }
 
-    &.btn--disabled {
-      background: $colorCtaPrimaryDisaled;
+    &.btn--disabled,
+    &[disabled] {
+      background: $colorCtaPrimaryDisabled;
     }
   }
 
@@ -68,7 +69,7 @@
 
     &:hover {
       border-color: $colorCtaPrimary;
-      background: rgba(255, 255, 255, .6);
+      background: rgba($colorCtaDisabledText, .6);
     }
 
     &:active,
@@ -77,8 +78,9 @@
       background: rgba($colorCtaPrimaryHover, .1);
     }
 
-    &.btn--disabled {
-      background: rgba(255, 255, 255, .6);
+    &.btn--disabled,
+    &[disabled] {
+      background: rgba($colorCtaDisabledText, .6);
       border-color: $colorCtaSecondaryDisabled;
       color: $colorCtaSecondaryDisabled;
     }
@@ -100,7 +102,8 @@
       background: rgba($colorCtaAlternativeBack, .2);
     }
 
-    &.btn--disabled {
+    &.btn--disabled,
+    &[disabled] {
       border: 0;
       background: rgba($colorCtaAlternativeBack, .2);
       color: rgba($colorCtaAlternative, .2);
