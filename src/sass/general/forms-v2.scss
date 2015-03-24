@@ -21,7 +21,12 @@
     }
   }
 
-  & > h1 { @include font(4, true, 300); }
+  & > h1 {
+    @include font(4, true, 300);
+
+    margin-top: rem(1);
+    margin-bottom: rem(1);
+  }
 
   & > h2 {
     @include font(2, true, 300);
@@ -29,7 +34,7 @@
   }
 
   & > h2,
-  & > p {
+  & > h2 + p {
     @extend .form-default-col--large;
     float: none;
   }
