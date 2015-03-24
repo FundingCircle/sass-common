@@ -827,6 +827,7 @@
     color: $colorFontLight;
     background: $colorCtaNav;
     cursor: pointer;
+    vertical-align: middle;
 
     &:before {
       content: '?';
