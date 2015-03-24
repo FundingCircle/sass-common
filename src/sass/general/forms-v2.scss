@@ -131,6 +131,10 @@
 
   & > .btn { float: right; }
 
+  .btn--primary:last-child {
+    margin-bottom: 0;
+  }
+
   label {
     display: block;
     font-weight: 300;
@@ -141,6 +145,10 @@
       color: $ColorBrand2;
       padding-left: 0.3em;
     }
+  }
+
+  p {
+    font-weight: 300;
   }
 
   &_wrap {
