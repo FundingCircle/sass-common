@@ -357,10 +357,12 @@ $colRatio: 1;
   $breakPoints: two values that determine when the padding is applied
 \* ---------------------------------------------------------------------- */
 
+$maxWrapWidth: 1200px;
+
 %wrapPlaceholder {
   @include centerBlock(0, true);
   width: 100%;
-  max-width: 1200px;
+  max-width: $maxWrapWidth;
 }
 
 @mixin wrapThis($padding: false, $breakPoints: (false false)) {
