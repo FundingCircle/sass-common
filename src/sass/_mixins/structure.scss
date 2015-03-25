@@ -345,8 +345,13 @@ $colRatio: 1;
 
 }
 
+/* ---------------------------------------------------------------------- *\
+  WRAP
+  - Adjust the left and right padding of selected container
+\* ---------------------------------------------------------------------- */
+
 %wrapPlaceholder {
-  @include centerBlock(0,true);
+  @include centerBlock(0, true);
   width: 100%;
   max-width: 1200px;
 }
@@ -354,11 +359,16 @@ $colRatio: 1;
 @mixin wrapThis($padding: false, $breakPoints: (false false)) {
   @extend %wrapPlaceholder;
 
-  @if $padding {
+  @if type-of($padding) == number {
     @include breakPoints(first($breakPoints), last($breakPoints)) {
-      padding-left: $defaultColsPadding;
-      padding-right: $defaultColsPadding;
+      padding-left: $padding;
+      padding-right: $padding;
     }
+  } @else if $padding {
+      @include breakPoints(first($breakPoints), last($breakPoints)) {
+        padding-left: $defaultColsPadding;
+        padding-right: $defaultColsPadding;
+      }
   }
 }
 
