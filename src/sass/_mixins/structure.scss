@@ -347,7 +347,14 @@ $colRatio: 1;
 
 /* ---------------------------------------------------------------------- *\
   WRAP
-  - Adjust the left and right padding of selected container
+  Adjust the left and right padding of selected element
+
+  $padding: false / true / number
+    a) FALSE - default value
+    b) TRUE - default padding applied
+    c) NUMBER - enter a numeric value to be received in REMs, e.g. entering "1" would pass that value as rem(1)
+
+  $breakPoints: two values that determine when the padding is applied
 \* ---------------------------------------------------------------------- */
 
 %wrapPlaceholder {
@@ -361,8 +368,8 @@ $colRatio: 1;
 
   @if type-of($padding) == number {
     @include breakPoints(first($breakPoints), last($breakPoints)) {
-      padding-left: $padding;
-      padding-right: $padding;
+      padding-left: rem($padding);
+      padding-right: rem($padding);
     }
   } @else if $padding {
       @include breakPoints(first($breakPoints), last($breakPoints)) {
