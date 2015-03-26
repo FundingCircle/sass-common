@@ -677,6 +677,17 @@ td, th {
     .test-col--xlarge {}
   - adding more values will add more x to the size (eg: xxsize, xxxlarge, etc.)
 \* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
+  WRAP
+  Adjust the left and right padding of selected element
+
+  $padding: false / true / number
+    a) FALSE - default value
+    b) TRUE - default padding applied
+    c) NUMBER - enter a numeric value to be received in REMs, e.g. entering "1" would pass that value as rem(1)
+
+  $breakPoints: two values that determine when the padding is applied
+\* ---------------------------------------------------------------------- */
 .wrap, .wrap--nopad, .modal, .wrap--form {
   margin: 0 auto;
   width: 100%;
