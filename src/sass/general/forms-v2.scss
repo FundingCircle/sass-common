@@ -712,7 +712,7 @@
 
 %posLeft {
   label {
-    padding-left: $radioAndCheckboxSize + 13;
+    padding-left: $checkboxPaddingSize;
     line-height: $radioAndCheckboxSize;
 
     .ui-radio,
@@ -727,7 +727,7 @@
 
 %posRight {
   label {
-    padding-right: $radioAndCheckboxSize + 13;
+    padding-right: $checkboxPaddingSize;
     line-height: $radioAndCheckboxSize;
     text-align: right;
 
