@@ -1634,7 +1634,9 @@ form h3 {
   font-weight: 300;
   /* FONT STYLE */
   /* FONT VARIANT */
-  /* FONT Family */ }
+  /* FONT Family */
+  margin-top: 16px;
+  margin-bottom: 16px; }
 .wrap--form > h2 {
   /* CALCULATE THE FONT SIZE */
   font-size: 26px;
@@ -1646,7 +1648,7 @@ form h3 {
   /* FONT VARIANT */
   /* FONT Family */
   margin-bottom: 16px; }
-.wrap--form > h2, .wrap--form > p, .wrap--form > .tooltip_text {
+.wrap--form > h2, .wrap--form > h2 + p, .wrap--form > h2 + .tooltip_text {
   float: none; }
 
 ::-webkit-input-placeholder {
@@ -1696,7 +1698,7 @@ form h3 {
       width: 38.1971%; }
     .form-default-col--medium {
       width: 61.8029%; }
-    .form-default-col--large, .wrap--form > h2, .wrap--form > p, .wrap--form > .tooltip_text, .wrap--form .form-default {
+    .form-default-col--large, .wrap--form > h2, .wrap--form > h2 + p, .wrap--form > h2 + .tooltip_text, .wrap--form .form-default {
       width: 61.8029%; }
     .wrap--form .form-default {
       float: left; }
@@ -1766,6 +1768,8 @@ form h3 {
       /* FONT Family */ }
   .form-default > .btn, .form-default > .btn--large, .form-default > .btn--s3, .form-default > .btn--normal, .form-default > .btn--s1, .form-default > .btn--medium, .form-default > .btn--small, .form-default > .btn--s2, .form-default > .btn--primary, .form-default > .btn--t1, .form-default > .btn--secondary, .form-default > .btn--t2, .form-default > .btn--secondary-alt, .form-default > .btn--t3 {
     float: right; }
+  .form-default .btn--primary:last-child, .form-default .btn--t1:last-child {
+    margin-bottom: 0; }
   .form-default label {
     display: block;
     font-weight: 300;
@@ -1774,6 +1778,8 @@ form h3 {
       content: '*';
       color: #3a77c1;
       padding-left: 0.3em; }
+  .form-default p, .form-default .tooltip_text {
+    font-weight: 300; }
   .form-default_wrap {
     margin-bottom: 48px; }
   .form-default_element {
@@ -2140,7 +2146,7 @@ form h3 {
   width: 70%; }
 
 .form-radio--left label, .form-checkbox--left label {
-  padding-left: 29px;
+  padding-left: 37px;
   line-height: 24px; }
   .form-radio--left label .ui-radio, .form-checkbox--left label .ui-radio, .form-radio--left label .ui-checkbox, .form-checkbox--left label .ui-checkbox {
     position: absolute;
@@ -2148,7 +2154,7 @@ form h3 {
     left: 0; }
 
 .form-radio--right label, .form-checkbox--right label {
-  padding-right: 29px;
+  padding-right: 37px;
   line-height: 24px;
   text-align: right; }
   .form-radio--right label .ui-radio, .form-checkbox--right label .ui-radio, .form-radio--right label .ui-checkbox, .form-checkbox--right label .ui-checkbox {
@@ -2249,7 +2255,8 @@ form h3 {
     text-align: center;
     color: white;
     background: #575757;
-    cursor: pointer; }
+    cursor: pointer;
+    vertical-align: middle; }
     .tooltip_symbol:before {
       content: '?'; }
     .tooltip_symbol:hover {

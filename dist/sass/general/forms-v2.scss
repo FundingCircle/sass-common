@@ -21,7 +21,12 @@
     }
   }
 
-  & > h1 { @include font(4, true, 300); }
+  & > h1 {
+    @include font(4, true, 300);
+
+    margin-top: rem(1);
+    margin-bottom: rem(1);
+  }
 
   & > h2 {
     @include font(2, true, 300);
@@ -29,7 +34,7 @@
   }
 
   & > h2,
-  & > p {
+  & > h2 + p {
     @extend .form-default-col--large;
     float: none;
   }
@@ -126,6 +131,10 @@
 
   & > .btn { float: right; }
 
+  .btn--primary:last-child {
+    margin-bottom: 0;
+  }
+
   label {
     display: block;
     font-weight: 300;
@@ -136,6 +145,10 @@
       color: $ColorBrand2;
       padding-left: 0.3em;
     }
+  }
+
+  p {
+    font-weight: 300;
   }
 
   &_wrap {
@@ -699,7 +712,7 @@
 
 %posLeft {
   label {
-    padding-left: $radioAndCheckboxSize + 5;
+    padding-left: $checkboxPaddingSize;
     line-height: $radioAndCheckboxSize;
 
     .ui-radio,
@@ -714,7 +727,7 @@
 
 %posRight {
   label {
-    padding-right: $radioAndCheckboxSize + 5;
+    padding-right: $checkboxPaddingSize;
     line-height: $radioAndCheckboxSize;
     text-align: right;
 
@@ -827,6 +840,7 @@
     color: $colorFontLight;
     background: $colorCtaNav;
     cursor: pointer;
+    vertical-align: middle;
 
     &:before {
       content: '?';
