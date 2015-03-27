@@ -22,7 +22,8 @@
   aside {
     @include font(-1);
     padding: rem(0.8);
-    background: rgba(0,0,0,0.7);
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
     text-align: center;
     color: $colorFontLight;
   }
