@@ -1,0 +1,113 @@
+// regular inputs
+
+.form-item {
+  position: relative;
+  margin-bottom: rem(2);
+
+
+  // inputs styling
+  %blockInput {
+    @include font(0, 2.5);
+    min-height: rem(2.5);
+    display: block;
+    width: 100%;
+    background: $formInputBackgroundMain;
+    border: 0;
+    outline: 1px solid $formInputBorderMain;
+    padding: rem(0 1);
+    outline-offset: initial;
+
+    &:focus {
+      outline-color: $ColorBrand3;
+    }
+
+    &.valid {
+      border-right: 4px solid $colorSuccess;
+    }
+
+    &.error {
+      outline-color: $colorError;
+      color: $colorError;
+    }
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="date"] {
+    @extend %blockInput;
+  }
+
+
+  // tooltip
+  &_tooltip {
+
+    @include font(0);
+    @include boxShadow(0, 0, 0.3, 0, rgba(0, 0, 0, 0.1));
+
+    height: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: $tooltipBackground;
+    color: $ColorBrand1;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+    }
+
+    &.is-visible {
+      height: auto;
+      padding: rem(1);
+      overflow: visible;
+    }
+
+    @include breakPoints(0, $formBreakpoint) {
+
+      &.is-visible {
+        margin-bottom: rem(1);
+
+        &:before {
+          @include triangle(down, $tooltipBackground, ($tooltipArrowHeight * 2) $tooltipArrowHeight);
+          bottom: negative($tooltipArrowHeight);
+          left: rem(2);
+        }
+      }
+    };
+
+    @include breakPoints($formBreakpoint, false) {
+      width: 250px;
+      position: absolute;
+      left: 100%;
+      margin-left: rem(1);
+
+      &.is-visible:before {
+        @include triangle(left, $tooltipBackground, ($tooltipArrowHeight * 2) $tooltipArrowHeight);
+        top: rem(.8);
+        left: negative($tooltipArrowHeight);
+      }
+    }
+  }
+
+}
+
+// error message
+.error-message {
+  @include font(0);
+  margin-top: rem(1);
+  position: relative;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  background: $colorError;
+  padding: rem(1);
+
+  &:before {
+    @include triangle(up, $colorError, ($errorMessageArrowHeight * 2) $errorMessageArrowHeight);
+    content: '';
+    position: absolute;
+    top: negative($errorMessageArrowHeight);
+    left: rem(2);
+  }
+}
