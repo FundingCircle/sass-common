@@ -375,6 +375,9 @@ td, th {
 .fci-download-circled:before {
   content: "\E011"; }
 
+.fci-arrow-full-right:before {
+  content: "\E012"; }
+
 /* ---------------------------------------------------------------------- *\
   SOURCE SANS
 \* ---------------------------------------------------------------------- */
@@ -2315,6 +2318,7 @@ form h3 {
     /* FONT VARIANT */
     /* FONT Family */
     padding: 12.8px;
+    background: black;
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
     color: white; }
