@@ -129,39 +129,84 @@ $colRatio: 1;
 
 /* ---------------------------------------------------------------------- *\
   GROUP ELEMENTS ON MULTIPLE COLUMNS
-  $resolution - between what resolutions should this be active
-  $colGroup - how many colums should this have
-  $centerLast - boolean - center last row
+  $item is an arglist which takes lists with the following params:
+    - min breakpoint - integer or false
+    - max breakpoint - integer or false
+    - number of columns - integer
+    - center last - bolean (use with care, it generates a lot of CSS)
 
-  e.g groupElements(0px 320px, 3, false);
+  e.g:
+  layout with:
+    - 1 column between a and b
+    - 2 columns between b and c
+    - 3 columns between c and d and last one centered
+
+  @include groupElements(a b 1 false, b c 2 false, 3 c d true);
 \* ---------------------------------------------------------------------- */
 
-@mixin groupElements($resolution, $colGroup, $centerLast:true) {
+@mixin groupElements($item...) {
+  $bpMin: 9999;
+  $bpMax: 0;
 
-  $elWidth: 1 / $colGroup;
-  @include breakPoints(first($resolution),last($resolution)) {
-    @include clear(true,false);
+  @each $list in $item {
+    $listBpMin: nth($list, 1); // breakpoint min - integer or false
+    $listBpMax: nth($list, 2); // breakpoint max - integer or false
+    $listCols:  nth($list, 3); // number of columns - integer
+    $listLast:  nth($list, 4); // center last one - bolean
 
-    display: block;
-
-    & > * {
-      display: block;
-      float: left;
-      width: percentage($elWidth);
-    }
-
-    & > *:nth-child(#{$colGroup}n+1) {
-      @include clear(false,false);
-
-      @if $centerLast {
-        @for $i from 1 through ($colGroup - 1) {
-          &:nth-last-child(#{$i}) {
-            margin-left: percentage($elWidth / 2 * ($colGroup - $i));
-          }
-        }
+    // find the smallest breakpoint
+    // we need this to know where to apply the general styling
+    @if $bpMin != false {
+      @if $listBpMin == false {
+        $bpMin: $listBpMin;
+      } @else if $listBpMin < $bpMin {
+        $bpMin: $listBpMin;
       }
     }
+
+    // find the largest breakpoint
+    // we need this to know where to apply the general styling
+    @if $bpMax != false {
+      @if $listBpMax == false {
+        $bpMax: $listBpMax;
+      } @else if $listBpMax > $bpMax {
+        $bpMax: $listBpMax;
+      }
+    }
+
+    @include breakPoints($listBpMin, $listBpMax) {
+      > * {
+        // width is 100 divided by the number of columns
+        width: percentage(1 / $listCols);
+
+        &:nth-child(#{$listCols}n+1) {
+          // add the clear to every first item on a new row
+          @include clear(false, false);
+
+          @if $listLast {
+            // find the first item of the last row and add the correction by figuring out how many elements are on that list
+            @for $i from 1 through ($listCols - 1) {
+              &:nth-last-child(#{$i}) {
+                margin-left: percentage((1 / $listCols ) / 2 * ($listCols - $i));
+              }
+            }
+          }
+        }
+
+      }
+    }
+
   }
+
+  @include breakPoints($bpMin, $bpMax) {
+    @include clear(true, false);
+    display: block;
+
+    > * {
+      float: left;
+    }
+  }
+
 }
 
 
