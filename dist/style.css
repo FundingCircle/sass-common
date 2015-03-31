@@ -631,11 +631,19 @@ td, th {
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
   GROUP ELEMENTS ON MULTIPLE COLUMNS
-  $resolution - between what resolutions should this be active
-  $colGroup - how many colums should this have
-  $centerLast - boolean - center last row
+  $item is an arglist which takes lists with the following params:
+    - min breakpoint - integer or false
+    - max breakpoint - integer or false
+    - number of columns - integer
+    - center last - bolean (use with care, it generates a lot of CSS)
 
-  e.g groupElements(0px 320px, 3, false);
+  e.g:
+  layout with:
+    - 1 column between a and b
+    - 2 columns between b and c
+    - 3 columns between c and d and last one centered
+
+  @include groupElements(a b 1 false, b c 2 false, 3 c d true);
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
   TABLES
