@@ -436,6 +436,15 @@ $REMsupport: false!default;
 
 
 
+// IE8 Support
+//
+// $ie - default value for IE8.
+// You can use this in your build process to separate IE8 from the rest
+//
+// variables.ie
+$ie: false!default;
+
+
 // PREREQUISITES
 //
 // Mandatory imports
