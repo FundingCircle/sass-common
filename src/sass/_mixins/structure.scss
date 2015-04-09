@@ -427,3 +427,32 @@ $maxWrapWidth: 1200px;
   }
 }
 
+
+
+/* ---------------------------------------------------------------------- *\
+  RATIO WIDTH
+  Set the width of an element in a golden ratio with the page width
+
+    $rwMainCol: the ratio for the element
+    $rwOtherCols: ratio for missing columns or empty space
+    $rwCenter: center the element horizontally
+    $rwBrakePoints: apply the change only between two brakepoints
+
+    e.g: @include ratioWidth(5, 3 2, true, $bpMobilePortrait $bpDesktop);
+
+\* ---------------------------------------------------------------------- */
+
+@mixin ratioWidth($rwMainCol, $rwOtherCols: false, $rwCenter: false, $rwBrakePoints: false) {
+
+  @include breakPoints(first($rwBrakePoints), last($rwBrakePoints)) {
+    @if $rwOtherCols {
+        width: last(colsWidth(append($rwOtherCols, $rwMainCol))) * 1%;
+    } @else {
+      width: 100%;
+    }
+
+    @if $rwCenter {
+      @include centerBlock();
+    }
+  }
+}
