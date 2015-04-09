@@ -456,7 +456,3 @@ $maxWrapWidth: 1200px;
     }
   }
 }
-
-.test {
-  @include ratioWidth(5, 3 2, true, $bpMobilePortraitLarge $bpMobileLandscape);
-}
