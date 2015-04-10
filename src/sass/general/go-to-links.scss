@@ -13,8 +13,6 @@ $goToLinkSize: rem(4);
   z-index: 2;
   width: $goToLinkSize;
   height: $goToLinkSize;
-  font-size: $goToLinkSize / 3;
-  line-height: $goToLinkSize / 1.5;
   text-align: center;
   background: inherit;
 
@@ -30,6 +28,24 @@ $goToLinkSize: rem(4);
 
   .bg-1 & path { fill: $colorCtaPrimary; }
   .bg-1 &:hover path { fill: $ColorBrand5; }
+
+  &:before {
+    font-size: $goToLinkSize / 3;
+    line-height: $goToLinkSize / 1.5;
+  }
+
+  &[title] {
+    &:after {
+      @include font(-1);
+      display: block;
+      content: attr(title);
+      position: absolute;
+      bottom: rem(.5);
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: $colorHighlightExternal;
+    }
+  }
 
 }
 
