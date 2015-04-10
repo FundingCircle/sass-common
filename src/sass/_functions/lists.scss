@@ -289,12 +289,12 @@ $default-order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "unq
 //
 // Styleguide 1.2.4
 
-@function reverseList($list) {
+@function reverseList($list, $separator: auto) {
   $reversedList: ();
   $listLength: length($list);
 
   @for $i from 1 through $listLength {
-    $reversedList: append($reversedList, nth($list, ($listLength + 1 - $i)));
+    $reversedList: append($reversedList, nth($list, ($listLength + 1 - $i)), $separator);
   }
 
   @return $reversedList;
