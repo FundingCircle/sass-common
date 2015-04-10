@@ -273,3 +273,29 @@ $default-order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "unq
 
   @return $list;
 }
+
+
+
+
+
+// Reverse list
+//
+// Reverse the order of the elements inside a list
+//
+// markup:
+// reverseList($list)
+// // $list: 5 1 2 6 10
+// // last($list) -> 10 6 2 1 5;
+//
+// Styleguide 1.2.4
+
+@function reverseList($list) {
+  $reversedList: ();
+  $listLength: length($list);
+
+  @for $i from 1 through $listLength {
+    $reversedList: append($reversedList, nth($list, ($listLength + 1 - $i)));
+  }
+
+  @return $reversedList;
+}
