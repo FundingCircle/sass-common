@@ -708,6 +708,18 @@ td, th {
   max-width: 1200px; }
 
 /* ---------------------------------------------------------------------- *\
+  RATIO WIDTH
+  Set the width of an element in a golden ratio with the page width
+
+    $rwMainCol: the ratio for the element
+    $rwOtherCols: ratio for missing columns or empty space
+    $rwCenter: center the element horizontally
+    $rwBrakePoints: apply the change only between two brakepoints
+
+    e.g: @include ratioWidth(5, 3 2, true, $bpMobilePortrait $bpDesktop);
+
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
   HTML STRUCTURE
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
