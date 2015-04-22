@@ -290,16 +290,17 @@
       <fieldset class="form-default">
 
         <label for="">
-          First name
+          First name with clickable tooltip
           <span class="tooltip">
-            <span class="tooltip_trigger tooltip_symbol tooltip_clickable"></span>
+            <a tabindex="0"
+               title="more information"
+               class="tooltip_trigger tooltip_symbol tooltip_clickable">
+            </a>
 
             <span class="tooltip_content">
               <span class="tooltip_title">How am I doing</span>
               <span class="tooltip_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae sint nobis sit amet doloribus nostrum rerum placeat iure qui nam modi, dolore porro neque ut ea. Necessitatibus dolore, fugit rem?
-
-                <a href="javascript://" title="Close" class="tooltip_close"></a>
-
+                <a title="Close" class="tooltip_close"></a>
               </span>
             </span>
           </span>
@@ -311,7 +312,19 @@
            <input type="text" placeholder="test" class="valid">
         </div>
 
-        <label for="">Date of birth</label>
+        <label for="">
+          Date of birth with hoverable tooltip
+          <span class="tooltip">
+            <a tabindex="0"
+               class="tooltip_trigger tooltip_symbol">
+            </a>
+
+            <span class="tooltip_content">
+              <span class="tooltip_title">How am I doing</span>
+              <span class="tooltip_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae sint nobis sit amet doloribus nostrum rerum placeat iure qui nam modi, dolore porro neque ut ea. Necessitatibus dolore, fugit rem?</span>
+            </span>
+          </span>
+        </label>
         <div class="form-default_dob-wrap">
           <div class="form-default_element">
             <div class="select">
