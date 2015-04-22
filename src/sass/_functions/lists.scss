@@ -285,7 +285,8 @@ $default-order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "unq
 // markup:
 // reverseList($list)
 // // $list: 5 1 2 6 10
-// // last($list) -> 10 6 2 1 5;
+// // reverseList($list) -> 10 6 2 1 5;
+// // $separator: auto / comma
 //
 // Styleguide 1.2.4
 
