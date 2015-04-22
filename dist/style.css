@@ -2226,7 +2226,7 @@ form h3 {
       content: '?'; }
     .tooltip_symbol:hover {
       background: #097fc9; }
-  .tooltip.is-active .tooltip_content, .tooltip .tooltip_trigger:not(.tooltip_clickable):hover + .tooltip_content {
+  .tooltip.is-active .tooltip_content, .tooltip .tooltip_trigger:not(.tooltip_clickable):hover + .tooltip_content, .tooltip .tooltip_trigger:not(.tooltip_clickable):focus + .tooltip_content {
     overflow: visible;
     opacity: 1;
     filter: alpha(opacity=100);
