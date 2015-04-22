@@ -44,6 +44,7 @@
 .bg-5 { background: $colorBackground4; }
 .bg-6 { background: $colorBackground5;}
 .bg-7 { background: $colorBackground6;}
+.bg-8 { background: $colorFontDarkSoft;}
 
 .upper-title {
   @include font(-1, true, 300);
