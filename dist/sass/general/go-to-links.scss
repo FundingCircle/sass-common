@@ -13,8 +13,8 @@ $goToLinkSize: rem(4);
   z-index: 2;
   width: $goToLinkSize;
   height: $goToLinkSize;
-  font-size: $goToLinkSize / 3;
-  line-height: $goToLinkSize / 1.5;
+  font-size: $goToLinkSize * 1.25 / 2;
+  line-height: $goToLinkSize;
   text-align: center;
   background: inherit;
 
@@ -25,11 +25,6 @@ $goToLinkSize: rem(4);
   &:hover {
     text-decoration: none;
   }
-
-  // other go to links colors
-
-  .bg-1 & path { fill: $colorCtaPrimary; }
-  .bg-1 &:hover path { fill: $ColorBrand5; }
 
 }
 
