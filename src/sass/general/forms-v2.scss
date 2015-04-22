@@ -852,7 +852,8 @@
   }
 
   &.is-active,
-  .tooltip_trigger:not(.tooltip_clickable):hover + {
+  .tooltip_trigger:not(.tooltip_clickable):hover +,
+  .tooltip_trigger:not(.tooltip_clickable):focus + {
     .tooltip_content {
       overflow: visible;
       @include opacity(1);
