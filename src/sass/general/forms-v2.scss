@@ -53,9 +53,13 @@
           :-moz-placeholder { @include placeholderStyle; }
 
 .form-default {
-  background: rgb(233,231,229);
+  @include font(0);
+  @extend .cl--a;
   padding: rem(2);
   margin: 0;
+  border: 0;
+  color: $colorFontDarkSoft;
+  background: $colorBackground2;
 
   // cols
   @include breakPoints($formBreakpoint, false) {
@@ -122,13 +126,6 @@
     }
   }
 
-  @include font(0);
-  @extend .cl--a;
-
-  color: $colorFontDarkSoft;
-  border: 0;
-
-
   & > .btn { float: right; }
 
   .btn--primary:last-child {
@@ -156,12 +153,9 @@
     margin-bottom: rem(3);
   }
 
-
   &_element {
     position: relative;
     margin-bottom: rem(2);
-
-
 
     &.is-loading:before {
       content: '';
