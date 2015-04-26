@@ -33,7 +33,7 @@
 
 // Fonts
 .f-regular { font-weight: 400; }
-.f-bold { font-weight: 700; }
+.f-bold { font-weight: 600; }
 
 
 // backgrounds
@@ -48,7 +48,7 @@
 
 .upper-title {
   @include font(-1, true, 300);
-  margin-bottom: rem(0.8);
+  margin-bottom: rem(1);
   text-transform: uppercase;
 }
 
