@@ -331,7 +331,7 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before {
+.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .go-to-link:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before {
   font-family: "fc-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -342,7 +342,7 @@ td, th {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.fci-go-to-arrow:before {
+.fci-go-to-arrow:before, .go-to-link:before {
   content: "\E001"; }
 
 .fci-menu-icon:before {
@@ -380,6 +380,15 @@ td, th {
 
 .fci-search:before {
   content: "\E013"; }
+
+.fci-stats:before {
+  content: "\E014"; }
+
+.fci-pound-sign:before {
+  content: "\E015"; }
+
+.fci-user:before {
+  content: "\E016"; }
 
 /* ---------------------------------------------------------------------- *\
   SOURCE SANS
@@ -844,7 +853,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
 
 .f-bold {
-  font-weight: 700; }
+  font-weight: 600; }
 
 .bg-1 {
   background: #e8e8e8; }
@@ -880,7 +889,7 @@ h1, h2, h3, h4, h5, h6 {
   /* FONT STYLE */
   /* FONT VARIANT */
   /* FONT Family */
-  margin-bottom: 12.8px;
+  margin-bottom: 16px;
   text-transform: uppercase; }
 
 .super-bold {
