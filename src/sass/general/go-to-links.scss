@@ -26,6 +26,11 @@ $goToLinkSize: rem(4);
     text-decoration: none;
   }
 
+  &:before {
+    @extend .fci-icon;
+    @extend .fci-go-to-arrow;
+  }
+
 }
 
 
