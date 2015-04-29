@@ -61,13 +61,13 @@
 
       <fieldset class="form-default">
 
-        <label for="" class="required">How much do you want to borrow? (Minimum £5000, multiples of £20 only)</label>
+        <label for="" class="required">Input field with an auto tooltip</label>
 
-        <div class="form-default_element is-loading">
-          <div class="form-default_tooltip is-visible">
+        <div class="form-default_element--tooltip is-loading">
+          <input type="text" class="valid">
+          <div class="form-default_tooltip">
             This should be a very short text of no more than 90 words
           </div>
-          <input type="text" class="valid">
           <ul class="form-default_autocomplete">
             <li>Lorem ipsum dolor sit amet</li>
             <li>consectetur adipisicing elit</li>
@@ -75,6 +75,15 @@
           </ul>
           <div class="form-default_autocomplete_loading">Searching</div>
         </div>
+        <label for="" class="required">Input field with an always visible tooltip</label>
+
+        <div class="form-default_element--tooltip is-loading">
+          <input type="text" class="valid">
+          <div class="form-default_tooltip is-visible">
+            This should be a very short text of no more than 90 words
+          </div>
+        </div>
+
         <div class="form-default_element">
           <div class="select">
             <select name="" id="" class="error">
