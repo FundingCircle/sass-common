@@ -1654,9 +1654,6 @@ form h3 {
   color: #383838; }
 
 .form-default {
-  background: #e9e7e5;
-  padding: 32px;
-  margin: 0;
   /* CALCULATE THE FONT SIZE */
   font-size: 16px;
   /* LINE HEIGHT */
@@ -1665,8 +1662,11 @@ form h3 {
   /* FONT STYLE */
   /* FONT VARIANT */
   /* FONT Family */
+  padding: 32px;
+  margin: 0;
+  border: 0;
   color: #383838;
-  border: 0; }
+  background: #e8e8e8; }
   @media only screen and (min-width: 640px) {
     .form-default-col--small {
       width: 38.1971%; }
@@ -1756,10 +1756,10 @@ form h3 {
     font-weight: 300; }
   .form-default_wrap {
     margin-bottom: 48px; }
-  .form-default_element {
+  .form-default_element, .form-default_element--tooltip {
     position: relative;
     margin-bottom: 32px; }
-    .form-default_element.is-loading:before {
+    .form-default_element.is-loading:before, .is-loading.form-default_element--tooltip:before {
       content: '';
       display: block;
       background: url(url(../img/input-loader.gif)) no-repeat center center;
@@ -1773,6 +1773,9 @@ form h3 {
       -ms-animation: loopRotate 2s linear infinite;
       -o-animation: loopRotate 2s linear infinite;
       animation: loopRotate 2s linear infinite; }
+    .form-default_element--tooltip {
+      display: table;
+      width: 100%; }
   .form-default input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]), .form-default .select, .form-default textarea {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
@@ -1923,6 +1926,7 @@ form h3 {
     box-shadow: 0 0 4.8px 0 rgba(0, 0, 0, 0.1);
     height: 0;
     padding: 0;
+    display: table-caption;
     position: relative;
     top: 0;
     left: 0;
@@ -1932,14 +1936,14 @@ form h3 {
     .form-default_tooltip:before {
       content: '';
       position: absolute; }
-    .form-default_tooltip.is-visible {
+    :focus + .form-default_tooltip, .form-default_tooltip.is-visible {
       height: auto;
       padding: 12.8px 16px;
       overflow: visible; }
     @media only screen and (min-width: 0px) and (max-width: 639px) {
-      .form-default_tooltip.is-visible {
+      :focus + .form-default_tooltip, .form-default_tooltip.is-visible {
         margin-bottom: 16px; }
-        .form-default_tooltip.is-visible:before {
+        :focus + .form-default_tooltip:before, .form-default_tooltip.is-visible:before {
           display: block;
           width: 0;
           height: 0;
@@ -1954,7 +1958,7 @@ form h3 {
         position: absolute;
         left: 100%;
         margin-left: 16px; }
-        .form-default_tooltip.is-visible:before {
+        :focus + .form-default_tooltip:before, .form-default_tooltip.is-visible:before {
           display: block;
           width: 0;
           height: 0;
