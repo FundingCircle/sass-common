@@ -38,19 +38,9 @@
     @extend .form-default-col--large;
     float: none;
   }
-
 }
 
-@mixin placeholderStyle {
-  @include opacity(0.4);
-  font-style: italic;
-  color: $colorFontDarkSoft;
-}
 
-::-webkit-input-placeholder { @include placeholderStyle; }
-     :-ms-input-placeholder { @include placeholderStyle; }
-         ::-moz-placeholder { @include placeholderStyle; }
-          :-moz-placeholder { @include placeholderStyle; }
 
 .form-default {
   @include font(0);
@@ -246,117 +236,8 @@
         display: none;
       }
 
-      margin: 0;
-      background: none;
-      border: 0;
-
-      width: 100%;
-      height: 100%;
-      vertical-align: middle;
-      z-index: 2;
-
-      padding: rem(0 1);
-
-      .ie & {
-        padding: rem(0.5 1);
-      }
-    }
-
-    option {
-      padding: rem(0.5 1);
-    }
-
-  }
-
-  .select {
-    @extend %select;
 
 
-    html:not(.ie) & {
-      &:before {
-        width: $selectIconWidth;
-        height: 100%;
-        top: 0;
-        right: 0;
-        border-left: 1px solid $formInputBorderMain;
-      }
-    }
-
-
-    select {
-      @include centerAbs();
-      @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.1));
-
-
-      &:focus {
-        outline: 1px solid $ColorBrand3;
-        outline-offset: 0;
-      }
-
-      &.valid { @extend .select.valid; }
-      &.error {
-        outline-width: 1px;
-        outline-style: solid;
-        @extend .select.error;
-      }
-    }
-
-
-  }
-
-  .select--inline {
-    @extend %select;
-    display: inline-block;
-
-
-    html:not(.ie) & {
-      &:after {
-        border-top-color: $colorFontDarkSoft;
-      }
-    }
-
-    select {
-      border-bottom: 2px solid $colorDividerMain;
-      color: $colorFontDarkSoft;
-      font-weight: 600;
-      padding-right: rem($selectIconWidth / 1.5);
-      text-align: center;
-
-      &.error {
-        border-bottom-color: $colorError;
-      }
-
-      &.valid {
-        border-bottom-color: $colorSuccess;
-      }
-
-      &:focus {
-        outline: 0;
-        border-bottom-color: $ColorBrand3;
-      }
-    }
-  }
-
-  // error message
-  .error-message {
-    @include font(0);
-    margin-top: rem(1);
-    position: relative;
-    width: 100%;
-    color: rgb(255,255,255);
-    background: $colorError;
-    padding: rem(.8 1);
-
-    &:before {
-      @include triangle(up, $colorError, ($errorMessageArrowHeight * 2) $errorMessageArrowHeight);
-      content: '';
-      position: absolute;
-      top: negative($errorMessageArrowHeight);
-      left: rem(2);
-
-    }
-
-  }
 
 
   // tooltip
