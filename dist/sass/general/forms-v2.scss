@@ -181,14 +181,14 @@
   input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
   .select,
   textarea {
-    @include font(0, 2.5);
+    @include font(0, false);
     min-height: rem(2.5);
     display: block;
     width: 100%;
     background: $formInputBackgroundMain;
     border: 0;
     outline: 1px solid $formInputBorderMain;
-    padding: rem(0 1);
+    padding: rem(1 1);
     outline-offset: initial;
 
     &:focus {
@@ -209,10 +209,6 @@
   input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
   textarea {
     @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true);
-  }
-
-  textarea {
-    resize: none;
   }
 
   %select {
