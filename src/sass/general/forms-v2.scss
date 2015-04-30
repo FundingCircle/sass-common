@@ -1,50 +1,15 @@
-/* ---------------------------------------------------------------------- *\
-  FORMS
-\* ---------------------------------------------------------------------- */
 
-@include keyframes(loopRotate) {
-  0% {
-    @include prefix(transform, rotate(0));
-  }
 
-  100% {
-    @include prefix(transform, rotate(360deg));
-  }
-}
-
-.wrap--form {
-  @include wrapThis(true, $formBreakpoint false);
-  @include breakPoints(false, $formBreakpoint) {
-    & > *:not([class*="form-default"]) {
-      padding-left: $defaultColsPadding;
-      padding-right: $defaultColsPadding;
-    }
-  }
-
-  & > h1 {
-    @include font(4, true, 300);
-
-    margin-top: rem(1);
-    margin-bottom: rem(1);
-  }
-
-  & > h2 {
-    @include font(2, true, 300);
-    margin-bottom: rem(1);
-  }
-
-  & > h2,
-  & > h2 + p {
-    @extend .form-default-col--large;
-    float: none;
-  }
-}
 
 
 
 .form-default {
   @include font(0);
   @extend .cl--a;
+
+  color: $colorFontDarkSoft;
+  border: 0;
+  background: rgb(233,231,229);
   padding: rem(2);
   margin: 0;
   border: 0;
@@ -122,17 +87,6 @@
     margin-bottom: 0;
   }
 
-  label {
-    display: block;
-    font-weight: 300;
-    margin-bottom: rem(0.5);
-
-    &.required:after {
-      content: '*';
-      color: $ColorBrand2;
-      padding-left: 0.3em;
-    }
-  }
 
   p {
     font-weight: 300;
@@ -235,9 +189,6 @@
       &::-ms-expand {
         display: none;
       }
-
-
-
 
 
   // tooltip
