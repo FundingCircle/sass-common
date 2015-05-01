@@ -34,6 +34,19 @@
 }
 
 
+%defaultLabel {
+  display: block;
+  font-weight: 300;
+  margin-bottom: rem(0.5);
+
+  &.required:after {
+    content: '*';
+    color: $ColorBrand2;
+    padding-left: 0.3em;
+  }
+}
+
+
 
 /* ---------------------------------------------------------------------- *\
   ANIMATIONS
@@ -55,7 +68,7 @@
   WRAP FORM
 \* ---------------------------------------------------------------------- */
 
-.wrap{
+.wrap {
   &--form {
     @include wrapThis(true, $formBreakpoint false);
     @include breakPoints(false, $formBreakpoint) {
@@ -290,6 +303,14 @@
     @include font(-1);
     margin: rem(0.2 0);
   }
+
+  .form-default {
+    label {
+      @extend defaultLabel;
+    }
+  }
+
+
 }
 
 
@@ -627,27 +648,6 @@ textarea {
 }
 
 
-
-/* ---------------------------------------------------------------------- *\
-  LABEL
-\* ---------------------------------------------------------------------- */
-%defaultLabel {
-  display: block;
-  font-weight: 300;
-  margin-bottom: rem(0.5);
-
-  &.required:after {
-    content: '*';
-    color: $ColorBrand2;
-    padding-left: 0.3em;
-  }
-}
-
-.form-default {
-  label {
-    @extend defaultLabel;
-  }
-}
 
 /* ---------------------------------------------------------------------- *\
   CUSTOM CHECKBOXES AND RADIO BUTTONS
