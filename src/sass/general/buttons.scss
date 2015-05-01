@@ -120,25 +120,5 @@
     }
   }
 
-
-  /* -------------------------------------- */
-  /* ------------- DEPRECATED ------------- */
-  /* will be removed after we replace them  */
-  /* in both static-pages and broker app    */
-  /* -------------------------------------- */
-
-  // Button types
-  &--t1 { @extend .btn--primary; }
-  &--t2 { @extend .btn--secondary; }
-  &--t3 { @extend .btn--secondary-alt; }
-
-
-  // Button sizes
-  &--s1 { @extend .btn--normal; }
-  &--s2 { @extend .btn--small; }
-  &--s3 { @extend .btn--large; }
-
-  /* END OF DEPRECATED */
-
 }
 
