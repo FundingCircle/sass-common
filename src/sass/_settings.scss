@@ -1,0 +1,18 @@
+// REM Support
+//
+// $REMsupport - flag for REM support. REM is not supported in IE8
+//
+// variables.rem
+
+$REMsupport: false!default;
+
+
+
+// IE8 Support
+//
+// $ie - default value for IE8.
+// You can use this in your build process to separate IE8 from the rest
+//
+// variables.ie
+
+$ie: false!default;
