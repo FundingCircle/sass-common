@@ -2,123 +2,124 @@
   BUTTONS
   - modifiers can be size modifiers (--s) or type (--t)
 \* ---------------------------------------------------------------------- */
-
-.btn {
-  @include borderRadius(0.3);
-  border: 0;
-  display: inline-block;
-  margin-bottom: rem(1);
-  white-space: nowrap;
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  // sizes
-  &--large {
-    @extend .btn;
-    @include font(1, 3.25);
-    padding: rem(0 1);
-  }
-
-  &--normal,
-  &--medium {
-    @extend .btn;
-    @include font(0, 3);
-    padding: rem(0 1);
-  }
-
-  &--small {
-    @extend .btn;
-    @include font(-1, 2.25);
-    padding: rem(0 1);
-
-  }
-
-  &--full {
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
-
-  // types
-  &--primary {
-    @extend .btn;
-    color: $colorFontLight;
-    background: $colorCtaPrimary;
+@if $buttons {
+  .btn {
+    @include borderRadius(0.3);
+    border: 0;
+    display: inline-block;
+    margin-bottom: rem(1);
+    white-space: nowrap;
 
     &:hover {
-      background: $colorCtaPrimaryHover;
+      text-decoration: none;
     }
 
-    &:active,
-    &:focus {
-      background: $colorCtaPrimaryActive;
+    // sizes
+    &--large {
+      @extend .btn;
+      @include font(1, 3.25);
+      padding: rem(0 1);
     }
 
-    &.btn--disabled,
-    &[disabled] {
-      background: $colorCtaPrimaryDisabled;
+    &--normal,
+    &--medium,
+    &--regular {
+      @extend .btn;
+      @include font(0, 3);
+      padding: rem(0 1);
     }
+
+    &--small {
+      @extend .btn;
+      @include font(-1, 2.25);
+      padding: rem(0 1);
+
+    }
+
+    &--full {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+
+    // types
+    &--primary {
+      @extend .btn;
+      color: $colorFontLight;
+      background: $colorCtaPrimary;
+
+      &:hover {
+        background: $colorCtaPrimaryHover;
+      }
+
+      &:active,
+      &:focus {
+        background: $colorCtaPrimaryActive;
+      }
+
+      &.btn--disabled,
+      &[disabled] {
+        background: $colorCtaPrimaryDisabled;
+      }
+    }
+
+    &--secondary {
+      @extend .btn;
+      color: $colorCtaPrimary;
+      border: 1px solid $colorCtaSecondaryBorder;
+
+      &:hover {
+        border-color: $colorCtaPrimary;
+        background: rgba($colorCtaDisabledText, .6);
+      }
+
+      &:active,
+      &:focus {
+        border-color: $colorCtaPrimary;
+        background: rgba($colorCtaPrimaryHover, .1);
+      }
+
+      &.btn--disabled,
+      &[disabled] {
+        background: rgba($colorCtaDisabledText, .6);
+        border-color: $colorCtaSecondaryDisabled;
+        color: $colorCtaSecondaryDisabled;
+      }
+    }
+
+
+    &--secondary-alt {
+      @extend .btn;
+      color: $colorCtaAlternative;
+      border: 1px solid $colorCtaAlternative;
+
+      &:hover {
+        background: rgba($colorCtaAlternativeBack, .3);
+      }
+
+      &:active,
+      &:focus {
+        border-color: rgba($colorCtaAlternative, .5);
+        background: rgba($colorCtaAlternativeBack, .2);
+      }
+
+      &.btn--disabled,
+      &[disabled] {
+        border: 0;
+        background: rgba($colorCtaAlternativeBack, .2);
+        color: rgba($colorCtaAlternative, .2);
+      }
+    }
+
+
+    &[class*="fci-"] {
+      &:before {
+        float: left;
+        font-size: inherit;
+        line-height: inherit;
+        margin-right: rem(.75);
+      }
+    }
+
   }
-
-  &--secondary {
-    @extend .btn;
-    color: $colorCtaPrimary;
-    border: 1px solid $colorCtaSecondaryBorder;
-
-    &:hover {
-      border-color: $colorCtaPrimary;
-      background: rgba($colorCtaDisabledText, .6);
-    }
-
-    &:active,
-    &:focus {
-      border-color: $colorCtaPrimary;
-      background: rgba($colorCtaPrimaryHover, .1);
-    }
-
-    &.btn--disabled,
-    &[disabled] {
-      background: rgba($colorCtaDisabledText, .6);
-      border-color: $colorCtaSecondaryDisabled;
-      color: $colorCtaSecondaryDisabled;
-    }
-  }
-
-
-  &--secondary-alt {
-    @extend .btn;
-    color: $colorCtaAlternative;
-    border: 1px solid $colorCtaAlternative;
-
-    &:hover {
-      background: rgba($colorCtaAlternativeBack, .3);
-    }
-
-    &:active,
-    &:focus {
-      border-color: rgba($colorCtaAlternative, .5);
-      background: rgba($colorCtaAlternativeBack, .2);
-    }
-
-    &.btn--disabled,
-    &[disabled] {
-      border: 0;
-      background: rgba($colorCtaAlternativeBack, .2);
-      color: rgba($colorCtaAlternative, .2);
-    }
-  }
-
-
-  &[class*="fci-"] {
-    &:before {
-      float: left;
-      font-size: inherit;
-      line-height: inherit;
-      margin-right: rem(.75);
-    }
-  }
-
 }
-
