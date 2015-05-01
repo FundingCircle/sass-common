@@ -32,3 +32,23 @@ $fontWeights: (200, 300, 400, 600, 700, 800)!default;
 
 $iconFonts: true!default;
 
+
+// Generate show classes for general breakpoints
+//
+// activate the @breakPointsCols mixin
+
+$breakPointsCols: true!default;
+
+
+// Wrapper max width
+//
+// The maximum width the page should stretch to
+
+$maxWrapWidth: 1200px!default;
+
+
+
+
+// Articles style
+
+$article: true!default;

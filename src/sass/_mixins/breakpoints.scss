@@ -38,32 +38,34 @@
 
 
 @mixin breakPointsCols {
-  [class^="show-"] { display: none; }
+  @if $breakPointsCols {
+    [class^="show-"] { display: none; }
 
-  @each $resMin in $breakPoints {
-    @each $resMax in $breakPoints {
-      @if $resMin < $resMax {
-        @include breakPoints($resMin,$resMax) {
+    @each $resMin in $breakPoints {
+      @each $resMax in $breakPoints {
+        @if $resMin < $resMax {
+          @include breakPoints($resMin,$resMax) {
 
-          .table-#{$resMin}-#{$resMax},
-          .show-#{$resMin}-#{$resMax} {
-            display: block;
+            .table-#{$resMin}-#{$resMax},
+            .show-#{$resMin}-#{$resMax} {
+              display: block;
+            }
+
+            .table-#{$resMin}-#{$resMax} > *,
+            .table-#{$resMin}-#{$resMax} > *[class*="col-"] {
+              display: block;
+              width: 100%;
+            }
+
+            .hide-#{$resMin}-#{$resMax} {
+              display: none;
+            }
+
           }
-
-          .table-#{$resMin}-#{$resMax} > *,
-          .table-#{$resMin}-#{$resMax} > *[class*="col-"] {
-            display: block;
-            width: 100%;
-          }
-
-          .hide-#{$resMin}-#{$resMax} {
-            display: none;
-          }
-
         }
-      }
-    } // $resMax
-  } // $resMin
+      } // $resMax
+    } // $resMin
+  }
 }
 
 

@@ -111,23 +111,6 @@ $colRatio: 1;
 
 
 /* ---------------------------------------------------------------------- *\
-  GENERATE STATIC COLUMN FRAGMENTATION
-  will be replaced in the future with the proper golden ratio cols system
-\* ---------------------------------------------------------------------- */
-
-@mixin staticCols($noOfCols) {
-  @for $i from floor($noOfCols / 2) through $noOfCols {
-    @for $j from 2 through $i - 1 {
-      .col-#{$j}of#{$i} {
-        width: percentage($j/$i);
-      }
-    }
-  }
-}
-
-
-
-/* ---------------------------------------------------------------------- *\
   GROUP ELEMENTS ON MULTIPLE COLUMNS
   $item is an arglist which takes lists with the following params:
     - min breakpoint - integer or false
@@ -402,8 +385,6 @@ $colRatio: 1;
   $breakPoints: two values that determine when the padding is applied
 \* ---------------------------------------------------------------------- */
 
-
-$maxWrapWidth: 1200px;
 
 %wrapPlaceholder {
   @include centerBlock(0, true);
