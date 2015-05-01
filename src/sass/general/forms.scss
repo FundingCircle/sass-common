@@ -5,13 +5,13 @@
 // all text based input elements (not buttons, checkboxes, radios) + selects + textarea
 %generalInputBlock {
   @include font(0, false);
-  min-height: rem(2.5);
   display: block;
+  min-height: rem(2.5);
   width: 100%;
   background: $formInputBackgroundMain;
+  padding: rem(0 1);
   border: 0;
   outline: 1px solid $formInputBorderMain;
-  padding: rem(0 1);
   outline-offset: initial;
 
   &:focus {
@@ -98,7 +98,7 @@
 
   color: $colorFontDarkSoft;
   border: 0;
-  background: rgb(233,231,229);
+  background: $colorBackground8;
   padding: rem(2);
   margin: 0;
 
@@ -146,7 +146,7 @@
   }
 
   &_info-box {
-    background: rgb(255,255,255);
+    background: $colorBackgroundMain;
     padding: rem(1.5);
 
     @include breakPoints(0, $formBreakpoint) {
@@ -191,8 +191,6 @@
     position: relative;
     margin-bottom: rem(2);
 
-
-
     &.is-loading:before {
       content: '';
       display: block;
@@ -203,7 +201,6 @@
       top: rem(.6);
       right: rem(.6);
       @include animation(loopRotate 2s linear infinite);
-
     }
 
   }
@@ -266,7 +263,7 @@
 
   &_autocomplete {
     @include resetList;
-    background: rgb(255,255,255);
+    background: $colorBackgroundMain;
     outline: 1px solid $ColorBrand2;
 
     color: $ColorBrand2;
@@ -330,7 +327,6 @@ input {
     @extend %insetInputs;
   }
 }
-
 
 
 
@@ -617,7 +613,7 @@ textarea {
   margin-top: rem(1);
   position: relative;
   width: 100%;
-  color: rgb(255,255,255);
+  color: $colorFontLight;
   background: $colorError;
   padding: rem(.8 1);
 
@@ -834,12 +830,12 @@ textarea {
   &_content {
     @include font(-1, true);
     @include posAbs(false, false, 100%, negative($inputTooltipArrowPadding + $inputTooltipArrowWidth), -1);
-    @include boxShadow(0, 0, 0.3, 0, rgba(0,0,0,0.1));
+    @include boxShadow(0, 0, .3, 0, rgba(0,0,0,0.1));
+    @include opacity(0);
 
     display: block;
-    @include opacity(0);
     overflow: hidden;
-    background: rgb(255,255,255);
+    background: $colorBackgroundMain;
     min-width: 220px;
     max-width: 450px;
     padding: rem(1);
@@ -847,7 +843,7 @@ textarea {
     margin-bottom: rem(1);
 
     &:before {
-      @include triangle(down, rgb(255,255,255), ($inputTooltipArrowWidth * 2) $inputTooltipArrowWidth);
+      @include triangle(down, $colorBackgroundMain, ($inputTooltipArrowWidth * 2) $inputTooltipArrowWidth);
       @include posAbs(false, false, -15px, $inputTooltipArrowPadding + .5);
       content: '';
     }
