@@ -30,3 +30,6 @@ $ BUILD_PATH=/path/to/fca-frontend gulp build
 1. Commit and push to a branch
 1. After code review, merge to master and tag with the same version number as you have defined in the config files in step 1.
 1. Enjoy!
+
+## Licence
+[MIT License](license.md)
