@@ -16,7 +16,7 @@ body {
 
 body {
   font-family: $fontFamilyDefault;
-  background: rgb(250,250,250);
+  background: $colorBackgroundBody;
   color: $colorFontDarkHard;
 
 }
@@ -72,4 +72,3 @@ h5,
 h6 {
   margin: 0 0 1em;
 }
-
