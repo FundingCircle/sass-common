@@ -4,11 +4,11 @@
 
 @include keyframes(loopRotate) {
   0% {
-    @include prefix(transform, rotate(0));
+    @include prefix(transform, rotate(0), webkit ms);
   }
 
   100% {
-    @include prefix(transform, rotate(360deg));
+    @include prefix(transform, rotate(360deg), webkit ms);
   }
 }
 
