@@ -1,0 +1,152 @@
+$breadcrumbsHeight: 42px;
+$stepsOffset: 9px;
+
+.breadcrumbs {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: rem(2);
+  padding: 0;
+  position: relative;
+  z-index: 2;
+
+  &_wrap {
+    background: $colorBackgroundMain;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      background: $colorBackground2;
+      display: block;
+    }
+
+    &.last-step:after {
+      display: none;
+    }
+  }
+
+  li {
+    display: table-cell;
+    width: 1%;
+    position: relative;
+    background: $colorBackgroundMain;
+    height: $breadcrumbsHeight;
+    overflow-x: hidden;
+    line-height: $breadcrumbsHeight;
+    padding-left: rem(1);
+    color: $ColorBrand4;
+    font-size: rem(0.9);
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: $breadcrumbsHeight / 2 solid transparent;
+      border-bottom: $breadcrumbsHeight / 2 solid transparent;
+      border-left: $breadcrumbsHeight / 2 solid $colorBackgroundMain;
+      position: absolute;
+      right: $stepsOffset;
+      top: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: ($breadcrumbsHeight / 2 + $stepsOffset) solid transparent;
+      border-bottom: ($breadcrumbsHeight / 2 + $stepsOffset) solid transparent;
+      border-left: ($breadcrumbsHeight / 2 + $stepsOffset) solid $colorBackgroundBody;
+      position: absolute;
+      right: 0;
+      top: negative($stepsOffset);
+    }
+
+    &:last-child {
+      position: static;
+
+      &:before,
+      &:after{
+        display: none;
+      }
+    }
+
+    .duration {
+      display: none;
+      color: $colorFontLightHard;
+      font-style: italic;
+      margin-left: 5px;
+    }
+
+    &.active {
+      color: $ColorBrand1;
+
+      &:before {
+        border-top: ($breadcrumbsHeight / 2 + $stepsOffset) solid $colorBackground2;
+        border-bottom: ($breadcrumbsHeight / 2 + $stepsOffset) solid $colorBackground2;
+      }
+
+      .duration {
+        display: inline;
+      }
+
+      &,
+      & ~ * {
+        .step {
+          border: 1px solid $ColorBrand1;
+          @include borderRadius(50, '%');
+          padding: 0 6px;
+          display: inline;
+
+          &:before {
+            display: none;
+          }
+        }
+      }
+
+      & ~ * {
+        background: $colorBackground2;
+        color: $colorFontLightHard;
+
+        &:after {
+          border-left-color: $colorBackground2;
+        }
+
+        .step {
+          border: 1px solid $colorFontLightHard;
+        }
+      }
+    }
+
+    .step {
+      margin-right: 5px;
+      display: inline-block;
+      text-indent: -9001px;
+      border: 0;
+      &:before {
+        text-indent: 0;
+        float: left;
+        @extend .fci-icon;
+        @extend .fci-tick;
+      }
+    }
+
+  }
+}
