@@ -66,6 +66,7 @@
     @extend .btn;
     color: $colorCtaPrimary;
     border: 1px solid $colorCtaSecondaryBorder;
+    background: transparent;
 
     &:hover {
       border-color: $colorCtaPrimary;
