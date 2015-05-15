@@ -437,7 +437,7 @@
       cursor: pointer;
 
       &:hover,
-      &:first-child {
+      &.active {
         font-weight: 600;
       }
 
