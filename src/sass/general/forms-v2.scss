@@ -4,11 +4,11 @@
 
 @include keyframes(loopRotate) {
   0% {
-    @include prefix(transform, rotate(0));
+    @include prefix(transform, rotate(0), webkit ms);
   }
 
   100% {
-    @include prefix(transform, rotate(360deg));
+    @include prefix(transform, rotate(360deg), webkit ms);
   }
 }
 
@@ -155,7 +155,7 @@
 
   &_element {
     position: relative;
-    margin-bottom: rem(2);
+    margin-bottom: rem(1.5);
 
     &.is-loading:before {
       content: '';
@@ -188,7 +188,7 @@
     background: $formInputBackgroundMain;
     border: 0;
     outline: 1px solid $formInputBorderMain;
-    padding: rem(1 1);
+    padding: rem(0 1);
     outline-offset: initial;
 
     &:focus {
@@ -211,6 +211,10 @@
     @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true);
   }
 
+  textarea {
+    padding: rem(1 1);
+  }
+
   %select {
     position: relative;
     height: rem(2.5);
@@ -225,7 +229,7 @@
 
     html:not(.ie) & {
       &:after {
-        @include triangle(down, $formInputBorderMain, $selectArrowHeight $selectArrowWidth);
+        @include triangle(down, $colorFontDarkSoft, $selectArrowHeight $selectArrowWidth);
         @include posAbs($top: 0, $bottom: 0);
         right: $selectArrowPosRight;
         margin: auto 0;
@@ -421,6 +425,7 @@
     @include resetList;
     background: rgb(255,255,255);
     outline: 1px solid $ColorBrand2;
+    margin-top: 8px;
 
     color: $ColorBrand2;
     text-transform: uppercase;

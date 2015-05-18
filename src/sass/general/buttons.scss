@@ -66,6 +66,7 @@
     @extend .btn;
     color: $colorCtaPrimary;
     border: 1px solid $colorCtaSecondaryBorder;
+    background: transparent;
 
     &:hover {
       border-color: $colorCtaPrimary;
@@ -110,6 +111,28 @@
     }
   }
 
+  $spinnerThickness: 2px;
+
+  &.is-loading {
+    &:after {
+      @include animation(loopRotate 1.4s infinite linear);
+      @include prefix(transform, translateZ(0), webkit ms);
+      content: '';
+      border: $spinnerThickness solid $colorFontLight;
+      border-bottom-color: transparent;
+      width: rem(1);
+      height: rem(1);
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: rem(1);
+    }
+
+    &.btn--secondary:after {
+      border-color: $colorCtaSecondaryDisabled;
+      border-bottom-color: transparent;
+    }
+  }
 
   &[class*="fci-"] {
     &:before {
@@ -119,7 +142,6 @@
       margin-right: rem(.75);
     }
   }
-
 
   /* -------------------------------------- */
   /* ------------- DEPRECATED ------------- */
