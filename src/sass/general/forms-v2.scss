@@ -47,10 +47,12 @@
   color: $colorFontDarkSoft;
 }
 
+// scss-lint:disable VendorPrefix
 ::-webkit-input-placeholder { @include placeholderStyle; }
      :-ms-input-placeholder { @include placeholderStyle; }
          ::-moz-placeholder { @include placeholderStyle; }
           :-moz-placeholder { @include placeholderStyle; }
+// scss-lint:enable VendorPrefix
 
 .form-default {
   @include font(0);
