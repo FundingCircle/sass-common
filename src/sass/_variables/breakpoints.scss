@@ -1,30 +1,13 @@
 // Breakpoints
 //
-// SASS breakpoints variables.
-// The project has a series of predefined break points.
-// Although this values can be used because they offer a general structure, it's better to define your own values when building modules, according to the designs provided.
-// This values are unitless and they should remain that way.
+// <ul>
+//  <li><strong>$bpMobilePortrait</strong> - Normal smartphone in portrait mode</li>
+//  <li><strong>$bpMobilePortraitLarge</strong> - Large smartphone in portrait mode</li>
+// </ul>
 //
-// Styleguide variables.breakpoints
-
-
-
-// $bpMobilePortrait
-//
-// Normal smartphone in portrait mode
-//
-// Styleguide variables.breakpoints.mobilePortrait
+// Styleguide 1.1
 
 $bpMobilePortrait: 320;
-
-
-
-// $bpMobilePortraitLarge
-//
-// Large smartphone in portrait mode
-//
-// Styleguide 2.2
-
 $bpMobilePortraitLarge: 480;
 
 

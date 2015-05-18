@@ -81,7 +81,12 @@ gulp.task('libraries', function() {
 paths.source.sassTemp = paths.source.root + '/sass/style.scss';
 
 gulp.task('styleguide:generate', function() {
-  return gulp.src(paths.source.root + '/sass/**/*.scss')
+  // return gulp.src(paths.build.sass + '/**/*.scss')
+  return gulp.src([
+      paths.build.sass + '/style.scss',
+      paths.build.sass + '/variables.scss',
+      paths.build.sass + '/_variables/*.scss',
+    ])
     .pipe(styleguide.generate({
         title: 'Funding Circle Styleguide',
         server: true,
@@ -92,9 +97,8 @@ gulp.task('styleguide:generate', function() {
     .pipe(gulp.dest(paths.build.styleguide));
 });
 
-
 gulp.task('styleguide:applystyles', function() {
-  return gulp.src(paths.source.root + '/sass/style.scss')
+  return gulp.src(paths.build.sass + '/style.scss')
     .pipe(sass({
       errLogToConsole: true
     }))
@@ -110,7 +114,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font', 'build:fonts'], 'libraries', 'sass', 'styleguide:generate', 'styleguide:applystyles', callback);
+  sequence('clean', ['build:mixins', 'build:icon-font', 'build:fonts'], 'libraries', 'sass', ['styleguide:generate', 'styleguide:applystyles'], callback);
 });
 
 gulp.task('default', ['build']);
