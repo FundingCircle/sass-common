@@ -155,7 +155,9 @@
 
   $opacityIE: $opacity * 100;
   filter: alpha(opacity=$opacityIE);
+  // scss-lint:disable VendorPrefix
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacityIE})";
+  // scss-lint:enable VendorPrefix
 }
 
 
@@ -326,7 +328,7 @@
   }
 
 \* ---------------------------------------------------------------------- */
-
+// scss-lint:disable VendorPrefix
 @mixin keyframes($animationName) {
   @-webkit-keyframes $animationName {
     @content;
@@ -352,4 +354,4 @@
   -o-animation: #{$str};
   animation: #{$str};
 }
-
+// scss-lint:enable VendorPrefix
