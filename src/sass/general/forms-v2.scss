@@ -210,7 +210,7 @@
     @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true);
   }
 
-  $inputTypes: (text, password, date, tel, email, number);
+  $inputTypes: (text, password, search, email, url, tel, number, range, date, month, week, time);
 
   @each $type in $inputTypes {
     input[type="#{$type}"] {
@@ -374,10 +374,9 @@
     }
 
     input {
-      @include font(1);
+      @include font(1, true, 600);
       @include prefix(box-shadow, none, webkit);
 
-      font-weight: 600;
       background: none;
       display: inline;
       border: 0;
