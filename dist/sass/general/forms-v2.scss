@@ -4,11 +4,11 @@
 
 @include keyframes(loopRotate) {
   0% {
-    @include prefix(transform, rotate(0));
+    @include prefix(transform, rotate(0), webkit ms);
   }
 
   100% {
-    @include prefix(transform, rotate(360deg));
+    @include prefix(transform, rotate(360deg), webkit ms);
   }
 }
 
@@ -47,10 +47,12 @@
   color: $colorFontDarkSoft;
 }
 
+// scss-lint:disable VendorPrefix
 ::-webkit-input-placeholder { @include placeholderStyle; }
      :-ms-input-placeholder { @include placeholderStyle; }
          ::-moz-placeholder { @include placeholderStyle; }
           :-moz-placeholder { @include placeholderStyle; }
+// scss-lint:enable VendorPrefix
 
 .form-default {
   @include font(0);
@@ -155,7 +157,7 @@
 
   &_element {
     position: relative;
-    margin-bottom: rem(2);
+    margin-bottom: rem(1.5);
 
     &.is-loading:before {
       content: '';
@@ -178,9 +180,7 @@
   }
 
   // all form fields, except checkbox and radio
-  input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
-  .select,
-  textarea {
+  %inputStyle {
     @include font(0, false);
     min-height: rem(2.5);
     display: block;
@@ -188,7 +188,7 @@
     background: $formInputBackgroundMain;
     border: 0;
     outline: 1px solid $formInputBorderMain;
-    padding: rem(1 1);
+    padding: rem(0 1);
     outline-offset: initial;
 
     &:focus {
@@ -206,9 +206,27 @@
   }
 
   // inset elements
-  input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
-  textarea {
+  %inputStyleInline {
     @include boxShadow(0, 0.0625, 0.0625, 0, rgba(0,0,0,0.2), true);
+  }
+
+  $inputTypes: (text, password, search, email, url, tel, number, range, date, month, week, time);
+
+  @each $type in $inputTypes {
+    input[type="#{$type}"] {
+      @extend %inputStyle;
+      @extend %inputStyleInline;
+    }
+  }
+
+  .select,
+  textarea {
+    @extend %inputStyle;
+  }
+
+  textarea {
+    @extend %inputStyleInline;
+    padding: rem(1 1);
   }
 
   %select {
@@ -225,9 +243,9 @@
 
     html:not(.ie) & {
       &:after {
-        @include triangle(down, $formInputBorderMain, $selectArrowHeight $selectArrowWidth);
+        @include triangle(down, $colorFontDarkSoft, $selectArrowHeight $selectArrowWidth);
         @include posAbs($top: 0, $bottom: 0);
-        right: $selectArrowPosRight;
+
         margin: auto 0;
       }
     }
@@ -280,6 +298,10 @@
         right: 0;
         border-left: 1px solid $formInputBorderMain;
       }
+
+      &:after {
+        right: $selectArrowPosRight;
+      }
     }
 
 
@@ -312,6 +334,7 @@
     html:not(.ie) & {
       &:after {
         border-top-color: $colorFontDarkSoft;
+        right: rem(.5);
       }
     }
 
@@ -334,6 +357,52 @@
         outline: 0;
         border-bottom-color: $ColorBrand3;
       }
+    }
+  }
+
+  .input--inline {
+    display: inline;
+    position: relative;
+
+    .error-message {
+      position: absolute;
+      left: 0;
+      z-index: 2;
+      top: 28px;
+      width: inherit;
+      display: block;
+    }
+
+    input {
+      @include font(1, true, 600);
+      @include prefix(box-shadow, none, webkit);
+
+      background: none;
+      display: inline;
+      border: 0;
+      border-bottom: 2px solid $colorBackground3;
+      outline: 0;
+      text-align: center;
+      padding: 0;
+      padding-right: rem($selectIconWidth / 1.5);
+      width: rem(8);
+
+      &:focus {
+        border-color: $ColorBrand3;
+      }
+
+      &.error {
+        border-bottom-color: $colorError;
+      }
+    }
+
+    .form-default_autocomplete {
+      display: block;
+      width: rem(16);
+      position: absolute;
+      left: 0;
+      top: 35px;
+      z-index: 2;
     }
   }
 
@@ -421,6 +490,7 @@
     @include resetList;
     background: rgb(255,255,255);
     outline: 1px solid $ColorBrand2;
+    margin-top: 8px;
 
     color: $ColorBrand2;
     text-transform: uppercase;
@@ -430,7 +500,7 @@
       cursor: pointer;
 
       &:hover,
-      &:first-child {
+      &.is-active {
         font-weight: 600;
       }
 

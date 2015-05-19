@@ -9,9 +9,10 @@ body {
   @include font(0);
 }
 
+// scss-lint:disable VendorPrefix
 ::-moz-selection { @include textSelection; }
 ::selection { @include textSelection; }
-
+// scss-lint:enable VendorPrefix
 
 body {
   font-family: $fontFamilyDefault;

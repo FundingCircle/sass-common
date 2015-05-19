@@ -1456,7 +1456,8 @@ h1, h2, h3, h4, h5, h6 {
       background: #dddddd; }
   .btn--secondary, .btn--t2 {
     color: #097fc9;
-    border: 1px solid #9b9b9b; }
+    border: 1px solid #9b9b9b;
+    background: transparent; }
     .btn--secondary:hover, .btn--t2:hover {
       border-color: #097fc9;
       background: rgba(255, 255, 255, 0.6); }
@@ -1479,6 +1480,27 @@ h1, h2, h3, h4, h5, h6 {
       border: 0;
       background: rgba(0, 0, 0, 0.2);
       color: rgba(255, 255, 255, 0.2); }
+  .btn.is-loading:after, .is-loading.btn--large:after, .is-loading.btn--s3:after, .is-loading.btn--normal:after, .is-loading.btn--s1:after, .is-loading.btn--medium:after, .is-loading.btn--small:after, .is-loading.btn--s2:after, .is-loading.btn--primary:after, .is-loading.btn--t1:after, .is-loading.btn--secondary:after, .is-loading.btn--t2:after, .is-loading.btn--secondary-alt:after, .is-loading.btn--t3:after {
+    -webkit-animation: loopRotate 1.4s infinite linear;
+    -moz-animation: loopRotate 1.4s infinite linear;
+    -ms-animation: loopRotate 1.4s infinite linear;
+    -o-animation: loopRotate 1.4s infinite linear;
+    animation: loopRotate 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    content: '';
+    border: 2px solid white;
+    border-bottom-color: transparent;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px; }
+  .btn.is-loading.btn--secondary:after, .is-loading.btn--secondary:after, .is-loading.btn--t2:after {
+    border-color: #c3c3c3;
+    border-bottom-color: transparent; }
   .btn[class*="fci-"]:before, [class*="fci-"].btn--large:before, [class*="fci-"].btn--s3:before, [class*="fci-"].btn--normal:before, [class*="fci-"].btn--s1:before, [class*="fci-"].btn--medium:before, [class*="fci-"].btn--small:before, [class*="fci-"].btn--s2:before, [class*="fci-"].btn--primary:before, [class*="fci-"].btn--t1:before, [class*="fci-"].btn--secondary:before, [class*="fci-"].btn--t2:before, [class*="fci-"].btn--secondary-alt:before, [class*="fci-"].btn--t3:before {
     float: left;
     font-size: inherit;
@@ -1519,76 +1541,56 @@ form h3 {
 @-webkit-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
-    -moz-transform: rotate(0);
     -ms-transform: rotate(0);
-    -o-transform: rotate(0);
     transform: rotate(0); }
 
   100% {
     -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
 @-moz-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
-    -moz-transform: rotate(0);
     -ms-transform: rotate(0);
-    -o-transform: rotate(0);
     transform: rotate(0); }
 
   100% {
     -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
 @-ms-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
-    -moz-transform: rotate(0);
     -ms-transform: rotate(0);
-    -o-transform: rotate(0);
     transform: rotate(0); }
 
   100% {
     -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
 @-o-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
-    -moz-transform: rotate(0);
     -ms-transform: rotate(0);
-    -o-transform: rotate(0);
     transform: rotate(0); }
 
   100% {
     -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
 @keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
-    -moz-transform: rotate(0);
     -ms-transform: rotate(0);
-    -o-transform: rotate(0);
     transform: rotate(0); }
 
   100% {
     -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
 @media only screen and (min-width: 640px) {
@@ -1758,7 +1760,7 @@ form h3 {
     margin-bottom: 48px; }
   .form-default_element, .form-default_element--tooltip {
     position: relative;
-    margin-bottom: 32px; }
+    margin-bottom: 24px; }
     .form-default_element.is-loading:before, .is-loading.form-default_element--tooltip:before {
       content: '';
       display: block;
@@ -1776,7 +1778,7 @@ form h3 {
     .form-default_element--tooltip {
       display: table;
       width: 100%; }
-  .form-default input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]), .form-default .select, .form-default textarea {
+  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default .select, .form-default textarea {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
     /* LINE HEIGHT */
@@ -1790,18 +1792,20 @@ form h3 {
     background: white;
     border: 0;
     outline: 1px solid #dddddd;
-    padding: 16px 16px;
+    padding: 0 16px;
     outline-offset: initial; }
-    .form-default input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):focus, .form-default .select:focus, .form-default textarea:focus {
+    .form-default input[type="text"]:focus, .form-default input[type="password"]:focus, .form-default input[type="search"]:focus, .form-default input[type="email"]:focus, .form-default input[type="url"]:focus, .form-default input[type="tel"]:focus, .form-default input[type="number"]:focus, .form-default input[type="range"]:focus, .form-default input[type="date"]:focus, .form-default input[type="month"]:focus, .form-default input[type="week"]:focus, .form-default input[type="time"]:focus, .form-default .select:focus, .form-default textarea:focus {
       outline-color: #37b0c9; }
-    .form-default input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]).valid, .form-default .select.valid, .form-default .select select.valid, .form-default textarea.valid {
+    .form-default input.valid[type="text"], .form-default input.valid[type="password"], .form-default input.valid[type="search"], .form-default input.valid[type="email"], .form-default input.valid[type="url"], .form-default input.valid[type="tel"], .form-default input.valid[type="number"], .form-default input.valid[type="range"], .form-default input.valid[type="date"], .form-default input.valid[type="month"], .form-default input.valid[type="week"], .form-default input.valid[type="time"], .form-default .valid.select, .form-default .select select.valid, .form-default textarea.valid {
       border-right: 4px solid #009c50; }
-    .form-default input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]).error, .form-default .select.error, .form-default .select select.error, .form-default textarea.error {
+    .form-default input.error[type="text"], .form-default input.error[type="password"], .form-default input.error[type="search"], .form-default input.error[type="email"], .form-default input.error[type="url"], .form-default input.error[type="tel"], .form-default input.error[type="number"], .form-default input.error[type="range"], .form-default input.error[type="date"], .form-default input.error[type="month"], .form-default input.error[type="week"], .form-default input.error[type="time"], .form-default .error.select, .form-default .select select.error, .form-default textarea.error {
       outline-color: #d60036;
       color: #d60036; }
-  .form-default input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]), .form-default textarea {
+  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default textarea {
     -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2); }
+  .form-default textarea {
+    padding: 16px 16px; }
   .form-default .select, .form-default .select--inline {
     position: relative;
     height: 40px; }
@@ -1814,13 +1818,12 @@ form h3 {
       display: block;
       width: 0;
       height: 0;
-      border-top: 8px solid #dddddd;
+      border-top: 8px solid #383838;
       border-left: 5.6px solid transparent;
       border-right: 5.6px solid transparent;
       position: absolute;
       top: 0;
       bottom: 0;
-      right: 16.64px;
       margin: auto 0; }
     .form-default .select select, .form-default .select--inline select {
       -webkit-border-radius: 0;
@@ -1852,6 +1855,8 @@ form h3 {
     top: 0;
     right: 0;
     border-left: 1px solid #dddddd; }
+  html:not(.ie) .form-default .select:after {
+    right: 16.64px; }
   .form-default .select select {
     position: absolute;
     top: 0;
@@ -1870,7 +1875,8 @@ form h3 {
   .form-default .select--inline {
     display: inline-block; }
     html:not(.ie) .form-default .select--inline:after {
-      border-top-color: #383838; }
+      border-top-color: #383838;
+      right: 8px; }
     .form-default .select--inline select {
       border-bottom: 2px solid #cccccc;
       color: #383838;
@@ -1884,6 +1890,48 @@ form h3 {
       .form-default .select--inline select:focus {
         outline: 0;
         border-bottom-color: #37b0c9; }
+  .form-default .input--inline {
+    display: inline;
+    position: relative; }
+    .form-default .input--inline .error-message {
+      position: absolute;
+      left: 0;
+      z-index: 2;
+      top: 28px;
+      width: inherit;
+      display: block; }
+    .form-default .input--inline input {
+      /* CALCULATE THE FONT SIZE */
+      font-size: 20px;
+      /* LINE HEIGHT */
+      line-height: 24px;
+      /* FONT WEIGHT */
+      font-weight: 600;
+      /* FONT STYLE */
+      /* FONT VARIANT */
+      /* FONT Family */
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background: none;
+      display: inline;
+      border: 0;
+      border-bottom: 2px solid #cccccc;
+      outline: 0;
+      text-align: center;
+      padding: 0;
+      padding-right: 27.73333px;
+      width: 128px; }
+      .form-default .input--inline input:focus {
+        border-color: #37b0c9; }
+      .form-default .input--inline input.error {
+        border-bottom-color: #d60036; }
+    .form-default .input--inline .form-default_autocomplete {
+      display: block;
+      width: 256px;
+      position: absolute;
+      left: 0;
+      top: 35px;
+      z-index: 2; }
   .form-default .error-message {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
@@ -1969,6 +2017,7 @@ form h3 {
     padding: 0;
     background: white;
     outline: 1px solid #3a77c1;
+    margin-top: 8px;
     color: #3a77c1;
     text-transform: uppercase; }
     .form-default_autocomplete li {
@@ -1978,7 +2027,7 @@ form h3 {
     .form-default_autocomplete li {
       padding: 8px;
       cursor: pointer; }
-      .form-default_autocomplete li:hover, .form-default_autocomplete li:first-child {
+      .form-default_autocomplete li:hover, .form-default_autocomplete li.is-active {
         font-weight: 600; }
       .form-default_autocomplete li:not(:last-child) {
         border-bottom: 1px solid #3a77c1; }
