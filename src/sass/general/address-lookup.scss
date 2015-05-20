@@ -1,0 +1,19 @@
+.address-lookup {
+  .search-form {
+    div {
+
+      &:first-child {
+        width: 30%;
+        float: left;
+        margin-right: rem(1);
+      }
+
+      &:last-child {
+        width: 60%;
+        float: left;
+        padding-top: rem(1.5);
+      }
+    }
+
+  }
+}

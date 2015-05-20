@@ -134,7 +134,7 @@
     margin-bottom: 0;
   }
 
-  label {
+  label, legend {
     display: block;
     font-weight: 300;
     margin-bottom: rem(0.5);
@@ -724,6 +724,7 @@
     &--right { @extend %posRight; }
     &--bottom { @extend %posBottom; }
     &--top { @extend %posTop; }
+    &--inline {float: left; margin-right: rem(1);}
   }
 
   &-checkbox input:focus ~ label .ui-checkbox:after,
