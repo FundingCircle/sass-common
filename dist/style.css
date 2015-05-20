@@ -331,7 +331,7 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .go-to-link:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before {
+.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .go-to-link:before, .form-default .input--inline:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before {
   font-family: "fc-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -389,6 +389,9 @@ td, th {
 
 .fci-user:before {
   content: "\E016"; }
+
+.fci-pencil:before, .form-default .input--inline:before {
+  content: "\E017"; }
 
 /* ---------------------------------------------------------------------- *\
   SOURCE SANS
@@ -1891,8 +1894,13 @@ form h3 {
         outline: 0;
         border-bottom-color: #37b0c9; }
   .form-default .input--inline {
-    display: inline;
+    display: inline-block;
     position: relative; }
+    .form-default .input--inline:before {
+      position: absolute;
+      right: 0;
+      bottom: 8px;
+      color: #dddddd; }
     .form-default .input--inline .error-message {
       position: absolute;
       left: 0;
@@ -1918,8 +1926,8 @@ form h3 {
       border-bottom: 2px solid #cccccc;
       outline: 0;
       text-align: center;
-      padding: 0;
-      padding-right: 27.73333px;
+      padding-right: 24px;
+      padding-left: 8px;
       width: 128px; }
       .form-default .input--inline input:focus {
         border-color: #37b0c9; }
