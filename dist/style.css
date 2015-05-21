@@ -1483,6 +1483,14 @@ h1, h2, h3, h4, h5, h6 {
       border: 0;
       background: rgba(0, 0, 0, 0.2);
       color: rgba(255, 255, 255, 0.2); }
+  .btn--link {
+    padding: 0;
+    border: 0;
+    color: #097fc9;
+    background: none;
+    font: inherit; }
+    .btn--link:hover {
+      text-decoration: underline; }
   .btn.is-loading:after, .is-loading.btn--large:after, .is-loading.btn--s3:after, .is-loading.btn--normal:after, .is-loading.btn--s1:after, .is-loading.btn--medium:after, .is-loading.btn--small:after, .is-loading.btn--s2:after, .is-loading.btn--primary:after, .is-loading.btn--t1:after, .is-loading.btn--secondary:after, .is-loading.btn--t2:after, .is-loading.btn--secondary-alt:after, .is-loading.btn--t3:after {
     -webkit-animation: loopRotate 1.4s infinite linear;
     -moz-animation: loopRotate 1.4s infinite linear;
