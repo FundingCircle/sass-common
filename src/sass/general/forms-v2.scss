@@ -57,7 +57,7 @@
 .form-default {
   @include font(0);
   @extend .cl--a;
-  padding: rem(2);
+  padding: $defaultColsPadding;
   margin: 0;
   border: 0;
   color: $colorFontDarkSoft;
