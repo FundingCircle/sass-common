@@ -28,9 +28,9 @@
     padding-top: rem(2);
     line-height: rem(2.4);
 
-    @include breakPoints(false, 940) {
+    @include breakPoints(false, $bpTabletLandscapeWide) {
       padding-top: 0;
-      widows: 100%;
+      width: 100%;
     }
   }
 }
