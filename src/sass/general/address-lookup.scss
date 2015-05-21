@@ -1,5 +1,5 @@
 .address-lookup {
-  .search-form {
+  &_search {
 
     position: relative;
     margin-bottom: rem(1);
@@ -7,29 +7,30 @@
     div {
       float: left;
       margin-right: rem(1);
-      padding-top: rem(1.6);
-
-      &:first-child {
-        padding-top: 0;
-        width: 30%;
-      }
-
-      &:last-child {
-        margin-right: 0;
-        padding-top: rem(2);
-
-        @include breakPoints(false, 940) {
-          padding-top: 0;
-          widows: 100%;
-        }
-
-        button {
-          margin-bottom: 0;
-        }
-      }
-
-
     }
+  }
 
+  &_postcode {
+    padding-top: 0;
+    width: 30%;
+  }
+
+  &_button {
+    padding-top: rem(1.7);
+
+    button {
+      margin-bottom: 0;
+    }
+  }
+
+  &_manual {
+    margin-right: 0;
+    padding-top: rem(2);
+    line-height: rem(2.4);
+
+    @include breakPoints(false, 940) {
+      padding-top: 0;
+      widows: 100%;
+    }
   }
 }

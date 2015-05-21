@@ -730,7 +730,7 @@
     &--right { @extend %posRight; }
     &--bottom { @extend %posBottom; }
     &--top { @extend %posTop; }
-    &--inline {float: left; margin-right: rem(1);}
+    &--inline { float: left; margin-right: rem(1); }
   }
 
   &-checkbox input:focus ~ label .ui-checkbox:after,
