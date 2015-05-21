@@ -1749,14 +1749,17 @@ form h3 {
     float: right; }
   .form-default .btn--primary:last-child, .form-default .btn--t1:last-child {
     margin-bottom: 0; }
-  .form-default label {
+  .form-default label, .form-default legend {
     display: block;
     font-weight: 300;
     margin-bottom: 8px; }
-    .form-default label.required:after {
+    .form-default label.required:after, .form-default legend.required:after {
       content: '*';
       color: #3a77c1;
       padding-left: 0.3em; }
+  .form-default fieldset {
+    padding: 0;
+    margin: 0; }
   .form-default p, .form-default .tooltip_text {
     font-weight: 300; }
   .form-default_wrap {
@@ -2154,6 +2157,9 @@ form h3 {
       content: '';
       background: white;
       border: 1px solid #dddddd; }
+  .form-radio--inline, .form-checkbox--inline {
+    float: left;
+    margin-right: 16px; }
 .form-checkbox input:focus ~ label .ui-checkbox:after, .form-radio input:focus ~ label .ui-radio:after {
   border-color: #37b0c9; }
 .form-radio label .ui-radio:before, .form-radio label .ui-radio:after {
@@ -2394,6 +2400,28 @@ form h3 {
         margin: 0 32px 48px 0;
         max-width: 30%;
         float: right; } }
+
+.address-lookup_search {
+  position: relative;
+  margin-bottom: 16px; }
+  .address-lookup_search div {
+    float: left;
+    margin-right: 16px; }
+.address-lookup_postcode {
+  padding-top: 0;
+  width: 30%; }
+.address-lookup_button {
+  padding-top: 27.2px; }
+  .address-lookup_button button {
+    margin-bottom: 0; }
+.address-lookup_manual {
+  margin-right: 0;
+  padding-top: 32px;
+  line-height: 38.4px; }
+  @media only screen and (max-width: 979px) {
+    .address-lookup_manual {
+      padding-top: 0;
+      width: 100%; } }
 
 /* ---------------------------------------------------------------------- *\
   DYNAMIC LOADERS
