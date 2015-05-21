@@ -111,6 +111,18 @@
     }
   }
 
+  &--link {
+    padding: 0;
+    border: 0;
+    color: $colorCtaPrimary;
+    background: none;
+    font: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   $spinnerThickness: 2px;
 
   &.is-loading {
