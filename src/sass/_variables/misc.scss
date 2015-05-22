@@ -81,6 +81,9 @@ $selectArrowWidth: .5;
 $selectArrowHeight: .7;
 $selectArrowPosRight: $selectIconWidth / (2 + $selectArrowWidth);
 
+$mobileFormGutterSize: 1.5 * $fontSizeBase * 1px;
+$desktopFormGutterSize: 2 * $fontSizeBase * 1px;
+
 $errorMessageArrowHeight: 10px;
 
 $tooltipArrowHeight: 10px;

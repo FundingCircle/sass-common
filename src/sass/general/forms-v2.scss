@@ -57,7 +57,7 @@
 .form-default {
   @include font(0);
   @extend .cl--a;
-  padding: $defaultColsPadding;
+  padding: $mobileFormGutterSize;
   margin: 0;
   border: 0;
   color: $colorFontDarkSoft;
@@ -66,6 +66,8 @@
   // cols
   @include breakPoints($formBreakpoint, false) {
     @include cols($formColsRatio);
+
+    padding: $desktopFormGutterSize;
 
     .wrap--form & {
       float: left;
@@ -108,7 +110,7 @@
 
   &_info-box {
     background: rgb(255,255,255);
-    padding: rem(1.5);
+    padding: $mobileFormGutterSize;
 
     @include breakPoints(0, $formBreakpoint) {
       border-bottom: 4px solid $ColorBrand1;
@@ -116,6 +118,7 @@
 
     @include breakPoints($formBreakpoint, false) {
       border-left: 4px solid $ColorBrand1;
+      padding: $desktopFormGutterSize;
     }
 
     h5 {
