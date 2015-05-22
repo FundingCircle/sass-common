@@ -16,8 +16,8 @@
   @include wrapThis(true, $formBreakpoint false);
   @include breakPoints(false, $formBreakpoint) {
     & > *:not([class*="form-default"]) {
-      padding-left: $defaultColsPadding;
-      padding-right: $defaultColsPadding;
+      padding-left: $mobileFormGutterSize;
+      padding-right: $mobileFormGutterSize;
     }
   }
 
