@@ -13,7 +13,7 @@
 }
 
 .wrap--form {
-  @include wrapThis(true, $formBreakpoint false);
+  @include wrapThis($mobileFormGutterSize, $formBreakpoint false);
   @include breakPoints(false, $formBreakpoint) {
     & > *:not([class*="form-default"]) {
       padding-left: $mobileFormGutterSize;
