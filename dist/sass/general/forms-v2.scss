@@ -168,7 +168,7 @@
     &.is-loading:before {
       content: '';
       display: block;
-      background: url(path('input-loader.gif',image)) no-repeat center center;
+      background: path('input-loader.gif',image) no-repeat center center;
       width: 20px;
       height: 20px;
       position: absolute;

@@ -1553,7 +1553,7 @@ form h3 {
     .form-default_element.is-loading:before, .is-loading.form-default_element--tooltip:before {
       content: '';
       display: block;
-      background: url(url(../img/input-loader.gif)) no-repeat center center;
+      background: url(../img/input-loader.gif) no-repeat center center;
       width: 20px;
       height: 20px;
       position: absolute;
