@@ -176,6 +176,7 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
       display: inline-block;
       text-indent: -9001px;
       border: 0;
+      width: 15px;
 
       &:before {
         text-indent: 0;
