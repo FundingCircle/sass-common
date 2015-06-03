@@ -77,7 +77,7 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
       @include breakPoints(false, $bpMobilePortraitLarge) {
         border-top: $arrowsAfterHeight + 4 solid transparent;
         border-bottom: $arrowsAfterHeight + 4 solid transparent;
-        border-left: $arrowsAfterHeight + 4 solid $colorBackgroundMain;;
+        border-left: $arrowsAfterHeight + 4 solid $colorBackgroundMain;
       }
     }
 
