@@ -1,6 +1,9 @@
 $breadcrumbsHeight: 42px;
 $stepsOffset: 9px;
 
+$arrowsAfterHeight: ($breadcrumbsHeight + 2) / 2;
+$arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
+
 .breadcrumbs {
   list-style: none;
   margin: 0 auto;
@@ -12,6 +15,11 @@ $stepsOffset: 9px;
   padding: 0;
   position: relative;
   z-index: 2;
+
+  @include prefix(transition, none);
+  * {
+    @include prefix(transition, none);
+  }
 
   &_wrap {
     background: $colorBackgroundMain;
@@ -38,19 +46,20 @@ $stepsOffset: 9px;
     width: 1%;
     position: relative;
     background: $colorBackgroundMain;
+    overflow: hidden;
+    text-overflow: ellipsis;
     height: $breadcrumbsHeight;
-    overflow-x: hidden;
     line-height: $breadcrumbsHeight;
-    padding-left: rem(1);
+    padding-right: rem(1.7);
+    text-align: center;
     color: $ColorBrand4;
     font-size: rem(0.9);
 
-    a {
-      display: block;
-      height: 100%;
-      width: 100%;
-      text-decoration: none;
-      color: inherit;
+    @include prefix(transition, none);
+
+    @include breakPoints(false, $bpMobilePortraitLarge) {
+      font-size: rem(0.7);
+      height: $breadcrumbsHeight + 2;
     }
 
     &:after {
@@ -58,12 +67,18 @@ $stepsOffset: 9px;
       display: block;
       width: 0;
       height: 0;
-      border-top: $breadcrumbsHeight / 2 solid transparent;
-      border-bottom: $breadcrumbsHeight / 2 solid transparent;
-      border-left: $breadcrumbsHeight / 2 solid $colorBackgroundMain;
+      border-top: $arrowsAfterHeight solid transparent;
+      border-bottom: $arrowsAfterHeight solid transparent;
+      border-left: $arrowsAfterHeight solid $colorBackgroundMain;
       position: absolute;
       right: $stepsOffset;
       top: 0;
+
+      @include breakPoints(false, $bpMobilePortraitLarge) {
+        border-top: $arrowsAfterHeight + 4 solid transparent;
+        border-bottom: $arrowsAfterHeight + 4 solid transparent;
+        border-left: $arrowsAfterHeight + 4 solid $colorBackgroundMain;;
+      }
     }
 
     &:before {
@@ -71,12 +86,18 @@ $stepsOffset: 9px;
       display: block;
       width: 0;
       height: 0;
-      border-top: ($breadcrumbsHeight / 2 + $stepsOffset) solid transparent;
-      border-bottom: ($breadcrumbsHeight / 2 + $stepsOffset) solid transparent;
-      border-left: ($breadcrumbsHeight / 2 + $stepsOffset) solid $colorBackgroundBody;
+      border-top: $arrowsBeforeHeight solid transparent;
+      border-bottom: $arrowsBeforeHeight solid transparent;
+      border-left: $arrowsBeforeHeight solid $colorBackgroundBody;
       position: absolute;
       right: 0;
       top: negative($stepsOffset);
+
+      @include breakPoints(false, $bpMobilePortraitLarge) {
+        border-top: $arrowsBeforeHeight + 4 solid transparent;
+        border-bottom: $arrowsBeforeHeight + 4 solid transparent;
+        border-left: $arrowsBeforeHeight + 4 solid $colorBackgroundBody;
+      }
     }
 
     &:last-child {
@@ -99,12 +120,21 @@ $stepsOffset: 9px;
       color: $ColorBrand1;
 
       &:before {
-        border-top: ($breadcrumbsHeight / 2 + $stepsOffset) solid $colorBackground2;
-        border-bottom: ($breadcrumbsHeight / 2 + $stepsOffset) solid $colorBackground2;
+        border-top: $arrowsBeforeHeight solid $colorBackground2;
+        border-bottom: $arrowsBeforeHeight solid $colorBackground2;
+
+        @include breakPoints(false, $bpMobilePortraitLarge) {
+          border-top: $arrowsBeforeHeight + 4 solid $colorBackground2;
+          border-bottom: $arrowsBeforeHeight + 4 solid $colorBackground2;
+        }
       }
 
       .duration {
         display: inline;
+
+        @include breakPoints(false, $bpTabletLandscapeWide) {
+          display: none;
+        }
       }
 
       &,
@@ -114,6 +144,10 @@ $stepsOffset: 9px;
           @include borderRadius(50, '%');
           padding: 0 6px;
           display: inline;
+
+          @include breakPoints(false, $bpMobilePortraitLarge) {
+            padding: 0 4px;
+          }
 
           &:before {
             display: none;
@@ -135,16 +169,32 @@ $stepsOffset: 9px;
       }
     }
 
+
+
     .step {
       margin-right: 5px;
       display: inline-block;
       text-indent: -9001px;
       border: 0;
+
       &:before {
         text-indent: 0;
         float: left;
         @extend .fci-icon;
         @extend .fci-tick;
+      }
+    }
+
+    .title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 2;
+
+      @include breakPoints(false, $bpMobilePortraitLarge) {
+        display: block;
+        position: relative;
+        line-height: 10px;
+        top: -10px;
       }
     }
 
