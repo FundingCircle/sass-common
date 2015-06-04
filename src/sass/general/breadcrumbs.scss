@@ -1,27 +1,29 @@
 $breadcrumbsHeight: 42px;
 $stepsOffset: 9px;
 
-$arrowsAfterHeight: ($breadcrumbsHeight + 2) / 2;
-$arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
+$arrowsAfterSize: ($breadcrumbsHeight + 2) / 2;
+$arrowsBeforeSize: $arrowsAfterSize + $stepsOffset;
+
+$tabletArrowsAfterSize: $arrowsAfterSize + 4;
+$tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
 
 .breadcrumbs {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  margin-bottom: rem(2);
-  padding: 0;
-  position: relative;
-  z-index: 2;
-
   @include prefix(transition, none);
   * {
     @include prefix(transition, none);
   }
 
-  &_wrap {
+  list-style: none;
+  margin: rem(0 auto 2 auto);
+  padding: 0;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  position: relative;
+  z-index: 2;
+
+  &_wrap,
+  &_wrap--last-step {
     background: $colorBackgroundMain;
     position: relative;
 
@@ -35,10 +37,10 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
       background: $colorBackground2;
       display: block;
     }
+  }
 
-    &.last-step:after {
-      display: none;
-    }
+  &_wrap--last-step:after {
+    display: none;
   }
 
   li {
@@ -53,12 +55,12 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
     padding-right: rem(1.7);
     text-align: center;
     color: $ColorBrand4;
-    font-size: rem(0.9);
+    @include font(0, false);
 
     @include prefix(transition, none);
 
     @include breakPoints(false, $bpMobilePortraitLarge) {
-      font-size: rem(0.7);
+      @include font(-1, false);
       height: $breadcrumbsHeight + 2;
     }
 
@@ -67,17 +69,17 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
       display: block;
       width: 0;
       height: 0;
-      border-top: $arrowsAfterHeight solid transparent;
-      border-bottom: $arrowsAfterHeight solid transparent;
-      border-left: $arrowsAfterHeight solid $colorBackgroundMain;
+      border-top: $arrowsAfterSize solid transparent;
+      border-bottom: $arrowsAfterSize solid transparent;
+      border-left: $arrowsAfterSize solid $colorBackgroundMain;
       position: absolute;
       right: $stepsOffset;
       top: 0;
 
       @include breakPoints(false, $bpMobilePortraitLarge) {
-        border-top: $arrowsAfterHeight + 4 solid transparent;
-        border-bottom: $arrowsAfterHeight + 4 solid transparent;
-        border-left: $arrowsAfterHeight + 4 solid $colorBackgroundMain;
+        border-top: $tabletArrowsAfterSize solid transparent;
+        border-bottom: $tabletArrowsAfterSize solid transparent;
+        border-left: $tabletArrowsAfterSize solid $colorBackgroundMain;
       }
     }
 
@@ -86,17 +88,17 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
       display: block;
       width: 0;
       height: 0;
-      border-top: $arrowsBeforeHeight solid transparent;
-      border-bottom: $arrowsBeforeHeight solid transparent;
-      border-left: $arrowsBeforeHeight solid $colorBackgroundBody;
+      border-top: $arrowsBeforeSize solid transparent;
+      border-bottom: $arrowsBeforeSize solid transparent;
+      border-left: $arrowsBeforeSize solid $colorBackgroundBody;
       position: absolute;
       right: 0;
       top: negative($stepsOffset);
 
       @include breakPoints(false, $bpMobilePortraitLarge) {
-        border-top: $arrowsBeforeHeight + 4 solid transparent;
-        border-bottom: $arrowsBeforeHeight + 4 solid transparent;
-        border-left: $arrowsBeforeHeight + 4 solid $colorBackgroundBody;
+        border-top: $tabletArrowsBeforeSize solid transparent;
+        border-bottom: $tabletArrowsBeforeSize solid transparent;
+        border-left: $tabletArrowsBeforeSize solid $colorBackgroundBody;
       }
     }
 
@@ -109,27 +111,20 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
       }
     }
 
-    .duration {
-      display: none;
-      color: $colorFontLightHard;
-      font-style: italic;
-      margin-left: 5px;
-    }
-
-    &.active {
-      color: $ColorBrand1;
+    &.is-active {
+      color: $colorFontDarkHard;
 
       &:before {
-        border-top: $arrowsBeforeHeight solid $colorBackground2;
-        border-bottom: $arrowsBeforeHeight solid $colorBackground2;
+        border-top: $arrowsBeforeSize solid $colorBackground2;
+        border-bottom: $arrowsBeforeSize solid $colorBackground2;
 
         @include breakPoints(false, $bpMobilePortraitLarge) {
-          border-top: $arrowsBeforeHeight + 4 solid $colorBackground2;
-          border-bottom: $arrowsBeforeHeight + 4 solid $colorBackground2;
+          border-top: $tabletArrowsBeforeSize solid $colorBackground2;
+          border-bottom: $tabletArrowsBeforeSize solid $colorBackground2;
         }
       }
 
-      .duration {
+      .breadcrumbs_duration {
         display: inline;
 
         @include breakPoints(false, $bpTabletLandscapeWide) {
@@ -139,15 +134,11 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
 
       &,
       & ~ * {
-        .step {
-          border: 1px solid $ColorBrand1;
+        .breadcrumbs_step {
+          border: 1px solid $colorFontDarkHard;
           @include borderRadius(50, '%');
           padding: 0 6px;
           display: inline;
-
-          @include breakPoints(false, $bpMobilePortraitLarge) {
-            padding: 0 4px;
-          }
 
           &:before {
             display: none;
@@ -163,41 +154,45 @@ $arrowsBeforeHeight: ($breadcrumbsHeight + 2) /2 + $stepsOffset;
           border-left-color: $colorBackground2;
         }
 
-        .step {
+        .breadcrumbs_step {
           border: 1px solid $colorFontLightHard;
         }
       }
     }
+  }
 
+  &_step {
+    margin-right: 5px;
+    display: inline-block;
+    text-indent: -9001px;
+    border: 0;
+    width: 15px;
 
-
-    .step {
-      margin-right: 5px;
-      display: inline-block;
-      text-indent: -9001px;
-      border: 0;
-      width: 15px;
-
-      &:before {
-        text-indent: 0;
-        float: left;
-        @extend .fci-icon;
-        @extend .fci-tick;
-      }
+    &:before {
+      text-indent: 0;
+      float: left;
+      @extend .fci-icon;
+      @extend .fci-tick;
     }
+  }
 
-    .title {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      z-index: 2;
+  &_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 2;
 
-      @include breakPoints(false, $bpMobilePortraitLarge) {
-        display: block;
-        position: relative;
-        line-height: 10px;
-        top: -10px;
-      }
+    @include breakPoints(false, $bpMobilePortraitLarge) {
+      display: block;
+      position: relative;
+      line-height: 10px;
+      top: -10px;
     }
+  }
 
+  &_duration {
+    display: none;
+    color: $colorFontLightHard;
+    font-style: italic;
+    margin-left: 5px;
   }
 }
