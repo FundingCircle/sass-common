@@ -32,7 +32,7 @@ paths.bower.root = 'bower_components';
 paths.bower.normalize = paths.bower.root + '/normalize-css/normalize.css';
 
 
-var fontName = "fc-icons";
+var fontName = "tech-icons";
 
 gulp.task('clean', function(callback) {
   del(paths.build.root, {force:true}, callback);
@@ -52,7 +52,7 @@ gulp.task('build:icon-font', function() {
         .pipe(template({
           glyphs: codepoints,
           fontName: fontName,
-          className: 'fci'
+          className: 'tech'
         }))
         .pipe(rename(fontName + '.scss'))
         .pipe(gulp.dest(paths.build.fonts));
