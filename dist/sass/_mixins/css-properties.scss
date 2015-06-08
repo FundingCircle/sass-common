@@ -151,6 +151,8 @@
 \* ---------------------------------------------------------------------- */
 
 @mixin opacity($opacity) {
+  // scss-lint:disable VendorPrefix
+
   opacity: $opacity;
 
   $opacityIE: $opacity * 100;
@@ -330,6 +332,8 @@
 \* ---------------------------------------------------------------------- */
 // scss-lint:disable VendorPrefix
 @mixin keyframes($animationName) {
+  // scss-lint:disable VendorPrefix
+
   @-webkit-keyframes $animationName {
     @content;
   }
@@ -348,6 +352,8 @@
 }
 
 @mixin animation($str) {
+  // scss-lint:disable VendorPrefix
+
   -webkit-animation: #{$str};
   -moz-animation: #{$str};
   -ms-animation: #{$str};

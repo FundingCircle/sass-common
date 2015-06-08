@@ -331,7 +331,7 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .go-to-link:before, .form-default .input--inline:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before {
+.fci-icon:before, [class^="fci-"]:before, [class*=" fci-"]:before, .go-to-link:before, .form-default .input--inline:before, .message:before, .message--error:before, .message--warning:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .tooltip_close:before, .breadcrumbs_step:before {
   font-family: "fc-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -348,7 +348,7 @@ td, th {
 .fci-menu-icon:before {
   content: "\E002"; }
 
-.fci-tick:before, .message--success:before, .form-checkbox label .ui-checkbox:before {
+.fci-tick:before, .message--success:before, .form-checkbox label .ui-checkbox:before, .breadcrumbs_step:before {
   content: "\E003"; }
 
 .fci-user-icon:before {
@@ -2205,6 +2205,165 @@ form h3 {
     .address-lookup_manual {
       padding-top: 0;
       width: 100%; } }
+
+.breadcrumbs {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+  list-style: none;
+  margin: 0 auto 32px auto;
+  padding: 0;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  position: relative;
+  z-index: 2; }
+  .breadcrumbs * {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none; }
+  .breadcrumbs_wrap, .breadcrumbs_wrap--last-step {
+    background: white;
+    position: relative; }
+    .breadcrumbs_wrap:after, .breadcrumbs_wrap--last-step:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      background: #e8e8e8;
+      display: block; }
+  .breadcrumbs_wrap--last-step:after {
+    display: none; }
+  .breadcrumbs li {
+    display: table-cell;
+    width: 1%;
+    position: relative;
+    background: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 42px;
+    line-height: 42px;
+    padding-right: 27.2px;
+    text-align: center;
+    color: #76bd21;
+    /* CALCULATE THE FONT SIZE */
+    font-size: 16px;
+    /* LINE HEIGHT */
+    /* FONT WEIGHT */
+    /* FONT STYLE */
+    /* FONT VARIANT */
+    /* FONT Family */
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none; }
+    @media only screen and (max-width: 479px) {
+      .breadcrumbs li {
+        /* CALCULATE THE FONT SIZE */
+        font-size: 13px;
+        /* LINE HEIGHT */
+        /* FONT WEIGHT */
+        /* FONT STYLE */
+        /* FONT VARIANT */
+        /* FONT Family */
+        height: 44px; } }
+    .breadcrumbs li:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 22px solid transparent;
+      border-bottom: 22px solid transparent;
+      border-left: 22px solid white;
+      position: absolute;
+      right: 9px;
+      top: 0; }
+      @media only screen and (max-width: 479px) {
+        .breadcrumbs li:after {
+          border-top: 26px solid transparent;
+          border-bottom: 26px solid transparent;
+          border-left: 26px solid white; } }
+    .breadcrumbs li:before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 31px solid transparent;
+      border-bottom: 31px solid transparent;
+      border-left: 31px solid #fafafa;
+      position: absolute;
+      right: 0;
+      top: -9px; }
+      @media only screen and (max-width: 479px) {
+        .breadcrumbs li:before {
+          border-top: 35px solid transparent;
+          border-bottom: 35px solid transparent;
+          border-left: 35px solid #fafafa; } }
+    .breadcrumbs li:last-child {
+      position: static; }
+      .breadcrumbs li:last-child:before, .breadcrumbs li:last-child:after {
+        display: none; }
+    .breadcrumbs li.is-active {
+      color: black; }
+      .breadcrumbs li.is-active:before {
+        border-top: 31px solid #e8e8e8;
+        border-bottom: 31px solid #e8e8e8; }
+        @media only screen and (max-width: 479px) {
+          .breadcrumbs li.is-active:before {
+            border-top: 35px solid #e8e8e8;
+            border-bottom: 35px solid #e8e8e8; } }
+      .breadcrumbs li.is-active .breadcrumbs_duration {
+        display: inline; }
+        @media only screen and (max-width: 979px) {
+          .breadcrumbs li.is-active .breadcrumbs_duration {
+            display: none; } }
+      .breadcrumbs li.is-active .breadcrumbs_step, .breadcrumbs li.is-active ~ * .breadcrumbs_step {
+        border: 1px solid black;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        padding: 0 6px;
+        display: inline; }
+        .breadcrumbs li.is-active .breadcrumbs_step:before, .breadcrumbs li.is-active ~ * .breadcrumbs_step:before {
+          display: none; }
+      .breadcrumbs li.is-active ~ * {
+        background: #e8e8e8;
+        color: #9b9b9b; }
+        .breadcrumbs li.is-active ~ *:after {
+          border-left-color: #e8e8e8; }
+        .breadcrumbs li.is-active ~ * .breadcrumbs_step {
+          border: 1px solid #9b9b9b; }
+  .breadcrumbs_step {
+    margin-right: 5px;
+    display: inline-block;
+    text-indent: -9001px;
+    border: 0;
+    width: 15px; }
+    .breadcrumbs_step:before {
+      text-indent: 0;
+      float: left; }
+  .breadcrumbs_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 2;
+    text-transform: uppercase; }
+    @media only screen and (max-width: 479px) {
+      .breadcrumbs_title {
+        display: block;
+        position: relative;
+        line-height: 10px;
+        top: -10px; } }
+  .breadcrumbs_duration {
+    display: none;
+    color: #9b9b9b;
+    font-style: italic;
+    margin-left: 5px; }
 
 /* ---------------------------------------------------------------------- *\
   DYNAMIC LOADERS
