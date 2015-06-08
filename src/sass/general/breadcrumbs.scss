@@ -180,6 +180,7 @@ $tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
     overflow: hidden;
     text-overflow: ellipsis;
     z-index: 2;
+    text-transform: uppercase;
 
     @include breakPoints(false, $bpMobilePortraitLarge) {
       display: block;
