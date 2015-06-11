@@ -688,6 +688,17 @@
   - .form-radio.form-radio--top/right/bottom/left if you want the positioning
 \* ---------------------------------------------------------------------- */
 
+@mixin IE8bodyClass($ieClass: true) {
+  @if $ieClass {
+    [class*="ie"][class*="8"] & {
+      @content;
+    }
+  } @else {
+    :not([class*="ie"]):not([class*="8"]) & {
+      @content;
+    }
+  }
+}
 
 .form {
 
@@ -695,10 +706,12 @@
   &-checkbox {
     position: relative;
 
-    input {
-      position: absolute;
-      top: 0;
-      left: -9999px;
+    @include IE8bodyClass(false) {
+      input {
+        position: absolute;
+        top: 0;
+        left: -9999px;
+      }
     }
 
     label {
@@ -722,17 +735,92 @@
 
         &:after {
           @extend %insetElement;
-          content: '';
+          @include IE8bodyClass(false) {
+            content: '';
+          }
           background: rgb(255,255,255);
           border: 1px solid $formInputBorderMain;
+        }
+
+        @include IE8bodyClass(true) {
+          display: none;
         }
       }
     }
 
-    &--left { @extend %posLeft; }
-    &--right { @extend %posRight; }
-    &--bottom { @extend %posBottom; }
-    &--top { @extend %posTop; }
+    &--left {
+      padding-left: $checkboxPaddingSize;
+      line-height: $radioAndCheckboxSize;
+      label {
+        .ui-radio,
+        .ui-checkbox {
+          @extend %posLeft;
+        }
+      }
+
+      @include IE8bodyClass() {
+        input {
+          @extend %posLeft;
+        }
+      }
+    }
+
+    &--right {
+      label {
+        padding-right: $checkboxPaddingSize;
+        line-height: $radioAndCheckboxSize;
+        text-align: right;
+
+        .ui-radio,
+        .ui-checkbox {
+          @extend %posRight;
+        }
+
+      }
+
+      @include IE8bodyClass() {
+        input {
+          @extend %posRight;
+        }
+      }
+    }
+
+    &--bottom {
+      text-align: center;
+
+      label {
+        padding-bottom: $radioAndCheckboxSize + 5;
+
+        .ui-radio,
+        .ui-checkbox {
+          @extend %posBottom;
+        }
+      }
+
+      @include IE8bodyClass() {
+        input {
+          @extend %posBottom;
+        }
+      }
+
+    }
+
+    &--top {
+      text-align: center;
+      label {
+        .ui-radio,
+        .ui-checkbox {
+          @extend %posTop;
+        }
+      }
+
+      @include IE8bodyClass() {
+        input {
+          @extend %posTop;
+        }
+      }
+    }
+
     &--inline { float: left; margin-right: rem(1); }
   }
 
@@ -750,7 +838,10 @@
         }
 
         &:before {
-          content: '';
+          @include IE8bodyClass(false) {
+            content: '';
+          }
+
           width: 0;
           height: 0;
           background: $colorCtaPrimary;
@@ -791,67 +882,29 @@
 }
 
 
-
-
-
 %posLeft {
-  label {
-    padding-left: $checkboxPaddingSize;
-    line-height: $radioAndCheckboxSize;
-
-    .ui-radio,
-    .ui-checkbox {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 %posRight {
-  label {
-    padding-right: $checkboxPaddingSize;
-    line-height: $radioAndCheckboxSize;
-    text-align: right;
-
-    .ui-radio,
-    .ui-checkbox {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-  }
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 %posTop {
-  label {
-    .ui-radio,
-    .ui-checkbox {
-      margin: 0 auto 5px;
-    }
-
-    text-align: center;
-  }
+  margin: 0 auto 5px;
 }
 
 %posBottom {
-  label {
-    padding-bottom: $radioAndCheckboxSize + 5;
-
-    .ui-radio,
-    .ui-checkbox {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-    }
-    text-align: center;
-  }
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
-
 
 
 
