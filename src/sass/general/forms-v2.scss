@@ -697,37 +697,33 @@
   &-checkbox {
     position: relative;
 
-    input {
-      position: absolute;
-      top: 0;
-      left: -9999px;
+    [class*="ie"][class*="8"] & input {
+      z-index: 2;
     }
 
-    label {
+    .ui-checkbox,
+    .ui-radio {
+      position: relative;
+      display: block;
+      height: $optionSize;
+      width: $optionSize;
+      z-index: 1;
 
-      .ui-checkbox,
-      .ui-radio {
-        position: relative;
+      &:before,
+      &:after {
+        @include centerAbs(1);
         display: block;
-        height: $radioAndCheckboxSize;
-        width: $radioAndCheckboxSize;
+      }
 
-        &:before,
-        &:after {
-          @include centerAbs(1);
-          display: block;
-        }
+      &:before {
+        z-index: 2;
+      }
 
-        &:before {
-          z-index: 2;
-        }
-
-        &:after {
-          @extend %insetElement;
-          content: '';
-          background: rgb(255,255,255);
-          border: 1px solid $formInputBorderMain;
-        }
+      &:after {
+        @extend %insetElement;
+        content: '';
+        background: rgb(255,255,255);
+        border: 1px solid $formInputBorderMain;
       }
     }
 
@@ -762,8 +758,8 @@
     }
 
     input:checked ~ label .ui-radio:before {
-      width: $radioAndCheckboxSize / 2;
-      height: $radioAndCheckboxSize / 2;
+      width: $optionSize / 2;
+      height: $optionSize / 2;
     }
 
   }
@@ -777,7 +773,7 @@
 
           right: auto;
           margin: auto 0 auto 15%;
-          line-height: $radioAndCheckboxSize;
+          line-height: $optionSize;
           color: $colorCtaPrimary;
           overflow: hidden;
           width: 0;
@@ -794,62 +790,80 @@
 
 
 
-
+@mixin customOptionSelector {
+  input,
+  .ui-radio,
+  .ui-checkbox {
+    position: absolute;
+    @content;
+  }
+}
 
 %posLeft {
+  @include customOptionSelector {
+    top: 0;
+    left: 0;
+  }
+
+  input {
+    top: $customOptionOffset;
+    left: $customOptionOffset;
+  }
+
   label {
-    padding-left: $checkboxPaddingSize;
-    line-height: $radioAndCheckboxSize;
-
-    .ui-radio,
-    .ui-checkbox {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
+    padding-left: $optionPaddingSize;
+    line-height: $optionSize;
   }
 }
 
 %posRight {
+  @include customOptionSelector {
+    top: 0;
+    right: 0;
+  }
+
+  input {
+    top: $customOptionOffset;
+    right: $customOptionOffset;
+  }
+
   label {
-    padding-right: $checkboxPaddingSize;
-    line-height: $radioAndCheckboxSize;
+    padding-right: $optionPaddingSize;
+    line-height: $optionSize;
     text-align: right;
-
-    .ui-radio,
-    .ui-checkbox {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
   }
 }
 
 %posTop {
-  label {
-    .ui-radio,
-    .ui-checkbox {
-      margin: 0 auto 5px;
-    }
-
-    text-align: center;
+  @include customOptionSelector {
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
+
+  input {
+    top: $customOptionOffset;
+  }
+
+  padding-top: $optionSize + rem(.5);
+  text-align: center;
 }
 
 %posBottom {
-  label {
-    padding-bottom: $radioAndCheckboxSize + 5;
+  @include customOptionSelector {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
 
-    .ui-radio,
-    .ui-checkbox {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-    }
+  input {
+    bottom: $customOptionOffset;
+  }
+
+  label {
+    padding-bottom: $optionSize + rem(.5);
     text-align: center;
   }
 }
