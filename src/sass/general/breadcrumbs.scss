@@ -55,6 +55,7 @@ $tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
     padding-right: rem(1.7);
     text-align: center;
     color: $ColorBrand4;
+    white-space: nowrap;
     @include font(0, false);
 
     @include prefix(transition, none);
