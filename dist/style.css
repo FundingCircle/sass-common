@@ -795,6 +795,9 @@ p, .tooltip_text {
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 1em; }
 
+:last-child {
+  margin-bottom: 0; }
+
 /* ---------------------------------------------------------------------- *\
   HELPFUL CLASSES & MIXINS
 \* ---------------------------------------------------------------------- */
@@ -1381,12 +1384,12 @@ form h3 {
 
 @media only screen and (min-width: 640px) {
   .wrap--form {
-    padding-left: 16px;
-    padding-right: 16px; } }
+    padding-left: 24px;
+    padding-right: 24px; } }
 @media only screen and (max-width: 639px) {
   .wrap--form > *:not([class*="form-default"]) {
-    padding-left: 16px;
-    padding-right: 16px; } }
+    padding-left: 24px;
+    padding-right: 24px; } }
 .wrap--form > h1 {
   /* CALCULATE THE FONT SIZE */
   font-size: 42px;
@@ -1450,24 +1453,26 @@ form h3 {
   /* FONT STYLE */
   /* FONT VARIANT */
   /* FONT Family */
-  padding: 32px;
+  padding: 24px;
   margin: 0;
   border: 0;
   color: #383838;
   background: #e8e8e8; }
   @media only screen and (min-width: 640px) {
-    .form-default-col--small {
-      width: 38.1971%; }
-    .form-default-col--medium {
-      width: 61.8029%; }
-    .form-default-col--large, .wrap--form > h2, .wrap--form > h2 + p, .wrap--form > h2 + .tooltip_text, .wrap--form .form-default {
-      width: 61.8029%; }
-    .wrap--form .form-default {
-      float: left; }
-    .form-default-col--small {
-      float: right;
-      padding-left: 32px;
-      margin-bottom: 32px; } }
+    .form-default {
+      padding: 32px; }
+      .form-default-col--small {
+        width: 38.1971%; }
+      .form-default-col--medium {
+        width: 61.8029%; }
+      .form-default-col--large, .wrap--form > h2, .wrap--form > h2 + p, .wrap--form > h2 + .tooltip_text, .wrap--form .form-default {
+        width: 61.8029%; }
+      .wrap--form .form-default {
+        float: left; }
+      .form-default-col--small {
+        float: right;
+        padding-left: 32px;
+        margin-bottom: 32px; } }
   @media only screen and (min-width: 480px) {
     .form-default_dob-wrap {
       width: 100%;
@@ -1507,7 +1512,8 @@ form h3 {
         border-bottom: 4px solid #ab3383; } }
     @media only screen and (min-width: 640px) {
       .form-default_info-box {
-        border-left: 4px solid #ab3383; } }
+        border-left: 4px solid #ab3383;
+        padding: 32px; } }
     .form-default_info-box h5 {
       color: #ab3383;
       /* CALCULATE THE FONT SIZE */
