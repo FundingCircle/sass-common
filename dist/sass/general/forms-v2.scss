@@ -192,6 +192,7 @@
   %inputStyle {
     @include font(0, false);
     min-height: rem(2.5);
+    line-height: rem(2.5);
     display: block;
     width: 100%;
     background: $formInputBackgroundMain;
@@ -236,6 +237,7 @@
   textarea {
     @extend %inputStyleInline;
     padding: rem(1 1);
+    line-height: normal;
   }
 
   %select {

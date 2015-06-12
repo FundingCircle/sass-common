@@ -1582,6 +1582,7 @@ form h3 {
     /* FONT VARIANT */
     /* FONT Family */
     min-height: 40px;
+    line-height: 40px;
     display: block;
     width: 100%;
     background: white;
@@ -1600,7 +1601,8 @@ form h3 {
     -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2); }
   .form-default textarea {
-    padding: 16px 16px; }
+    padding: 16px 16px;
+    line-height: normal; }
   .form-default .select, .form-default .select--inline {
     position: relative;
     height: 40px; }
