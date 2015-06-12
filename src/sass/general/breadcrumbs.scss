@@ -56,12 +56,12 @@ $tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
     text-align: center;
     color: $ColorBrand4;
     white-space: nowrap;
-    @include font(0, false);
+    @include font(-1, false);
 
     @include prefix(transition, none);
 
     @include breakPoints(false, $bpMobilePortraitLarge) {
-      @include font(-1, false);
+      @include font(-2, false);
       height: $breadcrumbsHeight + 2;
     }
 
@@ -138,7 +138,7 @@ $tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
         .breadcrumbs_step {
           border: 1px solid $colorFontDarkHard;
           @include borderRadius(50, '%');
-          padding: 0 6px;
+          padding: 0 5px;
           display: inline;
 
           &:before {
@@ -174,6 +174,10 @@ $tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
       float: left;
       @extend .fci-icon;
       @extend .fci-tick;
+    }
+
+    @include breakPoints(false, $bpMobilePortraitLarge) {
+      margin-right: 0;
     }
   }
 
