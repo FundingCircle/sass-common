@@ -2221,7 +2221,7 @@ form h3 {
   -o-transition: none;
   transition: none;
   list-style: none;
-  margin: 0 auto 32px auto;
+  margin: 0 auto 12.8px auto;
   padding: 0;
   display: table;
   width: 100%;
@@ -2260,8 +2260,9 @@ form h3 {
     padding-right: 27.2px;
     text-align: center;
     color: #76bd21;
+    white-space: nowrap;
     /* CALCULATE THE FONT SIZE */
-    font-size: 16px;
+    font-size: 13px;
     /* LINE HEIGHT */
     /* FONT WEIGHT */
     /* FONT STYLE */
@@ -2275,7 +2276,7 @@ form h3 {
     @media only screen and (max-width: 479px) {
       .breadcrumbs li {
         /* CALCULATE THE FONT SIZE */
-        font-size: 13px;
+        font-size: 10px;
         /* LINE HEIGHT */
         /* FONT WEIGHT */
         /* FONT STYLE */
@@ -2336,7 +2337,7 @@ form h3 {
         border: 1px solid black;
         -webkit-border-radius: 50%;
         border-radius: 50%;
-        padding: 0 6px;
+        padding: 0 5px;
         display: inline; }
         .breadcrumbs li.is-active .breadcrumbs_step:before, .breadcrumbs li.is-active ~ * .breadcrumbs_step:before {
           display: none; }
@@ -2356,6 +2357,9 @@ form h3 {
     .breadcrumbs_step:before {
       text-indent: 0;
       float: left; }
+    @media only screen and (max-width: 479px) {
+      .breadcrumbs_step {
+        margin-right: 0; } }
   .breadcrumbs_title {
     overflow: hidden;
     text-overflow: ellipsis;
