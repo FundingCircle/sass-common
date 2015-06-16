@@ -1924,16 +1924,15 @@ form h3 {
 \* ---------------------------------------------------------------------- */
 .form-radio, .form-checkbox {
   position: relative; }
-  .form-radio input, .form-checkbox input {
-    position: absolute;
-    top: 0;
-    left: -9999px; }
-  .form-radio label .ui-checkbox, .form-radio label .ui-radio, .form-checkbox label .ui-checkbox, .form-checkbox label .ui-radio {
+  [class*="ie"][class*="8"] .form-radio input, [class*="ie"][class*="8"] .form-checkbox input {
+    z-index: 2; }
+  .form-radio .ui-checkbox, .form-radio .ui-radio, .form-checkbox .ui-checkbox, .form-checkbox .ui-radio {
     position: relative;
     display: block;
     height: 24px;
-    width: 24px; }
-    .form-radio label .ui-checkbox:before, .form-radio label .ui-checkbox:after, .form-radio label .ui-radio:before, .form-radio label .ui-radio:after, .form-checkbox label .ui-checkbox:before, .form-checkbox label .ui-checkbox:after, .form-checkbox label .ui-radio:before, .form-checkbox label .ui-radio:after {
+    width: 24px;
+    z-index: 1; }
+    .form-radio .ui-checkbox:before, .form-radio .ui-checkbox:after, .form-radio .ui-radio:before, .form-radio .ui-radio:after, .form-checkbox .ui-checkbox:before, .form-checkbox .ui-checkbox:after, .form-checkbox .ui-radio:before, .form-checkbox .ui-radio:after {
       position: absolute;
       top: 0;
       right: 0;
@@ -1942,9 +1941,9 @@ form h3 {
       z-index: 1;
       margin: auto;
       display: block; }
-    .form-radio label .ui-checkbox:before, .form-radio label .ui-radio:before, .form-checkbox label .ui-checkbox:before, .form-checkbox label .ui-radio:before {
+    .form-radio .ui-checkbox:before, .form-radio .ui-radio:before, .form-checkbox .ui-checkbox:before, .form-checkbox .ui-radio:before {
       z-index: 2; }
-    .form-radio label .ui-checkbox:after, .form-radio label .ui-radio:after, .form-checkbox label .ui-checkbox:after, .form-checkbox label .ui-radio:after {
+    .form-radio .ui-checkbox:after, .form-radio .ui-radio:after, .form-checkbox .ui-checkbox:after, .form-checkbox .ui-radio:after {
       content: '';
       background: white;
       border: 1px solid #dddddd; }
@@ -1974,37 +1973,52 @@ form h3 {
 .form-checkbox input:checked ~ label .ui-checkbox:before {
   width: 70%; }
 
+.form-radio--left input, .form-checkbox--left input, .form-radio--left .ui-radio, .form-checkbox--left .ui-radio, .form-radio--left .ui-checkbox, .form-checkbox--left .ui-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0; }
+.form-radio--left input, .form-checkbox--left input {
+  top: 5px;
+  left: 5px; }
 .form-radio--left label, .form-checkbox--left label {
   padding-left: 37px;
   line-height: 24px; }
-  .form-radio--left label .ui-radio, .form-checkbox--left label .ui-radio, .form-radio--left label .ui-checkbox, .form-checkbox--left label .ui-checkbox {
-    position: absolute;
-    top: 0;
-    left: 0; }
 
+.form-radio--right input, .form-checkbox--right input, .form-radio--right .ui-radio, .form-checkbox--right .ui-radio, .form-radio--right .ui-checkbox, .form-checkbox--right .ui-checkbox {
+  position: absolute;
+  top: 0;
+  right: 0; }
+.form-radio--right input, .form-checkbox--right input {
+  top: 5px;
+  right: 5px; }
 .form-radio--right label, .form-checkbox--right label {
   padding-right: 37px;
   line-height: 24px;
   text-align: right; }
-  .form-radio--right label .ui-radio, .form-checkbox--right label .ui-radio, .form-radio--right label .ui-checkbox, .form-checkbox--right label .ui-checkbox {
+
+.form-radio--top, .form-checkbox--top {
+  padding-top: 32px;
+  text-align: center; }
+  .form-radio--top input, .form-checkbox--top input, .form-radio--top .ui-radio, .form-checkbox--top .ui-radio, .form-radio--top .ui-checkbox, .form-checkbox--top .ui-checkbox {
     position: absolute;
     top: 0;
-    right: 0; }
-
-.form-radio--top label, .form-checkbox--top label {
-  text-align: center; }
-  .form-radio--top label .ui-radio, .form-checkbox--top label .ui-radio, .form-radio--top label .ui-checkbox, .form-checkbox--top label .ui-checkbox {
-    margin: 0 auto 5px; }
-
-.form-radio--bottom label, .form-checkbox--bottom label {
-  padding-bottom: 29px;
-  text-align: center; }
-  .form-radio--bottom label .ui-radio, .form-checkbox--bottom label .ui-radio, .form-radio--bottom label .ui-checkbox, .form-checkbox--bottom label .ui-checkbox {
-    position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
     margin: 0 auto; }
+  .form-radio--top input, .form-checkbox--top input {
+    top: 5px; }
+
+.form-radio--bottom input, .form-checkbox--bottom input, .form-radio--bottom .ui-radio, .form-checkbox--bottom .ui-radio, .form-radio--bottom .ui-checkbox, .form-checkbox--bottom .ui-checkbox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto; }
+.form-radio--bottom input, .form-checkbox--bottom input {
+  bottom: 5px; }
+.form-radio--bottom label, .form-checkbox--bottom label {
+  padding-bottom: 32px;
+  text-align: center; }
 
 /* ---------------------------------------------------------------------- *\
   TOOLTIPS
