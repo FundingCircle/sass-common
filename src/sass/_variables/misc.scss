@@ -88,8 +88,11 @@ $errorMessageArrowHeight: 10px;
 
 $tooltipArrowHeight: 10px;
 
-$radioAndCheckboxSize: 24px;
-$checkboxPaddingSize: $radioAndCheckboxSize + 13px;
+$optionSize: 24px;
+$optionPaddingSize: $optionSize + 13px;
+$nativeOptionSize: 14px;
+$customOptionOffset: ($optionSize - $nativeOptionSize) / 2;
+
 
 $inputTooltipArrowPadding: 1;
 $inputTooltipArrowWidth: 1;
