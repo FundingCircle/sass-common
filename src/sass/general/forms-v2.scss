@@ -846,7 +846,7 @@
     top: $customOptionOffset;
   }
 
-  padding-top: $optionSize + rem(.5);
+  padding-top: $optionSize + ($fontSizeBase / 2 * 1px);
   text-align: center;
 }
 
@@ -863,7 +863,7 @@
   }
 
   label {
-    padding-bottom: $optionSize + rem(.5);
+    padding-bottom: $optionSize + ($fontSizeBase / 2 * 1px);
     text-align: center;
   }
 }
