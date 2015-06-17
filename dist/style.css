@@ -761,7 +761,8 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   background: #fafafa;
   color: black;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 html {
   -webkit-box-sizing: border-box;
