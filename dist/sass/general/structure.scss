@@ -18,6 +18,7 @@ body {
   font-family: $fontFamilyDefault;
   background: $colorBackgroundBody;
   color: $colorFontDarkHard;
+  -webkit-font-smoothing: antialiased;
 
 }
 

@@ -760,7 +760,8 @@ html, body {
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background: #fafafa;
-  color: black; }
+  color: black;
+  -webkit-font-smoothing: antialiased; }
 
 html {
   -webkit-box-sizing: border-box;
