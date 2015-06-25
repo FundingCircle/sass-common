@@ -4,7 +4,7 @@
   HTML structure:
   section.hero(--centered/--right).hero--[name-of-your-custom-modifier]
     .wrap
-      .hero-content
+      .hero_content
         {content}
 
   Variables:
@@ -59,10 +59,10 @@
   e.g.:
   $heroImgPath: 'hero-about/cool-image'
      will output
-  background-image: url('/img/hero-about/cool-image-s.jpg')
-  background-image: url('/img/hero-about/cool-image-m.jpg')
-  background-image: url('/img/hero-about/cool-image-l.jpg')
-  background-image: url('/img/hero-about/cool-image-xl.jpg')
+  background-image: url('/img/hero-about/cool-image/s.jpg')
+  background-image: url('/img/hero-about/cool-image/m.jpg')
+  background-image: url('/img/hero-about/cool-image/l.jpg')
+  background-image: url('/img/hero-about/cool-image/xl.jpg')
 
   $heroImgResolutions
   - list of boleans
@@ -96,7 +96,7 @@
     $heroPaddingTop: false,
     $heroImgPath: false,
     $heroImgResolutions: true,
-    $heroRatio: 3 1,
+    $heroRatio: 3/1,
     $heroBackgroundPosition: false,
     $heroMaxWidth: false,
     $heroFreeBreakPoints: false,
@@ -185,7 +185,7 @@
 
         // set the max-width for the content (inside .wrap) as a percentage
         @if $currentHeroMaxWidth {
-          .hero-content {
+          .hero_content {
             max-width: $currentHeroMaxWidth * 1%;
           }
         }
@@ -198,7 +198,7 @@
         // for extra large screens, the resizing becomes ratio based and we do this by setting a padding-top
         // rest of the styling for this to work is done in the default class (.hero)
         @if $i == (length($bpHeroList) + 1) {
-          padding-top: last($heroRatio) * 100% / first($heroRatio);
+          padding-top: 100% / $heroRatio;
         }
       }
     }

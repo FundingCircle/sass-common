@@ -35,12 +35,12 @@
     h1,
     h2,
     blockquote {
-      @include font(4, true, 400);
-      margin: rem(0 0 1.5);
+      @include font(2, true, 400);
+      margin: rem(0 0 1);
     }
 
     h1 + h2 {
-      @include font(3);
+      @include font(1);
     }
 
     p,
@@ -60,7 +60,7 @@
     @include breakPoints(false, first($bpHeroList)) {
       text-align: center;
 
-      .hero-content {
+      .hero_content {
         margin: 0 auto;
       }
 
@@ -81,6 +81,17 @@
   // regular / left
   & {
     @include breakPoints(first($bpHeroList), false) {
+      h1,
+      h2,
+      blockquote {
+        @include font(4);
+        margin: rem(0 0 1.5);
+      }
+
+      h1 + h2 {
+        @include font(3);
+      }
+
       &:before {
         @include gradient(horizontal, $heroGradientMedium);
       }
@@ -92,7 +103,7 @@
   &--centered {
     text-align: center;
 
-    .hero-content {
+    .hero_content {
       margin: 0 auto;
     }
   }
@@ -103,7 +114,7 @@
     @include breakPoints(first($bpHeroList), false) {
       text-align: right;
 
-      .hero-content {
+      .hero_content {
         float: right;
       }
 
