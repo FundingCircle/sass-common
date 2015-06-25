@@ -93,16 +93,16 @@
 \* ---------------------------------------------------------------------- */
 
 @mixin hero (
-    $heroColor: false,
     $heroPaddingTop: false,
-    $heroBackgroundPosition: false,
-    $heroMaxWidth: false,
-    $heroFreeBreakPoints: false,
     $heroImgPath: false,
     $heroImgResolutions: true,
     $heroRatio: 3 1,
+    $heroBackgroundPosition: false,
+    $heroMaxWidth: false,
+    $heroFreeBreakPoints: false,
     $heroTextShadow: 0 1px 0 rgba(0, 0, 0, .3),
     $heroBackgroundShadow: true
+    $heroColor: false,
   ) {
 
   @if $heroTextShadow {
