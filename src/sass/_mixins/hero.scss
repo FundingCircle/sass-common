@@ -101,8 +101,8 @@
     $heroMaxWidth: false,
     $heroFreeBreakPoints: false,
     $heroTextShadow: 0 1px 0 rgba(0, 0, 0, .3),
-    $heroBackgroundShadow: true
-    $heroColor: false,
+    $heroBackgroundShadow: true,
+    $heroColor: false
   ) {
 
   @if $heroTextShadow {
