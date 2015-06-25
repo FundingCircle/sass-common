@@ -1,66 +1,114 @@
-/* ---------------------------------------------------------------------- *\
-  HERO
-  - customize new hero images by adding a data-backgrond attr to &
-\* ---------------------------------------------------------------------- */
+// General hero / billboard component
+.hero {
+  &,
+  &--centered,
+  &--right {
+    @include hero (
+      $heroColor:              $colorFontLight,
+      $heroPaddingTop:         2,
+      $heroBackgroundPosition: ct
+    );
+
+    padding-bottom: rem(5);
+    position: relative;
+    background-color: $ColorBrand1;
+    background-repeat: no-repeat;
+    background-size: cover;
 
 
-.hero-wrap {
-  background: none no-repeat center top;
-  background-size: cover;
-  padding: rem(2 0 0);
-
-  h1 {
-    @include font(4);
-    margin-bottom: rem(1);
-    font-weight: 400;
-  }
-
-  h2 {
-    @include font(2,true,300);
-  }
-
-  aside {
-    @include font(-1);
-    padding: rem(0.8);
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
-    text-align: center;
-    color: $colorFontLight;
-  }
-
-  @include breakPoints(false,$bpMobilePortraitLarge) {
-    text-align: center;
-
-    h1 {
-      @include font(4);
+    &:before {
+      @include posAbs(0, 0, 0, 0, 1);
+      @include gradient(vertical, $heroGradientSmall);
+      display: block;
     }
 
-    h2 {
-      @include font(0);
+    .wrap {
+      @extend .cl--a;
+      position: relative;
+      z-index: 2;
     }
 
-    aside {
-      display: none;
+    figure {
+      margin: 0;
     }
-  }
 
-  @include breakPoints($bpMobilePortraitLarge,$bpMobileLandscape) {
-    padding-top: rem(3);
+    h1,
+    h2,
+    blockquote {
+      @include font(4, true, 400);
+      margin: rem(0 0 1.5);
+    }
 
-    h1 {
+    h1 + h2 {
       @include font(3);
-      width: 70%;
+    }
+
+    p,
+    figcaption {
+      display: block;
+      padding-bottom: rem(1.5);
+      margin-bottom: rem(1.5);
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }
+
+    [class*="btn"] {
+      margin-bottom: 0;
+    }
+
+    // small size
+    @include breakPoints(false, first($bpHeroList)) {
+      text-align: center;
+
+      .hero-content {
+        margin: 0 auto;
+      }
+
+      &:before {
+        @include gradient(vertical, $heroGradientSmall);
+      }
+    }
+
+    @include breakPoints(last($bpHeroList), false) {
+      height: 0;
+
+      .wrap {
+        @include posAbs(false, 0, 5, 0);
+      }
     }
   }
 
-  @include breakPoints($bpMobileLandscape,false) {
-    padding-top: rem(6);
-
-    aside {
-      margin: rem(0 2 3 0);
-      max-width: 30%;
-      float: right;
+  // regular / left
+  & {
+    @include breakPoints(first($bpHeroList), false) {
+      &:before {
+        @include gradient(horizontal, $heroGradientMedium);
+      }
     }
   }
 
-}
+
+  // centered
+  &--centered {
+    text-align: center;
+
+    .hero-content {
+      margin: 0 auto;
+    }
+  }
+
+  // right
+  &--right {
+
+    @include breakPoints(first($bpHeroList), false) {
+      text-align: right;
+
+      .hero-content {
+        float: right;
+      }
+
+      &:before {
+        @include gradient(horizontal, $heroGradientSmall);
+      }
+    }
+  }
