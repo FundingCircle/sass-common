@@ -58,11 +58,22 @@
   - no `/` at start or end
   e.g.:
   $heroImgPath: 'hero-about/cool-image'
-     will output
+    will output
   background-image: url('/img/hero-about/cool-image/s.jpg')
   background-image: url('/img/hero-about/cool-image/m.jpg')
   background-image: url('/img/hero-about/cool-image/l.jpg')
   background-image: url('/img/hero-about/cool-image/xl.jpg')
+
+  $heroImageName
+  - value
+  - if you have a custom name for your hero, set that name with this
+  e.g. (for the example for $heroImgPath):
+  $heroImageName: custom-image
+      will output
+    background-image: url('/img/hero-about/cool-image/custom-image-s.jpg')
+    background-image: url('/img/hero-about/cool-image/custom-image-m.jpg')
+    background-image: url('/img/hero-about/cool-image/custom-image-l.jpg')
+    background-image: url('/img/hero-about/cool-image/custom-image-xl.jpg')
 
   $heroImgResolutions
   - list of boleans
@@ -101,7 +112,8 @@
     $heroFreeBreakPoints: false,
     $heroTextShadow: 0 1px 0 rgba(0, 0, 0, .3),
     $heroBackgroundShadow: true,
-    $heroColor: false
+    $heroColor: false,
+    $heroImageName: false
   ) {
 
   @if $heroTextShadow {
@@ -114,11 +126,13 @@
     }
   }
 
-  @if $heroBackgroundShadow {
-    // enable the gradient background
-    // rest of the styling is handled in the default class ('.hero')
-    &:before {
+  &:before {
+    @if $heroBackgroundShadow {
+      // enable the gradient background
+      // rest of the styling is handled in the default class ('.hero')
       content: '';
+    } @else {
+      display: none;
     }
   }
 
@@ -191,13 +205,23 @@
 
         // load the correct image for each resolution
         @if $currentHeroImgResolutions {
-          background-image: url(#{$imgPath}#{$heroImgPath}/#{$currentHeroImgResolutions}.jpg);
+          @if $heroImageName {
+            background-image: url(#{$imgPath}#{$heroImgPath}/#{$heroImageName}-#{$currentHeroImgResolutions}.jpg);
+          } @else {
+            background-image: url(#{$imgPath}#{$heroImgPath}/#{$currentHeroImgResolutions}.jpg);
+          }
         }
 
         // for extra large screens, the resizing becomes ratio based and we do this by setting a padding-top
         // rest of the styling for this to work is done in the default class (.hero)
         @if $i == (length($bpHeroList) + 1) {
-          padding-top: 100% / $heroRatio;
+          @if $heroRatio {
+            padding-top: 100% / $heroRatio;
+          } @else {
+            .wrap {
+              @include pos(auto, auto, auto, auto, relative);
+            }
+          }
         }
       }
     }

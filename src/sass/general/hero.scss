@@ -69,6 +69,19 @@
       }
     }
 
+    @include breakPoints(first($bpHeroList), false) {
+      h1,
+      h2,
+      blockquote {
+        @include font(4);
+        margin: rem(0 0 1.5);
+      }
+
+      h1 + h2 {
+        @include font(3);
+      }
+    }
+
     @include breakPoints(last($bpHeroList), false) {
       height: 0;
 
@@ -81,16 +94,7 @@
   // regular / left
   & {
     @include breakPoints(first($bpHeroList), false) {
-      h1,
-      h2,
-      blockquote {
-        @include font(4);
-        margin: rem(0 0 1.5);
-      }
 
-      h1 + h2 {
-        @include font(3);
-      }
 
       &:before {
         @include gradient(horizontal, $heroGradientMedium);
@@ -106,13 +110,16 @@
     .hero_content {
       margin: 0 auto;
     }
+
+    p {
+      @include centerBlock();
+    }
   }
 
   // right
   &--right {
 
     @include breakPoints(first($bpHeroList), false) {
-      text-align: right;
 
       .hero_content {
         float: right;
