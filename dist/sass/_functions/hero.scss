@@ -1,0 +1,93 @@
+/* ---------------------------------------------------------------------- *\
+  HERO CURRENT ITEM
+  - gets the current value for the parameter
+  - reads the parameters (lists) and return the current value
+\* ---------------------------------------------------------------------- */
+
+@function heroCurrentItem($val, $i) {
+  // make sure we have the current
+  @if length($val) >= $i {
+    @return nth($val, $i);
+  } @else {
+    @return false;
+  }
+}
+
+
+/* ---------------------------------------------------------------------- *\
+  BACKGROUND POSITION
+  - "translates" the shortcut version to the correct one
+  - both versions are used (lt and tl) because this is a common confusion
+  - couldn't used the long version because that meant a list in a list and the syntax would have been too complicated to read
+\* ---------------------------------------------------------------------- */
+
+@function backgroundPosition($val) {
+  $mapVal: (
+    lt: left top,
+    tl: left top,
+    lc: left center,
+    cl: left center,
+    lb: left bottom,
+    bl: left bottom,
+    ct: center top,
+    tc: center top,
+    cc: center center,
+    cb: center bottom,
+    bc: center bottom,
+    rt: right top,
+    tr: right top,
+    rc: right center,
+    cr: right center,
+    rb: right bottom,
+    br: right bottom
+  );
+
+  @return map-get($mapVal, $val);
+}
+
+
+/* ---------------------------------------------------------------------- *\
+  BACKGROUND IMAGE
+  - applies the extension for the background images
+    - path-to-image-s.extension for the small image
+    - path-to-image-m.extension for the medium image
+    - path-to-image-l.extension for the large image
+    - path-to-image-xl.extension for the extra large image
+\* ---------------------------------------------------------------------- */
+
+@function backgroundImage($val, $count, $heroImgPath, $heroImgResolutions) {
+  // list of possible suffixes
+  $resolutions: s m l xl;
+
+  // caching the length for future use
+  $resolutionsLength: length($resolutions);
+
+  // the value that will be outputed
+  $newVal: false;
+
+  // $val is $heroImgResolutions - if you want to load or not a different image for a certain resolution
+  @if $val {
+    // making sure we don't overflow the list (they might have different lengths)
+    @if $count <= $resolutionsLength {
+      $newVal: nth($resolutions, $count);
+    } @else {
+      $newVal: last($resolutions);
+    }
+  } @else if $count > 1 and $heroImgResolutions {
+    $i: $count - 1;
+    // if you disable the current image, it will fallback and load the first smaller image that it can find
+    @while $newVal == false and $i >= 0 {
+      @if nth($heroImgResolutions, $i) {
+        $newVal: nth($resolutions, $i);
+      }
+      $i: $i - 1;
+    }
+  }
+
+  // ignore everything if we don't have a path so we don't end up with broken links
+  @if $heroImgPath == false {
+    $newVal: false;
+  }
+
+  @return $newVal;
+}

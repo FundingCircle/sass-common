@@ -97,3 +97,36 @@ $customOptionOffset: ($optionSize - $nativeOptionSize) / 2;
 $inputTooltipArrowPadding: 1;
 $inputTooltipArrowWidth: 1;
 
+
+
+/* ---------------------------------------------------------------------- *\
+  HERO BREAKPOINTS
+  - this is the list of breakpoints that affect a hero
+  - you can add more, but make sure you test it and that the order is correct
+\* ---------------------------------------------------------------------- */
+
+$bpHeroSmall: $bpMobileLandscape;
+$bpHeroMedium: $bpTabletLandscape;
+$bpHeroLarge: $bpDesktop;
+
+$bpHeroList: ($bpHeroSmall, $bpHeroMedium, $bpHeroLarge);
+
+
+/* ---------------------------------------------------------------------- *\
+  HERO GRADIENT SHADOWS
+  - shadows that are applied on top of the background image but below the content
+\* ---------------------------------------------------------------------- */
+
+$heroGradientSmall: rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0) 40%,
+                    rgba(0, 0, 0, .4) 60%,
+                    rgba(0, 0, 0, .4) 100%;
+
+$heroGradientMedium: rgba(0, 0, 0, .4) 0%,
+                     rgba(0, 0, 0, .4) 40%,
+                     rgba(0, 0, 0, 0) 60%,
+                     rgba(0, 0, 0, 0) 100%;
+
+$heroGradientDark: rgba(0, 0, 0, 0) 30%,
+                   rgba(0, 0, 0, .8) 100%;
+
