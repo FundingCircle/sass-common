@@ -1,0 +1,229 @@
+/* ---------------------------------------------------------------------- *\
+  HERO MIXIN
+
+  HTML structure:
+  section.hero(--centered/--right).hero--[name-of-your-custom-modifier]
+    .wrap
+      .hero_content
+        {content}
+
+  Variables:
+  * if set to false, it will be ignored
+  ** if not specified as bolean, than it can be either a value or a list
+  *** if list, it should have 4 params (1st one - global/mobile rule, 2nd one for medium screens, 3rd one for large screens, 4th one for extra large)
+
+  $heroColor
+  - text color for the hero
+  - default value $colorFontLight
+  e.g.:
+  $heroColor: rgb(255, 255, 255) false rgb(130 130 130) rgb(123, 251, 132)
+
+  $heroPaddingTop
+  - amount of top padding for each resolution
+  - default is 2rem
+  - for extra large screens the padding-top will be ignored (ratio is applied)
+  e.g.:
+  $heroPaddingTop: 2 6 3 false
+
+  $heroBackgroundPosition
+  - shorthand for background position
+  - it accepts the initials of the positioning, ignoring the order (lt or tl = left top)
+  - default is ct (center top)
+
+  $heroMaxWidth
+  - if you want to limit the width of the content for certain resolutions
+  - the width is in percentages, relative to .wrap (general page wrapper)
+  e.g.:
+  $heroMaxWidth: 80 false 30 50
+
+  $heroFreeBreakPoints
+  - bolean
+  - default is false
+  - false = media queries have a min and max value (limited to certain segments)
+  - true = media queries have only a min value (overlaping segments)
+  e.g.:
+  FALSE
+  0---S---M---L---XL---inf
+  TRUE
+  0--------------------inf
+      S----------------inf
+          M------------inf
+              L--------inf
+                  XL---inf
+
+  $heroImgPath
+  - string
+  - path to the directory where the hero images for different resolutions are + filename without suffix and extension
+  - doesn't require the path to the /img directory
+  - no `/` at start or end
+  e.g.:
+  $heroImgPath: 'hero-about/cool-image'
+    will output
+  background-image: url('/img/hero-about/cool-image/s.jpg')
+  background-image: url('/img/hero-about/cool-image/m.jpg')
+  background-image: url('/img/hero-about/cool-image/l.jpg')
+  background-image: url('/img/hero-about/cool-image/xl.jpg')
+
+  $heroImageName
+  - value
+  - if you have a custom name for your hero, set that name with this
+  e.g. (for the example for $heroImgPath):
+  $heroImageName: custom-image
+      will output
+    background-image: url('/img/hero-about/cool-image/custom-image-s.jpg')
+    background-image: url('/img/hero-about/cool-image/custom-image-m.jpg')
+    background-image: url('/img/hero-about/cool-image/custom-image-l.jpg')
+    background-image: url('/img/hero-about/cool-image/custom-image-xl.jpg')
+
+  $heroImgResolutions
+  - list of boleans
+  - if you don't want to load a new image for certain breakpoints, you can set it to false
+  - if you set a value to false, it will fallback on the previous breakpoints image
+  e.g.:
+  $heroImgResolutions: true true false true
+
+  $heroRatio
+  - for extra large screens, the hero uses a ratio for width/height, and it's not content dependent anymore
+  e.g.:
+  $heroRatio: 16/9
+
+  $heroTextShadow
+  - CSS value for text shadow
+  - applies a shadow to all texts
+  - value or false
+  e.g.:
+  $heroTextShadow: 0 1px 0 rgba(0, 0, 0, .3)
+
+  $heroBackgroundShadow
+  - bolean (default: true)
+  - if you want a gradient over the background image, leave this to true
+  - if you set it to false, make sure you have the right contrast between the background and text
+
+
+\* ---------------------------------------------------------------------- */
+
+@mixin hero (
+    $heroPaddingTop: false,
+    $heroImgPath: false,
+    $heroImgResolutions: true,
+    $heroRatio: 3/1,
+    $heroBackgroundPosition: false,
+    $heroMaxWidth: false,
+    $heroFreeBreakPoints: false,
+    $heroTextShadow: 0 1px 0 rgba(0, 0, 0, .3),
+    $heroBackgroundShadow: true,
+    $heroColor: false,
+    $heroImageName: false
+  ) {
+
+  @if $heroTextShadow {
+    // enable text shadow
+    h1,
+    h2,
+    blockquote,
+    p {
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+    }
+  }
+
+  &:before {
+    @if $heroBackgroundShadow {
+      // enable the gradient background
+      // rest of the styling is handled in the default class ('.hero')
+      content: '';
+    } @else {
+      display: none;
+    }
+  }
+
+  // loop through all the breakpoints
+  // + 1 for max because we need to cover the xl -> inf case
+  @for $i from 1 through (length($bpHeroList) + 1) {
+    // get the current values from lists
+    $currentHeroColor: heroCurrentItem($heroColor, $i);
+    $currentHeroPaddingTop: heroCurrentItem($heroPaddingTop, $i);
+    $currentHeroBackgroundPosition: backgroundPosition(heroCurrentItem($heroBackgroundPosition, $i));
+    $currentHeroMaxWidth: heroCurrentItem($heroMaxWidth, $i);
+    $currentHeroImgResolutions: backgroundImage(heroCurrentItem($heroImgResolutions, $i), $i, $heroImgPath, heroCurrentItem($heroImgResolutions, $i));
+
+    // we don't try to apply a new breakpoint unless at least one style is changing or the ratio needs to be applied (if the for is at the last iteration)
+    @if $currentHeroColor
+        or $currentHeroPaddingTop
+        or $currentHeroBackgroundPosition
+        or $currentHeroMaxWidth
+        or $currentHeroImgResolutions
+        or $i == (length($bpHeroList) + 1) {
+
+      // find the min breakpoint
+      // we don't need to apply a min breakpoint for the first value, so we set it to false
+      // for any other values, it's the previous value in the iteration
+      // eg: for large screens, the min value is medium
+      @if $i == 1 {
+        $bpHeroMin: false;
+      } @else {
+        $bpHeroMin: nth($bpHeroList, $i - 1);
+      }
+
+      // find the max breakpoint
+      // we don't need to set a max breakpoint:
+      //   - if this is the last iteration (so the max val is inf)
+      //   - $i == 1 -> the first interval is the default rule so we don't have a breakpoint (false false)
+      //   - if $heroFreeBreakPoints is false, we don't set a max breakpoint so that styling is overlapping
+      @if $i == (length($bpHeroList) + 1) or $i == 1 or $heroFreeBreakPoints {
+        $bpHeroMax: false;
+      } @else {
+        $bpHeroMax: nth($bpHeroList, $i);
+      }
+
+      // apply the breakpoints
+      @include breakPoints($bpHeroMin, $bpHeroMax) {
+        // set the current color
+        @if $currentHeroColor {
+          color: $currentHeroColor;
+          p {
+            // the border color should match the text colro
+            border-bottom-color: $currentHeroColor;
+          }
+        }
+
+        // set the padding top for each breakpoint
+        @if $currentHeroPaddingTop and $i != (length($bpHeroList) + 1) {
+          padding-top: rem($currentHeroPaddingTop);
+        }
+
+        // set the background position for each breakpoint
+        @if $currentHeroBackgroundPosition {
+          background-position: $currentHeroBackgroundPosition;
+        }
+
+        // set the max-width for the content (inside .wrap) as a percentage
+        @if $currentHeroMaxWidth {
+          .hero_content {
+            max-width: $currentHeroMaxWidth * 1%;
+          }
+        }
+
+        // load the correct image for each resolution
+        @if $currentHeroImgResolutions {
+          @if $heroImageName {
+            background-image: url(#{$imgPath}#{$heroImgPath}/#{$heroImageName}-#{$currentHeroImgResolutions}.jpg);
+          } @else {
+            background-image: url(#{$imgPath}#{$heroImgPath}/#{$currentHeroImgResolutions}.jpg);
+          }
+        }
+
+        // for extra large screens, the resizing becomes ratio based and we do this by setting a padding-top
+        // rest of the styling for this to work is done in the default class (.hero)
+        @if $i == (length($bpHeroList) + 1) {
+          @if $heroRatio {
+            padding-top: 100% / $heroRatio;
+          } @else {
+            .wrap {
+              @include pos(auto, auto, auto, auto, relative);
+            }
+          }
+        }
+      }
+    }
+  }
+}
