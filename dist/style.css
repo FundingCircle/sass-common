@@ -1967,6 +1967,14 @@ form h3 {
       .form-default_autocomplete li:not(:last-child) {
         border-bottom: 1px solid #3a77c1; }
     .form-default_autocomplete-note {
+      /* CALCULATE THE FONT SIZE */
+      font-size: 13px;
+      /* LINE HEIGHT */
+      line-height: 16px;
+      /* FONT WEIGHT */
+      /* FONT STYLE */
+      /* FONT VARIANT */
+      /* FONT Family */
       color: black;
       text-transform: none; }
   .form-default_chars-left {
