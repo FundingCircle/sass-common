@@ -526,6 +526,11 @@
         border-bottom: 1px solid $ColorBrand2;
       }
     }
+
+    &-note {
+      color: $colorFontDarkHard;
+      text-transform: none;
+    }
   }
 
   // chars left
