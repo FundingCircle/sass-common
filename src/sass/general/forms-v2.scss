@@ -405,12 +405,17 @@
       padding-left: rem(.5);
       width: rem(8);
 
-      &:focus {
-        border-color: $ColorBrand3;
-      }
-
       &.error {
         border-bottom-color: $colorError;
+      }
+
+      &.valid {
+        border-right: 0;
+        border-bottom-color: $colorSuccess;
+      }
+
+      &:focus {
+        border-color: $ColorBrand3;
       }
     }
 
