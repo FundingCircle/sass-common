@@ -113,6 +113,14 @@ $bpHeroList: ($bpHeroSmall, $bpHeroMedium, $bpHeroLarge);
 
 
 /* ---------------------------------------------------------------------- *\
+  HERO FONT NOTES
+  - the default size for hero fonts on a normal layout (desktop, not xlarge)
+\* ---------------------------------------------------------------------- */
+$heroFontNoteTitle: 5;
+$heroFontNoteSubtitle: 3;
+
+
+/* ---------------------------------------------------------------------- *\
   HERO GRADIENT SHADOWS
   - shadows that are applied on top of the background image but below the content
 \* ---------------------------------------------------------------------- */
