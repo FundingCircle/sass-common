@@ -84,6 +84,7 @@
 
   $heroRatio
   - for extra large screens, the hero uses a ratio for width/height, and it's not content dependent anymore
+  - if set to false, it will ignore the ratio and it will set the default padding bottom
   e.g.:
   $heroRatio: 16/9
 
@@ -218,6 +219,7 @@
           @if $heroRatio {
             padding-top: 100% / $heroRatio;
           } @else {
+            height: auto;
             .wrap {
               @include pos(auto, auto, auto, auto, relative);
             }
