@@ -229,31 +229,3 @@
     }
   }
 }
-
-
-
-/* ---------------------------------------------------------------------- *\
-  SELECTORS FOR TITLE / SUBTITLE / CONTENT
-  - because we apply the same selectors on multiple resolutions, I've stored them inside a mixin for easier use / update
-\* ---------------------------------------------------------------------- */
-
-@mixin heroTitle {
-  h1,
-  h2,
-  blockquote {
-    @content;
-  }
-}
-
-@mixin heroSubtitle {
-  h1 + h2 {
-    @content;
-  }
-}
-
-@mixin heroContent {
-  p,
-  figcaption {
-    @content;
-  }
-}

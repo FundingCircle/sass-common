@@ -42,23 +42,22 @@
     }
 
     // general styling
-    @include heroTitle {
+    &_title {
       @include font(heroFontNote($heroFontNoteTitle, small), true, 400);
     }
 
-    @include heroSubtitle {
+    &_subtitle {
       @include font(heroFontNote($heroFontNoteSubtitle, small), true, 400);
       margin-top: rem(.5);
     }
 
-    @include heroContent {
+    &_content {
       display: block;
-      margin: rem(2) 0 0;
+      margin: rem(2 0 0);
       padding-top: rem(1.5);
       border-top-width: 1px;
       border-top-style: solid;
     }
-
 
 
     // small
@@ -76,28 +75,30 @@
 
     // medium
     @include breakPoints($bpHeroSmall, false) {
-      @include heroTitle {
+      &_title {
         @include font(heroFontNote($heroFontNoteTitle, medium));
         margin-bottom: rem(1);
       }
-      @include heroSubtitle {
+
+      &_subtitle {
         @include font(heroFontNote($heroFontNoteSubtitle, medium));
       }
     }
 
     // large
     @include breakPoints($bpHeroMedium, false) {
-      @include heroTitle {
+      &_title {
         @include font(heroFontNote($heroFontNoteTitle, large));
       }
-      @include heroSubtitle {
+
+      &_subtitle {
         @include font(heroFontNote($heroFontNoteSubtitle, large));
       }
     }
 
     // xlarge
     @include breakPoints($bpHeroLarge, false) {
-      @include heroTitle {
+      &_title {
         @include font(heroFontNote($heroFontNoteTitle, xlarge));
       }
 
@@ -112,8 +113,6 @@
   // regular / left
   & {
     @include breakPoints(first($bpHeroList), false) {
-
-
       &:before {
         @include gradient(horizontal, $heroGradientMedium);
       }
