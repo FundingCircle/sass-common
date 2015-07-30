@@ -486,6 +486,10 @@ td, th {
   - you can add more, but make sure you test it and that the order is correct
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
+  HERO FONT NOTES
+  - the default size for hero fonts on a normal layout (desktop, not xlarge)
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
   HERO GRADIENT SHADOWS
   - shadows that are applied on top of the background image but below the content
 \* ---------------------------------------------------------------------- */
@@ -513,6 +517,10 @@ td, th {
     - path-to-image-m.extension for the medium image
     - path-to-image-l.extension for the large image
     - path-to-image-xl.extension for the extra large image
+\* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *\
+  FONTS NOTE
+  - starts from a default note size and then adjust it according to the size
 \* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *\
   COLORS FOR SELECTED TEXT
@@ -845,6 +853,7 @@ td, th {
 
   $heroRatio
   - for extra large screens, the hero uses a ratio for width/height, and it's not content dependent anymore
+  - if set to false, it will ignore the ratio and it will set the default padding bottom
   e.g.:
   $heroRatio: 16/9
 
@@ -2304,34 +2313,37 @@ form h3 {
     z-index: 2; }
   .hero figure, .hero--centered figure, .hero--right figure {
     margin: 0; }
-  .hero h1, .hero h2, .hero blockquote, .hero--centered h1, .hero--centered h2, .hero--centered blockquote, .hero--right h1, .hero--right h2, .hero--right blockquote {
+  .hero [class*="btn"], .hero--centered [class*="btn"], .hero--right [class*="btn"] {
+    margin-top: 16px; }
+  .hero .hero_content > *, .hero--centered .hero_content > *, .hero--right .hero_content > * {
+    margin-bottom: 0; }
+  .hero_title, .hero--centered_title, .hero--right_title {
     /* CALCULATE THE FONT SIZE */
-    font-size: 26px;
+    font-size: 33px;
     /* LINE HEIGHT */
-    line-height: 32px;
+    line-height: 40px;
     /* FONT WEIGHT */
     font-weight: 400;
     /* FONT STYLE */
     /* FONT VARIANT */
-    /* FONT Family */
-    margin: 0 0 16px; }
-  .hero h1 + h2, .hero--centered h1 + h2, .hero--right h1 + h2 {
+    /* FONT Family */ }
+  .hero_subtitle, .hero--centered_subtitle, .hero--right_subtitle {
     /* CALCULATE THE FONT SIZE */
     font-size: 20px;
     /* LINE HEIGHT */
     line-height: 24px;
     /* FONT WEIGHT */
+    font-weight: 400;
     /* FONT STYLE */
     /* FONT VARIANT */
-    /* FONT Family */ }
-  .hero p, .hero .tooltip_text, .hero figcaption, .hero--centered p, .hero--centered .tooltip_text, .hero--centered figcaption, .hero--right p, .hero--right .tooltip_text, .hero--right figcaption {
+    /* FONT Family */
+    margin-top: 8px; }
+  .hero_content, .hero--centered_content, .hero--right_content {
     display: block;
-    padding-bottom: 24px;
-    margin-bottom: 24px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid; }
-  .hero [class*="btn"], .hero--centered [class*="btn"], .hero--right [class*="btn"] {
-    margin-bottom: 0; }
+    margin: 32px 0 0;
+    padding-top: 24px;
+    border-top-width: 1px;
+    border-top-style: solid; }
   @media only screen and (max-width: 639px) {
     .hero, .hero--centered, .hero--right {
       text-align: center; }
@@ -2346,7 +2358,7 @@ form h3 {
         background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=1); } }
   @media only screen and (min-width: 640px) {
-    .hero h1, .hero h2, .hero blockquote, .hero--centered h1, .hero--centered h2, .hero--centered blockquote, .hero--right h1, .hero--right h2, .hero--right blockquote {
+    .hero_title, .hero--centered_title, .hero--right_title {
       /* CALCULATE THE FONT SIZE */
       font-size: 42px;
       /* LINE HEIGHT */
@@ -2355,8 +2367,27 @@ form h3 {
       /* FONT STYLE */
       /* FONT VARIANT */
       /* FONT Family */
-      margin: 0 0 24px; }
-    .hero h1 + h2, .hero--centered h1 + h2, .hero--right h1 + h2 {
+      margin-bottom: 16px; }
+    .hero_subtitle, .hero--centered_subtitle, .hero--right_subtitle {
+      /* CALCULATE THE FONT SIZE */
+      font-size: 26px;
+      /* LINE HEIGHT */
+      line-height: 32px;
+      /* FONT WEIGHT */
+      /* FONT STYLE */
+      /* FONT VARIANT */
+      /* FONT Family */ } }
+  @media only screen and (min-width: 800px) {
+    .hero_title, .hero--centered_title, .hero--right_title {
+      /* CALCULATE THE FONT SIZE */
+      font-size: 53px;
+      /* LINE HEIGHT */
+      line-height: 56px;
+      /* FONT WEIGHT */
+      /* FONT STYLE */
+      /* FONT VARIANT */
+      /* FONT Family */ }
+    .hero_subtitle, .hero--centered_subtitle, .hero--right_subtitle {
       /* CALCULATE THE FONT SIZE */
       font-size: 33px;
       /* LINE HEIGHT */
@@ -2368,6 +2399,15 @@ form h3 {
   @media only screen and (min-width: 1024px) {
     .hero, .hero--centered, .hero--right {
       height: 0; }
+      .hero_title, .hero--centered_title, .hero--right_title {
+        /* CALCULATE THE FONT SIZE */
+        font-size: 68px;
+        /* LINE HEIGHT */
+        line-height: 72px;
+        /* FONT WEIGHT */
+        /* FONT STYLE */
+        /* FONT VARIANT */
+        /* FONT Family */ }
       .hero .wrap, .hero--centered .wrap, .hero--right .wrap {
         position: absolute;
         right: 0;

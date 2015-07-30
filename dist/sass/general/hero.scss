@@ -15,7 +15,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-
     &:before {
       @include posAbs(0, 0, 0, 0, 1);
       @include gradient(vertical, $heroGradientSmall);
@@ -32,31 +31,36 @@
       margin: 0;
     }
 
-    h1,
-    h2,
-    blockquote {
-      @include font(2, true, 400);
-      margin: rem(0 0 1);
-    }
-
-    h1 + h2 {
-      @include font(1);
-    }
-
-    p,
-    figcaption {
-      display: block;
-      padding-bottom: rem(1.5);
-      margin-bottom: rem(1.5);
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-    }
-
     [class*="btn"] {
-      margin-bottom: 0;
+      margin-top: rem(1);
     }
 
-    // small size
+    .hero_content {
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    // general styling
+    &_title {
+      @include font(heroFontNote($heroFontNoteTitle, small), true, 400);
+    }
+
+    &_subtitle {
+      @include font(heroFontNote($heroFontNoteSubtitle, small), true, 400);
+      margin-top: rem(.5);
+    }
+
+    &_content {
+      display: block;
+      margin: rem(2 0 0);
+      padding-top: rem(1.5);
+      border-top-width: 1px;
+      border-top-style: solid;
+    }
+
+
+    // small
     @include breakPoints(false, first($bpHeroList)) {
       text-align: center;
 
@@ -69,33 +73,46 @@
       }
     }
 
-    @include breakPoints(first($bpHeroList), false) {
-      h1,
-      h2,
-      blockquote {
-        @include font(4);
-        margin: rem(0 0 1.5);
+    // medium
+    @include breakPoints($bpHeroSmall, false) {
+      &_title {
+        @include font(heroFontNote($heroFontNoteTitle, medium));
+        margin-bottom: rem(1);
       }
 
-      h1 + h2 {
-        @include font(3);
+      &_subtitle {
+        @include font(heroFontNote($heroFontNoteSubtitle, medium));
       }
     }
 
-    @include breakPoints(last($bpHeroList), false) {
-      height: 0;
+    // large
+    @include breakPoints($bpHeroMedium, false) {
+      &_title {
+        @include font(heroFontNote($heroFontNoteTitle, large));
+      }
 
+      &_subtitle {
+        @include font(heroFontNote($heroFontNoteSubtitle, large));
+      }
+    }
+
+    // xlarge
+    @include breakPoints($bpHeroLarge, false) {
+      &_title {
+        @include font(heroFontNote($heroFontNoteTitle, xlarge));
+      }
+
+      height: 0;
       .wrap {
         @include posAbs(false, 0, 5, 0);
       }
     }
+
   }
 
   // regular / left
   & {
     @include breakPoints(first($bpHeroList), false) {
-
-
       &:before {
         @include gradient(horizontal, $heroGradientMedium);
       }
