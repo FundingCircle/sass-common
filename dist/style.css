@@ -541,7 +541,7 @@ td, th {
   - $pseudo: false -> the element becomes the clearer
   - $extend: false -> useful for break points, applies in place
 \* ---------------------------------------------------------------------- */
-.cl--a:after, .form-default:after, .form-default_wrap:after, .hero .wrap:after, .hero--centered .wrap:after, .hero--right .wrap:after {
+.cl--a:after, .form-default:after, .form-default_wrap:after, .hero-v2 .wrap:after, .hero-v2--centered .wrap:after, .hero-v2--right .wrap:after {
   content: '';
   display: table;
   width: 100%;
@@ -771,9 +771,9 @@ td, th {
   HERO MIXIN
 
   HTML structure:
-  section.hero(--centered/--right).hero--[name-of-your-custom-modifier]
+  section.hero-v2(--centered/--right).hero-v2--[name-of-your-custom-modifier]
     .wrap
-      .hero_content
+      .hero-v2_content
         {content}
 
   Variables:
@@ -2275,7 +2275,8 @@ form h3 {
       text-decoration: none;
       color: #097fc9; }
 
-.hero, .hero--centered, .hero--right {
+.hero-v2, .hero-v2--centered, .hero-v2--right {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
   color: white;
   padding-top: 32px;
   background-position: center top;
@@ -2284,16 +2285,14 @@ form h3 {
   background-color: #ab3383;
   background-repeat: no-repeat;
   background-size: cover; }
-  .hero h1, .hero h2, .hero blockquote, .hero p, .hero .tooltip_text, .hero--centered h1, .hero--centered h2, .hero--centered blockquote, .hero--centered p, .hero--centered .tooltip_text, .hero--right h1, .hero--right h2, .hero--right blockquote, .hero--right p, .hero--right .tooltip_text {
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
-  .hero:before, .hero--centered:before, .hero--right:before {
+  .hero-v2:before, .hero-v2--centered:before, .hero-v2--right:before {
     content: ''; }
-  .hero p, .hero .tooltip_text, .hero--centered p, .hero--centered .tooltip_text, .hero--right p, .hero--right .tooltip_text {
+  .hero-v2 p, .hero-v2 .tooltip_text, .hero-v2--centered p, .hero-v2--centered .tooltip_text, .hero-v2--right p, .hero-v2--right .tooltip_text {
     border-bottom-color: white; }
   @media only screen and (min-width: 1024px) {
-    .hero, .hero--centered, .hero--right {
+    .hero-v2, .hero-v2--centered, .hero-v2--right {
       padding-top: 33.33333%; } }
-  .hero:before, .hero--centered:before, .hero--right:before {
+  .hero-v2:before, .hero-v2--centered:before, .hero-v2--right:before {
     position: absolute;
     top: 0;
     right: 0;
@@ -2308,16 +2307,16 @@ form h3 {
     background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=1);
     display: block; }
-  .hero .wrap, .hero--centered .wrap, .hero--right .wrap {
+  .hero-v2 .wrap, .hero-v2--centered .wrap, .hero-v2--right .wrap {
     position: relative;
     z-index: 2; }
-  .hero figure, .hero--centered figure, .hero--right figure {
+  .hero-v2 figure, .hero-v2--centered figure, .hero-v2--right figure {
     margin: 0; }
-  .hero [class*="btn"], .hero--centered [class*="btn"], .hero--right [class*="btn"] {
+  .hero-v2 [class*="btn"], .hero-v2--centered [class*="btn"], .hero-v2--right [class*="btn"] {
     margin-top: 16px; }
-  .hero .hero_content > *, .hero--centered .hero_content > *, .hero--right .hero_content > * {
+  .hero-v2 .hero_content > *, .hero-v2--centered .hero_content > *, .hero-v2--right .hero_content > * {
     margin-bottom: 0; }
-  .hero_title, .hero--centered_title, .hero--right_title {
+  .hero-v2_title, .hero-v2--centered_title, .hero-v2--right_title {
     /* CALCULATE THE FONT SIZE */
     font-size: 33px;
     /* LINE HEIGHT */
@@ -2327,7 +2326,7 @@ form h3 {
     /* FONT STYLE */
     /* FONT VARIANT */
     /* FONT Family */ }
-  .hero_subtitle, .hero--centered_subtitle, .hero--right_subtitle {
+  .hero-v2_subtitle, .hero-v2--centered_subtitle, .hero-v2--right_subtitle {
     /* CALCULATE THE FONT SIZE */
     font-size: 20px;
     /* LINE HEIGHT */
@@ -2338,18 +2337,18 @@ form h3 {
     /* FONT VARIANT */
     /* FONT Family */
     margin-top: 8px; }
-  .hero_info, .hero--centered_info, .hero--right_info {
+  .hero-v2_info, .hero-v2--centered_info, .hero-v2--right_info {
     display: block;
     margin: 32px 0 0;
     padding-top: 24px;
     border-top-width: 1px;
     border-top-style: solid; }
   @media only screen and (max-width: 639px) {
-    .hero, .hero--centered, .hero--right {
+    .hero-v2, .hero-v2--centered, .hero-v2--right {
       text-align: center; }
-      .hero .hero_content, .hero--centered .hero_content, .hero--right .hero_content {
+      .hero-v2 .hero-v2_content, .hero-v2--centered .hero-v2_content, .hero-v2--right .hero-v2_content {
         margin: 0 auto; }
-      .hero:before, .hero--centered:before, .hero--right:before {
+      .hero-v2:before, .hero-v2--centered:before, .hero-v2--right:before {
         background: transparent;
         background: -moz-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
         background: -webkit-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
@@ -2358,7 +2357,7 @@ form h3 {
         background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=1); } }
   @media only screen and (min-width: 640px) {
-    .hero_title, .hero--centered_title, .hero--right_title {
+    .hero-v2_title, .hero-v2--centered_title, .hero-v2--right_title {
       /* CALCULATE THE FONT SIZE */
       font-size: 42px;
       /* LINE HEIGHT */
@@ -2368,7 +2367,7 @@ form h3 {
       /* FONT VARIANT */
       /* FONT Family */
       margin-bottom: 16px; }
-    .hero_subtitle, .hero--centered_subtitle, .hero--right_subtitle {
+    .hero-v2_subtitle, .hero-v2--centered_subtitle, .hero-v2--right_subtitle {
       /* CALCULATE THE FONT SIZE */
       font-size: 26px;
       /* LINE HEIGHT */
@@ -2378,7 +2377,7 @@ form h3 {
       /* FONT VARIANT */
       /* FONT Family */ } }
   @media only screen and (min-width: 800px) {
-    .hero_title, .hero--centered_title, .hero--right_title {
+    .hero-v2_title, .hero-v2--centered_title, .hero-v2--right_title {
       /* CALCULATE THE FONT SIZE */
       font-size: 53px;
       /* LINE HEIGHT */
@@ -2387,7 +2386,7 @@ form h3 {
       /* FONT STYLE */
       /* FONT VARIANT */
       /* FONT Family */ }
-    .hero_subtitle, .hero--centered_subtitle, .hero--right_subtitle {
+    .hero-v2_subtitle, .hero-v2--centered_subtitle, .hero-v2--right_subtitle {
       /* CALCULATE THE FONT SIZE */
       font-size: 33px;
       /* LINE HEIGHT */
@@ -2397,9 +2396,9 @@ form h3 {
       /* FONT VARIANT */
       /* FONT Family */ } }
   @media only screen and (min-width: 1024px) {
-    .hero, .hero--centered, .hero--right {
+    .hero-v2, .hero-v2--centered, .hero-v2--right {
       height: 0; }
-      .hero_title, .hero--centered_title, .hero--right_title {
+      .hero-v2_title, .hero-v2--centered_title, .hero-v2--right_title {
         /* CALCULATE THE FONT SIZE */
         font-size: 68px;
         /* LINE HEIGHT */
@@ -2408,13 +2407,13 @@ form h3 {
         /* FONT STYLE */
         /* FONT VARIANT */
         /* FONT Family */ }
-      .hero .wrap, .hero--centered .wrap, .hero--right .wrap {
+      .hero-v2 .wrap, .hero-v2--centered .wrap, .hero-v2--right .wrap {
         position: absolute;
         right: 0;
         bottom: 80px;
         left: 0; } }
 @media only screen and (min-width: 640px) {
-  .hero:before {
+  .hero-v2:before {
     background: rgba(0, 0, 0, 0.4);
     background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
     background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
@@ -2422,17 +2421,17 @@ form h3 {
     background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
     background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000', endColorstr='#00000000',GradientType=1); } }
-.hero--centered {
+.hero-v2--centered {
   text-align: center; }
-  .hero--centered .hero_content {
+  .hero-v2--centered .hero-v2_content {
     margin: 0 auto; }
-  .hero--centered p, .hero--centered .tooltip_text {
+  .hero-v2--centered p, .hero-v2--centered .tooltip_text {
     margin-left: auto;
     margin-right: auto; }
 @media only screen and (min-width: 640px) {
-  .hero--right .hero_content {
+  .hero-v2--right .hero-v2_content {
     float: right; }
-  .hero--right:before {
+  .hero-v2--right:before {
     background: transparent;
     background: -moz-linear-gradient(left, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
     background: -webkit-linear-gradient(left, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);

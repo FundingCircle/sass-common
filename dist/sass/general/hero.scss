@@ -1,5 +1,5 @@
 // General hero / billboard component
-.hero {
+.hero-v2 {
   &,
   &--centered,
   &--right {
@@ -64,7 +64,7 @@
     @include breakPoints(false, first($bpHeroList)) {
       text-align: center;
 
-      .hero_content {
+      .hero-v2_content {
         margin: 0 auto;
       }
 
@@ -124,7 +124,7 @@
   &--centered {
     text-align: center;
 
-    .hero_content {
+    .hero-v2_content {
       margin: 0 auto;
     }
 
@@ -138,7 +138,7 @@
 
     @include breakPoints(first($bpHeroList), false) {
 
-      .hero_content {
+      .hero-v2_content {
         float: right;
       }
 
