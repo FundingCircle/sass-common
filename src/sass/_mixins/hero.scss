@@ -2,9 +2,9 @@
   HERO MIXIN
 
   HTML structure:
-  section.hero(--centered/--right).hero--[name-of-your-custom-modifier]
+  section.hero-v2(--centered/--right).hero-v2--[name-of-your-custom-modifier]
     .wrap
-      .hero_content
+      .hero-v2_content
         {content}
 
   Variables:
@@ -119,18 +119,13 @@
 
   @if $heroTextShadow {
     // enable text shadow
-    h1,
-    h2,
-    blockquote,
-    p {
-      text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
-    }
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
   }
 
   &:before {
     @if $heroBackgroundShadow {
       // enable the gradient background
-      // rest of the styling is handled in the default class ('.hero')
+      // rest of the styling is handled in the default class ('.hero-v2')
       content: '';
     } @else {
       display: none;
@@ -146,7 +141,6 @@
     $currentHeroBackgroundPosition: backgroundPosition(heroCurrentItem($heroBackgroundPosition, $i));
     $currentHeroMaxWidth: heroCurrentItem($heroMaxWidth, $i);
     $currentHeroImgResolutions: backgroundImage(heroCurrentItem($heroImgResolutions, $i), $i, $heroImgPath, heroCurrentItem($heroImgResolutions, $i));
-
     // we don't try to apply a new breakpoint unless at least one style is changing or the ratio needs to be applied (if the for is at the last iteration)
     @if $currentHeroColor
         or $currentHeroPaddingTop
@@ -188,7 +182,7 @@
         }
 
         // set the padding top for each breakpoint
-        @if $currentHeroPaddingTop and $i != (length($bpHeroList) + 1) {
+        @if $currentHeroPaddingTop and (($i != (length($bpHeroList) + 1) or $heroRatio == false)) {
           padding-top: rem($currentHeroPaddingTop);
         }
 
@@ -199,7 +193,7 @@
 
         // set the max-width for the content (inside .wrap) as a percentage
         @if $currentHeroMaxWidth {
-          .hero_content {
+          .hero-v2_content {
             max-width: $currentHeroMaxWidth * 1%;
           }
         }
@@ -214,7 +208,7 @@
         }
 
         // for extra large screens, the resizing becomes ratio based and we do this by setting a padding-top
-        // rest of the styling for this to work is done in the default class (.hero)
+        // rest of the styling for this to work is done in the default class (.hero-v2)
         @if $i == (length($bpHeroList) + 1) {
           @if $heroRatio {
             padding-top: 100% / $heroRatio;
