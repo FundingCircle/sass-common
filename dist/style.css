@@ -2338,7 +2338,7 @@ form h3 {
     /* FONT VARIANT */
     /* FONT Family */
     margin-top: 8px; }
-  .hero_content, .hero--centered_content, .hero--right_content {
+  .hero_info, .hero--centered_info, .hero--right_info {
     display: block;
     margin: 32px 0 0;
     padding-top: 24px;
