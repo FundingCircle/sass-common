@@ -120,20 +120,23 @@
     }
 }
 
-.cl--a { @include clearCSS; }
-.cl { @include clearCSS(false); }
+%cl--a { @include clearCSS; }
+%cl { @include clearCSS(false); }
+
+.cl--a { @extend %cl--a; }
+.cl { @extend %cl; }
 
 @mixin clear($pseudo: true, $extend: true) {
   @if $pseudo {
     @if $extend {
-      @extend .cl--a;
+      @extend %cl--a;
     } @else {
       @include clearCSS;
     }
   }
   @else {
     @if $extend {
-      @extend .cl;
+      @extend %cl;
     } @else {
       @include clearCSS(false);
     }

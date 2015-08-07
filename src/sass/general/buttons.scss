@@ -2,8 +2,7 @@
   BUTTONS
   - modifiers can be size modifiers (--s) or type (--t)
 \* ---------------------------------------------------------------------- */
-
-.btn {
+%btn {
   @include borderRadius(0.3);
   border: 0;
   display: inline-block;
@@ -13,29 +12,34 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.btn {
+  @extend %btn;
 
   // sizes
   &--large {
-    @extend .btn;
+    @extend %btn;
     @include font(1, 3.25);
     padding: rem(0 1);
   }
 
   &--normal,
   &--medium {
-    @extend .btn;
+    @extend %btn;
     @include font(0, 3);
     padding: rem(0 1);
   }
 
   &--small {
-    @extend .btn;
+    @extend %btn;
     @include font(-1, 2.25);
     padding: rem(0 1);
 
   }
 
   &--full {
+    @extend %btn;
     display: block;
     text-align: center;
     width: 100%;
@@ -43,7 +47,7 @@
 
   // types
   &--primary {
-    @extend .btn;
+    @extend %btn;
     color: $colorFontLight;
     background: $colorCtaPrimary;
 
@@ -63,7 +67,7 @@
   }
 
   &--secondary {
-    @extend .btn;
+    @extend %btn;
     color: $colorCtaPrimary;
     border: 1px solid $colorCtaSecondaryBorder;
     background: transparent;
@@ -89,7 +93,7 @@
 
 
   &--secondary-alt {
-    @extend .btn;
+    @extend %btn;
     color: $colorCtaAlternative;
     border: 1px solid $colorCtaAlternative;
 
@@ -154,25 +158,4 @@
       margin-right: rem(.75);
     }
   }
-
-  /* -------------------------------------- */
-  /* ------------- DEPRECATED ------------- */
-  /* will be removed after we replace them  */
-  /* in both static-pages and broker app    */
-  /* -------------------------------------- */
-
-  // Button types
-  &--t1 { @extend .btn--primary; }
-  &--t2 { @extend .btn--secondary; }
-  &--t3 { @extend .btn--secondary-alt; }
-
-
-  // Button sizes
-  &--s1 { @extend .btn--normal; }
-  &--s2 { @extend .btn--small; }
-  &--s3 { @extend .btn--large; }
-
-  /* END OF DEPRECATED */
-
 }
-

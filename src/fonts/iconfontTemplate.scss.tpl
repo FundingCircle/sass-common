@@ -17,7 +17,7 @@ $fontPath: 'fonts/' !default;
 
 // We need the important rule so that we don't override the icon fonts
 // scss-lint:disable ImportantRule
-.fci-icon:before {
+%fci-icon {
   font-family: "<%= fontName %>" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -28,11 +28,17 @@ $fontPath: 'fonts/' !default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.fci-icon {
+  &:before {
+    @extend %fci-icon;
+  }
+}
 // scss-lint:enable ImportantRule
 
 [class^="<%= className %>-"]:before,
 [class*=" <%= className %>-"]:before {
-  @extend .fci-icon;
+  @extend %fci-icon;
 }
 
 <% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>"; }

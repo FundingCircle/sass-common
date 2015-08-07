@@ -172,7 +172,7 @@ $tabletArrowsBeforeSize: $arrowsBeforeSize + 4;
     &:before {
       text-indent: 0;
       float: left;
-      @extend .fci-icon;
+      @extend %fci-icon;
       @extend .fci-tick;
     }
 
