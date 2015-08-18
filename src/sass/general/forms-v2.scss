@@ -989,3 +989,42 @@
     }
   }
 }
+
+
+
+/* ---------------------------------------------------------------------- *\
+  SWITCH BUTTON
+  Turn on and off
+\* ---------------------------------------------------------------------- */
+
+.form-switch {
+  input:empty ~ label {
+    @include font(0, true, 400);
+
+    position: relative;
+    float: left;
+    line-height: rem(2.5);
+    cursor: pointer;
+  }
+
+  input:empty ~ label:before,
+  input:empty ~ label:after {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: 'Off';
+    width: 100px;
+    background-color: $colorBackgroundMain;
+    text-align: center;
+    border: 1px solid $ColorBrand2;
+    border-radius: 5px;
+  }
+
+  input:checked ~ label:after {
+    background-color: $ColorBrand2;
+    content: 'On';
+    color: $colorBackgroundMain;
+  }
+}
