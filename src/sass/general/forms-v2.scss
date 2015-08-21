@@ -1006,6 +1006,7 @@
 
 .form-switch {
   position: relative;
+  float: left;
 
   input {
     position: absolute;
@@ -1016,6 +1017,7 @@
     line-height: rem(2.5);
     cursor: pointer;
     font-weight: 400;
+    display: block;
   }
 
   label:after {
