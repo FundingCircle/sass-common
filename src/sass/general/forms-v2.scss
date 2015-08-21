@@ -998,23 +998,25 @@
 \* ---------------------------------------------------------------------- */
 
 .form-switch {
-  input:empty ~ label {
-    @include font(0, true, 400);
+  position: relative;
 
-    position: relative;
-    float: left;
-    line-height: rem(2.5);
-    cursor: pointer;
+  input {
+    position: absolute;
+    opacity: 0;
   }
 
-  input:empty ~ label:before,
-  input:empty ~ label:after {
-    position: absolute;
+  label {
+    line-height: rem(2.5);
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  label:after {
     display: block;
     top: 0;
     bottom: 0;
     left: 0;
-    content: 'Off';
+    content: attr(data-off);
     width: 100px;
     background-color: $colorBackgroundMain;
     text-align: center;
@@ -1024,7 +1026,7 @@
 
   input:checked ~ label:after {
     background-color: $ColorBrand2;
-    content: 'On';
+    content: attr(data-on);
     color: $colorBackgroundMain;
   }
 }
