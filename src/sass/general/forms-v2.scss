@@ -989,3 +989,56 @@
     }
   }
 }
+
+
+
+/* ---------------------------------------------------------------------- *\
+  SWITCH BUTTON
+  Turn on and off
+\* ---------------------------------------------------------------------- */
+
+.form-switch {
+  position: relative;
+  line-height: rem(2.5);
+  height: rem(2.5);
+  cursor: pointer;
+  font-weight: 400;
+  display: block;
+  max-width: 100px;
+  text-align: center;
+  border: 1px solid $ColorBrand2;
+  border-radius: 5px;
+  overflow: hidden;
+  background: $colorBackgroundMain;
+
+  input {
+    position: absolute;
+    opacity: 0;
+
+    &:checked ~ span:after {
+      left: 0;
+    }
+  }
+
+  span {
+    &:before,
+    &:after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    &:before {
+      content: attr(data-off);
+    }
+
+    &:after {
+      content: attr(data-on);
+      left: -100%;
+      background-color: $ColorBrand2;
+      color: $colorBackgroundMain;
+    }
+  }
+}
