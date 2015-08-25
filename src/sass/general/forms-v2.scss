@@ -1006,36 +1006,46 @@
 
 .form-switch {
   position: relative;
-  float: left;
+  line-height: rem(2.5);
+  height: rem(2.5);
+  cursor: pointer;
+  font-weight: 400;
+  display: block;
+  max-width: 100px;
+  text-align: center;
+  border: 1px solid $ColorBrand2;
+  border-radius: 5px;
+  overflow: hidden;
+  background: $colorBackgroundMain;
 
   input {
     position: absolute;
     opacity: 0;
+
+    &:checked ~ span:after {
+      left: 0;
+    }
   }
 
-  label {
-    line-height: rem(2.5);
-    cursor: pointer;
-    font-weight: 400;
-    display: block;
-  }
+  span {
+    &:before,
+    &:after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
 
-  label:after {
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    content: attr(data-off);
-    width: 100px;
-    background-color: $colorBackgroundMain;
-    text-align: center;
-    border: 1px solid $ColorBrand2;
-    border-radius: 5px;
-  }
+    &:before {
+      content: attr(data-off);
+    }
 
-  input:checked ~ label:after {
-    background-color: $ColorBrand2;
-    content: attr(data-on);
-    color: $colorBackgroundMain;
+    &:after {
+      content: attr(data-on);
+      left: -100%;
+      background-color: $ColorBrand2;
+      color: $colorBackgroundMain;
+    }
   }
 }
