@@ -989,3 +989,32 @@
     }
   }
 }
+
+.multi-switch {
+  @include table(middle, false, false, equal, false, false);
+
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid $colorCtaPrimary;
+  border-radius: 5px;
+  text-align: center;
+
+  a {
+    padding: rem(.5 1);
+    border-collapse: collapse;
+    border-right: 1px solid $colorCtaPrimary;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &.is-active {
+      background: $colorCtaPrimary;
+      color: $colorFontLight;
+      text-decoration: none;
+    }
+  }
+
+}
