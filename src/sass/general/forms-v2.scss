@@ -86,26 +86,32 @@
     @extend .form-default-col--large;
   }
 
-  &_dob-wrap {
-
+  &_column-wrap {
     @include breakPoints($bpMobilePortraitLarge, false) {
-      @include table(top, false, false, 4 6 5, false, 0);
       margin-bottom: rem(2);
 
-      & > *:nth-child(2) {
-        padding: rem(0 1);
+      & > *:nth-child(n+2) {
+        padding-left: rem(1);
       }
+    }
+
+    &--3columns {
+      @extend .form-default_column-wrap;
+      @include table(top, 0 $bpMobilePortraitLarge, false, 4 6 5, false, 0);
+    }
+
+    &--2columns {
+      @extend .form-default_column-wrap;
+      @include table(top, 0 $bpMobilePortraitLarge, false, 5 3, false, 0);
     }
   }
 
-  &_date-wrap {
-    @include breakPoints($bpMobilePortraitLarge, false) {
-      @include table(top, false, false, 5 3, false, 0);
+  &_dob-wrap {
+    @extend .form-default_column-wrap--3columns;
+  }
 
-      & > *:first-child {
-        padding-right: rem(1);
-      }
-    }
+  &_date-wrap {
+    @extend .form-default_column-wrap--2columns;
   }
 
   &_info-box {
@@ -153,6 +159,7 @@
   fieldset {
     padding: 0;
     margin: 0;
+    border: 0;
   }
 
   p {
