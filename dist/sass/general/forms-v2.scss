@@ -86,90 +86,83 @@
     @extend .form-default-col--large;
   }
 
-  &_column-wrap {
-    @include breakPoints($bpMobilePortraitLarge, false) {
-      margin-bottom: rem(2);
-
-      & > *:nth-child(n+2) {
-        padding-left: rem(1);
-      }
-    }
-
-    &--3columns {
-      @extend .form-default_column-wrap;
-      @include table(top, 0 $bpMobilePortraitLarge, false, 4 6 5, false, 0);
-    }
-
-    &--2columns {
-      @extend .form-default_column-wrap;
-      @include table(top, 0 $bpMobilePortraitLarge, false, 5 3, false, 0);
-    }
-  }
-
   &_dob-wrap {
-    @extend .form-default_column-wrap--3columns;
-  }
 
-  &_date-wrap {
-    @extend .form-default_column-wrap--2columns;
-  }
+     @include breakPoints($bpMobilePortraitLarge, false) {
+       @include table(top, false, false, 4 6 5, false, 0);
+       margin-bottom: rem(2);
 
-  &_info-box {
-    background: rgb(255,255,255);
-    padding: $mobileFormGutterSize;
+       & > *:nth-child(2) {
+         padding: rem(0 1);
+       }
+     }
+   }
 
-    @include breakPoints(0, $formBreakpoint) {
-      border-bottom: 4px solid $ColorBrand1;
-    }
+   &_date-wrap {
+     @include breakPoints($bpMobilePortraitLarge, false) {
+       @include table(top, false, false, 5 3, false, 0);
 
-    @include breakPoints($formBreakpoint, false) {
-      border-left: 4px solid $ColorBrand1;
-      padding: $desktopFormGutterSize;
-    }
+       & > *:first-child {
+         padding-right: rem(1);
+       }
+     }
+   }
 
-    h5 {
-      color: $ColorBrand1;
-      @include font(0, true, 400);
-    }
+   &_info-box {
+     background: rgb(255,255,255);
+     padding: $mobileFormGutterSize;
 
-    p {
-      @include font(-1);
-    }
-  }
+     @include breakPoints(0, $formBreakpoint) {
+       border-bottom: 4px solid $ColorBrand1;
+     }
 
-  & > .btn { float: right; }
+     @include breakPoints($formBreakpoint, false) {
+       border-left: 4px solid $ColorBrand1;
+       padding: $desktopFormGutterSize;
+     }
 
-  .btn--primary:last-child {
-    margin-bottom: 0;
-  }
+     h5 {
+       color: $ColorBrand1;
+       @include font(0, true, 400);
+     }
 
-  label,
-  legend {
-    display: block;
-    font-weight: 300;
-    margin-bottom: rem(0.5);
+     p {
+       @include font(-1);
+     }
+   }
 
-    &.required:after {
-      content: '*';
-      color: $ColorBrand2;
-      padding-left: 0.3em;
-    }
-  }
+   & > .btn { float: right; }
 
-  fieldset {
-    padding: 0;
-    margin: 0;
-    border: 0;
-  }
+   .btn--primary:last-child {
+     margin-bottom: 0;
+   }
 
-  p {
-    font-weight: 300;
-  }
+   label,
+   legend {
+     display: block;
+     font-weight: 300;
+     margin-bottom: rem(0.5);
 
-  &_wrap {
-    @extend .cl--a;
-    margin-bottom: rem(3);
-  }
+     &.required:after {
+       content: '*';
+       color: $ColorBrand2;
+       padding-left: 0.3em;
+     }
+   }
+
+   fieldset {
+     padding: 0;
+     margin: 0;
+   }
+
+   p {
+     font-weight: 300;
+   }
+
+   &_wrap {
+     @extend .cl--a;
+     margin-bottom: rem(3);
+   }
 
   &_element {
     position: relative;

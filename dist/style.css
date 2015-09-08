@@ -1616,44 +1616,36 @@ form h3 {
         padding-left: 32px;
         margin-bottom: 32px; } }
   @media only screen and (min-width: 480px) {
-    .form-default_column-wrap, .form-default_column-wrap--3columns, .form-default_dob-wrap, .form-default_column-wrap--2columns, .form-default_date-wrap {
+    .form-default_dob-wrap {
+      width: 100%;
+      display: table;
       margin-bottom: 32px; }
-      .form-default_column-wrap > *:nth-child(n+2), .form-default_column-wrap--3columns > *:nth-child(n+2), .form-default_dob-wrap > *:nth-child(n+2), .form-default_column-wrap--2columns > *:nth-child(n+2), .form-default_date-wrap > *:nth-child(n+2) {
-        padding-left: 16px; } }
-  .form-default_column-wrap--3columns, .form-default_dob-wrap {
-    width: 100%; }
-    @media only screen and (min-width: 0px) and (max-width: 479px) {
-      .form-default_column-wrap--3columns > *, .form-default_dob-wrap > * {
-        display: block; } }
-    @media only screen and (min-width: 480px) {
-      .form-default_column-wrap--3columns, .form-default_dob-wrap {
-        display: table; }
-        .form-default_column-wrap--3columns > *, .form-default_dob-wrap > * {
-          display: table-cell;
-          vertical-align: top;
-          padding: 0; }
-          .form-default_column-wrap--3columns > *:nth-child(1), .form-default_dob-wrap > *:nth-child(1) {
-            width: 19.09883%; }
-          .form-default_column-wrap--3columns > *:nth-child(2), .form-default_dob-wrap > *:nth-child(2) {
-            width: 49.99927%; }
-          .form-default_column-wrap--3columns > *:nth-child(3), .form-default_dob-wrap > *:nth-child(3) {
-            width: 30.9019%; } }
-  .form-default_column-wrap--2columns, .form-default_date-wrap {
-    width: 100%; }
-    @media only screen and (min-width: 0px) and (max-width: 479px) {
-      .form-default_column-wrap--2columns > *, .form-default_date-wrap > * {
-        display: block; } }
-    @media only screen and (min-width: 480px) {
-      .form-default_column-wrap--2columns, .form-default_date-wrap {
-        display: table; }
-        .form-default_column-wrap--2columns > *, .form-default_date-wrap > * {
-          display: table-cell;
-          vertical-align: top;
-          padding: 0; }
-          .form-default_column-wrap--2columns > *:nth-child(1), .form-default_date-wrap > *:nth-child(1) {
-            width: 72.35984%; }
-          .form-default_column-wrap--2columns > *:nth-child(2), .form-default_date-wrap > *:nth-child(2) {
-            width: 27.64016%; } }
+      .form-default_dob-wrap > * {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0; }
+        .form-default_dob-wrap > *:nth-child(1) {
+          width: 19.09883%; }
+        .form-default_dob-wrap > *:nth-child(2) {
+          width: 49.99927%; }
+        .form-default_dob-wrap > *:nth-child(3) {
+          width: 30.9019%; }
+      .form-default_dob-wrap > *:nth-child(2) {
+        padding: 0 16px; } }
+  @media only screen and (min-width: 480px) {
+    .form-default_date-wrap {
+      width: 100%;
+      display: table; }
+      .form-default_date-wrap > * {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0; }
+        .form-default_date-wrap > *:nth-child(1) {
+          width: 72.35984%; }
+        .form-default_date-wrap > *:nth-child(2) {
+          width: 27.64016%; }
+      .form-default_date-wrap > *:first-child {
+        padding-right: 16px; } }
   .form-default_info-box {
     background: white;
     padding: 24px; }
@@ -1698,8 +1690,7 @@ form h3 {
       padding-left: 0.3em; }
   .form-default fieldset {
     padding: 0;
-    margin: 0;
-    border: 0; }
+    margin: 0; }
   .form-default p, .form-default .tooltip_text {
     font-weight: 300; }
   .form-default_wrap {
