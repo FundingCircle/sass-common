@@ -88,81 +88,81 @@
 
   &_dob-wrap {
 
-    @include breakPoints($bpMobilePortraitLarge, false) {
-      @include table(top, false, false, 4 6 5, false, 0);
-      margin-bottom: rem(2);
+     @include breakPoints($bpMobilePortraitLarge, false) {
+       @include table(top, false, false, 4 6 5, false, 0);
+       margin-bottom: rem(2);
 
-      & > *:nth-child(2) {
-        padding: rem(0 1);
-      }
-    }
-  }
+       & > *:nth-child(2) {
+         padding: rem(0 1);
+       }
+     }
+   }
 
-  &_date-wrap {
-    @include breakPoints($bpMobilePortraitLarge, false) {
-      @include table(top, false, false, 5 3, false, 0);
+   &_date-wrap {
+     @include breakPoints($bpMobilePortraitLarge, false) {
+       @include table(top, false, false, 5 3, false, 0);
 
-      & > *:first-child {
-        padding-right: rem(1);
-      }
-    }
-  }
+       & > *:first-child {
+         padding-right: rem(1);
+       }
+     }
+   }
 
-  &_info-box {
-    background: rgb(255,255,255);
-    padding: $mobileFormGutterSize;
+   &_info-box {
+     background: rgb(255,255,255);
+     padding: $mobileFormGutterSize;
 
-    @include breakPoints(0, $formBreakpoint) {
-      border-bottom: 4px solid $ColorBrand1;
-    }
+     @include breakPoints(0, $formBreakpoint) {
+       border-bottom: 4px solid $ColorBrand1;
+     }
 
-    @include breakPoints($formBreakpoint, false) {
-      border-left: 4px solid $ColorBrand1;
-      padding: $desktopFormGutterSize;
-    }
+     @include breakPoints($formBreakpoint, false) {
+       border-left: 4px solid $ColorBrand1;
+       padding: $desktopFormGutterSize;
+     }
 
-    h5 {
-      color: $ColorBrand1;
-      @include font(0, true, 400);
-    }
+     h5 {
+       color: $ColorBrand1;
+       @include font(0, true, 400);
+     }
 
-    p {
-      @include font(-1);
-    }
-  }
+     p {
+       @include font(-1);
+     }
+   }
 
-  & > .btn { float: right; }
+   & > .btn { float: right; }
 
-  .btn--primary:last-child {
-    margin-bottom: 0;
-  }
+   .btn--primary:last-child {
+     margin-bottom: 0;
+   }
 
-  label,
-  legend {
-    display: block;
-    font-weight: 300;
-    margin-bottom: rem(0.5);
+   label,
+   legend {
+     display: block;
+     font-weight: 300;
+     margin-bottom: rem(0.5);
 
-    &.required:after {
-      content: '*';
-      color: $ColorBrand2;
-      padding-left: 0.3em;
-    }
-  }
+     &.required:after {
+       content: '*';
+       color: $ColorBrand2;
+       padding-left: 0.3em;
+     }
+   }
 
-  fieldset {
-    padding: 0;
-    margin: 0;
-  }
+   fieldset {
+     padding: 0;
+     margin: 0;
+   }
 
-  p {
-    font-weight: 300;
-  }
+   p {
+     font-weight: 300;
+   }
 
-  &_wrap {
-    @extend .cl--a;
-    margin-bottom: rem(3);
-  }
+   &_wrap {
+     @extend .cl--a;
+     margin-bottom: rem(3);
+   }
 
   &_element {
     position: relative;
