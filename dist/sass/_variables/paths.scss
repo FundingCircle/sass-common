@@ -1,0 +1,30 @@
+// Paths
+//
+// SASS shortcut paths to various components
+//
+// Styleguide 3.0
+
+// $imgPath
+//
+// Path to images directory
+//
+// Styleguide 3.1
+
+$imgPath: '../img/';
+
+// $svgPath
+//
+// Path to SVG directory
+//
+// Styleguide 3.2
+
+$svgPath: $imgPath + 'svg/';
+
+
+// $iconsPath
+//
+// Path to icons directory
+//
+// Styleguide 3.3
+
+$iconsPath: '../fonts';

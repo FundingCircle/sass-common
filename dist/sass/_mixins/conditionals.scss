@@ -1,0 +1,16 @@
+/* ---------------------------------------------------------------------- *\
+  CONDITIONS TO SHOW ONLY ON IE OR TO EXCLUDE IE
+  $ie: can be 8 or 9
+\* ---------------------------------------------------------------------- */
+
+@mixin forIE($ieVersion: 8) {
+  .ie-#{$ieVersion} & {
+    @content;
+  }
+}
+
+@mixin notIE($ieVersion: 8) {
+  html:not(.ie-#{$ieVersion}) {
+    @content;
+  }
+}

@@ -1,0 +1,178 @@
+/* ---------------------------------------------------------------------- *\
+  BUTTONS
+  - modifiers can be size modifiers (--s) or type (--t)
+\* ---------------------------------------------------------------------- */
+
+.btn {
+  @include borderRadius(0.3);
+  border: 0;
+  display: inline-block;
+  margin-bottom: rem(1);
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // sizes
+  &--large {
+    @extend .btn;
+    @include font(1, 3.25);
+    padding: rem(0 1);
+  }
+
+  &--normal,
+  &--medium {
+    @extend .btn;
+    @include font(0, 3);
+    padding: rem(0 1);
+  }
+
+  &--small {
+    @extend .btn;
+    @include font(-1, 2.25);
+    padding: rem(0 1);
+
+  }
+
+  &--full {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  // types
+  &--primary {
+    @extend .btn;
+    color: $colorFontLight;
+    background: $colorCtaPrimary;
+
+    &:hover {
+      background: $colorCtaPrimaryHover;
+    }
+
+    &:active,
+    &:focus {
+      background: $colorCtaPrimaryActive;
+    }
+
+    &.btn--disabled,
+    &[disabled] {
+      background: $colorCtaPrimaryDisabled;
+    }
+  }
+
+  &--secondary {
+    @extend .btn;
+    color: $colorCtaPrimary;
+    border: 1px solid $colorCtaSecondaryBorder;
+    background: transparent;
+
+    &:hover {
+      border-color: $colorCtaPrimary;
+      background: rgba($colorCtaDisabledText, .6);
+    }
+
+    &:active,
+    &:focus {
+      border-color: $colorCtaPrimary;
+      background: rgba($colorCtaPrimaryHover, .1);
+    }
+
+    &.btn--disabled,
+    &[disabled] {
+      background: rgba($colorCtaDisabledText, .6);
+      border-color: $colorCtaSecondaryDisabled;
+      color: $colorCtaSecondaryDisabled;
+    }
+  }
+
+
+  &--secondary-alt {
+    @extend .btn;
+    color: $colorCtaAlternative;
+    border: 1px solid $colorCtaAlternative;
+
+    &:hover {
+      background: rgba($colorCtaAlternativeBack, .3);
+    }
+
+    &:active,
+    &:focus {
+      border-color: rgba($colorCtaAlternative, .5);
+      background: rgba($colorCtaAlternativeBack, .2);
+    }
+
+    &.btn--disabled,
+    &[disabled] {
+      border: 0;
+      background: rgba($colorCtaAlternativeBack, .2);
+      color: rgba($colorCtaAlternative, .2);
+    }
+  }
+
+  &--link {
+    padding: 0;
+    border: 0;
+    color: $colorCtaPrimary;
+    background: none;
+    font: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  $spinnerThickness: 2px;
+
+  &.is-loading {
+    &:after {
+      @include animation(loopRotate 1.4s infinite linear);
+      @include prefix(transform, translateZ(0), webkit ms);
+      content: '';
+      border: $spinnerThickness solid $colorFontLight;
+      border-bottom-color: transparent;
+      width: rem(1);
+      height: rem(1);
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: rem(1);
+    }
+
+    &.btn--secondary:after {
+      border-color: $colorCtaSecondaryDisabled;
+      border-bottom-color: transparent;
+    }
+  }
+
+  &[class*="fci-"] {
+    &:before {
+      float: left;
+      font-size: inherit;
+      line-height: inherit;
+      margin-right: rem(.75);
+    }
+  }
+
+  /* -------------------------------------- */
+  /* ------------- DEPRECATED ------------- */
+  /* will be removed after we replace them  */
+  /* in both static-pages and broker app    */
+  /* -------------------------------------- */
+
+  // Button types
+  &--t1 { @extend .btn--primary; }
+  &--t2 { @extend .btn--secondary; }
+  &--t3 { @extend .btn--secondary-alt; }
+
+
+  // Button sizes
+  &--s1 { @extend .btn--normal; }
+  &--s2 { @extend .btn--small; }
+  &--s3 { @extend .btn--large; }
+
+  /* END OF DEPRECATED */
+
+}
+

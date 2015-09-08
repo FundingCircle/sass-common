@@ -1,0 +1,41 @@
+/* ---------------------------------------------------------------------- *\
+  Go to links
+\* ---------------------------------------------------------------------- */
+
+$goToLinkSize: rem(3);
+
+.go-to-link {
+  @include borderRadius(50, '%');
+  @include posAbs(negative($goToLinkSize / 2), 0, false, 0);
+  @include centerBlock(0, true);
+
+  display: block;
+  z-index: 2;
+  width: $goToLinkSize;
+  height: $goToLinkSize;
+  font-size: $goToLinkSize * 1.25 / 2;
+  line-height: $goToLinkSize;
+  text-align: center;
+  background: inherit;
+
+  svg {
+    @include centerBlock(0.8,true);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:before {
+    @extend .fci-icon;
+    @extend .fci-go-to-arrow;
+  }
+
+}
+
+
+// Form subtitles
+form h3 {
+  margin-bottom: rem(0.5);
+  font-weight: 400;
+}
