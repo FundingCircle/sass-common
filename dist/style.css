@@ -393,6 +393,12 @@ td, th {
 .fci-pencil:before, .form-default .input--inline:before {
   content: "\E017"; }
 
+.fci-right-arrow:before {
+  content: "\E018"; }
+
+.fci-left-arrow:before {
+  content: "\E019"; }
+
 /* ---------------------------------------------------------------------- *\
   SOURCE SANS
 \* ---------------------------------------------------------------------- */
