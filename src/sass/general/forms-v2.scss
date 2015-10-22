@@ -491,7 +491,7 @@
       position: absolute;
     }
 
-    :focus + &,
+    :focus ~ &,
     &.is-visible {
       height: auto;
       padding: rem(.8 1);
@@ -500,7 +500,7 @@
 
     @include breakPoints(0, $formBreakpoint) {
 
-      :focus + &,
+      :focus ~ &,
       &.is-visible {
         margin-bottom: rem(1);
 
@@ -518,7 +518,7 @@
       left: 100%;
       margin-left: rem(1);
 
-      :focus + &:before,
+      :focus ~ &:before,
       &.is-visible:before {
         @include triangle(left, $tooltipBackground, ($tooltipArrowHeight * 2) $tooltipArrowHeight);
         top: rem(.8);
