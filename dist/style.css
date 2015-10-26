@@ -2026,16 +2026,16 @@ form h3 {
     .form-default_tooltip:before {
       content: '';
       position: absolute; }
-    :focus + .form-default_tooltip,
+    :focus ~ .form-default_tooltip,
     .form-default_tooltip.is-visible {
       height: auto;
       padding: 12.8px 16px;
       overflow: visible; }
     @media only screen and (min-width: 0px) and (max-width: 639px) {
-      :focus + .form-default_tooltip,
+      :focus ~ .form-default_tooltip,
       .form-default_tooltip.is-visible {
         margin-bottom: 16px; }
-        :focus + .form-default_tooltip:before,
+        :focus ~ .form-default_tooltip:before,
         .form-default_tooltip.is-visible:before {
           display: block;
           width: 0;
@@ -2051,7 +2051,7 @@ form h3 {
         position: absolute;
         left: 100%;
         margin-left: 16px; }
-        :focus + .form-default_tooltip:before,
+        :focus ~ .form-default_tooltip:before,
         .form-default_tooltip.is-visible:before {
           display: block;
           width: 0;
