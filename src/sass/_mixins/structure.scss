@@ -148,7 +148,9 @@ $colRatio: 1;
   $bpMin: 9999;
   $bpMax: 0;
 
-  @each $list in $item {
+  @for $i from 1 through length($item) {
+    $list: nth($item, $i);
+
     $listBpMin: nth($list, 1); // breakpoint min - integer or false
     $listBpMax: nth($list, 2); // breakpoint max - integer or false
     $listCols:  nth($list, 3); // number of columns - integer
@@ -208,7 +210,6 @@ $colRatio: 1;
   }
 
 }
-
 
 
 @mixin tableCellV2($verticalAlign: false, $cols: false, $padding: false) {
