@@ -46,8 +46,15 @@
 .bg-7 { background: $colorBackground6;}
 .bg-8 { background: $colorFontDarkSoft;}
 
+.title {
+  @include font(3, true, 400);
+  display: block;
+  margin-bottom: rem(1);
+}
+
 .upper-title {
   @include font(-1, true, 300);
+  display: block;
   margin-bottom: rem(1);
   text-transform: uppercase;
 }
