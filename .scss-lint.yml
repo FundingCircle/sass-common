@@ -51,3 +51,13 @@ linters:
     enabled: false
   ZeroUnit:
     enabled: false
+  PseudoElement:
+    enabled: false
+  ColorVariable:
+    enabled: false
+  SpaceAroundOperator:
+    enabled: false
+  ColorVariable:
+    enabled: false
+  BangFormat:
+    enabled: false
