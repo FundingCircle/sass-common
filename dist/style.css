@@ -1041,6 +1041,33 @@ h6 {
 .bg-8 {
   background: #383838; }
 
+.title {
+  /* CALCULATE THE FONT SIZE */
+  font-size: 33px;
+  /* LINE HEIGHT */
+  line-height: 40px;
+  /* FONT WEIGHT */
+  font-weight: 400;
+  /* FONT STYLE */
+  /* FONT VARIANT */
+  /* FONT Family */
+  display: block;
+  margin-bottom: 40px; }
+
+.small-title {
+  /* CALCULATE THE FONT SIZE */
+  font-size: 13px;
+  /* LINE HEIGHT */
+  line-height: 16px;
+  /* FONT WEIGHT */
+  font-weight: 400;
+  /* FONT STYLE */
+  /* FONT VARIANT */
+  /* FONT Family */
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: 0; }
+
 .upper-title {
   /* CALCULATE THE FONT SIZE */
   font-size: 13px;
@@ -1051,6 +1078,7 @@ h6 {
   /* FONT STYLE */
   /* FONT VARIANT */
   /* FONT Family */
+  display: block;
   margin-bottom: 16px;
   text-transform: uppercase; }
 
@@ -1064,6 +1092,10 @@ h6 {
   display: block;
   width: 100%;
   height: auto; }
+
+.section-padding {
+  padding-top: 40px;
+  padding-bottom: 40px; }
 
 .thumb, .thumb--video {
   display: block;
