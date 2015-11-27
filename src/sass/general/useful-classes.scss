@@ -48,12 +48,14 @@
 
 .title {
   @include font(3, true, 400);
+
   display: block;
   margin-bottom: rem(2.5);
 }
 
 .small-title {
   @include font(-1, true, 400);
+
   display: block;
   text-transform: uppercase;
   margin-bottom: 0;
@@ -61,6 +63,7 @@
 
 .upper-title {
   @include font(-1, true, 300);
+
   display: block;
   margin-bottom: rem(1);
   text-transform: uppercase;
@@ -73,6 +76,7 @@
 
 .img-round {
   @include borderRadius(50, '%');
+
   display: block;
   width: 100%;
   height: auto;
@@ -95,6 +99,7 @@
 
   &--video {
     @extend .thumb;
+
     background: rgb(0,0,0);
 
     img {
@@ -104,6 +109,7 @@
     &:before,
     &:after {
       @include centerAbs(2);
+
       content: '';
     }
 
