@@ -49,7 +49,14 @@
 .title {
   @include font(3, true, 400);
   display: block;
-  margin-bottom: rem(1);
+  margin-bottom: rem(2.5);
+}
+
+.small-title {
+  @include font(-1, true, 400);
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 .upper-title {
@@ -71,6 +78,10 @@
   height: auto;
 }
 
+.section-padding {
+  padding-top: rem(2.5);
+  padding-bottom: rem(2.5);
+}
 
 // Thumb
 .thumb {
