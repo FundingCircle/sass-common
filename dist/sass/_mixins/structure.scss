@@ -457,3 +457,23 @@ $maxWrapWidth: 1200px;
     }
   }
 }
+
+/* ---------------------------------------------------------------------- *\
+  GOLDEN RATIO PADDINGS
+
+  Sets golden ratio left/right paddings for elements
+    $grpColumn: ratio of the content
+    $grpPadding: ratio for paddings
+
+    e.g: @include goldenRatioPaddings(5, 3 2);
+
+\* ---------------------------------------------------------------------- */
+
+@mixin goldenRatioPaddings($grpColumn, $grpPadding) {
+  $grpWidths: ();
+  $grpWidths: append($grpPadding, $grpColumn);
+  $grpWidths: colsWidth($grpWidths);
+
+  padding-left: nth($grpWidths, 1) * 1%;
+  padding-right: nth($grpWidths, 2) * 1%;
+}

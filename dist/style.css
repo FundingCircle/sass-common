@@ -775,6 +775,15 @@ th {
     e.g: @include ratioWidth(5, 3 2, true, $bpMobilePortrait $bpDesktop);
 
 \* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- *  GOLDEN RATIO PADDINGS
+
+  Sets golden ratio left/right paddings for elements
+    $grpColumn: ratio of the content
+    $grpPadding: ratio for paddings
+
+    e.g: @include goldenRatioPaddings(5, 3 2);
+
+\* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- *  HERO MIXIN
 
   HTML structure:
