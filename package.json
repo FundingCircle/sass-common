@@ -1,6 +1,6 @@
 {
   "name": "sass-common",
-  "version": "2.7.19",
+  "version": "2.7.20",
   "description": "Collection of the SASS mixins used to style the Funding Circle pages.",
   "repository": {
     "type": "git",

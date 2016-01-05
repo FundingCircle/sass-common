@@ -53,19 +53,11 @@
   margin-bottom: rem(2.5);
 }
 
-.small-title {
-  @include font(-1, true, 400);
-
-  display: block;
-  text-transform: uppercase;
-  margin-bottom: 0;
-}
-
 .upper-title {
-  @include font(-1, true, 300);
+  @include font(0, true, 400);
 
   display: block;
-  margin-bottom: rem(1);
+  margin-bottom: rem(.5);
   text-transform: uppercase;
 }
 
