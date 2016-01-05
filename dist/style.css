@@ -1063,32 +1063,18 @@ h6 {
   display: block;
   margin-bottom: 40px; }
 
-.small-title {
+.upper-title {
   /* CALCULATE THE FONT SIZE */
-  font-size: 13px;
+  font-size: 16px;
   /* LINE HEIGHT */
-  line-height: 16px;
+  line-height: 24px;
   /* FONT WEIGHT */
   font-weight: 400;
   /* FONT STYLE */
   /* FONT VARIANT */
   /* FONT Family */
   display: block;
-  text-transform: uppercase;
-  margin-bottom: 0; }
-
-.upper-title {
-  /* CALCULATE THE FONT SIZE */
-  font-size: 13px;
-  /* LINE HEIGHT */
-  line-height: 16px;
-  /* FONT WEIGHT */
-  font-weight: 300;
-  /* FONT STYLE */
-  /* FONT VARIANT */
-  /* FONT Family */
-  display: block;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   text-transform: uppercase; }
 
 .super-bold {
