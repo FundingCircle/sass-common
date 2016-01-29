@@ -1,4 +1,8 @@
-.wrap { @include wrapThis(true); }
+.wrap {
+  @include wrapThis(rem(1.5), $bpMobileLandscape false);
+
+  @include wrapThis(rem(1), false $bpMobileLandscape);
+}
 .wrap--nopad { @include wrapThis(); }
 
 // Floats
@@ -126,4 +130,3 @@
     }
   }
 }
-
