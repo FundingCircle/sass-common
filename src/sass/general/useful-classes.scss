@@ -1,7 +1,7 @@
 .wrap {
-  @include wrapThis(rem(1.5), $bpMobileLandscape false);
+  @include wrapThis(rem(1));
 
-  @include wrapThis(rem(1), false $bpMobileLandscape);
+  @include wrapThis(rem(1.5), $bpMobileLandscape false);
 }
 .wrap--nopad { @include wrapThis(); }
 
