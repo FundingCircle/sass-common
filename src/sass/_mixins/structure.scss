@@ -475,5 +475,8 @@ $maxWrapWidth: 1200px;
   $grpWidths: colsWidth($grpWidths);
 
   padding-left: nth($grpWidths, 1) * 1%;
-  padding-right: nth($grpWidths, 2) * 1%;
+
+  @if length($grpWidths) == 3 {
+    padding-right: nth($grpWidths, 2) * 1%;
+  }
 }
