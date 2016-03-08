@@ -1,7 +1,9 @@
 .wrap {
-  @include wrapThis(rem(1));
+  @include wrapThis(1);
 
-  @include wrapThis(rem(1.5), $bpMobileLandscape false);
+  @if $responsiveGutter {
+    @include wrapThis(1.5, $bpMobileLandscape false);
+  }
 }
 .wrap--nopad { @include wrapThis(); }
 
