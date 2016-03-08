@@ -56,6 +56,8 @@ $fontFamilyDefault: 'Source Sans Pro', sans-serif;
 
 $defaultColsPadding: $fontSizeBase * 1px;
 
+$responsiveGutter: true !default;
+
 
 // Hardcoded sizes
 //
@@ -137,4 +139,3 @@ $heroGradientMedium: rgba(0, 0, 0, .4) 0%,
 
 $heroGradientDark: rgba(0, 0, 0, 0) 30%,
                    rgba(0, 0, 0, .8) 100%;
-
