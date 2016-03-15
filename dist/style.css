@@ -435,6 +435,12 @@ th {
 .fci-left-arrow:before {
   content: "\E019"; }
 
+.fci-phone:before {
+  content: "\E020"; }
+
+.fci-go-up-arrow:before {
+  content: "\E021"; }
+
 /* ---------------------------------------------------------------------- *  SOURCE SANS
 \* ---------------------------------------------------------------------- */
 @font-face {
