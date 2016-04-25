@@ -271,6 +271,21 @@ $colRatio: 1;
                         | vertical-align: top
 \* ---------------------------------------------------------------------- */
 
+@mixin dtStyle($row, $verticalAlign, $cols, $padding) {
+ display: table;
+
+ @if $row {
+   & > * { display: table-row; }
+   & > * > * {
+     @include tableCellV2($verticalAlign, $cols, $padding);
+   }
+ } @else {
+   & > * {
+    @include tableCellV2($verticalAlign, $cols, $padding);
+   }
+ }
+}
+
 @mixin table($verticalAlign:top, $reset: false, $hide: false, $cols: false, $row:false, $padding: $defaultColsPadding) {
 
   // table general stuff
@@ -304,26 +319,12 @@ $colRatio: 1;
     $minPoint: last($reset);
   }
 
-  @mixin dtStyle {
-   display: table;
-
-   @if $row {
-     & > * { display: table-row; }
-     & > * > * {
-       @include tableCellV2($verticalAlign, $cols, $padding);
-     }
-   } @else {
-     & > * {
-      @include tableCellV2($verticalAlign, $cols, $padding);
-     }
-   }
-  }
-
   @if $ie {
-    @include dtStyle;
-  } @else {
+    @include dtStyle($row, $verticalAlign, $cols, $padding);
+  }
+  @else {
     @include breakPoints($minPoint, false) {
-      @include dtStyle;
+      @include dtStyle($row, $verticalAlign, $cols, $padding);
     }
   }
 
