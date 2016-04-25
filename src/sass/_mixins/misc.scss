@@ -44,7 +44,8 @@
   // read width and height
   $width: if(first($direction) == last($direction), first($size)/2, first($size));
   $height: last($size);
-
+  $solid: top;
+  $transparent: left, right;
 
   @if first($direction) == up {
 
@@ -81,11 +82,6 @@
 
     $solid: right;
     $transparent: top, bottom;
-
-  } @else {
-
-    $solid: top;
-    $transparent: left, right;
 
   }
 
