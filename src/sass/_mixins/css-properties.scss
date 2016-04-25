@@ -5,7 +5,7 @@
 
 @mixin borderRadius($val, $unit:false) {
 
-    $cVal: $val;
+    $cVal: rem($val);
 
     @if $unit {
       $val: stripUnit($val);
