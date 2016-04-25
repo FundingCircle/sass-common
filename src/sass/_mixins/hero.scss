@@ -153,9 +153,8 @@
       // we don't need to apply a min breakpoint for the first value, so we set it to false
       // for any other values, it's the previous value in the iteration
       // eg: for large screens, the min value is medium
-      @if $i == 1 {
-        $bpHeroMin: false;
-      } @else {
+      $bpHeroMin: false;
+      @if $i > 1 {
         $bpHeroMin: nth($bpHeroList, $i - 1);
       }
 
@@ -164,9 +163,8 @@
       //   - if this is the last iteration (so the max val is inf)
       //   - $i == 1 -> the first interval is the default rule so we don't have a breakpoint (false false)
       //   - if $heroFreeBreakPoints is false, we don't set a max breakpoint so that styling is overlapping
-      @if $i == (length($bpHeroList) + 1) or $i == 1 or $heroFreeBreakPoints {
-        $bpHeroMax: false;
-      } @else {
+      $bpHeroMax: false;
+      @if $i != (length($bpHeroList) + 1) and $i > 1 and $heroFreeBreakPoints == false {
         $bpHeroMax: nth($bpHeroList, $i);
       }
 

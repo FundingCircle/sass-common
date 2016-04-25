@@ -750,7 +750,6 @@
       }
 
       &:after {
-        @extend %insetElement;
         content: '';
         background: rgb(255,255,255);
         border: 1px solid $formInputBorderMain;

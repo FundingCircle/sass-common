@@ -5,6 +5,8 @@
 
 @mixin borderRadius($val, $unit:false) {
 
+    $cVal: $val;
+
     @if $unit {
       $val: stripUnit($val);
 
@@ -24,10 +26,6 @@
         $cVal: $val;
       }
 
-    } @else {
-
-      $cVal: rem($val);
-
     }
 
     @include prefix(border-radius, $cVal, webkit)
@@ -40,10 +38,9 @@
 
 @mixin boxShadow($horizontalLength, $verticalLength, $blurRadius:false, $spread:false, $color:false, $inset:false) {
 
+  $insetVal: null;
   @if $inset {
     $insetVal: inset;
-  } @else {
-    $insetVal: null;
   }
 
   $boxShadow: $insetVal rem($horizontalLength) rem($verticalLength) rem($blurRadius) rem($spread) $color;
