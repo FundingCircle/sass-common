@@ -320,10 +320,11 @@ $colRatio: 1;
   }
 
   @if $ie {
-    @include dtStyle($row, $verticalAlign, $cols, $padding);;
-  } @else {
+    @include dtStyle($row, $verticalAlign, $cols, $padding);
+  }
+  @else {
     @include breakPoints($minPoint, false) {
-      @include dtStyle($row, $verticalAlign, $cols, $padding);;
+      @include dtStyle($row, $verticalAlign, $cols, $padding);
     }
   }
 
