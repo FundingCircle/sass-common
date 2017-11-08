@@ -110,7 +110,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('build', function (callback) {
-  sequence('clean', ['build:mixins', 'build:icon-font', 'build:fonts'], 'libraries', 'sass', callback);
+  sequence(['build:mixins', 'build:icon-font', 'build:fonts'], 'libraries', 'sass', callback);
 });
 
 gulp.task('default', ['build']);

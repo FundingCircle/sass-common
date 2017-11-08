@@ -1,6 +1,6 @@
 {
   "name": "sass-common",
-  "version": "2.7.25",
+  "version": "2.7.26",
   "description": "Collection of the SASS mixins used to style the Funding Circle pages.",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "license": "Commercial",
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install --allow-root && gulp build"
   },
   "bugs": {
     "url": "https://github.com/FundingCircle/static-content/issues"
@@ -27,6 +27,8 @@
     "sc5-styleguide": "^0.3.4"
   },
   "dependencies": {
-    "bower": "^1.5.2"
+    "bower": "^1.5.2",
+    "gulp-template": "^2.1.0",
+    "sc5-styleguide": "^0.3.4"
   }
 }
