@@ -1558,7 +1558,7 @@ form h3 {
 
 /* ---------------------------------------------------------------------- *  FORMS
 \* ---------------------------------------------------------------------- */
-@-webkit-keyframes $animationName {
+@-webkit-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1568,7 +1568,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@-moz-keyframes $animationName {
+@-moz-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1578,7 +1578,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@-ms-keyframes $animationName {
+@-ms-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1588,7 +1588,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@-o-keyframes $animationName {
+@-o-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1598,7 +1598,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@keyframes $animationName {
+@keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1818,8 +1818,7 @@ form h3 {
     .form-default_element--tooltip {
       display: table;
       width: 100%; }
-  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default .select,
-  .form-default textarea {
+  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default .select, .form-default textarea {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
     /* LINE HEIGHT */
@@ -1836,14 +1835,11 @@ form h3 {
     outline: 1px solid #dddddd;
     padding: 0 16px;
     outline-offset: initial; }
-    .form-default input[type="text"]:focus, .form-default input[type="password"]:focus, .form-default input[type="search"]:focus, .form-default input[type="email"]:focus, .form-default input[type="url"]:focus, .form-default input[type="tel"]:focus, .form-default input[type="number"]:focus, .form-default input[type="range"]:focus, .form-default input[type="date"]:focus, .form-default input[type="month"]:focus, .form-default input[type="week"]:focus, .form-default input[type="time"]:focus, .form-default .select:focus,
-    .form-default textarea:focus {
+    .form-default input[type="text"]:focus, .form-default input[type="password"]:focus, .form-default input[type="search"]:focus, .form-default input[type="email"]:focus, .form-default input[type="url"]:focus, .form-default input[type="tel"]:focus, .form-default input[type="number"]:focus, .form-default input[type="range"]:focus, .form-default input[type="date"]:focus, .form-default input[type="month"]:focus, .form-default input[type="week"]:focus, .form-default input[type="time"]:focus, .form-default .select:focus, .form-default textarea:focus {
       outline-color: #37b0c9; }
-    .form-default input.valid[type="text"], .form-default input.valid[type="password"], .form-default input.valid[type="search"], .form-default input.valid[type="email"], .form-default input.valid[type="url"], .form-default input.valid[type="tel"], .form-default input.valid[type="number"], .form-default input.valid[type="range"], .form-default input.valid[type="date"], .form-default input.valid[type="month"], .form-default input.valid[type="week"], .form-default input.valid[type="time"], .form-default .valid.select, .form-default .select select.valid,
-    .form-default textarea.valid {
+    .form-default input.valid[type="text"], .form-default input.valid[type="password"], .form-default input.valid[type="search"], .form-default input.valid[type="email"], .form-default input.valid[type="url"], .form-default input.valid[type="tel"], .form-default input.valid[type="number"], .form-default input.valid[type="range"], .form-default input.valid[type="date"], .form-default input.valid[type="month"], .form-default input.valid[type="week"], .form-default input.valid[type="time"], .form-default .valid.select, .form-default .select select.valid, .form-default textarea.valid {
       border-right: 4px solid #009c50; }
-    .form-default input.error[type="text"], .form-default input.error[type="password"], .form-default input.error[type="search"], .form-default input.error[type="email"], .form-default input.error[type="url"], .form-default input.error[type="tel"], .form-default input.error[type="number"], .form-default input.error[type="range"], .form-default input.error[type="date"], .form-default input.error[type="month"], .form-default input.error[type="week"], .form-default input.error[type="time"], .form-default .error.select, .form-default .select select.error,
-    .form-default textarea.error {
+    .form-default input.error[type="text"], .form-default input.error[type="password"], .form-default input.error[type="search"], .form-default input.error[type="email"], .form-default input.error[type="url"], .form-default input.error[type="tel"], .form-default input.error[type="number"], .form-default input.error[type="range"], .form-default input.error[type="date"], .form-default input.error[type="month"], .form-default input.error[type="week"], .form-default input.error[type="time"], .form-default .error.select, .form-default .select select.error, .form-default textarea.error {
       outline-color: #d60036;
       color: #d60036; }
   .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default textarea {
