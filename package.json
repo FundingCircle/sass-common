@@ -8,7 +8,7 @@
   },
   "license": "Commercial",
   "scripts": {
-    "postinstall": "bower install --allow-root && gulp build"
+    "postinstall": "bower install"
   },
   "bugs": {
     "url": "https://github.com/FundingCircle/static-content/issues"
