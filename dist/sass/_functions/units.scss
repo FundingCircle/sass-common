@@ -172,7 +172,7 @@
       $cVal: append($cVal, $i);
     }
 
-  } @else if type-of($val) == number{
+  } @else if type-of($val) == number {
 
     $cVal: multiplier($val);
 
