@@ -27,10 +27,9 @@ paths.source.fontsMain = paths.source.root + '/fonts/fonts/**/*';
 paths.source.svgFonts = paths.source.root + '/fonts/svg/**/*';
 
 
-paths.bower = {};
-paths.bower.root = 'bower_components';
-paths.bower.normalize = paths.bower.root + '/normalize-css/normalize.css';
-
+paths.nodeModules = {};
+paths.nodeModules.root = 'node_modules';
+paths.nodeModules.normalize = paths.nodeModules.root + '/normalize.css/normalize.css';
 
 var fontName = "fc-icons";
 
@@ -72,7 +71,7 @@ gulp.task('build:fonts', function() {
 
 
 gulp.task('libraries', function() {
-  return gulp.src([paths.bower.normalize, paths.build.sass + '/style.scss'])
+  return gulp.src([paths.nodeModules.normalize, paths.build.sass + '/style.scss'])
              .pipe(concat('style.scss'))
              .pipe(gulp.dest(paths.build.sass));
 })
