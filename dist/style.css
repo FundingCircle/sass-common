@@ -1,135 +1,111 @@
 @charset "UTF-8";
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
 /**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
-  font-family: sans-serif;
+  line-height: 1.15;
   /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
   -webkit-text-size-adjust: 100%;
   /* 2 */ }
 
+/* Sections
+   ========================================================================== */
 /**
- * Remove default margin.
+ * Remove the margin in all browsers.
  */
 body {
   margin: 0; }
 
-/* HTML5 display definitions
-   ========================================================================== */
 /**
- * Correct `block` display not defined for any HTML5 element in IE 8/9.
- * Correct `block` display not defined for `details` or `summary` in IE 10/11
- * and Firefox.
- * Correct `block` display not defined for `main` in IE 11.
+ * Render the `main` element consistently in IE.
  */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
+main {
   display: block; }
 
 /**
- * 1. Correct `inline-block` display not defined in IE 8/9.
- * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
- */
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  /* 1 */
-  vertical-align: baseline;
-  /* 2 */ }
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0; }
-
-/**
- * Address `[hidden]` styling not present in IE 8/9/10.
- * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
- */
-[hidden],
-template {
-  display: none; }
-
-/* Links
-   ========================================================================== */
-/**
- * Remove the gray background color from active links in IE 10.
- */
-a {
-  background-color: transparent; }
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-a:active,
-a:hover {
-  outline: 0; }
-
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
- */
-abbr[title] {
-  border-bottom: 1px dotted; }
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
- */
-b,
-strong {
-  font-weight: bold; }
-
-/**
- * Address styling not present in Safari and Chrome.
- */
-dfn {
-  font-style: italic; }
-
-/**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari, and Chrome.
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
   font-size: 2em;
   margin: 0.67em 0; }
 
+/* Grouping content
+   ========================================================================== */
 /**
- * Address styling not present in IE 8/9.
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
  */
-mark {
-  background: #ff0;
-  color: #000; }
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */ }
 
 /**
- * Address inconsistent and variable font size in all browsers.
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent; }
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */ }
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder; }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+ * Add the correct font size in all browsers.
  */
 small {
   font-size: 80%; }
 
 /**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
  */
 sub,
 sup {
@@ -138,226 +114,198 @@ sup {
   position: relative;
   vertical-align: baseline; }
 
-sup {
-  top: -0.5em; }
-
 sub {
   bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
 
 /* Embedded content
    ========================================================================== */
 /**
- * Remove border when inside `a` element in IE 8/9/10.
+ * Remove the border on images inside links in IE 10.
  */
 img {
-  border: 0; }
-
-/**
- * Correct overflow not hidden in IE 9/10/11.
- */
-svg:not(:root) {
-  overflow: hidden; }
-
-/* Grouping content
-   ========================================================================== */
-/**
- * Address margin not present in IE 8/9 and Safari.
- */
-figure {
-  margin: 1em 40px; }
-
-/**
- * Address differences between Firefox and other browsers.
- */
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0; }
-
-/**
- * Contain overflow in all browsers.
- */
-pre {
-  overflow: auto; }
-
-/**
- * Address odd `em`-unit font size rendering in all browsers.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em; }
+  border-style: none; }
 
 /* Forms
    ========================================================================== */
 /**
- * Known limitation: by default, Chrome and Safari on OS X allow very limited
- * styling of `select`, unless a `border` property is set.
- */
-/**
- * 1. Correct color not being inherited.
- *    Known issue: affects color of disabled elements.
- * 2. Correct font properties not being inherited.
- * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
  */
 button,
 input,
 optgroup,
 select,
 textarea {
-  color: inherit;
+  font-family: inherit;
   /* 1 */
-  font: inherit;
-  /* 2 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
   margin: 0;
-  /* 3 */ }
+  /* 2 */ }
 
 /**
- * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
  */
-button {
+button,
+input {
+  /* 1 */
   overflow: visible; }
 
 /**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
- * Correct `select` style inheritance in Firefox.
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
  */
 button,
 select {
+  /* 1 */
   text-transform: none; }
 
 /**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
+ * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-  /* 3 */ }
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; }
 
 /**
- * Re-set default cursor for disabled elements.
- */
-button[disabled],
-html input[disabled] {
-  cursor: default; }
-
-/**
- * Remove inner padding and border in Firefox 4+.
+ * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
   padding: 0; }
 
 /**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
+ * Restore the focus styles unset by the previous rule.
  */
-input {
-  line-height: normal; }
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
 
 /**
- * It's recommended that you don't attempt to style these elements.
- * Firefox's implementation doesn't respect box-sizing, padding, or width.
- *
- * 1. Address box sizing set to `content-box` in IE 8/9/10.
- * 2. Remove excess padding in IE 8/9/10.
+ * Correct the padding in Firefox.
  */
-input[type="checkbox"],
-input[type="radio"] {
+fieldset {
+  padding: 0.35em 0.75em 0.625em; }
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */ }
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline; }
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */ }
 
 /**
- * Fix the cursor style for Chrome's increment/decrement buttons. For certain
- * `font-size` values of the `input`, it causes the cursor style of the
- * decrement button to change from `default` to `text`.
+ * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto; }
 
 /**
- * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
- *    (include `-moz` to future-proof).
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
  */
-input[type="search"] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  /* 2 */
-  box-sizing: content-box; }
-
-/**
- * Remove inner padding and search cancel button in Safari and Chrome on OS X.
- * Safari (but not Chrome) clips the cancel button when the search input has
- * padding (and `textfield` appearance).
- */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
-
-/**
- * Define consistent border, margin, and padding.
- */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
-
-/**
- * 1. Correct `color` not being inherited in IE 8/9/10/11.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-legend {
-  border: 0;
-  /* 1 */
-  padding: 0;
+  outline-offset: -2px;
   /* 2 */ }
 
 /**
- * Remove default vertical scrollbar in IE 8/9/10/11.
+ * Remove the inner padding in Chrome and Safari on macOS.
  */
-textarea {
-  overflow: auto; }
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
 
 /**
- * Don't inherit the `font-weight` (applied by a rule above).
- * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
  */
-optgroup {
-  font-weight: bold; }
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
 
-/* Tables
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block; }
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item; }
+
+/* Misc
    ========================================================================== */
 /**
- * Remove most spacing between table cells.
+ * Add the correct display in IE 10+.
  */
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
+template {
+  display: none; }
 
-td,
-th {
-  padding: 0; }
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none; }
 
-/* ---------------------------------------------------------------------- *  ICON FONT DEFINITIONS
+/* ---------------------------------------------------------------------- *\
+  ICON FONT DEFINITIONS
 \* ---------------------------------------------------------------------- */
 @font-face {
   font-family: "fc-icons";
@@ -441,7 +389,8 @@ th {
 .fci-go-up-arrow:before {
   content: "\E021"; }
 
-/* ---------------------------------------------------------------------- *  SOURCE SANS
+/* ---------------------------------------------------------------------- *\
+  SOURCE SANS
 \* ---------------------------------------------------------------------- */
 @font-face {
   font-family: 'Source Sans Pro';
@@ -527,51 +476,63 @@ th {
   src: url("fonts/fonts/black-italic/SourceSansPro-BlackIt.eot");
   src: url("fonts/fonts/black-italic/SourceSansPro-BlackIt.eot?#iefix") format("embedded-opentype"), url("fonts/fonts/black-italic/SourceSansPro-BlackIt.woff2") format("woff2"), url("fonts/fonts/black-italic/SourceSansPro-BlackIt.woff") format("woff"), url("fonts/fonts/black-italic/SourceSansPro-BlackIt.ttf") format("truetype"), url("fonts/fonts/black-italic/SourceSansPro-BlackIt.svg#source_sans_problack_italic") format("svg"); }
 
-/* ---------------------------------------------------------------------- *  HERO BREAKPOINTS
+/* ---------------------------------------------------------------------- *\
+  HERO BREAKPOINTS
   - this is the list of breakpoints that affect a hero
   - you can add more, but make sure you test it and that the order is correct
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  HERO FONT NOTES
+/* ---------------------------------------------------------------------- *\
+  HERO FONT NOTES
   - the default size for hero fonts on a normal layout (desktop, not xlarge)
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  HERO GRADIENT SHADOWS
+/* ---------------------------------------------------------------------- *\
+  HERO GRADIENT SHADOWS
   - shadows that are applied on top of the background image but below the content
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  COLUMNS WIDTH
+/* ---------------------------------------------------------------------- *\
+  COLUMNS WIDTH
   - a list (1 4 1 5 3) - returns the widths in percentage
   - equal - works only for tables
   - false
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  HERO CURRENT ITEM
+/* ---------------------------------------------------------------------- *\
+  HERO CURRENT ITEM
   - gets the current value for the parameter
   - reads the parameters (lists) and return the current value
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  BACKGROUND POSITION
+/* ---------------------------------------------------------------------- *\
+  BACKGROUND POSITION
   - "translates" the shortcut version to the correct one
   - both versions are used (lt and tl) because this is a common confusion
   - couldn't used the long version because that meant a list in a list and the syntax would have been too complicated to read
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  BACKGROUND IMAGE
+/* ---------------------------------------------------------------------- *\
+  BACKGROUND IMAGE
   - applies the extension for the background images
     - path-to-image-s.extension for the small image
     - path-to-image-m.extension for the medium image
     - path-to-image-l.extension for the large image
     - path-to-image-xl.extension for the extra large image
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  FONTS NOTE
+/* ---------------------------------------------------------------------- *\
+  FONTS NOTE
   - starts from a default note size and then adjust it according to the size
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  COLORS FOR SELECTED TEXT
+/* ---------------------------------------------------------------------- *\
+  COLORS FOR SELECTED TEXT
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  PREFIX PROPERTIES
+/* ---------------------------------------------------------------------- *\
+  PREFIX PROPERTIES
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  TRIANGLE GENERATOR
+/* ---------------------------------------------------------------------- *\
+  TRIANGLE GENERATOR
   $size: (width,height) - if height is not specified, height = width
   $direction: up / down / right / left /
               up left / up right
               down left / down right
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  CLEAR FIX
+/* ---------------------------------------------------------------------- *\
+  CLEAR FIX
   - $pseudo: true -> the element has a clear:both inside as an :after
   - $pseudo: false -> the element becomes the clearer
   - $extend: false -> useful for break points, applies in place
@@ -585,19 +546,24 @@ th {
 .cl {
   clear: both; }
 
-/* ---------------------------------------------------------------------- *  CONDITIONS TO SHOW ONLY ON IE OR TO EXCLUDE IE
+/* ---------------------------------------------------------------------- *\
+  CONDITIONS TO SHOW ONLY ON IE OR TO EXCLUDE IE
   $ie: can be 8 or 9
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  BORDER RADIUS
+/* ---------------------------------------------------------------------- *\
+  BORDER RADIUS
   e.g: borderRadius(10,'%') -> border-radius: 10%;
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  BOX SHADOW
+/* ---------------------------------------------------------------------- *\
+  BOX SHADOW
   wip
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  BOX SIZING
+/* ---------------------------------------------------------------------- *\
+  BOX SIZING
   this should always be border-box
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  GRADIENT GENERATOR
+/* ---------------------------------------------------------------------- *\
+  GRADIENT GENERATOR
   Usage: @include gradient($orientation,($colorList),[$angle]);
   $orientation: string -> horizontal / vertical / radial / angle
   $colorList: a list of pairs for color stops (color percentage)
@@ -605,12 +571,15 @@ th {
   $angle: if $orientation: angle, then here you set the angle degree
            e.g. @include gradient(angle,(...),50deg);
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  OPACITY
+/* ---------------------------------------------------------------------- *\
+  OPACITY
   argument between 0 and 1
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  POSITION
+/* ---------------------------------------------------------------------- *\
+  POSITION
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  RGBA
+/* ---------------------------------------------------------------------- *\
+  RGBA
 
   Credits: @cballenar — January 4th, 2014
 
@@ -648,15 +617,18 @@ th {
    - Can you think of a better name for the mixin? I'm not in love with it...
 
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  TRANSITION
+/* ---------------------------------------------------------------------- *\
+  TRANSITION
   $property: all / background / color / height / width / outline
   $duration: any number
   $unit: ms / s
   $function: ease / linear / ease-in / ease-out / ease-in-out
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  RESET UL
+/* ---------------------------------------------------------------------- *\
+  RESET UL
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  ANIMATION
+/* ---------------------------------------------------------------------- *\
+  ANIMATION
 
   @include keyframes(slide-down) {
     0% { opacity: 1; }
@@ -671,7 +643,8 @@ th {
   }
 
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  FONTS
+/* ---------------------------------------------------------------------- *\
+  FONTS
 
   formula for font size: f(i) = round(f(0) * r^(i/2)),
   where f(0) : $fontSizeBase and r: $ratio or $sqrtRatio (case split)
@@ -686,20 +659,25 @@ th {
   $fontVariant: normal, small-caps, etc.
   $fontFamily: $fontFamilyDefault
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  CUSTOM FORMS
+/* ---------------------------------------------------------------------- *\
+  CUSTOM FORMS
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  CENTER BLOCK
+/* ---------------------------------------------------------------------- *\
+  CENTER BLOCK
   center block elements using margin: auto
   you can set the top and bottom here or set them separately
   if centerBlock(value, true) -> margin: value auto;
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  RESET TABLE LAYOUT ON BREAKPOINTS
+/* ---------------------------------------------------------------------- *\
+  RESET TABLE LAYOUT ON BREAKPOINTS
   choose between what points to transform the table layout to one column
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  GENERATE STATIC COLUMN FRAGMENTATION
+/* ---------------------------------------------------------------------- *\
+  GENERATE STATIC COLUMN FRAGMENTATION
   will be replaced in the future with the proper golden ratio cols system
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  GROUP ELEMENTS ON MULTIPLE COLUMNS
+/* ---------------------------------------------------------------------- *\
+  GROUP ELEMENTS ON MULTIPLE COLUMNS
   $item is an arglist which takes lists with the following params:
     - min breakpoint - integer or false
     - max breakpoint - integer or false
@@ -714,7 +692,8 @@ th {
 
   @include groupElements(a b 1 false, b c 2 false, 3 c d true);
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  TABLES
+/* ---------------------------------------------------------------------- *\
+  TABLES
   Everything related to tables
       - all arguments are optional
       - structure -> table > table-cell
@@ -744,7 +723,8 @@ th {
                         |    | between 700-1000px
                         | vertical-align: top
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  FLOAT MIXINS
+/* ---------------------------------------------------------------------- *\
+  FLOAT MIXINS
   - generate classes for different box sizes
   - cols format is &-[x]size
   - if you have 5 params inside class .test, the result will be:
@@ -755,7 +735,8 @@ th {
     .test-col--xlarge {}
   - adding more values will add more x to the size (eg: xxsize, xxxlarge, etc.)
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  WRAP
+/* ---------------------------------------------------------------------- *\
+  WRAP
   Adjust the left and right padding of selected element
 
   $padding: false / true / number
@@ -770,7 +751,8 @@ th {
   width: 100%;
   max-width: 1200px; }
 
-/* ---------------------------------------------------------------------- *  RATIO WIDTH
+/* ---------------------------------------------------------------------- *\
+  RATIO WIDTH
   Set the width of an element in a golden ratio with the page width
 
     $rwMainCol: the ratio for the element
@@ -781,7 +763,8 @@ th {
     e.g: @include ratioWidth(5, 3 2, true, $bpMobilePortrait $bpDesktop);
 
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  GOLDEN RATIO PADDINGS
+/* ---------------------------------------------------------------------- *\
+  GOLDEN RATIO PADDINGS
 
   Sets golden ratio left/right paddings for elements
     $grpColumn: ratio of the content
@@ -790,7 +773,8 @@ th {
     e.g: @include goldenRatioPaddings(5, 3 2);
 
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  HERO MIXIN
+/* ---------------------------------------------------------------------- *\
+  HERO MIXIN
 
   HTML structure:
   section.hero-v2(--centered/--right).hero-v2--[name-of-your-custom-modifier]
@@ -893,9 +877,11 @@ th {
 
 
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  HTML STRUCTURE
+/* ---------------------------------------------------------------------- *\
+  HTML STRUCTURE
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  LAYOUT
+/* ---------------------------------------------------------------------- *\
+  LAYOUT
   All things related to the page structure and helpful classes
 \* ---------------------------------------------------------------------- */
 html,
@@ -970,7 +956,8 @@ h6 {
 :last-child {
   margin-bottom: 0; }
 
-/* ---------------------------------------------------------------------- *  HELPFUL CLASSES & MIXINS
+/* ---------------------------------------------------------------------- *\
+  HELPFUL CLASSES & MIXINS
 \* ---------------------------------------------------------------------- */
 .wrap {
   padding-left: 16px;
@@ -1405,9 +1392,11 @@ h6 {
 .col-5of6 {
   width: 83.33333%; }
 
-/* ---------------------------------------------------------------------- *  COMPONENTS
+/* ---------------------------------------------------------------------- *\
+  COMPONENTS
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  BUTTONS
+/* ---------------------------------------------------------------------- *\
+  BUTTONS
   - modifiers can be size modifiers (--s) or type (--t)
 \* ---------------------------------------------------------------------- */
 .btn, .btn--large, .btn--s3, .btn--normal, .btn--s1, .btn--medium, .btn--small, .btn--s2, .btn--primary, .btn--t1, .btn--secondary, .btn--t2, .btn--secondary-alt, .btn--t3 {
@@ -1466,7 +1455,7 @@ h6 {
       background: #3e9bd6; }
     .btn--primary:active, .btn--t1:active, .btn--primary:focus, .btn--t1:focus {
       background: #065e94; }
-    .btn--primary.btn--disabled, .btn--disabled.btn--t1, .btn--primary[disabled], [disabled].btn--t1 {
+    .btn--primary.btn--disabled, .btn--disabled.btn--t1, .btn--primary[disabled], .btn--t1[disabled] {
       background: #dddddd; }
   .btn--secondary, .btn--t2 {
     color: #097fc9;
@@ -1478,7 +1467,7 @@ h6 {
     .btn--secondary:active, .btn--t2:active, .btn--secondary:focus, .btn--t2:focus {
       border-color: #097fc9;
       background: rgba(62, 155, 214, 0.1); }
-    .btn--secondary.btn--disabled, .btn--disabled.btn--t2, .btn--secondary[disabled], [disabled].btn--t2 {
+    .btn--secondary.btn--disabled, .btn--disabled.btn--t2, .btn--secondary[disabled], .btn--t2[disabled] {
       background: rgba(255, 255, 255, 0.6);
       border-color: #c3c3c3;
       color: #c3c3c3; }
@@ -1490,7 +1479,7 @@ h6 {
     .btn--secondary-alt:active, .btn--t3:active, .btn--secondary-alt:focus, .btn--t3:focus {
       border-color: rgba(255, 255, 255, 0.5);
       background: rgba(0, 0, 0, 0.2); }
-    .btn--secondary-alt.btn--disabled, .btn--disabled.btn--t3, .btn--secondary-alt[disabled], [disabled].btn--t3 {
+    .btn--secondary-alt.btn--disabled, .btn--disabled.btn--t3, .btn--secondary-alt[disabled], .btn--t3[disabled] {
       border: 0;
       background: rgba(0, 0, 0, 0.2);
       color: rgba(255, 255, 255, 0.2); }
@@ -1523,13 +1512,14 @@ h6 {
   .btn.is-loading.btn--secondary:after, .is-loading.btn--secondary:after, .is-loading.btn--t2:after {
     border-color: #c3c3c3;
     border-bottom-color: transparent; }
-  .btn[class*="fci-"]:before, [class*="fci-"].btn--large:before, [class*="fci-"].btn--s3:before, [class*="fci-"].btn--normal:before, [class*="fci-"].btn--s1:before, [class*="fci-"].btn--medium:before, [class*="fci-"].btn--small:before, [class*="fci-"].btn--s2:before, [class*="fci-"].btn--primary:before, [class*="fci-"].btn--t1:before, [class*="fci-"].btn--secondary:before, [class*="fci-"].btn--t2:before, [class*="fci-"].btn--secondary-alt:before, [class*="fci-"].btn--t3:before {
+  .btn[class*="fci-"]:before, .btn--large[class*="fci-"]:before, .btn--s3[class*="fci-"]:before, .btn--normal[class*="fci-"]:before, .btn--s1[class*="fci-"]:before, .btn--medium[class*="fci-"]:before, .btn--small[class*="fci-"]:before, .btn--s2[class*="fci-"]:before, .btn--primary[class*="fci-"]:before, .btn--t1[class*="fci-"]:before, .btn--secondary[class*="fci-"]:before, .btn--t2[class*="fci-"]:before, .btn--secondary-alt[class*="fci-"]:before, .btn--t3[class*="fci-"]:before {
     float: left;
     font-size: inherit;
     line-height: inherit;
     margin-right: 12px; }
 
-/* ---------------------------------------------------------------------- *  Go to links
+/* ---------------------------------------------------------------------- *\
+  Go to links
 \* ---------------------------------------------------------------------- */
 .go-to-link {
   -webkit-border-radius: 50%;
@@ -1556,9 +1546,10 @@ form h3 {
   margin-bottom: 8px;
   font-weight: 400; }
 
-/* ---------------------------------------------------------------------- *  FORMS
+/* ---------------------------------------------------------------------- *\
+  FORMS
 \* ---------------------------------------------------------------------- */
-@-webkit-keyframes $animationName {
+@-webkit-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1568,7 +1559,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@-moz-keyframes $animationName {
+@-moz-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1578,7 +1569,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@-ms-keyframes $animationName {
+@-ms-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1588,7 +1579,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@-o-keyframes $animationName {
+@-o-keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1598,7 +1589,7 @@ form h3 {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-@keyframes $animationName {
+@keyframes loopRotate {
   0% {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
@@ -1698,8 +1689,7 @@ form h3 {
       .form-default-col--medium {
         width: 61.8029%; }
       .form-default-col--large, .wrap--form > h2,
-      .wrap--form > h2 + p,
-      .wrap--form > h2 + .tooltip_text, .wrap--form .form-default {
+      .wrap--form > h2 + p, .wrap--form > h2 + .tooltip_text, .wrap--form .form-default {
         width: 61.8029%; }
       .wrap--form .form-default {
         float: left; }
@@ -1836,7 +1826,7 @@ form h3 {
     outline: 1px solid #dddddd;
     padding: 0 16px;
     outline-offset: initial; }
-    .form-default input[type="text"]:focus, .form-default input[type="password"]:focus, .form-default input[type="search"]:focus, .form-default input[type="email"]:focus, .form-default input[type="url"]:focus, .form-default input[type="tel"]:focus, .form-default input[type="number"]:focus, .form-default input[type="range"]:focus, .form-default input[type="date"]:focus, .form-default input[type="month"]:focus, .form-default input[type="week"]:focus, .form-default input[type="time"]:focus, .form-default .select:focus,
+    .form-default input:focus[type="text"], .form-default input:focus[type="password"], .form-default input:focus[type="search"], .form-default input:focus[type="email"], .form-default input:focus[type="url"], .form-default input:focus[type="tel"], .form-default input:focus[type="number"], .form-default input:focus[type="range"], .form-default input:focus[type="date"], .form-default input:focus[type="month"], .form-default input:focus[type="week"], .form-default input:focus[type="time"], .form-default .select:focus,
     .form-default textarea:focus {
       outline-color: #37b0c9; }
     .form-default input.valid[type="text"], .form-default input.valid[type="password"], .form-default input.valid[type="search"], .form-default input.valid[type="email"], .form-default input.valid[type="url"], .form-default input.valid[type="tel"], .form-default input.valid[type="number"], .form-default input.valid[type="range"], .form-default input.valid[type="date"], .form-default input.valid[type="month"], .form-default input.valid[type="week"], .form-default input.valid[type="time"], .form-default .valid.select, .form-default .select select.valid,
@@ -1846,7 +1836,8 @@ form h3 {
     .form-default textarea.error {
       outline-color: #d60036;
       color: #d60036; }
-  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default textarea {
+  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"],
+  .form-default textarea {
     -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2); }
   .form-default textarea {
@@ -2115,7 +2106,8 @@ form h3 {
     /* FONT Family */
     margin: 3.2px 0; }
 
-/* ---------------------------------------------------------------------- *  MESSAGES
+/* ---------------------------------------------------------------------- *\
+  MESSAGES
   - .message / --error / --warning / --success
 \* ---------------------------------------------------------------------- */
 .message, .message--error, .message--warning, .message--success {
@@ -2195,7 +2187,8 @@ form h3 {
   .message--success {
     border-left: 4px solid #009c50; } }
 
-/* ---------------------------------------------------------------------- *  CUSTOM CHECKBOXES AND RADIO BUTTONS
+/* ---------------------------------------------------------------------- *\
+  CUSTOM CHECKBOXES AND RADIO BUTTONS
   - .form-radio / .form-checkbox if you don't want the positioning
   - .form-radio.form-radio--top/right/bottom/left if you want the positioning
 \* ---------------------------------------------------------------------- */
@@ -2267,7 +2260,11 @@ form h3 {
 .form-checkbox input:checked ~ label .ui-checkbox:before {
   width: 70%; }
 
-.form-radio--left input, .form-checkbox--left input, .form-radio--left .ui-radio, .form-checkbox--left .ui-radio, .form-radio--left .ui-checkbox, .form-checkbox--left .ui-checkbox {
+.form-radio--left input, .form-checkbox--left input,
+.form-radio--left .ui-radio,
+.form-checkbox--left .ui-radio,
+.form-radio--left .ui-checkbox,
+.form-checkbox--left .ui-checkbox {
   position: absolute;
   top: 0;
   left: 0; }
@@ -2280,7 +2277,11 @@ form h3 {
   padding-left: 37px;
   line-height: 24px; }
 
-.form-radio--right input, .form-checkbox--right input, .form-radio--right .ui-radio, .form-checkbox--right .ui-radio, .form-radio--right .ui-checkbox, .form-checkbox--right .ui-checkbox {
+.form-radio--right input, .form-checkbox--right input,
+.form-radio--right .ui-radio,
+.form-checkbox--right .ui-radio,
+.form-radio--right .ui-checkbox,
+.form-checkbox--right .ui-checkbox {
   position: absolute;
   top: 0;
   right: 0; }
@@ -2297,7 +2298,11 @@ form h3 {
 .form-radio--top, .form-checkbox--top {
   padding-top: 32px;
   text-align: center; }
-  .form-radio--top input, .form-checkbox--top input, .form-radio--top .ui-radio, .form-checkbox--top .ui-radio, .form-radio--top .ui-checkbox, .form-checkbox--top .ui-checkbox {
+  .form-radio--top input, .form-checkbox--top input,
+  .form-radio--top .ui-radio,
+  .form-checkbox--top .ui-radio,
+  .form-radio--top .ui-checkbox,
+  .form-checkbox--top .ui-checkbox {
     position: absolute;
     top: 0;
     left: 0;
@@ -2306,7 +2311,11 @@ form h3 {
   .form-radio--top input, .form-checkbox--top input {
     top: 5px; }
 
-.form-radio--bottom input, .form-checkbox--bottom input, .form-radio--bottom .ui-radio, .form-checkbox--bottom .ui-radio, .form-radio--bottom .ui-checkbox, .form-checkbox--bottom .ui-checkbox {
+.form-radio--bottom input, .form-checkbox--bottom input,
+.form-radio--bottom .ui-radio,
+.form-checkbox--bottom .ui-radio,
+.form-radio--bottom .ui-checkbox,
+.form-checkbox--bottom .ui-checkbox {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2320,7 +2329,8 @@ form h3 {
   padding-bottom: 32px;
   text-align: center; }
 
-/* ---------------------------------------------------------------------- *  TOOLTIPS
+/* ---------------------------------------------------------------------- *\
+  TOOLTIPS
   - text to click / hover goes into .tooltip_trigger
   - if tooltip_clickable, then the parent should toggle class .is-active
   - is-right if doesn't fit in left
@@ -2420,7 +2430,8 @@ form h3 {
       text-decoration: none;
       color: #097fc9; }
 
-/* ---------------------------------------------------------------------- *  SWITCH BUTTON
+/* ---------------------------------------------------------------------- *\
+  SWITCH BUTTON
   Turn on and off
 \* ---------------------------------------------------------------------- */
 .form-switch {
@@ -2479,12 +2490,12 @@ form h3 {
     bottom: 0;
     left: 0;
     z-index: 1;
-    background: transparent;
-    background: -moz-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: -webkit-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: -o-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: -ms-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=1);
     display: block; }
   .hero-v2 .wrap, .hero-v2--centered .wrap, .hero-v2--right .wrap {
@@ -2529,12 +2540,12 @@ form h3 {
       .hero-v2 .hero-v2_content, .hero-v2--centered .hero-v2_content, .hero-v2--right .hero-v2_content {
         margin: 0 auto; }
       .hero-v2:before, .hero-v2--centered:before, .hero-v2--right:before {
-        background: transparent;
-        background: -moz-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-        background: -webkit-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-        background: -o-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-        background: -ms-linear-gradient(top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-        background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+        background: rgba(0, 0, 0, 0);
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+        background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+        background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=1); } }
   @media only screen and (min-width: 640px) {
     .hero-v2_title, .hero-v2--centered_title, .hero-v2--right_title {
@@ -2596,11 +2607,11 @@ form h3 {
 @media only screen and (min-width: 640px) {
   .hero-v2:before {
     background: rgba(0, 0, 0, 0.4);
-    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
-    background: -o-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
-    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 60%, transparent 100%);
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000', endColorstr='#00000000',GradientType=1); } }
 
 .hero-v2--centered {
@@ -2615,15 +2626,16 @@ form h3 {
   .hero-v2--right .hero-v2_content {
     float: right; }
   .hero-v2--right:before {
-    background: transparent;
-    background: -moz-linear-gradient(left, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: -webkit-linear-gradient(left, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: -o-linear-gradient(left, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: -ms-linear-gradient(left, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
-    background: linear-gradient(to right, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.4) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=1); } }
 
-/* ---------------------------------------------------------------------- *  HERO
+/* ---------------------------------------------------------------------- *\
+  HERO
   - customize new hero images by adding a data-backgrond attr to &
 \* ---------------------------------------------------------------------- */
 .hero-wrap {
@@ -2899,10 +2911,12 @@ form h3 {
     font-style: italic;
     margin-left: 5px; }
 
-/* ---------------------------------------------------------------------- *  DYNAMIC LOADERS
+/* ---------------------------------------------------------------------- *\
+  DYNAMIC LOADERS
   - transitions for elements fetched with AJAX
 \* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- *  DYNAMIC LOADERS
+/* ---------------------------------------------------------------------- *\
+  DYNAMIC LOADERS
 \* ---------------------------------------------------------------------- */
 *[data-dynamic-container][data-dynamic-effect="from-top"], *[data-dynamic-container][data-dynamic-effect="from-left"], *[data-dynamic-container][data-dynamic-effect="from-right"], *[data-dynamic-container][data-dynamic-effect="from-bottom"] {
   position: relative; }
