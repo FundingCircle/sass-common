@@ -1,8 +1,0 @@
-.DS_Store
-.sass-cache
-Gemfile.lock
-bower_components
-node_modules
-npm-debug.log
-.idea
-dist
