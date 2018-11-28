@@ -11,7 +11,7 @@
     "dist"
   ],
   "bugs": {
-    "url": "https://github.com/FundingCircle/static-content/issues"
+    "url": "https://github.com/FundingCircle/sass-common/issues"
   },
   "devDependencies": {
     "del": "^1.1.1",
