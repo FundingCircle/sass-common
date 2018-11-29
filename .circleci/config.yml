@@ -7,13 +7,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - sass-common-npm-{{ checksum "package.json" }}
+            - sass-common-npm-{{ checksum "package-lock.json" }}
             - sass-common-ruby-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Node.js dependencies
           command: npm install
       - save_cache:
-          key: sass-common-npm-{{ checksum "package.json" }}
+          key: sass-common-npm-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run:
