@@ -5,12 +5,24 @@ jobs:
       - image: circleci/ruby:2.4-node
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - sass-common-npm-{{ checksum "package.json" }}
+            - sass-common-ruby-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Node.js dependencies
           command: npm install
+      - save_cache:
+          key: sass-common-npm-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run:
           name: Install Ruby dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+      - save_cache:
+          key: sass-common-ruby-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
       - run:
           name: Run tests
           command: bundle exec rake --trace
