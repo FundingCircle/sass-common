@@ -22,12 +22,9 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^4.0.2",
     "gulp-template": "^2.1.0",
-    "run-sequence": "^1.0.2",
-    "sc5-styleguide": "^0.3.4"
+    "run-sequence": "^1.0.2"
   },
   "dependencies": {
-    "gulp-template": "^2.1.0",
-    "normalize.css": "^8.0.1",
-    "sc5-styleguide": "^0.3.4"
+    "normalize.css": "^8.0.1"
   }
 }
