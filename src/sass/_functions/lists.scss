@@ -2,7 +2,6 @@
 //
 // All the functions that alter a list
 //
-// Styleguide 1.2
 
 
 
@@ -15,7 +14,6 @@
 // // $list: 5 1 2 6 10;
 // // first($list) -> 5
 //
-// Styleguide 1.2.1
 
 @function first($list) {
   @return nth($list, 1);
@@ -32,7 +30,6 @@
 // // $list: 5 1 2 6 10
 // // last($list) -> 10
 //
-// Styleguide 1.2.2
 
 @function last($list) {
   @return nth($list, length($list));
@@ -47,7 +44,6 @@
 // markup:
 // remove($list, $val)
 //
-// Styleguide 1.2.3
 
 @function removeFromList($list, $val) {
 
@@ -288,7 +284,6 @@ $default-order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "unq
 // // reverseList($list) -> 10 6 2 1 5;
 // // $separator: auto / comma
 //
-// Styleguide 1.2.4
 
 @function reverseList($list, $separator: auto) {
   $reversedList: ();

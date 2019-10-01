@@ -2,7 +2,6 @@
 //
 // Other variables
 //
-// Styleguide 5.0
 
 
 // Ratios
@@ -13,7 +12,6 @@
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1">Value: {$modifiers}</div>
 //
-// Styleguide 5.1
 
 $ratio: 1.618;
 $sqrtRatio: 1.27201964951;
@@ -27,7 +25,6 @@ $sqrtRatio: 1.27201964951;
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1">Value: {$modifiers}</div>
 //
-// Styleguide 5.2
 
 $fontSizeBase: 16;
 $fontBaseline: $fontSizeBase / 2;
@@ -40,7 +37,6 @@ $fontBaseline: $fontSizeBase / 2;
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1; font-family: {$modifiers}">Value: {$modifiers}</div>
 //
-// Styleguide 5.3
 
 $fontFamilyDefault: 'Source Sans Pro', sans-serif;
 
@@ -52,7 +48,6 @@ $fontFamilyDefault: 'Source Sans Pro', sans-serif;
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1; padding: $defaultColsPadding"><div style="background: $colorBackgroundMain;">Value: {$modifiers}</div></div>
 //
-// Styleguide 5.4
 
 $defaultColsPadding: $fontSizeBase * 1px;
 
@@ -67,7 +62,6 @@ $responsiveGutter: true !default;
 // markup:
 // <div class="styleguide-color" style="background: $ColorBrand1;">Value: {$modifiers}</div>
 //
-// Styleguide 5.5
 
 $headerHeight: 60px;
 $responsiveMenuWidth: 260px;
@@ -75,7 +69,6 @@ $responsiveMenuWidth: 260px;
 
 // Forms
 //
-// Styleguide 5.6
 $formColsRatio: 7 6;
 $selectIconWidth: 2.6 * $fontSizeBase * 1px;
 $textIconWidth: $fontSizeBase * 1px;
