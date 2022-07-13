@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var sequence = require('run-sequence');
 
 var sass = require('gulp-sass');
+const async = require("async");
 
 var paths = {};
 
@@ -34,25 +35,30 @@ gulp.task('clean', function(callback) {
   del(paths.build.root, {force:true}, callback);
 });
 
-gulp.task('build:icon-font', function() {
-  return gulp.src(paths.source.svgFonts)
-      .pipe(iconfont({
-        fontName: fontName, // required
-        appendCodepoints: true // recommended option
-      }))
-      .on('codepoints', buildIconFontCss)
-      .pipe(gulp.dest(paths.build.fonts));
+gulp.task('build:icon-font', function(done){
+    var iconStream = gulp.src(paths.source.svgFonts)
+        .pipe(iconfont({ fontName: fontName,  appendCodepoints: true }));
 
-  function buildIconFontCss(codepoints) {
-    gulp.src(paths.source.iconfontTemplate)
-        .pipe(template({
-          glyphs: codepoints,
-          fontName: fontName,
-          className: 'fci'
-        }))
-        .pipe(rename(fontName + '.scss'))
-        .pipe(gulp.dest(paths.build.fonts));
-  }
+    async.parallel([
+        function handleGlyphs (cb) {
+            iconStream.on('glyphs', function(glyphs, options) {
+                gulp.src(paths.source.iconfontTemplate)
+                    .pipe(template( {
+                        glyphs: glyphs,
+                        fontName: fontName,
+                        className: 'fci'
+                    }))
+                    .pipe(rename(fontName + '.scss'))
+                    .pipe(gulp.dest(paths.build.fonts))
+                    .on('finish', cb);
+            });
+        },
+        function handleFonts (cb) {
+            iconStream
+                .pipe(gulp.dest(paths.build.fonts))
+                .on('finish', cb);
+        }
+    ], done);
 });
 
 gulp.task('build:mixins', function() {
