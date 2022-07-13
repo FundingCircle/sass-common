@@ -40,7 +40,7 @@ gulp.task('clean', function (callback) {
 
 gulp.task('build:icon-font', function (done) {
     var iconStream = gulp.src(paths.source.svgFonts)
-        .pipe(iconfont({fontName: fontName, appendCodepoints: true}));
+        .pipe(iconfont({fontName: fontName, prependUnicode: true, fontHeight: 1001,normalize: true, formats: ['ttf', 'eot', 'woff', 'woff2', 'svg']}))
 
     async.parallel([
         function handleGlyphs(cb) {
@@ -49,7 +49,8 @@ gulp.task('build:icon-font', function (done) {
                     .pipe(template({
                         glyphs: glyphs,
                         fontName: fontName,
-                        className: 'fci'
+                        className: 'fci',
+
                     }))
                     .pipe(rename(fontName + '.scss'))
                     .pipe(gulp.dest(paths.build.fonts))

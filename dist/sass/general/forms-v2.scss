@@ -333,11 +333,11 @@
         outline-offset: 0;
       }
 
-      &.valid { @extend .select.valid; }
+      &.valid { @extend .select,.valid; }
       &.error {
         outline-width: 1px;
         outline-style: solid;
-        @extend .select.error;
+        @extend .select,.error;
       }
     }
 
