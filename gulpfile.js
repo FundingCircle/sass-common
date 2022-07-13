@@ -5,10 +5,12 @@ var template = require('gulp-template');
 var iconfont = require('gulp-iconfont');
 var insert = require('gulp-insert');
 var rename = require('gulp-rename');
-var sequence = require('run-sequence');
 
 var sass = require('gulp-sass');
 const async = require("async");
+const {series, parallel} = require('gulp');
+
+sass.compiler = require('node-sass');
 
 var paths = {};
 
@@ -20,6 +22,7 @@ paths.build.fonts = paths.build.root + '/fonts';
 paths.source = {};
 paths.source.root = 'src';
 paths.source.iconfontTemplate = paths.source.root + '/fonts/iconfontTemplate.scss.tpl';
+paths.source.stylesheet = paths.source.root + '/sass/';
 paths.source.stylesheets = paths.source.root + '/sass/**/*';
 paths.source.fontsMain = paths.source.root + '/fonts/fonts/**/*';
 paths.source.svgFonts = paths.source.root + '/fonts/svg/**/*';
@@ -31,19 +34,19 @@ paths.nodeModules.normalize = paths.nodeModules.root + '/normalize.css/normalize
 
 var fontName = "fc-icons";
 
-gulp.task('clean', function(callback) {
-  del(paths.build.root, {force:true}, callback);
+gulp.task('clean', function (callback) {
+    del(paths.build.root, {force: true}, callback);
 });
 
-gulp.task('build:icon-font', function(done){
+gulp.task('build:icon-font', function (done) {
     var iconStream = gulp.src(paths.source.svgFonts)
-        .pipe(iconfont({ fontName: fontName,  appendCodepoints: true }));
+        .pipe(iconfont({fontName: fontName, appendCodepoints: true}));
 
     async.parallel([
-        function handleGlyphs (cb) {
-            iconStream.on('glyphs', function(glyphs, options) {
+        function handleGlyphs(cb) {
+            iconStream.on('glyphs', function (glyphs, options) {
                 gulp.src(paths.source.iconfontTemplate)
-                    .pipe(template( {
+                    .pipe(template({
                         glyphs: glyphs,
                         fontName: fontName,
                         className: 'fci'
@@ -53,7 +56,7 @@ gulp.task('build:icon-font', function(done){
                     .on('finish', cb);
             });
         },
-        function handleFonts (cb) {
+        function handleFonts(cb) {
             iconStream
                 .pipe(gulp.dest(paths.build.fonts))
                 .on('finish', cb);
@@ -61,33 +64,32 @@ gulp.task('build:icon-font', function(done){
     ], done);
 });
 
-gulp.task('build:mixins', function() {
-  return gulp.src(paths.source.stylesheets)
-          .pipe(gulp.dest(paths.build.sass));
+gulp.task('build:mixins', function () {
+    return gulp.src(paths.source.stylesheets)
+        .pipe(gulp.dest(paths.build.sass));
 });
 
-gulp.task('build:fonts', function() {
-  return gulp.src(paths.source.fontsMain)
-          .pipe(gulp.dest(paths.build.fonts + '/fonts/'));
+gulp.task('build:fonts', function () {
+    return gulp.src(paths.source.fontsMain)
+        .pipe(gulp.dest(paths.build.fonts + '/fonts/'));
 });
 
-
-
-gulp.task('libraries', function() {
-  return gulp.src([paths.nodeModules.normalize, paths.build.sass + '/style.scss'])
-             .pipe(concat('style.scss'))
-             .pipe(gulp.dest(paths.build.sass));
+gulp.task('libraries', function () {
+    return gulp.src([paths.nodeModules.normalize, paths.build.sass + '/style.scss'])
+        .pipe(concat('style.scss'))
+        .pipe(gulp.dest(paths.build.sass));
 })
 
-gulp.task('sass', function () {
+gulp.task('sass', function (done) {
     gulp.src(paths.build.sass + '/style.scss')
         .pipe(insert.prepend('$ie: false;\n'))
-        .pipe(sass())
-        .pipe(gulp.dest(paths.build.root));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(paths.build.root))
+        .on('finish', done);
 });
 
 gulp.task('build', function (callback) {
-  sequence(['build:mixins', 'build:icon-font', 'build:fonts'], 'libraries', 'sass', callback);
+    series(parallel('build:mixins', 'build:icon-font', 'build:fonts'), 'libraries', 'sass')(callback);
 });
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series(['build']));
