@@ -14,3 +14,32 @@ jobs:
       - run:
           name: Run tests
           command: bundle exec rake --trace
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  publish:
+    docker:
+      - image: circleci/node:8.9
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Login to Artifactory
+          command: curl --user "$ARTIFACTORY_USER:$ARTIFACTORY_TOKEN" https://fundingcircle.jfrog.io/fundingcircle/api/npm/auth >> ~/.npmrc
+      - deploy:
+          name: Publish package to Artifactory
+          command: npm publish --registry "$NPM_REGISTRY" --scope=@fundingcircle
+workflows:
+  version: 2
+  publish-package:
+    jobs:
+      - build
+      - publish:
+          context: org-global
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
