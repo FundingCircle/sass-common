@@ -6,7 +6,7 @@ var iconfont = require('gulp-iconfont');
 var insert = require('gulp-insert');
 var rename = require('gulp-rename');
 
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 const async = require("async");
 const {series, parallel} = require('gulp');
 
