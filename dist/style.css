@@ -1808,7 +1808,7 @@ form h3 {
     .form-default_element--tooltip {
       display: table;
       width: 100%; }
-  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default .select, .form-default .select select.valid, .form-default .select select.error,
+  .form-default input[type="text"], .form-default input[type="password"], .form-default input[type="search"], .form-default input[type="email"], .form-default input[type="url"], .form-default input[type="tel"], .form-default input[type="number"], .form-default input[type="range"], .form-default input[type="date"], .form-default input[type="month"], .form-default input[type="week"], .form-default input[type="time"], .form-default .select,
   .form-default textarea {
     /* CALCULATE THE FONT SIZE */
     font-size: 16px;
@@ -1826,13 +1826,13 @@ form h3 {
     outline: 1px solid #dddddd;
     padding: 0 16px;
     outline-offset: initial; }
-    .form-default input:focus[type="text"], .form-default input:focus[type="password"], .form-default input:focus[type="search"], .form-default input:focus[type="email"], .form-default input:focus[type="url"], .form-default input:focus[type="tel"], .form-default input:focus[type="number"], .form-default input:focus[type="range"], .form-default input:focus[type="date"], .form-default input:focus[type="month"], .form-default input:focus[type="week"], .form-default input:focus[type="time"], .form-default .select:focus, .form-default .select select.valid:focus, .form-default .select select.error:focus,
+    .form-default input:focus[type="text"], .form-default input:focus[type="password"], .form-default input:focus[type="search"], .form-default input:focus[type="email"], .form-default input:focus[type="url"], .form-default input:focus[type="tel"], .form-default input:focus[type="number"], .form-default input:focus[type="range"], .form-default input:focus[type="date"], .form-default input:focus[type="month"], .form-default input:focus[type="week"], .form-default input:focus[type="time"], .form-default .select:focus,
     .form-default textarea:focus {
       outline-color: #37b0c9; }
-    .form-default input.valid[type="text"], .form-default input.valid[type="password"], .form-default input.valid[type="search"], .form-default input.valid[type="email"], .form-default input.valid[type="url"], .form-default input.valid[type="tel"], .form-default input.valid[type="number"], .form-default input.valid[type="range"], .form-default input.valid[type="date"], .form-default input.valid[type="month"], .form-default input.valid[type="week"], .form-default input.valid[type="time"], .form-default .valid.select, .form-default .select select.valid,
+    .form-default input.valid[type="text"], .form-default input.valid[type="password"], .form-default input.valid[type="search"], .form-default input.valid[type="email"], .form-default input.valid[type="url"], .form-default input.valid[type="tel"], .form-default input.valid[type="number"], .form-default input.valid[type="range"], .form-default input.valid[type="date"], .form-default input.valid[type="month"], .form-default input.valid[type="week"], .form-default input.valid[type="time"], .form-default .valid.select, .form-default .select .select.valid,
     .form-default textarea.valid {
       border-right: 4px solid #009c50; }
-    .form-default input.error[type="text"], .form-default input.error[type="password"], .form-default input.error[type="search"], .form-default input.error[type="email"], .form-default input.error[type="url"], .form-default input.error[type="tel"], .form-default input.error[type="number"], .form-default input.error[type="range"], .form-default input.error[type="date"], .form-default input.error[type="month"], .form-default input.error[type="week"], .form-default input.error[type="time"], .form-default .error.select, .form-default .select select.error,
+    .form-default input.error[type="text"], .form-default input.error[type="password"], .form-default input.error[type="search"], .form-default input.error[type="email"], .form-default input.error[type="url"], .form-default input.error[type="tel"], .form-default input.error[type="number"], .form-default input.error[type="range"], .form-default input.error[type="date"], .form-default input.error[type="month"], .form-default input.error[type="week"], .form-default input.error[type="time"], .form-default .error.select, .form-default .select .select.error,
     .form-default textarea.error {
       outline-color: #d60036;
       color: #d60036; }
@@ -1843,15 +1843,15 @@ form h3 {
   .form-default textarea {
     padding: 16px 16px;
     line-height: normal; }
-  .form-default .select, .form-default .select select.valid, .form-default .select select.error, .form-default .select--inline {
+  .form-default .select, .form-default .select select.error, .form-default .select .select.error, .form-default .select select.valid, .form-default .select .select.valid, .form-default .select--inline {
     position: relative;
     height: 40px; }
-    .form-default .select:before, .form-default .select select.valid:before, .form-default .select select.error:before, .form-default .select--inline:before, .form-default .select:after, .form-default .select select.valid:after, .form-default .select select.error:after, .form-default .select--inline:after {
+    .form-default .select:before, .form-default .select select.error:before, .form-default .select .select.error:before, .form-default .select select.valid:before, .form-default .select .select.valid:before, .form-default .select--inline:before, .form-default .select:after, .form-default .select select.error:after, .form-default .select .select.error:after, .form-default .select select.valid:after, .form-default .select .select.valid:after, .form-default .select--inline:after {
       content: '';
       display: block;
       position: absolute;
       z-index: 1; }
-    html:not(.ie) .form-default .select:after, html:not(.ie) .form-default .select select.valid:after, html:not(.ie) .form-default .select select.error:after, html:not(.ie) .form-default .select--inline:after {
+    html:not(.ie) .form-default .select:after, html:not(.ie) .form-default .select select.error:after, html:not(.ie) .form-default .select .select.error:after, html:not(.ie) .form-default .select select.valid:after, html:not(.ie) .form-default .select .select.valid:after, html:not(.ie) .form-default .select--inline:after {
       display: block;
       width: 0;
       height: 0;
@@ -1862,7 +1862,7 @@ form h3 {
       top: 0;
       bottom: 0;
       margin: auto 0; }
-    .form-default .select select, .form-default .select select.valid select, .form-default .select select.error select, .form-default .select--inline select {
+    .form-default .select select, .form-default .select select.error select, .form-default .select .select.error select, .form-default .select select.valid select, .form-default .select .select.valid select, .form-default .select--inline select {
       -webkit-border-radius: 0;
       border-radius: 0;
       -webkit-appearance: none;
@@ -1876,25 +1876,25 @@ form h3 {
       vertical-align: middle;
       z-index: 2;
       padding: 0 16px; }
-      .form-default .select select:-moz-focusring, .form-default .select--inline select:-moz-focusring {
+      .form-default .select select:-moz-focusring, .form-default .select .select.error select:-moz-focusring, .form-default .select .select.valid select:-moz-focusring, .form-default .select--inline select:-moz-focusring {
         transition: none;
         text-shadow: 0 0 0 black;
         color: transparent; }
-      .form-default .select select::-ms-expand, .form-default .select select.valid select::-ms-expand, .form-default .select select.error select::-ms-expand, .form-default .select--inline select::-ms-expand {
+      .form-default .select select::-ms-expand, .form-default .select select.error select::-ms-expand, .form-default .select .select.error select::-ms-expand, .form-default .select select.valid select::-ms-expand, .form-default .select .select.valid select::-ms-expand, .form-default .select--inline select::-ms-expand {
         display: none; }
-      .ie .form-default .select select, .ie .form-default .select--inline select {
+      .ie .form-default .select select, .ie .form-default .select .select.error select, .ie .form-default .select .select.valid select, .ie .form-default .select--inline select {
         padding: 8px 16px; }
-    .form-default .select option, .form-default .select select.valid option, .form-default .select select.error option, .form-default .select--inline option {
+    .form-default .select option, .form-default .select select.error option, .form-default .select .select.error option, .form-default .select select.valid option, .form-default .select .select.valid option, .form-default .select--inline option {
       padding: 8px 16px; }
-  html:not(.ie) .form-default .select:before, html:not(.ie) .form-default .select select.valid:before, html:not(.ie) .form-default .select select.error:before {
+  html:not(.ie) .form-default .select:before {
     width: 41.6px;
     height: 100%;
     top: 0;
     right: 0;
     border-left: 1px solid #dddddd; }
-  html:not(.ie) .form-default .select:after, html:not(.ie) .form-default .select select.valid:after, html:not(.ie) .form-default .select select.error:after {
+  html:not(.ie) .form-default .select:after {
     right: 16.64px; }
-  .form-default .select select, .form-default .select select.valid select, .form-default .select select.error select {
+  .form-default .select select {
     position: absolute;
     top: 0;
     right: 0;
@@ -1966,9 +1966,9 @@ form h3 {
       padding-right: 24px;
       padding-left: 8px;
       width: 128px; }
-      .form-default .input--inline input.error {
+      .form-default .input--inline input.error, .form-default .input--inline .select input.select.error, .form-default .select .input--inline input.select.error {
         border-bottom-color: #d60036; }
-      .form-default .input--inline input.valid {
+      .form-default .input--inline input.valid, .form-default .input--inline .select input.select.valid, .form-default .select .input--inline input.select.valid {
         border-right: 0;
         border-bottom-color: #009c50; }
       .form-default .input--inline input:focus {
