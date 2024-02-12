@@ -63,7 +63,8 @@ steps:
     image: ruby:3.3.0
     commands:
       - bundle exec rake --trace
-    depends_on: install_ruby
+    depends_on:
+      - install_ruby
 
 trigger:
   event:
