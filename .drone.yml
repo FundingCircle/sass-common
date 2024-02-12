@@ -1,0 +1,86 @@
+---
+kind: pipeline
+type: docker
+name: branch
+
+# Platform for job, always Linux amd64
+platform:
+  os: linux
+  arch: amd64
+
+# Do not allow concurrent builds / deployments
+concurrency:
+  limit: 1
+
+anchors:
+  bundle_fundingcircle__jfrog__io: &bundle_fundingcircle__jfrog__io
+    environment:
+      BUNDLE_FUNDINGCIRCLE__JFROG__IO:
+        from_secret: bundle_fundingcircle__jfrog__io
+
+  # Settings to build container image
+  docker_settings: &docker_settings
+    pull_image: true
+    custom_labels:
+      - 'org.fundingcircle.image.manager=afep@fundingcircle.com'
+    registry: https://quay.io
+    repo: quay.io/fundingcircle/radius
+    dockerfile: Dockerfile
+
+  # Container registry credentials for Quay.io
+  docker_credentials: &docker_credentials
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+
+steps:
+  ############################################################################
+  # Feature branch push
+  #
+  # Run steps on each push to a feature branch
+
+  # Install dependencies
+  - name: install_node
+    image: node:18.17.1
+    commands:
+      - npm config set registry https://fundingcircle.jfrog.io/fundingcircle/api/npm/npm/
+      - curl https://$BUNDLE_FUNDINGCIRCLE__JFROG__IO@fundingcircle.jfrog.io/fundingcircle/api/npm/auth >> .npmrc
+      - npm config fix
+      - npm ci
+    <<: *bundle_fundingcircle__jfrog__io
+    depends_on:
+      - clone
+
+  - name: install_ruby
+    image: ruby:3.3.0
+    volumes:
+      - name: bundle
+        path: /usr/local/bundle
+    commands:
+      - bundle install
+    depends_on:
+      - clone
+
+  - name: run_lint_tests
+    image: ruby:3.3.0
+    volumes:
+      - name: bundle
+        path: /usr/local/bundle
+    commands:
+      - bundle exec rake --trace
+    depends_on:
+      - install_ruby
+
+volumes:
+  - name: bundle
+    temp: {}
+
+trigger:
+  event:
+    - push
+  branch:
+    exclude:
+      - master
+  # End of push to feature branch
+  ############################################################################
