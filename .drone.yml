@@ -55,7 +55,8 @@ steps:
   - name: install_ruby
     image: ruby:3.3.0
     commands:
-      - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+      - bundle config set path 'vendor/bundle'
+      - bundle install
     depends_on:
       - clone
 
