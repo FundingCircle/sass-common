@@ -55,7 +55,7 @@ steps:
   - name: install_ruby
     image: ruby:3.3.0
     environment:
-      - BUNDLE_APP_CONFIG=./.bundle
+      - BUNDLE_APP_CONFIG: ./.bundle
     commands:
       - bundle config set path 'vendor/bundle'
       - bundle install
@@ -65,7 +65,7 @@ steps:
   - name: run_tests
     image: ruby:3.3.0
     environment:
-      - BUNDLE_APP_CONFIG=./.bundle
+      - BUNDLE_APP_CONFIG: ./.bundle
     commands:
       - bundle exec rake --trace
     depends_on:
