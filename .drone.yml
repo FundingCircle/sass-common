@@ -54,22 +54,27 @@ steps:
 
   - name: install_ruby
     image: ruby:3.3.0
-    environment:
-      - BUNDLE_APP_CONFIG: ./.bundle
+    volumes:
+      - name: bundle
+        path: /usr/local/bundle
     commands:
-      - bundle config set path 'vendor/bundle'
       - bundle install
     depends_on:
       - clone
 
-  - name: run_tests
+  - name: run_lint_tests
     image: ruby:3.3.0
-    environment:
-      - BUNDLE_APP_CONFIG: ./.bundle
+    volumes:
+      - name: bundle
+        path: /usr/local/bundle
     commands:
       - bundle exec rake --trace
     depends_on:
       - install_ruby
+
+volumes:
+  - name: bundle
+    temp: {}
 
 trigger:
   event:
