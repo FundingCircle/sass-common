@@ -322,12 +322,14 @@
       }
     }
 
-    %select-error, .select.error {
+    %select-error,
+    .select.error {
       @extend %select;
       @extend .error;
     }
 
-    %select-valid, .select.valid {
+    %select-valid,
+    .select.valid {
       @extend %select;
       @extend .valid;
     }
