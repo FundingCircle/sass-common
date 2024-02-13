@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: branch
+name: build
 
 # Platform for job, always Linux amd64
 platform:
@@ -36,9 +36,9 @@ anchors:
 
 steps:
   ############################################################################
-  # Feature branch push
+  # Push
   #
-  # Run steps on each push to a feature branch
+  # Run steps on each push to all branches
 
   # Install dependencies
   - name: install_node
@@ -79,8 +79,5 @@ volumes:
 trigger:
   event:
     - push
-  branch:
-    exclude:
-      - master
-  # End of push to feature branch
+  # End of push to all branches
   ############################################################################
